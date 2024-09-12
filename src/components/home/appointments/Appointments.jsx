@@ -2,7 +2,7 @@ import React from "react";
 
 const Appointments = () => {
   return (
-    <div className="bg-bgGray p-4 rounded h-full">
+    <div className="bg-bgGray p-4 rounded-2xl h-full">
       <div className="flex items-center justify-between">
         <h4>التقويم العدلي</h4>
         <div>

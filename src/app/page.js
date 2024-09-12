@@ -7,8 +7,8 @@ import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper";
 export default function Home() {
   return (
     <div className="h-full flex-1 my-8">
-      <ScreenWrapper className={"flex flex-col gap-4"}>
-        <div className="flex w-full gap-4 h-40">
+      <ScreenWrapper className={"flex flex-col gap-4 text-gray-600"}>
+        <div className="flex w-full gap-4 h-48">
           <div className="w-3/5 h-full">
             <InfoBar />
           </div>

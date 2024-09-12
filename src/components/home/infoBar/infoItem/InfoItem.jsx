@@ -1,8 +1,8 @@
 import React from "react";
 
-const InfoItem = () => {
+const InfoItem = ({title}) => {
   return (
-    <li className="flex relative gap-1 items-center justify-center bg-white w-fit h-full p-8 rounded">
+    <li className="flex relative gap-1 items-center justify-center bg-white w-fit h-full p-6 rounded-2xl flex-col ">
       <span className="drop-shadow aspect-square absolute top-0 -translate-y-1/2 text-iconGreen p-2 bg-white rounded-full flex items-center">
         <svg
           width="22"
@@ -18,8 +18,8 @@ const InfoItem = () => {
         </svg>
       </span>
 
-      <h4>القضايا</h4>
-      <p className="text-lg">10</p>
+      <p className="text-center">{title}</p>
+      <h4 className="text-2xl font-bold">10</h4>
     </li>
   );
 };
