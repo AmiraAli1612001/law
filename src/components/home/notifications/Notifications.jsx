@@ -3,7 +3,7 @@ import React from "react";
 const Notifications = () => {
   return (
     <div className="bg-bgGray p-4 w-full flex flex-col h-full rounded-2xl justify-between">
-      <h3 className="text-xl font-semibold">اشعارات</h3>
+      <h3 className="text-xl font-semibold">ابرز الاشعارات</h3>
       <ul className="bg-white p-4 rounded-2xl mt-4">
         <li className="p-4 flex justify-center items-center gap-4 font-medium">
           <svg
