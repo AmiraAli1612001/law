@@ -193,8 +193,12 @@ const Header = () => {
           </section>
         </ScreenWrapper>
       </div>
-      <div class="notification-bar">
-        <div class="notification-content font-medium">
+      <div class="notification-bar flex">
+        <div class="notification-content font-medium notification-content-1">
+          هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض
+          الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات
+        </div>
+        <div class="notification-content font-medium notification-content-2">
           هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض
           الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات
         </div>

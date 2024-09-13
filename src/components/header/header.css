@@ -3,7 +3,7 @@
   width: 100%; /* Full width of the viewport */
   background-color: #333; /* Dark background like in news channels */
   color: white; /* White text for contrast */
-  padding: 10px 0;
+  padding: 15px 0;
   height: fit-content;
   overflow: hidden; /* Hide overflowing content */
   box-sizing: border-box;
@@ -13,19 +13,29 @@
 
 /* Style for the moving notification content */
 .notification-content {
-  position: relative;
-  animation: move-text 15s linear infinite; /* Apply the animation */
+  position: absolute;
+  top:50% ;
+  transform: translateY(-50%);
+  direction: ltr;
+  right: 0;
   font-size: 14px;
   line-height: 1;
   width: 100%;
+  transform: translateX(100%);
+}
+.notification-content-1 {
+  animation: move-text 32s linear infinite; /* Apply the animation */
+}
+.notification-content-2 {
+  animation: move-text 32s 16s linear infinite; /* Apply the animation */
 }
 
 /* Keyframes for moving text from right to left */
 @keyframes move-text {
   0% {
-    transform: translateX(100%); /* Start outside the right of the container */
+    transform: translateX(100%) translateY(-50%); /* Start outside the right of the container */
   }
   100% {
-    transform: translateX(-100%); /* Move fully to the left of the container */
+    transform: translateX(-100%) translateY(-50%); /* Move fully to the left of the container */
   }
 }
