@@ -113,7 +113,7 @@ const Header = () => {
         <ScreenWrapper className="">
           <section className=" py-4">
             <nav>
-              <ul className="flex w-full justify-center gap-6">
+              <ul className="flex w-full justify-center gap-8">
                 <NavItem title="العقود">
                   <svg
                     width="24"
