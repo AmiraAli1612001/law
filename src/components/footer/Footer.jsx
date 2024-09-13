@@ -7,9 +7,9 @@ const Footer = () => {
     <footer className="bg-bgGreen py-4">
       <ScreenWrapper className="flex items-center justify-between">
         <Image
-          src={"/images/logos/saudi-logo.png"}
+          src={"/images/logos/صقور الشعار.png"}
           alt="saudi logo"
-          width={120}
+          width={160}
           height={0}
         />
         <ul className="flex items-center gap-6 [&>li]:cursor-pointer">
