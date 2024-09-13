@@ -1,12 +1,21 @@
-import React from "react";
+"use client";
+import { SwitchButton } from "@/components/shared/switchButton/SwitchButton";
+import React, { useState } from "react";
 
 const Appointments = () => {
+  const[checked,setChecked] = useState(false)
   return (
     <div className="bg-bgGray p-4 rounded-2xl h-full">
       <div className="flex items-center justify-between">
         <h4 className="text-xl font-medium">التقويم العدلي</h4>
-        <div>
-          <p>استخدم التقويم الميلادي</p>
+        <div className="flex items-center gap-2">
+          <p className="text-xs font-medium">استخدم التقويم الميلادي</p>
+          <SwitchButton
+            isOn={checked}
+            handleToggle={() => setChecked(!checked)}
+            colorOne="#EF476F"
+            colorTwo="#06D6A0"
+          />
         </div>
       </div>
       <div className="bg-white p-4 mt-4 rounded">
@@ -21,7 +30,7 @@ const Appointments = () => {
             <li className="border border-gray-200 p-3 rounded flex flex-col gap-3 font-medium">
               <div className="flex justify-between items-center">
                 <h5>جلسة مرافعة</h5>
-                <span className="text-gray-400 ">12:00 am</span>
+                <span className="text-gray-400 text-sm">12:00 صباحا</span>
               </div>
               <div className="text-sm">
                 <p>رقم القضية: 141414</p>

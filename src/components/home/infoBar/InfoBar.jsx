@@ -6,14 +6,47 @@ const InfoBar = () => {
     <div className="bg-bgGray p-4 pb-2 flex gap-4  h-full rounded-2xl">
       <div className="flex flex-col ">
         <h3 className="text-xl">الملف العدلي</h3>
-        <p className="max-w-52">
-          كل ما يخص معلوماتك العدلية 
-        </p>
+        <p className="max-w-52">كل ما يخص معلوماتك العدلية</p>
       </div>
       <ul className="h-full py-3 flex gap-1.5">
-        <InfoItem title="إصدار العقود" />
-        <InfoItem title="قائمة العقود" />
-        <InfoItem title="العقود المفتوحة" />
+        <InfoItem title="إصدار العقود">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#34A853"
+          >
+            <path d="M440-200h80v-167l64 64 56-57-160-160-160 160 57 56 63-63v167ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" />
+          </svg>
+        </InfoItem>
+        <InfoItem title="قائمة العقود">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="none"
+              stroke="#34A853"
+              stroke-linecap="round"
+              stroke-width="2"
+              d="M9 8h10M9 12h10M9 16h10M4.99 8H5m-.02 4h.01m0 4H5"
+            />
+          </svg>
+        </InfoItem>
+        <InfoItem title="العقود المفتوحة">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#34A853"
+          >
+            <path d="M360-600v-80h360v80H360Zm0 120v-80h360v80H360Zm120 320H200h280Zm0 80H240q-50 0-85-35t-35-85v-120h120v-560h600v361q-20-2-40.5 1.5T760-505v-295H320v480h240l-80 80H200v40q0 17 11.5 28.5T240-160h240v80Zm80 0v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T903-300L683-80H560Zm300-263-37-37 37 37ZM620-140h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+          </svg>
+        </InfoItem>
         <li className="flex relative gap-1 text-center items-center justify-center bg-[#435363] w-fit h-full p-2 rounded-2xl flex-col text-white font-medium">
           <p>عرض العقود التي ما زالت تحت التنفيذ</p>
           <svg
