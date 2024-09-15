@@ -56,7 +56,7 @@ const IssuesTable = () => {
               {headerGroup.headers.map((column, i) => (
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
-                  className="text-start bg-[#1D2A96] !text-white p-4 w-fit"
+                  className="text-start bg-[#048d5a] !text-white p-4 w-fit"
                   key={i}
                 >
                   {column.render("Header")}
