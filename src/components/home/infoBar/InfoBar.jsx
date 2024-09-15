@@ -52,9 +52,9 @@ const InfoBar = () => {
         </ul>
         <Link
           href={"/"}
-          className="flex w-full flex-1 relative gap-1 text-center items-center justify-center bg-[#435363] md:w-fit p-2 rounded-2xl flex-col text-white font-medium"
+          className="flex w-full flex-1  relative gap-1 text-center items-center justify-center bg-[#435363] md:w-fit p-2 rounded-2xl flex-col text-white font-medium"
         >
-          <p>مشاهدة الكل</p>
+          <p className="whitespace-nowrap">مشاهدة الكل</p>
           <svg
             width="34"
             height="35"
