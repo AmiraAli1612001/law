@@ -6,7 +6,7 @@ const LinkHeader = ({ title }) => {
     <div className="text-base flex items-center gap-4 font-bold">
       <Link href={"/"} className="text-[#063d31]">الصفحة الرئيسية</Link>
       <svg
-        class="w-6 h-6 text-gray-800 dark:text-white"
+        className="w-6 h-6 text-gray-800 dark:text-white"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -16,9 +16,9 @@ const LinkHeader = ({ title }) => {
       >
         <path
           stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
           d="m15 19-7-7 7-7"
         />
       </svg>

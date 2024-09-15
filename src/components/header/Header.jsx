@@ -180,7 +180,7 @@ const Header = () => {
                 <NavItem to={"/"} isIcon={false} title="لوحة المعلومات">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="svg-icon"
+                    className="svg-icon"
                     width={24}
                     height={24}
                     fill="#7CB09D"
@@ -288,12 +288,12 @@ const Header = () => {
         </ScreenWrapper>
       </div>
       {/* advertisment */}
-      <div class="notification-bar flex">
-        <div class="notification-content font-medium notification-content-1">
+      <div className="notification-bar flex">
+        <div className="notification-content font-medium notification-content-1">
           هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض
           الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات
         </div>
-        <div class="notification-content font-medium notification-content-2 hidden lg:block">
+        <div className="notification-content font-medium notification-content-2 hidden lg:block">
           هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض
           الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات
         </div>

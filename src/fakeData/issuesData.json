@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "date": "15/12/2023",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Othella Van der Brugge",
+    "character": "محامي",
+    "defendant": "Jasmin Mickan",
+    "status": "منتهية"
+  },
+  {
+    "id": 2,
+    "date": "23/02/2024",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Tatiania Chestle",
+    "character": "محامي",
+    "defendant": "Sheff Deegan",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 3,
+    "date": "08/04/2024",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Nilson De Lorenzo",
+    "character": "محامي",
+    "defendant": "Granville Wordsley",
+    "status": "منتهية"
+  },
+  {
+    "id": 4,
+    "date": "18/06/2024",
+    "type": "سرقة",
+    "prosecutor": "Eli Wessell",
+    "character": "وكيل",
+    "defendant": "Lou Gurys",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 5,
+    "date": "25/08/2024",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Tito Blown",
+    "character": "وكيل",
+    "defendant": "Tobit Manjin",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 6,
+    "date": "22/08/2024",
+    "type": "سرقة",
+    "prosecutor": "Alden Shatliffe",
+    "character": "وكيل",
+    "defendant": "Adriaens Aiton",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 7,
+    "date": "15/01/2024",
+    "type": "قتل عمد",
+    "prosecutor": "Trent Brittian",
+    "character": "محامي",
+    "defendant": "Wallace Ferrey",
+    "status": "منتهية"
+  },
+  {
+    "id": 8,
+    "date": "13/04/2024",
+    "type": "رد العين",
+    "prosecutor": "Almeda Rumble",
+    "character": "محامي",
+    "defendant": "Margo Pearman",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 9,
+    "date": "24/03/2024",
+    "type": "قتل عمد",
+    "prosecutor": "Guillermo Scripture",
+    "character": "محامي",
+    "defendant": "Ashia Poleykett",
+    "status": "منتهية"
+  },
+  {
+    "id": 10,
+    "date": "02/04/2024",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Hershel Calken",
+    "character": "محامي",
+    "defendant": "Allyn Zamora",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 11,
+    "date": "17/01/2024",
+    "type": "قتل عمد",
+    "prosecutor": "Genna Belle",
+    "character": "محامي",
+    "defendant": "Claire Dadson",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 12,
+    "date": "22/01/2024",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Percival Huikerby",
+    "character": "محامي",
+    "defendant": "Holmes Donnelly",
+    "status": "منتهية"
+  },
+  {
+    "id": 13,
+    "date": "25/02/2024",
+    "type": "رد العين",
+    "prosecutor": "Elita Thamelt",
+    "character": "وكيل",
+    "defendant": "Dianemarie Heelis",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 14,
+    "date": "24/05/2024",
+    "type": "سرقة",
+    "prosecutor": "Moses Robjents",
+    "character": "وكيل",
+    "defendant": "Dorrie Ephson",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 15,
+    "date": "27/11/2023",
+    "type": "سرقة",
+    "prosecutor": "Bruce Reddecliffe",
+    "character": "محامي",
+    "defendant": "Eva Rooper",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 16,
+    "date": "05/03/2024",
+    "type": "قتل عمد",
+    "prosecutor": "Anallise Cestard",
+    "character": "وكيل",
+    "defendant": "Conchita Roper",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 17,
+    "date": "20/05/2024",
+    "type": "مخالفة نظام مكافحة جرائم المخدرات",
+    "prosecutor": "Logan Blacksell",
+    "character": "وكيل",
+    "defendant": "Ardeen Milward",
+    "status": "منتهية"
+  },
+  {
+    "id": 18,
+    "date": "04/02/2024",
+    "type": "سرقة",
+    "prosecutor": "Raine Ascraft",
+    "character": "وكيل",
+    "defendant": "Franchot Mersey",
+    "status": "منتهية"
+  },
+  {
+    "id": 19,
+    "date": "31/07/2024",
+    "type": "سرقة",
+    "prosecutor": "Vonni Shelper",
+    "character": "وكيل",
+    "defendant": "Valli Dorling",
+    "status": "منتهية"
+  },
+  {
+    "id": 20,
+    "date": "26/07/2024",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Valry Durbann",
+    "character": "محامي",
+    "defendant": "Indira Searby",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 21,
+    "date": "16/09/2023",
+    "type": "قتل عمد",
+    "prosecutor": "Bernie Elsip",
+    "character": "وكيل",
+    "defendant": "Jenn Donaway",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 22,
+    "date": "22/10/2023",
+    "type": "رد العين",
+    "prosecutor": "Worth Laugherane",
+    "character": "وكيل",
+    "defendant": "Dorena Crispin",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 23,
+    "date": "28/08/2024",
+    "type": "مخالفة نظام مكافحة جرائم المخدرات",
+    "prosecutor": "Nana Roskam",
+    "character": "محامي",
+    "defendant": "Golda Restill",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 24,
+    "date": "20/09/2023",
+    "type": "رد العين",
+    "prosecutor": "Brigitte Easdon",
+    "character": "وكيل",
+    "defendant": "Lorrin Harrinson",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 25,
+    "date": "26/08/2024",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Odelinda Yurshev",
+    "character": "محامي",
+    "defendant": "Antoinette Saffon",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 26,
+    "date": "14/01/2024",
+    "type": "سرقة",
+    "prosecutor": "Jefferson Sandys",
+    "character": "وكيل",
+    "defendant": "Pacorro Lockner",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 27,
+    "date": "02/04/2024",
+    "type": "سرقة",
+    "prosecutor": "Way Cumbers",
+    "character": "وكيل",
+    "defendant": "Jonis Duffer",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 28,
+    "date": "07/08/2024",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Lovell Ings",
+    "character": "وكيل",
+    "defendant": "Ellen Gheorghe",
+    "status": "منتهية"
+  },
+  {
+    "id": 29,
+    "date": "27/01/2024",
+    "type": "قتل عمد",
+    "prosecutor": "Cletus Lintill",
+    "character": "محامي",
+    "defendant": "Sloane Cammack",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 30,
+    "date": "26/10/2023",
+    "type": "مخالفة نظام مكافحة جرائم المخدرات",
+    "prosecutor": "Roobbie Laird-Craig",
+    "character": "وكيل",
+    "defendant": "Bradley McGlashan",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 31,
+    "date": "17/11/2023",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Bartholomeus Tidey",
+    "character": "محامي",
+    "defendant": "Lynett Penniell",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 32,
+    "date": "02/03/2024",
+    "type": "رد العين",
+    "prosecutor": "Mercedes Macken",
+    "character": "محامي",
+    "defendant": "Esme Fforde",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 33,
+    "date": "07/10/2023",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Bernette Basnall",
+    "character": "محامي",
+    "defendant": "Pasquale Lanahan",
+    "status": "منتهية"
+  },
+  {
+    "id": 34,
+    "date": "19/10/2023",
+    "type": "مخالفة نظام مكافحة جرائم المخدرات",
+    "prosecutor": "Mag Doddridge",
+    "character": "وكيل",
+    "defendant": "Maura Tomaino",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 35,
+    "date": "27/02/2024",
+    "type": "رد العين",
+    "prosecutor": "Yetta Pavluk",
+    "character": "محامي",
+    "defendant": "Thomasin Fritchley",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 36,
+    "date": "04/04/2024",
+    "type": "قتل عمد",
+    "prosecutor": "Redford Frango",
+    "character": "محامي",
+    "defendant": "Marjie Joriot",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 37,
+    "date": "10/11/2023",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Mehetabel Waterstone",
+    "character": "وكيل",
+    "defendant": "Belle Vitler",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 38,
+    "date": "08/11/2023",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Lionello Cockell",
+    "character": "محامي",
+    "defendant": "Marianne Brahm",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 39,
+    "date": "23/08/2024",
+    "type": "رد العين",
+    "prosecutor": "Cyrus Cabbell",
+    "character": "وكيل",
+    "defendant": "Fritz Norbury",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 40,
+    "date": "11/11/2023",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Ryon Bruyett",
+    "character": "محامي",
+    "defendant": "Fanchette Goodayle",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 41,
+    "date": "17/12/2023",
+    "type": "قتل عمد",
+    "prosecutor": "Giff Scholer",
+    "character": "وكيل",
+    "defendant": "Hi Volett",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 42,
+    "date": "04/01/2024",
+    "type": "سرقة",
+    "prosecutor": "Louisette Renackowna",
+    "character": "وكيل",
+    "defendant": "Joelynn Dunrige",
+    "status": "منتهية"
+  },
+  {
+    "id": 43,
+    "date": "13/09/2024",
+    "type": "رد العين",
+    "prosecutor": "Maison Addekin",
+    "character": "وكيل",
+    "defendant": "Bear Lempertz",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 44,
+    "date": "16/11/2023",
+    "type": "سرقة",
+    "prosecutor": "Gaby Paxman",
+    "character": "وكيل",
+    "defendant": "Fred Cherrington",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 45,
+    "date": "29/02/2024",
+    "type": "مخالفة نظام مكافحة جرائم المخدرات",
+    "prosecutor": "Normand Foulds",
+    "character": "محامي",
+    "defendant": "Friedrich Fairy",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 46,
+    "date": "12/07/2024",
+    "type": "قتل عمد",
+    "prosecutor": "Izzy Ainscough",
+    "character": "وكيل",
+    "defendant": "Berthe Bentzen",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 47,
+    "date": "15/02/2024",
+    "type": "سرقة",
+    "prosecutor": "Klarrisa Devonside",
+    "character": "محامي",
+    "defendant": "Leona Keeler",
+    "status": "منتهية"
+  },
+  {
+    "id": 48,
+    "date": "04/07/2024",
+    "type": "رد العين",
+    "prosecutor": "Dionisio Tweedle",
+    "character": "محامي",
+    "defendant": "Barret Whaites",
+    "status": "محكومة بحكم قطعي"
+  },
+  {
+    "id": 49,
+    "date": "09/02/2024",
+    "type": "سرقة",
+    "prosecutor": "Maxy Gummery",
+    "character": "وكيل",
+    "defendant": "Audra McRitchie",
+    "status": "قيد النظر"
+  },
+  {
+    "id": 50,
+    "date": "30/07/2024",
+    "type": "سرقة",
+    "prosecutor": "Benjy Treppas",
+    "character": "محامي",
+    "defendant": "Flossy Northcliffe",
+    "status": "قيد النظر"
+  }
+]

@@ -1,9 +1,9 @@
 "use client";
 
-import {
-  deleteAllUserAuthDataFromCookies,
-  setCookiesFromObject,
-} from "@/helperFunctions/cookiesManagement";
+// import {
+//   // deleteAllUserAuthDataFromCookies,
+//   // setCookiesFromObject,
+// } from "@/helperFunctions/cookiesManagement";
 import { createSlice } from "@reduxjs/toolkit";
 
 // const deleteUserData = () => {
@@ -28,7 +28,7 @@ export const authSlice = createSlice({
     },
 
     toggleSignedIn: (state, action) => {
-      setCookiesFromObject(action.payload.userData, action.payload.days);
+      // setCookiesFromObject(action.payload.userData, action.payload.days);
       return {
         ...initialState,
         isSignedIn: true,
