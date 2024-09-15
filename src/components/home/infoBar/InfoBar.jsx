@@ -9,9 +9,9 @@ const InfoBar = () => {
         <h3 className="text-xl">الملف العدلي</h3>
         <p className="max-w-52">كل ما يخص معلوماتك العدلية</p>
       </div>
-      <div className="flex gap-1.5 py-3 flex-col md:flex-row">
+      <div className="flex gap-1.5 py-3 flex-col md:flex-row flex-1">
         <ul className="h-full  flex gap-1.5">
-          <InfoItem title="إصدار العقود">
+          <InfoItem to="/issues" title="قائمة القضايا">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -38,7 +38,7 @@ const InfoBar = () => {
               />
             </svg>
           </InfoItem>
-          <InfoItem title="العقود المفتوحة">
+          <InfoItem title="قائمة المهام">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -52,9 +52,9 @@ const InfoBar = () => {
         </ul>
         <Link
           href={"/"}
-          className="flex w-full relative gap-1 text-center items-center justify-center bg-[#435363] md:w-fit p-2 rounded-2xl flex-col text-white font-medium"
+          className="flex w-full flex-1 relative gap-1 text-center items-center justify-center bg-[#435363] md:w-fit p-2 rounded-2xl flex-col text-white font-medium"
         >
-          <p>عرض العقود التي ما زالت تحت التنفيذ</p>
+          <p>مشاهدة الكل</p>
           <svg
             width="34"
             height="35"
