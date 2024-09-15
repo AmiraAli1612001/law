@@ -57,7 +57,7 @@ const Header = () => {
             </div>
           </div>
           <div className="flex items-center  gap-10">
-            <div className="flex items-center gap-2 bg-white p-2 rounded h-10 drop-shadow-sm">
+            <div className="hidden md:flex items-center  gap-2 bg-white p-2 rounded h-10 drop-shadow-sm">
               <div className="text-[#048D5A] text-base flex gap-1">
                 <p>مرحبا /</p>
                 <p>ابراهيم</p>

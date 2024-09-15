@@ -7,14 +7,14 @@ const NavItem = ({ to = "#", title, children, isIcon = true }) => {
   const subListItemStyles =
     "text-[#063d31] text-sm p-3 cursor-pointer hover:bg-hoverBg hover:text-[#08ad4b] transition-all block whitespace-nowrap";
   return (
-    <li className="relative">
+    <li className="relative flex items-center">
       <Link
         href={to}
-        className={`flex gap-2 items-center py-4 border-b-4 border-b-transparent hover:border-b-[#08ad4b] px-4 hover:bg-hoverBg transition-all`}
+        className={`flex gap-1 lg:gap-2 items-center p-1.5 lg:p-4 border-b-4 border-b-transparent hover:border-b-[#08ad4b] hover:bg-hoverBg transition-all`}
         onClick={() => setState(!state)}
       >
         {children}
-        <span className="text-base text-iconGreen">{title}</span>
+        <span className="text-sm lg:text-base text-iconGreen">{title}</span>
         {isIcon && (
           <svg
             className={`${
