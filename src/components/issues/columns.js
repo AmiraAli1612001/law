@@ -22,15 +22,15 @@ export function useColumns() {
     },
     {
       Header: "الصفة",
-      accessor: "prosecutor",
-      Cell: ({ row }) =>
-        <div>{row.original.prosecutor}</div>
-    },
-    {
-      Header: "المدعي",
       accessor: "character",
       Cell: ({ row }) =>
         <div>{row.original.character}</div>
+    },
+    {
+      Header: "المدعي",
+      accessor: "prosecutor",
+      Cell: ({ row }) =>
+        <div>{row.original.prosecutor}</div>
     },
     {
       Header: "المدعي علية",
