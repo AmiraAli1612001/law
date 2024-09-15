@@ -9,7 +9,7 @@ const NavItem = ({ title, children }) => {
     <li className="relative">
       <Link
         href={"/"}
-        className={`flex gap-2 items-center py-4 border-b-4 hover:border-b-[#08ad4b] px-4 hover:bg-hoverBg `}
+        className={`flex gap-2 items-center py-4 border-b-4 border-b-transparent hover:border-b-[#08ad4b] px-4 hover:bg-hoverBg transition-all`}
         onClick={() => setState(!state)}
       >
         {children}
@@ -18,7 +18,7 @@ const NavItem = ({ title, children }) => {
           className={`${
             state && "rotate-180"
           } w-6 h-6 text-iconGreen dark:text-white angle-down transition-all`}
-          ariaHidden="true"
+          aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -34,7 +34,7 @@ const NavItem = ({ title, children }) => {
           />
         </svg>
       </Link>
-      <ul className={`${state ? "max-h-96" : ""} min-w-full w-fit max-h-0 overflow-hidden transition-all bg-white absolute right-0 top-full z-50 drop-shadow`}>
+      <ul className={`${state ? "!max-h-96" : ""} min-w-full w-fit max-h-0 overflow-hidden transition-all bg-white absolute right-0 top-full z-50 drop-shadow`}>
         <li className={subListItemStyles}><Link href={"/"}>اخر العقود</Link></li>
         <li className={subListItemStyles}><Link href={"/"}>اجددالعقود</Link></li>
         <li className={subListItemStyles}><Link href={"/"}>العقود القادمة</Link></li>

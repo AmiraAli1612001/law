@@ -1,23 +1,26 @@
+"use client";
 import "./header.css";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import NavItem from "./navItem/NavItem";
 import ScreenWrapper from "../shared/screenWrapper/Wrapper";
+import Link from "next/link";
 
 const Header = () => {
+  const [notificationsState, setNotificationsState] = useState(false);
   return (
     <header className="bg-bgGreen text-3xl ">
-      <ScreenWrapper>
+      <ScreenWrapper className={"relative z-50"}>
         <section className="flex items-center py-4 justify-between">
           <div className="flex items-center gap-4">
             <Image
-            //C:\Users\yousef\Desktop\mohamed al-swaify\law-firm\public\images\logos\صقور الشعار.png
+              //C:\Users\yousef\Desktop\mohamed al-swaify\law-firm\public\images\logos\صقور الشعار.png
               src={"/images/logos/صقور الشعار.png"}
               alt="saudi logo"
               width={160}
               height={0}
             />
-            <div className="relative w-fit rounded hidden md:block">
+            <div className="relative w-fit rounded hidden md:block drop-shadow-sm">
               <input
                 type="text"
                 className="text-base p-3 md:min-w-[400px]"
@@ -54,7 +57,7 @@ const Header = () => {
             </div>
           </div>
           <div className="flex items-center  gap-10">
-            <div className="flex items-center gap-2 bg-white p-2 rounded h-10">
+            <div className="flex items-center gap-2 bg-white p-2 rounded h-10 drop-shadow-sm">
               <div className="text-[#048D5A] text-base flex gap-1">
                 <p>مرحبا /</p>
                 <p>ابراهيم</p>
@@ -72,7 +75,10 @@ const Header = () => {
               </svg>
             </div>
             <ul className="flex gap-4 items-center">
-              <li className="flex items-center justify-center w-10 h-10 rounded cursor-pointer bg-white">
+              <li
+                className="drop-shadow-sm flex items-center justify-center w-10 h-10 rounded cursor-pointer bg-white"
+                onClick={() => setNotificationsState(!notificationsState)}
+              >
                 <svg
                   width="16"
                   height="18"
@@ -87,8 +93,63 @@ const Header = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
+                {/* notification drop down */}
+                <div
+                  className={`${
+                    notificationsState ? "!max-h-96 p-4 " : " "
+                  } flex flex-col gap-4 max-h-0 bg-white absolute left-0 top-full cursor-default translate-y-2 z-50 drop-shadow overflow-hidden  transition-all`}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <h4 className="text-base">الاشعارات</h4>
+                  <ul className="bg-[#008f5b0f] p-4">
+                    <li className="text-base">
+                      <Link href={"/"}>
+                        <div className="flex gap-4 items-center">
+                          <svg
+                            className="text-gray-800 dark:text-white"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                            />
+                          </svg>
+                          <p className="text-xs whitespace-nowrap">
+                            2024/09/15 11:53 AM
+                          </p>
+                          <div className="relative aspect-square w-fit hover:animate-none">
+                            <svg
+                              className="w-4 h-4 text-gray-800 dark:text-white"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M3.933 13.909A4.357 4.357 0 0 1 3 12c0-1 4-6 9-6m7.6 3.8A5.068 5.068 0 0 1 21 12c0 1-3 6-9 6-.314 0-.62-.014-.918-.04M5 19 19 5m-4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                              />
+                            </svg>
+                            <span className="absolute -z-10 top-0 right-0 w-full h-full animate-ping bg-green-300 rounded-full"></span>
+                          </div>
+                        </div>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </li>
-              <li className="flex items-center justify-center w-10 h-10 rounded cursor-pointer bg-white">
+              <li className="drop-shadow-sm flex items-center justify-center w-10 h-10 rounded cursor-pointer bg-white">
                 <svg
                   width="38"
                   height="39"
@@ -111,7 +172,7 @@ const Header = () => {
         </section>
       </ScreenWrapper>
       {/* mid header nav */}
-      <div className="bg-white drop-shadow relative z-50">
+      <div className="bg-white drop-shadow relative z-40">
         <ScreenWrapper className="">
           <section className="">
             <nav>
@@ -218,7 +279,7 @@ const Header = () => {
           هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض
           الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات
         </div>
-        <div class="notification-content font-medium notification-content-2">
+        <div class="notification-content font-medium notification-content-2 hidden lg:block">
           هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض
           الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات
         </div>
