@@ -23,7 +23,7 @@ const Header = () => {
             <div className="relative w-fit rounded hidden md:block drop-shadow-sm">
               <input
                 type="text"
-                className="text-base p-3 md:min-w-[400px]"
+                className="text-base p-3 md:min-w-[330px]"
                 placeholder="أكتب هنا للبحث"
               />
               <svg
@@ -57,7 +57,7 @@ const Header = () => {
             </div>
           </div>
           <div className="flex items-center  gap-10">
-            <div className="hidden md:flex items-center  gap-2 bg-white p-2 rounded h-10 drop-shadow-sm">
+            <div className="hidden lg:flex items-center  gap-2 bg-white p-2 rounded h-10 drop-shadow-sm">
               <div className="text-[#048D5A] text-base flex gap-1">
                 <p>مرحبا /</p>
                 <p>ابراهيم</p>
@@ -149,7 +149,7 @@ const Header = () => {
                   </ul>
                 </div>
               </li>
-              <li className="drop-shadow-sm flex items-center justify-center w-10 h-10 rounded cursor-pointer bg-white">
+              <li className="drop-shadow-sm hidden md:flex items-center justify-center w-10 h-10 rounded cursor-pointer bg-white">
                 <svg
                   width="38"
                   height="39"
@@ -164,6 +164,23 @@ const Header = () => {
                   <path
                     d="M32.6392 25.8618C32.6295 26.207 32.5505 26.5467 32.407 26.8607C32.2634 27.1748 32.0583 27.4568 31.8036 27.69C31.549 27.9231 31.25 28.1028 30.9246 28.2182C30.5992 28.3336 30.2539 28.3825 29.9092 28.3618C27.7562 28.3738 25.6032 28.3618 23.4502 28.3618C23.3176 28.3618 23.1904 28.3092 23.0966 28.2154C23.0029 28.1216 22.9502 27.9944 22.9502 27.8618C22.9502 27.7292 23.0029 27.602 23.0966 27.5083C23.1904 27.4145 23.3176 27.3618 23.4502 27.3618C25.6502 27.3618 27.8502 27.3938 30.0502 27.3618C31.1572 27.3458 31.6392 26.5138 31.6392 25.5238V13.0608C31.6464 12.7462 31.5576 12.4369 31.3847 12.1739C31.2118 11.911 30.9629 11.7069 30.6712 11.5888C30.326 11.4941 29.9667 11.462 29.6102 11.4938H23.4502C23.3176 11.4938 23.1904 11.4412 23.0966 11.3474C23.0029 11.2536 22.9502 11.1264 22.9502 10.9938C22.9502 10.8612 23.0029 10.734 23.0966 10.6403C23.1904 10.5465 23.3176 10.4938 23.4502 10.4938C25.6742 10.4938 27.9152 10.4088 30.1372 10.4938C30.4775 10.5024 30.8126 10.5786 31.1232 10.718C31.4337 10.8573 31.7135 11.057 31.9461 11.3055C32.1788 11.554 32.3597 11.8462 32.4783 12.1653C32.597 12.4843 32.651 12.8237 32.6372 13.1638L32.6392 25.8618Z"
                     fill="#D00000"
+                  />
+                </svg>
+              </li>
+              <li className="drop-shadow-sm flex md:hidden items-center justify-center w-10 h-10 rounded cursor-pointer bg-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M4 6H20M4 12H20M4 18H20"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
                 </svg>
               </li>
