@@ -3,46 +3,46 @@ export function useColumns() {
   const router = useRouter();
   const columns = [
     {
-      Header: "id",
+      Header: "رقم القضية",
       accessor: "id",
       Cell: ({ row }) =>
-        <span>{row.original.id}</span>
+        <div className="bg-[#FAF9F4]">{row.original.id}</div>
     },
     {
-      Header: "date",
+      Header: "تاريخ القضية",
       accessor: "date",
       Cell: ({ row }) =>
-        <span>{row.original.date}</span>
+        <div>{row.original.date}</div>
     },
     {
-      Header: "type",
+      Header: "نوع القضية",
       accessor: "type",
       Cell: ({ row }) =>
-        <span>{row.original.type}</span>
+        <div>{row.original.type}</div>
     },
     {
-      Header: "prosecutor",
+      Header: "الصفة",
       accessor: "prosecutor",
       Cell: ({ row }) =>
-        <span>{row.original.prosecutor}</span>
+        <div>{row.original.prosecutor}</div>
     },
     {
-      Header: "character",
+      Header: "المدعي",
       accessor: "character",
       Cell: ({ row }) =>
-        <span>{row.original.character}</span>
+        <div>{row.original.character}</div>
     },
     {
-      Header: "defendant",
+      Header: "المدعي علية",
       accessor: "defendant",
       Cell: ({ row }) =>
-        <span>{row.original.defendant}</span>
+        <div>{row.original.defendant}</div>
     },
     {
-      Header: "status",
+      Header: "الحالة",
       accessor: "status",
       Cell: ({ row }) =>
-        <span>{row.original.status}</span>
+        <div>{row.original.status}</div>
     },
   ];
   return { columns };
