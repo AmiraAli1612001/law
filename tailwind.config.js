@@ -11,6 +11,7 @@ module.exports = {
         bgGreen: "var(--bg-green)",
         iconGreen: "var(--icon-green)",
         bgGray: "var(--bg-gray)",
+        hoverBg: "var(--hover-bg)",
       },
     },
   },

@@ -20,7 +20,7 @@ const Services = () => {
           </Link>
         </nav>
       </div>
-      <ul className="grid grid-cols-2 gap-4 flex-1 overflow-y-scroll">
+      <ul className="grid grid-cols-2 gap-4 flex-1 overflow-y-auto">
         <Service />
         <Service />
         <Service />

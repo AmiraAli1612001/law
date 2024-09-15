@@ -17,7 +17,7 @@ const Header = () => {
               width={160}
               height={0}
             />
-            <div className="relative w-fit rounded">
+            <div className="relative w-fit rounded hidden md:block">
               <input
                 type="text"
                 className="text-base p-3 md:min-w-[400px]"
@@ -110,11 +110,12 @@ const Header = () => {
           </div>
         </section>
       </ScreenWrapper>
-      <div className="bg-white drop-shadow">
+      {/* mid header nav */}
+      <div className="bg-white drop-shadow relative z-50">
         <ScreenWrapper className="">
-          <section className=" py-4">
+          <section className="">
             <nav>
-              <ul className="flex w-full justify-center gap-8">
+              <ul className="hidden  md:flex w-full justify-center">
                 <NavItem title="العقود">
                   <svg
                     width="24"
@@ -211,6 +212,7 @@ const Header = () => {
           </section>
         </ScreenWrapper>
       </div>
+      {/* advertisment */}
       <div class="notification-bar flex">
         <div class="notification-content font-medium notification-content-1">
           هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض الاعلانات هنا يعرض
