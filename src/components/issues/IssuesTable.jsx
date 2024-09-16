@@ -44,9 +44,10 @@ const IssuesTable = () => {
       <table
         {...getTableProps()}
         // style={{ display: `${isCards ? "none" : "table"}` }}
-        className="courses-rows w-full"
+        // style={{tableLayout: "fixed"}}
+        className="courses-rows w-full h-fit"
       >
-        <thead className="hidden md:table-header-group">
+        {/* <thead className="hidden md:table-header-group">
           {headerGroups.map((headerGroup, i) => (
             <tr
               {...headerGroup.getHeaderGroupProps()}
@@ -64,14 +65,14 @@ const IssuesTable = () => {
               ))}
             </tr>
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
+        </thead> */}
+        <tbody {...getTableBodyProps()} className="h-full">
           {page.map((row, i) => {
             prepareRow(row);
             return (
               <tr
                 {...row.getRowProps()}
-                className={`shadow rounded-lg `}
+                className={`shadow w-full rounded-lg h-full flex lg:table-row`}
                 key={i}
               >
                 {row.cells.map((cell, i) => {
