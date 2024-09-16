@@ -8,13 +8,20 @@ export function useColumns() {
       Header: "actions",
       accessor: "null",
       Cell: ({ row }) => (
-        <div className={`p-4 h-full flex items-center justify-center bg-[#FAF9F4] bg-textGreen cursor-pointer`}>
+        <button
+          className={`p-4 h-full flex items-center justify-center bg-[#FAF9F4] bg-textGreen cursor-pointer w-full`}
+          onClick={(e) => {
+            // console.log(e.target.parentElement.parentElement);
+            // e.target.parentElement.classList.add("mb-40");
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="48"
             height="48"
             viewBox="0 0 24 24"
             fill="none"
+            className="pointer-events-none"
           >
             <rect width="24" height="24" fill="none" />
             <path
@@ -24,7 +31,7 @@ export function useColumns() {
               stroke-linejoin="round"
             />
           </svg>
-        </div>
+        </button>
       ),
     },
     {
@@ -34,7 +41,7 @@ export function useColumns() {
         <>
           <div className={`${cellStyles} bg-[#FAF9F4]`}>
             <p>رقم القضية</p>
-            <p>{row.original.id}</p>
+            <p className="text-2xl">{row.original.id}</p>
           </div>
           {/* <span className="absolute top-0 left-0 w-full h-full -z-50 bg-[#FAF9F4]"></span> */}
         </>

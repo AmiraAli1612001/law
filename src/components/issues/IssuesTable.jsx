@@ -9,6 +9,7 @@ import {
 } from "react-table";
 import issuesData from "@/fakeData/issuesData.json";
 import { useColumns } from "./columns";
+import IssueRow from "./issueRow/IssueRow";
 
 const IssuesTable = () => {
   const { columns } = useColumns();
@@ -41,13 +42,11 @@ const IssuesTable = () => {
   const { globalFilter } = state;
   return (
     <div>
-      <table
+      {/* <table
         {...getTableProps()}
-        // style={{ display: `${isCards ? "none" : "table"}` }}
-        // style={{tableLayout: "fixed"}}
         className="courses-rows w-full h-fit"
-      >
-        {/* <thead className="hidden md:table-header-group">
+      > */}
+      {/* <thead className="hidden md:table-header-group">
           {headerGroups.map((headerGroup, i) => (
             <tr
               {...headerGroup.getHeaderGroupProps()}
@@ -66,7 +65,7 @@ const IssuesTable = () => {
             </tr>
           ))}
         </thead> */}
-        <tbody {...getTableBodyProps()} className="h-full">
+      {/* <tbody {...getTableBodyProps()} className="h-full">
           {page.map((row, i) => {
             prepareRow(row);
             return (
@@ -89,8 +88,15 @@ const IssuesTable = () => {
               </tr>
             );
           })}
-        </tbody>
-      </table>
+        </tbody> */}
+      {/* </table> */}
+      {/* custom rows */}
+      <div className="flex flex-col gap-1">
+        {page.map((row) => {
+          prepareRow(row);
+          return <IssueRow data={row.original} />;
+        })}
+      </div>
       {/* TABLE PAGINATION */}
       <div className="flex justify-center pt-4 gap-1 courses-paginaion">
         <button className="next" onClick={nextPage} disabled={!canNextPage}>
