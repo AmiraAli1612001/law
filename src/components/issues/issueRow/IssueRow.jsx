@@ -36,8 +36,8 @@ const IssueRow = ({
             <path
               d="M12 6L12 18M12 18L17 13M12 18L7 13"
               stroke="#FFFFFF"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </button>

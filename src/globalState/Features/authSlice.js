@@ -13,30 +13,18 @@ import { createSlice } from "@reduxjs/toolkit";
 //   return null;
 // };
 
-const initialState = {};
+const initialState = { isHidden: false, isSignedIn: false };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
     toggleSignIn: (state) => {
-      return {
-        ...initialState,
-        isHidden: false,
-        signIn: true,
-      };
-    },
-
-    toggleSignedIn: (state, action) => {
-      // setCookiesFromObject(action.payload.userData, action.payload.days);
-      return {
-        ...initialState,
-        isSignedIn: true,
-      };
+      state.isSignedIn = true;
     },
   },
 });
 
-export const { toggleSignIn, toggleSignedIn } = authSlice.actions;
+export const { toggleSignIn } = authSlice.actions;
 
 export default authSlice.reducer;
