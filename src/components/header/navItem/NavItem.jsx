@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-const NavItem = ({ to = "#", title, children, isIcon = true }) => {
+const NavItem = ({ to = "#", title, children, subList }) => {
   const [state, setState] = useState(false);
   const subListItemStyles =
     "text-[#063d31] text-sm p-3 cursor-pointer hover:bg-hoverBg hover:text-[#08ad4b] transition-all block whitespace-nowrap";
@@ -15,7 +15,7 @@ const NavItem = ({ to = "#", title, children, isIcon = true }) => {
       >
         {children}
         <span className="text-sm lg:text-base text-iconGreen">{title}</span>
-        {isIcon && (
+        {subList && (
           <svg
             className={`${
               state && "rotate-180"
@@ -37,27 +37,17 @@ const NavItem = ({ to = "#", title, children, isIcon = true }) => {
           </svg>
         )}
       </Link>
-      {isIcon && (
+      {subList && (
         <ul
           className={`${
             state ? "!max-h-96" : ""
           } min-w-full w-fit max-h-0 overflow-hidden transition-all bg-white absolute right-0 top-full z-50 drop-shadow`}
         >
-          <li className={subListItemStyles}>
-            <Link href={"/"}>اخر العقود</Link>
-          </li>
-          <li className={subListItemStyles}>
-            <Link href={"/"}>اجددالعقود</Link>
-          </li>
-          <li className={subListItemStyles}>
-            <Link href={"/"}>العقود القادمة</Link>
-          </li>
-          <li className={subListItemStyles}>
-            <Link href={"/"}>العقود السابقة</Link>
-          </li>
-          <li className={subListItemStyles}>
-            <Link href={"/"}>العقود الحالية</Link>
-          </li>
+          {subList.map((e, i) => (
+            <li className={subListItemStyles} key={i}>
+              <Link href={e.to}>{e.title}</Link>
+            </li>
+          ))}
         </ul>
       )}
     </li>
