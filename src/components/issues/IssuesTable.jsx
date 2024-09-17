@@ -94,7 +94,7 @@ const IssuesTable = () => {
       <div className="flex flex-col gap-1">
         {page.map((row) => {
           prepareRow(row);
-          return <IssueRow data={row.original} />;
+          return <IssueRow key={row.original.id} data={row.original} />;
         })}
       </div>
       {/* TABLE PAGINATION */}

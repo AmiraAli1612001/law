@@ -1,3 +1,6 @@
+import IssuesTable from "@/components/issues/IssuesTable"
+import LinkHeader from "@/components/shared/pageShared/linkHeader/LinkHeader"
+import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper"
 
 const page = () => {
   return (
