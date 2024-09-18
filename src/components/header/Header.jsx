@@ -6,7 +6,8 @@ import NavItem from "./navItem/NavItem";
 import ScreenWrapper from "../shared/screenWrapper/Wrapper";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import {  toggleAttendancePopup } from "@/globalState/Features/popupsSlice";
+import { toggleAttendancePopup } from "@/globalState/Features/popupsSlice";
+import { resetAuth } from "@/globalState/Features/authSlice";
 
 const Header = () => {
   const [notificationsState, setNotificationsState] = useState(false);
@@ -103,6 +104,7 @@ const Header = () => {
               </svg>
             </div>
             <ul className="flex gap-4 items-center">
+              {/* notifications */}
               <li
                 className="drop-shadow-sm flex items-center justify-center w-10 h-10 rounded cursor-pointer bg-white"
                 onClick={() => setNotificationsState(!notificationsState)}
@@ -177,7 +179,11 @@ const Header = () => {
                   </ul>
                 </div>
               </li>
-              <li className="drop-shadow-sm hidden md:flex items-center justify-center w-10 h-10 rounded cursor-pointer bg-white">
+              {/* log out */}
+              <li
+                className="drop-shadow-sm hidden md:flex items-center justify-center w-10 h-10 rounded cursor-pointer bg-white"
+                onClick={() => dispatch(resetAuth())}
+              >
                 <svg
                   width="38"
                   height="39"
@@ -195,6 +201,7 @@ const Header = () => {
                   />
                 </svg>
               </li>
+              {/* small screen logo */}
               <li className="drop-shadow-sm flex md:hidden items-center justify-center w-10 h-10 rounded cursor-pointer bg-white">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

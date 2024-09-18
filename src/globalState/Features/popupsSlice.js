@@ -5,7 +5,6 @@
 //   // setCookiesFromObject,
 // } from "@/helperFunctions/cookiesManagement";
 import { createSlice } from "@reduxjs/toolkit";
-import { store } from "../store";
 
 // const deleteUserData = () => {
 //   if (typeof window != undefined) {
