@@ -1,8 +1,8 @@
 "use client";
-import "./contractTable.css";
+import "./hrTable.css";
 import React, { useMemo } from "react";
 import CustomTable from "../../shared/customTable/CustomTable";
-import ContractRow from "./contractRow/ContractRow";
+import HRRow from "./hrRow/HRRow";
 import HRData from "@/fakeData/HRData.json";
 
 const HRTable = () => {
@@ -40,7 +40,7 @@ const HRTable = () => {
       <CustomTable
         tableData={HRData}
         columns={tableColumns}
-        RenderElement={ContractRow}
+        RenderElement={HRRow}
       />
     </>
   );

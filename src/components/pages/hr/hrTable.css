@@ -1,0 +1,40 @@
+.courses-paginaion > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #dfe3e8;
+  border-radius: 4px;
+  padding: 10px;
+  color: #212b36;
+}
+.courses-paginaion .prev,
+.courses-paginaion .next {
+  color: #a79fb3;
+}
+.courses-paginaion .next:not(:disabled):hover,
+.courses-paginaion .prev:not(:disabled):hover {
+  border: 1px solid green;
+  color: green;
+}
+
+
+.row-data-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.HR-row .row-data-content{
+  width: 20%;
+}
+.HR-row::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--text-green);
+}
+/* "flex flex-col gap-2 [&>p:first-child]:text-xs [&>p:last-child]:font-semibold [&>p:first-child]:whitespace-nowrap [ h-full" */

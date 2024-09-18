@@ -1,3 +1,4 @@
+import HRTable from "@/components/pages/hr/HRTable";
 import AddRecord from "@/components/shared/addRecord/AddRecord";
 import LinkHeader from "@/components/shared/pageShared/linkHeader/LinkHeader";
 import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper";
@@ -9,7 +10,9 @@ const HR = () => {
         <LinkHeader title={"ادارة الموارد البشرية"} />
         <AddRecord recordType={2} title={"اضافة موظف"} />
       </div>
-      <div>{/* <ContractsTable /> */}</div>
+      <div>
+        <HRTable />
+      </div>
     </ScreenWrapper>
   );
 };
