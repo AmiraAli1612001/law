@@ -13,7 +13,7 @@ import { createSlice } from "@reduxjs/toolkit";
 //   return null;
 // };
 
-const initialState = { isHidden: false, isSignedIn: false };
+const initialState = { isHidden: false, isSignedIn: true };
 
 export const authSlice = createSlice({
   name: "auth",

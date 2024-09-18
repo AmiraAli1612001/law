@@ -1,45 +1,60 @@
 "use client";
 import "./issuesTable.css";
-import React, { useMemo, useState } from "react";
-import {
-  useGlobalFilter,
-  usePagination,
-  useSortBy,
-  useTable,
-} from "react-table";
+import React, { useMemo } from "react";
+
 import issuesData from "@/fakeData/issuesData.json";
-import { useColumns } from "./columns";
 import IssueRow from "./issueRow/IssueRow";
+import CustomTable from "../shared/customTable/CustomTable";
+import AddRecord from "../shared/addRecord/AddRecord";
 
 const IssuesTable = () => {
-  const { columns } = useColumns();
-  const tableColumns = useMemo(() => columns, []);
-  const [data, setData] = useState(issuesData);
-
-  const tableInstance = useTable(
-    { columns: tableColumns, data: data },
-    useGlobalFilter,
-    useSortBy,
-    usePagination
+  const tableColumns = useMemo(
+    () => [
+      {
+        Header: "actions",
+        accessor: "null",
+      },
+      {
+        Header: "رقم القضية",
+        accessor: "id",
+      },
+      {
+        Header: "تاريخ القضية",
+        accessor: "date",
+      },
+      {
+        Header: "نوع القضية",
+        accessor: "type",
+      },
+      {
+        Header: "الصفة",
+        accessor: "character",
+      },
+      {
+        Header: "المدعي",
+        accessor: "prosecutor",
+      },
+      {
+        Header: "المدعي علية",
+        accessor: "defendant",
+      },
+      {
+        Header: "الحالة",
+        accessor: "status",
+      },
+    ],
+    []
   );
-  const {
-    getTableProps,
-    getTableBodyProps,
-    prepareRow,
-    setGlobalFilter,
-    headerGroups,
-    rows,
-    page,
-    nextPage,
-    previousPage,
-    canPreviousPage,
-    canNextPage,
-    gotoPage,
-    pageCount,
-    state,
-    // setPageSize,
-  } = tableInstance;
-  const { globalFilter } = state;
+
+  return (
+    <>
+      <CustomTable
+        tableData={issuesData}
+        columns={tableColumns}
+        RenderElement={IssueRow}
+      />
+    </>
+  );
   return (
     <div>
       {/* <table
@@ -91,12 +106,6 @@ const IssuesTable = () => {
         </tbody> */}
       {/* </table> */}
       {/* custom rows */}
-      <div className="flex flex-col gap-1">
-        {page.map((row) => {
-          prepareRow(row);
-          return <IssueRow key={row.original.id} data={row.original} />;
-        })}
-      </div>
       {/* TABLE PAGINATION */}
       <div className="flex justify-center pt-4 gap-1 courses-paginaion">
         <button className="next" onClick={nextPage} disabled={!canNextPage}>

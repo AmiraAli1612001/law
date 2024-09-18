@@ -210,9 +210,9 @@ const Header = () => {
                 </NavItem>
                 <NavItem
                   subList={[
-                    { title: "إصدار العقود", to: "/" },
-                    { title: "قائمة العقود", to: "/" },
-                    { title: "العقود المفتوحة", to: "/" },
+                    { title: "إصدار العقود", to: "/contracts?action=create" },
+                    { title: "قائمة العقود", to: "/contracts" },
+                    { title: "العقود المفتوحة", to: "/contracts?filter=open" },
                   ]}
                   title="العقود"
                 >
