@@ -1,10 +1,9 @@
 "use client";
 import "./contractTable.css";
 import React, { useMemo } from "react";
-import CustomTable from "../shared/customTable/CustomTable";
+import CustomTable from "../../shared/customTable/CustomTable";
 import ContractRow from "./contractRow/ContractRow";
 import contractsData from "@/fakeData/contractsData.json";
-import AddRecord from "../shared/addRecord/AddRecord";
 
 const ContractsTable = () => {
   const tableColumns = useMemo(

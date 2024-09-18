@@ -278,7 +278,7 @@ const Header = () => {
                     />
                   </svg>
                 </NavItem>
-                <NavItem title="الموارد البشرية">
+                <NavItem to="/hr" title="الموارد البشرية">
                   <svg
                     width="24"
                     height="24"

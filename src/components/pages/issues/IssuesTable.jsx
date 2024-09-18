@@ -4,8 +4,7 @@ import React, { useMemo } from "react";
 
 import issuesData from "@/fakeData/issuesData.json";
 import IssueRow from "./issueRow/IssueRow";
-import CustomTable from "../shared/customTable/CustomTable";
-import AddRecord from "../shared/addRecord/AddRecord";
+import CustomTable from "../../shared/customTable/CustomTable";
 
 const IssuesTable = () => {
   const tableColumns = useMemo(

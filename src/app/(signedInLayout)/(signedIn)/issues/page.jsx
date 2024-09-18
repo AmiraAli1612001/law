@@ -1,4 +1,4 @@
-import IssuesTable from "@/components/issues/IssuesTable";
+import IssuesTable from "@/components/pages/issues/IssuesTable";
 import AddRecord from "@/components/shared/addRecord/AddRecord";
 import LinkHeader from "@/components/shared/pageShared/linkHeader/LinkHeader";
 import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper";

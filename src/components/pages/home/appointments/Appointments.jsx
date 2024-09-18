@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const Appointments = () => {
   const[checked,setChecked] = useState(false)
   return (
-    <div className="bg-bgGray p-4 rounded-2xl h-full">
+    <div className="bg-bgGray p-4 rounded-2xl h-full w-full">
       <div className="flex items-center justify-between">
         <h4 className="text-xl font-medium">التقويم العدلي</h4>
         <div className="flex items-center gap-2">

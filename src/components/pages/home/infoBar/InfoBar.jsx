@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const InfoBar = () => {
   return (
-    <div className="bg-bgGray p-4 pb-2 gap-4  h-full rounded-2xl flex flex-col md:flex-row">
+    <div className="bg-bgGray p-4 pb-2 gap-4 w-full h-full rounded-2xl flex flex-col md:flex-row">
       <div className="flex flex-col ">
         <h3 className="text-xl">الملف العدلي</h3>
         <p className="max-w-52">كل ما يخص معلوماتك العدلية</p>

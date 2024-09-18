@@ -25,11 +25,6 @@ const Services = () => {
         <Service />
         <Service />
         <Service />
-        <Service />
-        <Service />
-        <Service />
-        <Service />
-        <Service />
       </ul>
     </div>
   );
