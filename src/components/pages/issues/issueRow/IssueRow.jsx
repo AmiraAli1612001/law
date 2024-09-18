@@ -1,3 +1,4 @@
+import Countdown from "@/components/shared/countDown/CountDown";
 import React from "react";
 
 const IssueRow = ({
@@ -12,6 +13,7 @@ const IssueRow = ({
   },
 }) => {
   // const cellStyles =;
+  console.log(date.split("/").join("-"))
   return (
     <div className="shadow">
       <div className="flex flex-col lg:flex-row gap-1 issueRow shadow rounded-lg">
@@ -90,9 +92,8 @@ const IssueRow = ({
             <section className="flex justify-between gap-4 border-t border-gray-400">
               <div className="flex items-center gap-1 text-xs">
                 <p>تاريخ اصدار الحكم</p>
-                <p>01/01/2022</p>
+                <p><Countdown targetDate={"2024-10-10"}/></p>
               </div>
-
               <h5 className="text-textGreen font-medium">الدرجة الاولي</h5>
             </section>
           </div>
