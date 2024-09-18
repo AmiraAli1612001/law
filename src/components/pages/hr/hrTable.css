@@ -26,7 +26,7 @@
   white-space: nowrap;
 }
 .HR-row .row-data-content{
-  width: 20%;
+  width: calc(20%);
 }
 .HR-row::after{
   content: "";
@@ -36,5 +36,10 @@
   width: 4px;
   height: 100%;
   background-color: var(--text-green);
+}
+.HR-row-details >section{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 /* "flex flex-col gap-2 [&>p:first-child]:text-xs [&>p:last-child]:font-semibold [&>p:first-child]:whitespace-nowrap [ h-full" */
