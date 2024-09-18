@@ -1,5 +1,5 @@
 "use client";
-import { toggleAddRecord } from "@/globalState/Features/popupsSlice";
+import { toggleAddRecordPopup } from "@/globalState/Features/popupsSlice";
 import React from "react";
 import { useDispatch } from "react-redux";
 
@@ -8,7 +8,7 @@ const AddRecord = ({ title, recordType }) => {
   return (
     <button
       className="flex items-center gap-4 p-4 bg-textGreen rounded"
-      onClick={() => disptach(toggleAddRecord(recordType))}
+      onClick={() => disptach(toggleAddRecordPopup(recordType))}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

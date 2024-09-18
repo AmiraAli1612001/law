@@ -13,7 +13,7 @@ import { createSlice } from "@reduxjs/toolkit";
 //   return null;
 // };
 
-const initialState = { isHidden: false, isSignedIn: true };
+const initialState = { isHidden: false, isSignedIn: true, attendance: false };
 
 export const authSlice = createSlice({
   name: "auth",
@@ -22,9 +22,12 @@ export const authSlice = createSlice({
     toggleSignIn: (state) => {
       state.isSignedIn = true;
     },
+    toggleAttendance: (state) => {
+      state.attendance = !state.attendance;
+    },
   },
 });
 
-export const { toggleSignIn } = authSlice.actions;
+export const { toggleSignIn,toggleAttendance } = authSlice.actions;
 
 export default authSlice.reducer;

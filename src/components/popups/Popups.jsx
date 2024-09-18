@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AddIssueRecord from "./addIssueRecord/AddIssueRecord";
 import AddContractRecord from "./addContractRecord/AddContractRecord";
 import { resetPopups } from "@/globalState/Features/popupsSlice";
+import Attendance from "./attendance/Attendance";
 
 const Popups = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const Popups = () => {
   const isHidden = useSelector((store) => store.popups?.isHidden);
   const issueRecord = useSelector((store) => store.popups.issueRecord);
   const contractRecord = useSelector((store) => store.popups.contractRecord);
+  const attendance = useSelector((store) => store.popups.attendance);
 
   console.log("hrere");
   return (
@@ -22,7 +24,9 @@ const Popups = () => {
       onClick={() => dispatch(resetPopups())}
     >
       <div
-        className="bg-white p-4 rounded w-full h-full relative flex flex-col"
+        className={`${
+          attendance ? "w-full max-w-[500px] " : "  w-full h-full "
+        } bg-white p-4 rounded relative flex flex-col`}
         onClick={(e) => e.stopPropagation()}
       >
         <svg
@@ -40,6 +44,7 @@ const Popups = () => {
         </svg>
         {issueRecord && <AddIssueRecord />}
         {contractRecord && <AddContractRecord />}
+        {attendance && <Attendance />}
       </div>
     </div>
   );
