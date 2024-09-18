@@ -1,0 +1,29 @@
+.popups {
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex: 1;
+    background: #fff;
+    .small-inputs {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .input {
+      padding: 10px;
+      display: flex;
+      min-width: calc(100% / 3);
+      flex-direction: column;
+      gap: 10px;
+      input,
+      textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .quill{
+        height: 80%;
+      }
+    }
+  }
+}

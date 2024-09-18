@@ -7,6 +7,6 @@ import popupsSlice from "./Features/popupsSlice";
 export const store = configureStore({
   reducer: {
     auth: authSlice,
-    popup: popupsSlice,
+    popups: popupsSlice,
   },
 });

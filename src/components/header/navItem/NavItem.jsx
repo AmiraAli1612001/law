@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const NavItem = ({ to = "#", title, children, subList }) => {
   const [state, setState] = useState(false);
   const subListItemStyles =
-    "text-[#063d31] text-sm p-3 cursor-pointer hover:bg-hoverBg hover:text-[#08ad4b] transition-all block whitespace-nowrap";
+    "text-[#063d31] text-sm cursor-pointer hover:bg-hoverBg hover:text-[#08ad4b] transition-all block whitespace-nowrap";
   return (
     <li className="relative flex items-center">
       <Link
@@ -45,7 +45,7 @@ const NavItem = ({ to = "#", title, children, subList }) => {
         >
           {subList.map((e, i) => (
             <li className={subListItemStyles} key={i}>
-              <Link href={e.to}>{e.title}</Link>
+              <Link className="inline-block p-3" href={e.to}>{e.title}</Link>
             </li>
           ))}
         </ul>

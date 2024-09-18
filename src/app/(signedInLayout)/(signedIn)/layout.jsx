@@ -1,4 +1,5 @@
 "use client";
+import Popups from "@/components/popups/Popups";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 
@@ -12,6 +13,11 @@ export default function Layout({ children }) {
     router.replace("/auth");
   }
   if (isSignedIn) {
-    return <>{children}</>;
+    return (
+      <>
+        <Popups />
+        {children}
+      </>
+    );
   }
 }
