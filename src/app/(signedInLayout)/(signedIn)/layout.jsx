@@ -8,8 +8,7 @@ export default function Layout({ children }) {
   const router = useRouter();
 
   console.log(isSignedIn);
-
-  if (!isSignedIn && router) {
+  if (!isSignedIn && typeof window !== "undefined") {
     router.replace("/auth");
   }
   if (isSignedIn) {
