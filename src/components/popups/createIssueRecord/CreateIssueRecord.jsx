@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-const AddIssueRecord = () => {
+const CreateIssueRecord = () => {
   const signUpForm = useForm();
   const {
     register,
@@ -193,4 +193,4 @@ const AddIssueRecord = () => {
   );
 };
 
-export default AddIssueRecord;
+export default CreateIssueRecord;
