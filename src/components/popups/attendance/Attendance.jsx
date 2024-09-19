@@ -1,9 +1,8 @@
+"use client"
 import { toggleAttendance } from "@/globalState/Features/authSlice";
 import { toggleAttendancePopup } from "@/globalState/Features/popupsSlice";
 import React from "react";
 import { useForm } from "react-hook-form";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import { useDispatch, useSelector } from "react-redux";
 
 const Attendance = () => {

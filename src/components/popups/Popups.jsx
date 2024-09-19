@@ -4,9 +4,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // import AddIssueRecord from "./addIssueRecord/AddIssueRecord";
-import AddIssueRecord from "./addIssueRecord/AddIssueRecord";
+// import AddIssueRecord from "./addIssueRecord/AddIssueRecord";
 // import AddContractRecord from "./addContractRecord/AddContractRecord";
-import AddContractRecord from "./addContractRecord/AddContractRecord";
+// import AddContractRecord from "./addContractRecord/AddContractRecord";
 
 import { resetPopups } from "@/globalState/Features/popupsSlice";
 import Attendance from "./attendance/Attendance";
@@ -46,8 +46,8 @@ const Popups = () => {
             d="M18.36 19.78L12 13.41l-6.36 6.37l-1.42-1.42L10.59 12L4.22 5.64l1.42-1.42L12 10.59l6.36-6.36l1.41 1.41L13.41 12l6.36 6.36z"
           />
         </svg>
-        {issueRecord && <AddIssueRecord />}
-        {contractRecord && <AddContractRecord />}
+        {/* {issueRecord && <AddIssueRecord />} */}
+        {/* {contractRecord && <AddContractRecord />} */}
         {attendance && <Attendance />}
       </div>
     </div>
