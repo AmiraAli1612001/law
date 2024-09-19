@@ -1,10 +1,10 @@
-"use client"
 import React from "react";
 import { useForm } from "react-hook-form";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
-const CreateIssueRecord = () => {
+const AddIssueRecord = () => {
   const signUpForm = useForm();
   const {
     register,
@@ -193,4 +193,4 @@ const CreateIssueRecord = () => {
   );
 };
 
-export default CreateIssueRecord;
+export default AddIssueRecord;
