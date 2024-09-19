@@ -13,9 +13,9 @@ const Popups = () => {
   const dispatch = useDispatch();
 
   const isHidden = useSelector((store) => store.popups?.isHidden);
-  const issueRecord = useSelector((store) => store.popups.issueRecord);
-  const contractRecord = useSelector((store) => store.popups.contractRecord);
-  const attendance = useSelector((store) => store.popups.attendance);
+  const issueRecord = useSelector((store) => store.popups?.issueRecord);
+  const contractRecord = useSelector((store) => store.popups?.contractRecord);
+  const attendance = useSelector((store) => store.popups?.attendance);
 
   console.log("hrere");
   return (
