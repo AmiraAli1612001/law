@@ -32,26 +32,26 @@ const IssueDetails = () => {
           <li className={!(active === 0) && " !hidden "}>
 
             <label htmlFor="">موضوع الدعوي</label>
-            <textarea name="" disabled id="">
+            <section name="" disabled id="">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum
               eveniet, tempora hic rerum nobis error obcaecati vel enim
               molestiae, fugit eligendi numquam ad quod magnam atque nam, veniam
               iste. Quisquam.
-            </textarea>
+            </section>
             <label htmlFor="">طلبات المدعي</label>
-            <textarea name="" disabled id="">
+            <section name="" disabled id="">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum
               eveniet, tempora hic rerum nobis error obcaecati vel enim
               molestiae, fugit eligendi numquam ad quod magnam atque nam, veniam
               iste. Quisquam.
-            </textarea>
+            </section>
             <label htmlFor="">اسانيد الدعوي</label>
-            <textarea name="" disabled id="">
+            <section name="" disabled id="">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum
               eveniet, tempora hic rerum nobis error obcaecati vel enim
               molestiae, fugit eligendi numquam ad quod magnam atque nam, veniam
               iste. Quisquam.
-            </textarea>
+            </section>
           </li>
           {/* مذكرة الدفاع الاولي */}
           <li className={!(active === 1) && " !hidden "}>2</li>

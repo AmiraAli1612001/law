@@ -26,12 +26,13 @@
           font-weight: 500;
           font-size: 18px;
         }
-        textarea{
+        section{
+          background-color: rgba(0, 0, 0, 0.04);
+          border-radius: 4px;
           padding: 16px;
           font-size: 20px;
           width: 100%;
-          height: max-content;
-          resize: none;
+          height: auto;
         }
       }
     }

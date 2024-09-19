@@ -22,11 +22,11 @@
   font-weight: 500;
   font-size: 18px;
 }
-.issue-details .issue-sections-details ul li textarea {
+.issue-details .issue-sections-details ul li section {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
   padding: 16px;
   font-size: 20px;
   width: 100%;
-  height: -moz-max-content;
-  height: max-content;
-  resize: none;
+  height: auto;
 }/*# sourceMappingURL=issueDetails.css.map */
