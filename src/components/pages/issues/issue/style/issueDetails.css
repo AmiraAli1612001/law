@@ -1,0 +1,32 @@
+.issue-details nav ul li {
+  padding: 16px 16px 16px 32px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.issue-details nav ul li:hover {
+  color: var(--text-green);
+  background-color: var(--bg-green);
+}
+.issue-details .issue-sections-details ul {
+  display: flex;
+  flex-direction: column;
+}
+.issue-details .issue-sections-details ul li {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+.issue-details .issue-sections-details ul li label {
+  font-weight: 500;
+  font-size: 18px;
+}
+.issue-details .issue-sections-details ul li textarea {
+  padding: 16px;
+  font-size: 20px;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  resize: none;
+}/*# sourceMappingURL=issueDetails.css.map */

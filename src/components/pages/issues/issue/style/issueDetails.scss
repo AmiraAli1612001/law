@@ -1,0 +1,39 @@
+.issue-details{
+  nav{
+    ul{
+      li{
+        padding: 16px 16px 16px 32px;
+        cursor: pointer;
+        font-weight: 500;
+        &:hover{
+          color: var(--text-green);
+          background-color: var(--bg-green);
+        }
+      }
+    }
+  }
+  .issue-sections-details{
+    ul{
+      display: flex;
+      flex-direction: column;
+      li{
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        label{
+          font-weight: 500;
+          font-size: 18px;
+        }
+        textarea{
+          padding: 16px;
+          font-size: 20px;
+          width: 100%;
+          height: max-content;
+          resize: none;
+        }
+      }
+    }
+  }
+}

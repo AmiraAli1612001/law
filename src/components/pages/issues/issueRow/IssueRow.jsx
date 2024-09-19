@@ -13,7 +13,6 @@ const IssueRow = ({
   },
 }) => {
   // const cellStyles =;
-  console.log(date.split("/").join("-"))
   return (
     <div className="shadow">
       <div className="flex flex-col lg:flex-row gap-1 issueRow shadow rounded-lg">
@@ -92,7 +91,7 @@ const IssueRow = ({
             <section className="flex justify-between gap-4 border-t border-gray-400">
               <div className="flex items-center gap-1 text-xs">
                 <p>تاريخ اصدار الحكم</p>
-                <p><Countdown targetDate={"2024-10-10"}/></p>
+                <Countdown targetDate={"2024-10-10"}/>
               </div>
               <h5 className="text-textGreen font-medium">الدرجة الاولي</h5>
             </section>

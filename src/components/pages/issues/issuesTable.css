@@ -60,9 +60,9 @@ table td:nth-child(1) {
   overflow: hidden;
   white-space: nowrap;
 }
-.issueInnerDetails{
+/* .issueInnerDetails{
   
-}
+} */
 .issueInnerDetails li{
   display: flex;
   justify-content: space-between;
