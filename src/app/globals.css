@@ -10,3 +10,9 @@
   /* #048D5A */
   --text-green: #048d5a;
 }
+.ql-container{
+  min-height: 80px;
+}
+.quill{
+  min-height: fit-content;
+}

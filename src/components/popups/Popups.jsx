@@ -13,11 +13,15 @@ const Popups = () => {
   const dispatch = useDispatch();
 
   const isHidden = useSelector((store) => store.popups?.isHidden);
+  if (!isHidden) {
+    document.querySelector("body").style.overflow = "hidden";
+  }
+
   const issueRecord = useSelector((store) => store.popups?.issueRecord);
   const contractRecord = useSelector((store) => store.popups?.contractRecord);
   const attendance = useSelector((store) => store.popups?.attendance);
 
-  console.log("hrere");
+  console.log("popups");
   return (
     <div
       className={`${
@@ -28,7 +32,7 @@ const Popups = () => {
       <div
         className={`${
           attendance ? "w-full max-w-[500px] " : "  w-full h-full "
-        } bg-white p-4 rounded relative flex flex-col`}
+        } bg-[#f5f5f5] p-4 rounded relative flex flex-col`}
         onClick={(e) => e.stopPropagation()}
       >
         <svg

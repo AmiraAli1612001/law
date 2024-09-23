@@ -1,10 +1,12 @@
-"use client"
+"use client";
 import React from "react";
 import { useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
+import Parties from "./subComponents/Parties";
+import Clauses from "./subComponents/Clauses";
 
 const AddContractRecord = () => {
   const signUpForm = useForm();
@@ -36,159 +38,116 @@ const AddContractRecord = () => {
       action=""
       noValidate
       id="addIssueRecord"
-
     >
       <div className="small-inputs">
-        {/* name arabic ! arabicName*/}
+        {/* contractt name ! contractName*/}
         <div className="input">
           <label htmlFor="">العنوان</label>
           <input
             type="text"
             name=""
-            id="arabicName"
-            {...register("arabicName", {
-              required: "يجب كتابة الاسم الرباعي بالعربي",
+            id="contractName"
+            {...register("contractName", {
+              required: "يجب كتابة عنوان العقد",
             })}
             placeholder=""
           />
-          <p className="input-error">{errors.arabicName?.message}</p>
+          <p className="input-error">{errors.contractName?.message}</p>
         </div>
         {/* name arabic ! arabicName*/}
         <div className="input">
-          <label htmlFor="">اسم المدعي</label>
+          <label htmlFor="">رقم العقد</label>
           <input
             type="text"
             name=""
-            id="arabicName"
-            {...register("arabicName", {
-              required: "يجب كتابة الاسم الرباعي بالعربي",
+            id="contractNumber"
+            {...register("contractNumber", {
+              required: "يجب كتابة رقم العقد",
             })}
             placeholder=""
           />
-          <p className="input-error">{errors.arabicName?.message}</p>
+          <p className="input-error">{errors.contractNumber?.message}</p>
         </div>
         {/* name arabic ! arabicName*/}
         <div className="input">
-          <label htmlFor="">اسم المدعي علية</label>
-          <input
-            type="text"
-            name=""
-            id="arabicName"
-            {...register("arabicName", {
-              required: "يجب كتابة الاسم الرباعي بالعربي",
-            })}
-            placeholder=""
-          />
-          <p className="input-error">{errors.arabicName?.message}</p>
-        </div>
-        {/* name arabic ! arabicName*/}
-        <div className="input">
-          <label htmlFor="">الصفة</label>
-          <input
-            type="text"
-            name=""
-            id="arabicName"
-            {...register("arabicName", {
-              required: "يجب كتابة الاسم الرباعي بالعربي",
-            })}
-            placeholder=""
-          />
-          <p className="input-error">{errors.arabicName?.message}</p>
-        </div>
-        {/* name arabic ! arabicName*/}
-        <div className="input">
-          <label htmlFor="">تاريخ القضية</label>
+          <label htmlFor="">تاريخ العقد</label>
           <input
             type="date"
             name=""
-            id="arabicName"
-            {...register("arabicName", {
+            id="contractDate"
+            {...register("contractDate", {
               required: "يجب كتابة الاسم الرباعي بالعربي",
             })}
             placeholder=""
           />
-          <p className="input-error">{errors.arabicName?.message}</p>
+          <p className="input-error">{errors.contractDate?.message}</p>
         </div>
-        {/* name arabic ! arabicName*/}
-        <div className="input">
-          <label htmlFor="">نوع القضية</label>
-          <input
-            type="text"
-            name=""
-            id="arabicName"
-            {...register("arabicName", {
-              required: "يجب كتابة الاسم الرباعي بالعربي",
-            })}
-            placeholder=""
-          />
-          <p className="input-error">{errors.arabicName?.message}</p>
-        </div>
+      </div>
+      {/* parties */}
+      <div className="input !min-w-full">
+        <Parties />
       </div>
       {/* name arabic ! arabicName*/}
       <div className="input !min-w-full flex-1">
-        <label htmlFor="">التفاصيل</label>
-        {/* <textarea
-          type="text"
-          name=""
-          id="arabicName"
-          {...register("arabicName", {
-            required: "يجب كتابة الاسم الرباعي بالعربي",
-          })}
-          placeholder=""
-        ></textarea> */}
-        <div dir="ltr" className="flex-1">
-          <div id="toolbar-container">
-            <span class="ql-formats">
-              <select class="ql-font"></select>
-              <select class="ql-size"></select>
+        <h3 className="text-lg font-semibold">التمهيد</h3>
+        <div dir="ltr" className="flex-1 min-h-fit h-fit">
+          <div id={`contract-details-toolbar`}>
+            <span className="ql-formats">
+              <select className="ql-font"></select>
+              <select className="ql-size"></select>
             </span>
-            <span class="ql-formats">
-              <button class="ql-bold"></button>
-              <button class="ql-italic"></button>
-              <button class="ql-underline"></button>
-              <button class="ql-strike"></button>
+            <span className="ql-formats">
+              <button className="ql-bold"></button>
+              <button className="ql-italic"></button>
+              <button className="ql-underline"></button>
+              <button className="ql-strike"></button>
             </span>
-            <span class="ql-formats">
-              <select class="ql-color"></select>
-              <select class="ql-background"></select>
+            <span className="ql-formats">
+              <select className="ql-color"></select>
+              <select className="ql-background"></select>
             </span>
-            <span class="ql-formats">
-              <button class="ql-script" value="sub"></button>
-              <button class="ql-script" value="super"></button>
+            <span className="ql-formats">
+              <button className="ql-script" value="sub"></button>
+              <button className="ql-script" value="super"></button>
             </span>
-            <span class="ql-formats">
-              <button class="ql-header" value="1"></button>
-              <button class="ql-header" value="2"></button>
-              <button class="ql-blockquote"></button>
-              <button class="ql-code-block"></button>
+            <span className="ql-formats">
+              <button className="ql-header" value="1"></button>
+              <button className="ql-header" value="2"></button>
+              <button className="ql-blockquote"></button>
+              <button className="ql-code-block"></button>
             </span>
-            <span class="ql-formats">
-              <button class="ql-list" value="ordered"></button>
-              <button class="ql-list" value="bullet"></button>
-              <button class="ql-indent" value="-1"></button>
-              <button class="ql-indent" value="+1"></button>
+            <span className="ql-formats">
+              <button className="ql-list" value="ordered"></button>
+              <button className="ql-list" value="bullet"></button>
+              <button className="ql-indent" value="-1"></button>
+              <button className="ql-indent" value="+1"></button>
             </span>
-            <span class="ql-formats">
-              <button class="ql-direction" value="rtl"></button>
-              <select class="ql-align"></select>
+            <span className="ql-formats">
+              <button className="ql-direction" value="rtl"></button>
+              <select className="ql-align"></select>
             </span>
-            <span class="ql-formats">
-              <button class="ql-link"></button>
-              <button class="ql-image"></button>
-              <button class="ql-video"></button>
+            <span className="ql-formats">
+              <button className="ql-link"></button>
+              <button className="ql-image"></button>
+              <button className="ql-video"></button>
             </span>
-            <span class="ql-formats">
-              <button class="ql-clean"></button>
+            <span className="ql-formats">
+              <button className="ql-clean"></button>
             </span>
           </div>
           <ReactQuill
-            modules={{ toolbar: "#toolbar-container" }}
+            modules={{ toolbar: "#contract-details-toolbar" }}
             theme="snow"
           />
         </div>
         <p className="input-error">{errors.arabicName?.message}</p>
       </div>
-      <button className="text-white text-xl p-4 w-full bg-textGreen">
+
+      {/* clauses */}
+      <div className="input !min-w-full">
+        <Clauses />
+      </div>
+      <button className="text-white text-xl p-4 w-full bg-textGreen rounded">
         اضافة
       </button>
     </form>
