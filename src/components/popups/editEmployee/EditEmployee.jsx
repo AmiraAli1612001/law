@@ -8,10 +8,12 @@ import "react-quill/dist/quill.snow.css";
 import Parties from "./subComponents/Parties";
 import Clauses from "./subComponents/Clauses";
 import { useSelector } from "react-redux";
-
+import data from '@/fakeData/HRData.json'
 const EditEmployee = () => {
   const signUpForm = useForm();
   const currentEmployee = useSelector(store=>store.popups.currentEmployee)
+  const employeeData = data[currentEmployee]
+  console.log(employeeData)
   const {
     register,
     handleSubmit,
@@ -42,55 +44,92 @@ const EditEmployee = () => {
       id="addIssueRecord"
     >
       <div className="small-inputs">
-        {/* contractt name ! contractName*/}
+        {/* employeeName !*/}
         <div className="input">
-          <label htmlFor="">العنوان</label>
+          <label htmlFor="">الاسم</label>
           <input
             type="text"
             name=""
-            id="contractName"
-            {...register("contractName", {
-              required: "يجب كتابة عنوان العقد",
+            id="employeeName"
+            {...register("employeeName", {
+              required: "يجب كتابة اسم الموظف",
             })}
+            defaultValue={employeeData?.name}
             placeholder=""
           />
-          <p className="input-error">{errors.contractName?.message}</p>
+          <p className="input-error">{errors.employeeName?.message}</p>
         </div>
-        {/* name arabic ! arabicName*/}
+        {/* employeeId! */}
         <div className="input">
-          <label htmlFor="">رقم العقد</label>
+          <label htmlFor="">رقم الموظف</label>
           <input
             type="text"
             name=""
-            id="contractNumber"
-            {...register("contractNumber", {
-              required: "يجب كتابة رقم العقد",
+            id="employeeId"
+            {...register("employeeId", {
+              required: "يجب كتابة رقم الموظف",
             })}
             placeholder=""
+            defaultValue={employeeData?.id}
           />
-          <p className="input-error">{errors.contractNumber?.message}</p>
+          <p className="input-error">{errors.employeeId?.message}</p>
         </div>
-        {/* name arabic ! arabicName*/}
+        {/* HiringDate ! */}
         <div className="input">
-          <label htmlFor="">تاريخ العقد</label>
+          <label htmlFor="">تاريخ التوظيف</label>
           <input
             type="date"
             name=""
-            id="contractDate"
-            {...register("contractDate", {
-              required: "يجب كتابة الاسم الرباعي بالعربي",
+            id="HiringDate"
+            {...register("HiringDate", {
+              required: "يجب ادخال تاريخ التوظيف",
             })}
             placeholder=""
+            defaultValue={new Date("2022-01-01").toISOString().split("T")[0]}
           />
-          <p className="input-error">{errors.contractDate?.message}</p>
+          <p className="input-error">{errors.HiringDate?.message}</p>
+        </div>
+        {/* employeePhone! */}
+        <div className="input">
+          <label htmlFor="">رقم الهاتف</label>
+          <input
+            type="text"
+            name=""
+            id="employeePhone"
+            {...register("employeePhone", {
+              required: "يجب كتابة رقم الهاتف",
+            })}
+            placeholder=""
+            defaultValue={employeeData?.phone}
+          />
+          <p className="input-error">{errors.employeePhone?.message}</p>
+        </div>
+        {/* employeeSalary! */}
+        <div className="input">
+          <label htmlFor="">قيمة الراتب بالريال</label>
+          <input
+            type="text"
+            name=""
+            id="employeeSalary"
+            {...register("employeeSalary", {
+              required: "يجب كتابة الراتب",
+            })}
+            placeholder=""
+            defaultValue={employeeData?.salary}
+          />
+          <p className="input-error">{errors.employeeSalary?.message}</p>
         </div>
       </div>
+      {/* actions */}
+      {/* <div className="input !min-w-full">
+        
+      </div> */}
       {/* parties */}
       <div className="input !min-w-full">
         <Parties />
       </div>
       {/* name arabic ! arabicName*/}
-      <div className="input !min-w-full flex-1">
+      {/* <div className="input !min-w-full flex-1">
         <h3 className="text-lg font-semibold">التمهيد</h3>
         <div dir="ltr" className="flex-1 min-h-fit h-fit">
           <div id={`contract-details-toolbar`}>
@@ -143,12 +182,12 @@ const EditEmployee = () => {
           />
         </div>
         <p className="input-error">{errors.arabicName?.message}</p>
-      </div>
+      </div> */}
 
       {/* clauses */}
-      <div className="input !min-w-full">
+      {/* <div className="input !min-w-full">
         <Clauses />
-      </div>
+      </div> */}
       <button className="text-white text-xl p-4 w-full bg-textGreen rounded">
         تعديل
       </button>

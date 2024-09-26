@@ -40,7 +40,7 @@ const HRRow = ({
           </button>
           <button
             className="bg-mainRed bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
-            onClick={() => dispatch(toggleEditEmployee())}
+            onClick={() => dispatch(toggleEditEmployee(id))}
           >
             تعديل
           </button>
