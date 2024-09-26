@@ -18,6 +18,8 @@ const initialState = {
   issueRecord: false,
   contractRecord: false,
   attendance: false,
+  editEmployee: false,
+  currentEmployee: null,
 };
 
 export const popupsSlice = createSlice({
@@ -44,13 +46,18 @@ export const popupsSlice = createSlice({
       state.attendance = !state.attendance;
       state.isHidden = !state.isHidden;
     },
+    toggleEditEmployee: (state,action) => {
+      state.editEmployee = !state.editEmployee;
+      state.isHidden = !state.isHidden;
+      state.currentEmployee = action.payload
+    },
     resetPopups: (state) => {
       return initialState;
     },
   },
 });
 
-export const { toggleAddRecordPopup, toggleAttendancePopup, resetPopups } =
+export const { toggleAddRecordPopup, toggleAttendancePopup,toggleEditEmployee, resetPopups } =
   popupsSlice.actions;
 
 export default popupsSlice.reducer;

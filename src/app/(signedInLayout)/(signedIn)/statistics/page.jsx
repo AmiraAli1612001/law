@@ -40,6 +40,7 @@ const Statistics = () => {
         ))}
       </section>
       <ChartWrapper
+      title="الايرادات الشهرية"
         Chart={Line}
         labels={[
           "January",
@@ -67,14 +68,15 @@ const Statistics = () => {
         Chart={Bar}
         labels={HRData.map((e) => e.name)}
         data={HRData}
+        title="احصائيات الموظفين"
         datasets={[
           {
-            label: "المرتب",
-            data: HRData.map((e) => e.salary/50),
+            label: "ربحية الموظف",
+            data: HRData.map((e) => (e.success)),
           },
           {
             label: "عدد القضايا",
-            data: HRData.map((e) => e.cases),
+            data: HRData.map((e) => e.issues),
           },
           {
             label: "عدد العقود",

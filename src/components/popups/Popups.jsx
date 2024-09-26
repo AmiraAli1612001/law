@@ -8,6 +8,7 @@ import AddContractRecord from "./addContractRecord/AddContractRecord";
 
 import { resetPopups } from "@/globalState/Features/popupsSlice";
 import Attendance from "./attendance/Attendance";
+import EditEmployee from "./editEmployee/EditEmployee";
 
 const Popups = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Popups = () => {
   const issueRecord = useSelector((store) => store.popups?.issueRecord);
   const contractRecord = useSelector((store) => store.popups?.contractRecord);
   const attendance = useSelector((store) => store.popups?.attendance);
+  const editEmployee = useSelector((store) => store.popups?.editEmployee);
 
   console.log("popups");
   return (
@@ -53,6 +55,7 @@ const Popups = () => {
         {issueRecord && <AddIssueRecord />}
         {contractRecord && <AddContractRecord />}
         {attendance && <Attendance />}
+        {editEmployee && <EditEmployee />}
       </div>
     </div>
   );

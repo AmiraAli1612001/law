@@ -1,5 +1,5 @@
 "use client";
-import "./hrTable.css";
+import "./styles/hrTable.css";
 import React, { useMemo } from "react";
 import CustomTable from "../../shared/customTable/CustomTable";
 import HRRow from "./hrRow/HRRow";
