@@ -189,7 +189,7 @@ const EditEmployee = () => {
         <Clauses />
       </div> */}
       <button className="text-white text-xl p-4 w-full bg-textGreen rounded">
-        تعديل
+        حفظ
       </button>
     </form>
   );

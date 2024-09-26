@@ -8,11 +8,22 @@ import {
   useTable,
 } from "react-table";
 
-
-const CustomTable = ({ RenderElement, columns, tableData }) => {
+const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
   const tableColumns = useMemo(() => columns, []);
-  const [data, setData] = useState(tableData);
-
+  const [searchFilter, setSearchFilter] = useState("");
+  // const [data, setData] = useState(tableData);
+  const data = useMemo(
+    () =>
+      tableData.filter((ele) =>
+        Object.keys(ele).some((key) => {
+          return ele[key]
+            .toString()
+            .toLowerCase()
+            .includes(searchFilter.toLowerCase());
+        })
+      ),
+    [searchFilter]
+  );
   const tableInstance = useTable(
     { columns: tableColumns, data: data },
     useGlobalFilter,
@@ -38,8 +49,32 @@ const CustomTable = ({ RenderElement, columns, tableData }) => {
   } = tableInstance;
   const { globalFilter } = state;
   return (
-    <div>
+    <div className="flex flex-col gap-1">
       {/* custom rows */}
+      <div className="w-full bg-gray-200 rounded p-4 flex items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          className=""
+        >
+          <path
+            fill="none"
+            stroke="#34A853"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="m17 17l4 4M3 11a8 8 0 1 0 16 0a8 8 0 0 0-16 0"
+          />
+        </svg>
+        <input
+          className="w-full bg-transparent text-lg text-black focus:outline-none placeholder:text-gray-600"
+          type="text"
+          onChange={(e) => setSearchFilter(e.target.value)}
+          placeholder="ابحث..."
+        />
+      </div>
       <div className="flex flex-col gap-1">
         {page.map((row) => {
           prepareRow(row);

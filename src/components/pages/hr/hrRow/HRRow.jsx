@@ -4,7 +4,7 @@ import { Line } from "react-chartjs-2";
 import { toggleEditEmployee } from "@/globalState/Features/popupsSlice";
 import { useDispatch } from "react-redux";
 const HRRow = ({
-  data: { id, name, title, department, status, vacations, work, loans },
+  data: { id, name, title, department, status, vacations, work, loans, salary },
 }) => {
   const [state, setState] = useState(false);
   const dispatch = useDispatch();
@@ -80,6 +80,17 @@ const HRRow = ({
             </div>
           </section>
           <section>
+            <h3>الراتب</h3>
+            {/* #F1F0F8 */}
+            <div
+              className={`bg-[#F1F0F8] after:!bg-[#9586f5] flex gap-2 p-4 items-center HR-row rounded-lg relative`}
+            >
+              <div className={``}>
+                <p className="text-base ">{salary} <span className="text-sm text-green-600 font-black">ريال</span></p>
+              </div>
+            </div>
+          </section>
+          <section>
             <h3>السلف</h3>
             {/* #F1F0F8 */}
             <div
@@ -97,9 +108,7 @@ const HRRow = ({
             </div>
           </section>
         </section>
-        <section>
-
-        </section>
+        <section></section>
       </div>
     </div>
   );

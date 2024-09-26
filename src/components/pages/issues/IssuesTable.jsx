@@ -51,6 +51,7 @@ const IssuesTable = () => {
         tableData={issuesData}
         columns={tableColumns}
         RenderElement={IssueRow}
+        filterOption={"status"}
       />
     </>
   );
