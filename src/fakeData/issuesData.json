@@ -1,452 +1,502 @@
 [
   {
     "id": 1,
-    "date": "2023/10/31",
-    "type": "قتل عمد",
-    "prosecutor": "Franky Gulleford",
+    "date": "2023/12/30",
+    "type": "مخالفة نظام مكافحة جرائم المخدرات",
+    "prosecutor": "Myrilla Tunnicliff",
     "character": "وكيل",
-    "defendant": "Abbott Sulley",
-    "status": "قيد النظر"
+    "defendant": "Shirley Tipens",
+    "status": "منتهية",
+    "salary": 93889
   },
   {
     "id": 2,
-    "date": "2024/09/03",
+    "date": "2024/08/02",
     "type": "مخالفة نظام مكافحة جرائم المخدرات",
-    "prosecutor": "Cicily Andreopolos",
-    "character": "وكيل",
-    "defendant": "Randy Dulen",
-    "status": "محكومة بحكم قطعي"
+    "prosecutor": "See Coo",
+    "character": "محامي",
+    "defendant": "Rozanna Portress",
+    "status": "منتهية",
+    "salary": 9944
   },
   {
     "id": 3,
-    "date": "2023/12/27",
-    "type": "سرقة",
-    "prosecutor": "Annmaria Ollerearnshaw",
+    "date": "2024/06/18",
+    "type": "قتل عمد",
+    "prosecutor": "Dorolice Aasaf",
     "character": "وكيل",
-    "defendant": "Nealon Videan",
-    "status": "منتهية"
+    "defendant": "Celinka Allanson",
+    "status": "منتهية",
+    "salary": 22353
   },
   {
     "id": 4,
-    "date": "2024/05/12",
+    "date": "2024/04/12",
     "type": "قتل عمد",
-    "prosecutor": "Vernen Maund",
+    "prosecutor": "Alane Pollock",
     "character": "محامي",
-    "defendant": "Toby Fretter",
-    "status": "محكومة بحكم قطعي"
+    "defendant": "Veda Lemar",
+    "status": "قيد النظر",
+    "salary": 4453
   },
   {
     "id": 5,
-    "date": "2023/10/12",
+    "date": "2024/07/12",
     "type": "تعاطي مسكر",
-    "prosecutor": "Burtie Wilbor",
+    "prosecutor": "Burk McCarney",
     "character": "وكيل",
-    "defendant": "Kissee Filoniere",
-    "status": "منتهية"
+    "defendant": "Roobbie Odom",
+    "status": "محكومة بحكم قطعي",
+    "salary": 11064
   },
   {
     "id": 6,
-    "date": "2024/08/28",
-    "type": "أتعاب محامين أو وكلاء",
-    "prosecutor": "Alyda Tole",
-    "character": "وكيل",
-    "defendant": "Hughie Jessep",
-    "status": "قيد النظر"
+    "date": "2023/11/26",
+    "type": "قتل عمد",
+    "prosecutor": "Joseito Emer",
+    "character": "محامي",
+    "defendant": "Esme Braizier",
+    "status": "منتهية",
+    "salary": 92409
   },
   {
     "id": 7,
-    "date": "2024/07/08",
-    "type": "سرقة",
-    "prosecutor": "Ranique Liddiard",
-    "character": "وكيل",
-    "defendant": "Rudiger Dodswell",
-    "status": "منتهية"
+    "date": "2023/10/27",
+    "type": "رد العين",
+    "prosecutor": "Kennan Elgey",
+    "character": "محامي",
+    "defendant": "Ambrosi Cheer",
+    "status": "محكومة بحكم قطعي",
+    "salary": 79460
   },
   {
     "id": 8,
-    "date": "2023/12/19",
-    "type": "رد العين",
-    "prosecutor": "Keven Jellicorse",
-    "character": "وكيل",
-    "defendant": "Lockwood Killingback",
-    "status": "قيد النظر"
+    "date": "2024/07/05",
+    "type": "قتل عمد",
+    "prosecutor": "Marshall MacCaffery",
+    "character": "محامي",
+    "defendant": "Esteban Chimes",
+    "status": "منتهية",
+    "salary": 32839
   },
   {
     "id": 9,
-    "date": "2024/08/12",
-    "type": "سرقة",
-    "prosecutor": "Giacinta Ziehms",
+    "date": "2024/03/25",
+    "type": "مخالفة نظام مكافحة جرائم المخدرات",
+    "prosecutor": "Doralyn Darbey",
     "character": "وكيل",
-    "defendant": "Kirbie Rough",
-    "status": "منتهية"
+    "defendant": "Malia Shute",
+    "status": "محكومة بحكم قطعي",
+    "salary": 84155
   },
   {
     "id": 10,
-    "date": "2024/05/12",
-    "type": "مخالفة نظام مكافحة جرائم المخدرات",
-    "prosecutor": "Heidi Scriver",
-    "character": "محامي",
-    "defendant": "Alys Borland",
-    "status": "محكومة بحكم قطعي"
+    "date": "2023/10/25",
+    "type": "قتل عمد",
+    "prosecutor": "Robb Rigmand",
+    "character": "وكيل",
+    "defendant": "Baxy Martensen",
+    "status": "محكومة بحكم قطعي",
+    "salary": 87003
   },
   {
     "id": 11,
-    "date": "2024/07/14",
-    "type": "قتل عمد",
-    "prosecutor": "Helyn Pattie",
+    "date": "2024/04/03",
+    "type": "رد العين",
+    "prosecutor": "Bondy Lanahan",
     "character": "وكيل",
-    "defendant": "Bili Bedrosian",
-    "status": "قيد النظر"
+    "defendant": "Thor Brandino",
+    "status": "قيد النظر",
+    "salary": 40814
   },
   {
     "id": 12,
-    "date": "2024/06/12",
-    "type": "أتعاب محامين أو وكلاء",
-    "prosecutor": "Dahlia Gormley",
+    "date": "2024/07/27",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Millicent Brownstein",
     "character": "وكيل",
-    "defendant": "Katrinka MacFadyen",
-    "status": "قيد النظر"
+    "defendant": "Linea Boyn",
+    "status": "منتهية",
+    "salary": 92394
   },
   {
     "id": 13,
-    "date": "2024/07/30",
-    "type": "رد العين",
-    "prosecutor": "Sarena Rodder",
+    "date": "2024/03/11",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Angeli Eschalotte",
     "character": "وكيل",
-    "defendant": "Arty Doles",
-    "status": "محكومة بحكم قطعي"
+    "defendant": "Rozelle Dunphie",
+    "status": "قيد النظر",
+    "salary": 59029
   },
   {
     "id": 14,
-    "date": "2023/11/08",
-    "type": "تعاطي مسكر",
-    "prosecutor": "Maurine Fidal",
-    "character": "محامي",
-    "defendant": "Nollie Flucker",
-    "status": "منتهية"
+    "date": "2024/05/30",
+    "type": "رد العين",
+    "prosecutor": "Lindon Baroch",
+    "character": "وكيل",
+    "defendant": "Lyn Bosse",
+    "status": "محكومة بحكم قطعي",
+    "salary": 59295
   },
   {
     "id": 15,
-    "date": "2024/02/05",
-    "type": "تعاطي مسكر",
-    "prosecutor": "Gabriele Keoghane",
+    "date": "2024/08/04",
+    "type": "رد العين",
+    "prosecutor": "Natale Wennington",
     "character": "محامي",
-    "defendant": "Wake Davidman",
-    "status": "منتهية"
+    "defendant": "Kipp Kristoffersson",
+    "status": "منتهية",
+    "salary": 15823
   },
   {
     "id": 16,
-    "date": "2023/11/04",
-    "type": "أتعاب محامين أو وكلاء",
-    "prosecutor": "Gabbie Bouts",
+    "date": "2024/04/22",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Christin Watkiss",
     "character": "وكيل",
-    "defendant": "Danielle Simka",
-    "status": "منتهية"
+    "defendant": "Trudy Crockett",
+    "status": "محكومة بحكم قطعي",
+    "salary": 14538
   },
   {
     "id": 17,
-    "date": "2023/09/21",
-    "type": "قتل عمد",
-    "prosecutor": "Henrieta Sare",
+    "date": "2023/12/28",
+    "type": "رد العين",
+    "prosecutor": "Kincaid Whitters",
     "character": "وكيل",
-    "defendant": "Reid Bolam",
-    "status": "محكومة بحكم قطعي"
+    "defendant": "Jeremiah Krishtopaittis",
+    "status": "منتهية",
+    "salary": 4039
   },
   {
     "id": 18,
-    "date": "2023/10/01",
-    "type": "رد العين",
-    "prosecutor": "Oralee Gillibrand",
-    "character": "محامي",
-    "defendant": "Irwin Swallwell",
-    "status": "قيد النظر"
+    "date": "2024/08/02",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Kaila McEttigen",
+    "character": "وكيل",
+    "defendant": "Sanders Goning",
+    "status": "منتهية",
+    "salary": 11111
   },
   {
     "id": 19,
-    "date": "2024/03/16",
-    "type": "سرقة",
-    "prosecutor": "Derward Girardet",
-    "character": "وكيل",
-    "defendant": "Audy Muselli",
-    "status": "محكومة بحكم قطعي"
+    "date": "2024/01/13",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Giacopo McConnal",
+    "character": "محامي",
+    "defendant": "Ingunna Chattoe",
+    "status": "محكومة بحكم قطعي",
+    "salary": 85712
   },
   {
     "id": 20,
-    "date": "2023/09/26",
+    "date": "2024/05/03",
     "type": "أتعاب محامين أو وكلاء",
-    "prosecutor": "Casey Bowmen",
+    "prosecutor": "Andy Lapping",
     "character": "وكيل",
-    "defendant": "Rolfe Whiting",
-    "status": "محكومة بحكم قطعي"
+    "defendant": "Bertram Jakobssen",
+    "status": "محكومة بحكم قطعي",
+    "salary": 66166
   },
   {
     "id": 21,
-    "date": "2024/05/03",
+    "date": "2023/10/03",
     "type": "قتل عمد",
-    "prosecutor": "Meade Hartup",
+    "prosecutor": "Allan Snoddy",
     "character": "محامي",
-    "defendant": "Dew Flory",
-    "status": "منتهية"
+    "defendant": "Irita Neller",
+    "status": "منتهية",
+    "salary": 19659
   },
   {
     "id": 22,
-    "date": "2024/04/26",
-    "type": "أتعاب محامين أو وكلاء",
-    "prosecutor": "Gertie Nichols",
+    "date": "2024/03/21",
+    "type": "قتل عمد",
+    "prosecutor": "Dot Gonnely",
     "character": "محامي",
-    "defendant": "Carlie Dahmel",
-    "status": "محكومة بحكم قطعي"
+    "defendant": "Aldrich Gavaran",
+    "status": "منتهية",
+    "salary": 72746
   },
   {
     "id": 23,
-    "date": "2024/04/19",
-    "type": "سرقة",
-    "prosecutor": "Laird Fumagalli",
+    "date": "2024/09/08",
+    "type": "مخالفة نظام مكافحة جرائم المخدرات",
+    "prosecutor": "Corby Eckersall",
     "character": "محامي",
-    "defendant": "Elizabeth Holcroft",
-    "status": "قيد النظر"
+    "defendant": "Zared Haquin",
+    "status": "منتهية",
+    "salary": 38214
   },
   {
     "id": 24,
-    "date": "2023/11/04",
+    "date": "2024/03/16",
     "type": "رد العين",
-    "prosecutor": "Sollie Veasey",
+    "prosecutor": "Karie Sterke",
     "character": "محامي",
-    "defendant": "Sherlock Kuschke",
-    "status": "محكومة بحكم قطعي"
+    "defendant": "Keenan Blaw",
+    "status": "قيد النظر",
+    "salary": 61465
   },
   {
     "id": 25,
-    "date": "2024/07/25",
-    "type": "سرقة",
-    "prosecutor": "Lynne Stormonth",
-    "character": "محامي",
-    "defendant": "Christy Hamel",
-    "status": "محكومة بحكم قطعي"
+    "date": "2024/01/05",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Adan Pimer",
+    "character": "وكيل",
+    "defendant": "Linc Ruperto",
+    "status": "محكومة بحكم قطعي",
+    "salary": 62442
   },
   {
     "id": 26,
-    "date": "2024/08/28",
-    "type": "سرقة",
-    "prosecutor": "Tad Gaskin",
-    "character": "وكيل",
-    "defendant": "Ryun Crut",
-    "status": "قيد النظر"
+    "date": "2024/06/28",
+    "type": "رد العين",
+    "prosecutor": "Opaline Rogger",
+    "character": "محامي",
+    "defendant": "Esta Pendered",
+    "status": "محكومة بحكم قطعي",
+    "salary": 20534
   },
   {
     "id": 27,
-    "date": "2023/12/06",
+    "date": "2023/10/23",
     "type": "قتل عمد",
-    "prosecutor": "Reece Prescot",
-    "character": "محامي",
-    "defendant": "Caitrin Beaby",
-    "status": "منتهية"
+    "prosecutor": "Nicol Amner",
+    "character": "وكيل",
+    "defendant": "Harli Jinkin",
+    "status": "قيد النظر",
+    "salary": 93932
   },
   {
     "id": 28,
-    "date": "2024/08/11",
-    "type": "رد العين",
-    "prosecutor": "Mick Etchells",
-    "character": "محامي",
-    "defendant": "Milicent Iacovacci",
-    "status": "قيد النظر"
+    "date": "2024/07/08",
+    "type": "قتل عمد",
+    "prosecutor": "Joanie Lightbourne",
+    "character": "وكيل",
+    "defendant": "Arlee Hattrick",
+    "status": "قيد النظر",
+    "salary": 83903
   },
   {
     "id": 29,
-    "date": "2024/01/01",
-    "type": "مخالفة نظام مكافحة جرائم المخدرات",
-    "prosecutor": "Horace Achurch",
+    "date": "2023/11/06",
+    "type": "رد العين",
+    "prosecutor": "Stormy Pettinger",
     "character": "محامي",
-    "defendant": "Obadiah Ottley",
-    "status": "منتهية"
+    "defendant": "Michail Sparling",
+    "status": "محكومة بحكم قطعي",
+    "salary": 47299
   },
   {
     "id": 30,
-    "date": "2023/12/28",
-    "type": "سرقة",
-    "prosecutor": "Eveleen Florez",
-    "character": "وكيل",
-    "defendant": "Rasla Antoons",
-    "status": "قيد النظر"
+    "date": "2024/03/27",
+    "type": "رد العين",
+    "prosecutor": "Mavis MacFarlane",
+    "character": "محامي",
+    "defendant": "Salome Steddall",
+    "status": "محكومة بحكم قطعي",
+    "salary": 56601
   },
   {
     "id": 31,
-    "date": "2024/07/30",
+    "date": "2024/06/20",
     "type": "مخالفة نظام مكافحة جرائم المخدرات",
-    "prosecutor": "Val Ventum",
-    "character": "وكيل",
-    "defendant": "Ranice Ketchell",
-    "status": "منتهية"
+    "prosecutor": "Michaella Antonignetti",
+    "character": "محامي",
+    "defendant": "Clarette Blincoe",
+    "status": "منتهية",
+    "salary": 31048
   },
   {
     "id": 32,
-    "date": "2024/04/12",
+    "date": "2024/09/07",
     "type": "رد العين",
-    "prosecutor": "Christi Ingamells",
-    "character": "وكيل",
-    "defendant": "Seymour De Filippo",
-    "status": "محكومة بحكم قطعي"
+    "prosecutor": "Robenia Redmell",
+    "character": "محامي",
+    "defendant": "Valma Stiegar",
+    "status": "محكومة بحكم قطعي",
+    "salary": 16054
   },
   {
     "id": 33,
-    "date": "2024/05/22",
-    "type": "تعاطي مسكر",
-    "prosecutor": "Eugen O'Dunniom",
-    "character": "محامي",
-    "defendant": "Jennette Meneo",
-    "status": "منتهية"
+    "date": "2024/08/19",
+    "type": "مخالفة نظام مكافحة جرائم المخدرات",
+    "prosecutor": "Joyce Bunford",
+    "character": "وكيل",
+    "defendant": "Matti Tomasian",
+    "status": "منتهية",
+    "salary": 59505
   },
   {
     "id": 34,
-    "date": "2023/09/28",
+    "date": "2023/11/26",
     "type": "قتل عمد",
-    "prosecutor": "Riccardo Clutram",
+    "prosecutor": "Lazare Abrahm",
     "character": "وكيل",
-    "defendant": "Phip Cicerone",
-    "status": "منتهية"
+    "defendant": "Winslow Titmarsh",
+    "status": "قيد النظر",
+    "salary": 13051
   },
   {
     "id": 35,
-    "date": "2024/06/05",
-    "type": "مخالفة نظام مكافحة جرائم المخدرات",
-    "prosecutor": "Arlen Tylor",
-    "character": "محامي",
-    "defendant": "Paolina Hyndman",
-    "status": "قيد النظر"
+    "date": "2024/01/06",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Kanya Boatwright",
+    "character": "وكيل",
+    "defendant": "Duke Doogood",
+    "status": "منتهية",
+    "salary": 45605
   },
   {
     "id": 36,
-    "date": "2024/05/28",
-    "type": "قتل عمد",
-    "prosecutor": "Jeth MacPherson",
+    "date": "2024/04/13",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Rockwell Simo",
     "character": "محامي",
-    "defendant": "Sondra Fuente",
-    "status": "منتهية"
+    "defendant": "Dick Franciotti",
+    "status": "محكومة بحكم قطعي",
+    "salary": 7290
   },
   {
     "id": 37,
-    "date": "2023/10/27",
+    "date": "2024/03/29",
     "type": "رد العين",
-    "prosecutor": "Mariquilla Dominy",
+    "prosecutor": "Beverlee Corbin",
     "character": "وكيل",
-    "defendant": "Yettie Harcarse",
-    "status": "محكومة بحكم قطعي"
+    "defendant": "Milzie McClay",
+    "status": "قيد النظر",
+    "salary": 56579
   },
   {
     "id": 38,
-    "date": "2023/10/19",
+    "date": "2024/05/14",
     "type": "تعاطي مسكر",
-    "prosecutor": "Delcine Roarty",
-    "character": "وكيل",
-    "defendant": "Bastien Earthfield",
-    "status": "محكومة بحكم قطعي"
+    "prosecutor": "Blake Boner",
+    "character": "محامي",
+    "defendant": "Norbie Lidster",
+    "status": "منتهية",
+    "salary": 22595
   },
   {
     "id": 39,
-    "date": "2023/10/22",
-    "type": "مخالفة نظام مكافحة جرائم المخدرات",
-    "prosecutor": "Hildagard Crabb",
+    "date": "2024/02/25",
+    "type": "قتل عمد",
+    "prosecutor": "Cordi Oade",
     "character": "محامي",
-    "defendant": "Oswell Darlington",
-    "status": "محكومة بحكم قطعي"
+    "defendant": "Lissi Blazewski",
+    "status": "محكومة بحكم قطعي",
+    "salary": 9093
   },
   {
     "id": 40,
-    "date": "2023/09/26",
-    "type": "تعاطي مسكر",
-    "prosecutor": "Mathew Colly",
-    "character": "وكيل",
-    "defendant": "August Bertomeu",
-    "status": "قيد النظر"
+    "date": "2024/04/24",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Madeline Ceccoli",
+    "character": "محامي",
+    "defendant": "Sile Overnell",
+    "status": "محكومة بحكم قطعي",
+    "salary": 2804
   },
   {
     "id": 41,
-    "date": "2023/11/05",
-    "type": "رد العين",
-    "prosecutor": "Mehetabel Cratchley",
-    "character": "وكيل",
-    "defendant": "Bar Doogue",
-    "status": "منتهية"
+    "date": "2023/11/18",
+    "type": "قتل عمد",
+    "prosecutor": "Engracia Signorelli",
+    "character": "محامي",
+    "defendant": "Heather Blaber",
+    "status": "قيد النظر",
+    "salary": 62632
   },
   {
     "id": 42,
-    "date": "2024/06/13",
-    "type": "رد العين",
-    "prosecutor": "Adolpho Maddison",
-    "character": "محامي",
-    "defendant": "Charis Beincken",
-    "status": "محكومة بحكم قطعي"
+    "date": "2024/09/20",
+    "type": "قتل عمد",
+    "prosecutor": "Jerad Taillard",
+    "character": "وكيل",
+    "defendant": "Sauveur Bakes",
+    "status": "محكومة بحكم قطعي",
+    "salary": 3466
   },
   {
     "id": 43,
-    "date": "2024/06/13",
-    "type": "تعاطي مسكر",
-    "prosecutor": "Joscelin Helstrip",
-    "character": "محامي",
-    "defendant": "Constantina Channer",
-    "status": "قيد النظر"
+    "date": "2024/04/15",
+    "type": "مخالفة نظام مكافحة جرائم المخدرات",
+    "prosecutor": "Keely Vicent",
+    "character": "وكيل",
+    "defendant": "Gertrudis Brimm",
+    "status": "محكومة بحكم قطعي",
+    "salary": 11875
   },
   {
     "id": 44,
-    "date": "2024/04/06",
-    "type": "تعاطي مسكر",
-    "prosecutor": "Jesse Offill",
-    "character": "محامي",
-    "defendant": "Juliet Hampshaw",
-    "status": "محكومة بحكم قطعي"
+    "date": "2024/06/09",
+    "type": "رد العين",
+    "prosecutor": "Kimberlee Saines",
+    "character": "وكيل",
+    "defendant": "Putnam Gossop",
+    "status": "منتهية",
+    "salary": 24921
   },
   {
     "id": 45,
-    "date": "2023/10/02",
-    "type": "رد العين",
-    "prosecutor": "Carver Aldritt",
-    "character": "وكيل",
-    "defendant": "Carly Rossbrook",
-    "status": "محكومة بحكم قطعي"
+    "date": "2023/11/03",
+    "type": "قتل عمد",
+    "prosecutor": "Lilias Stilgo",
+    "character": "محامي",
+    "defendant": "Payton Swin",
+    "status": "منتهية",
+    "salary": 30707
   },
   {
     "id": 46,
-    "date": "2023/10/31",
-    "type": "رد العين",
-    "prosecutor": "Shae Brailey",
-    "character": "محامي",
-    "defendant": "Edsel Gyer",
-    "status": "محكومة بحكم قطعي"
+    "date": "2024/03/24",
+    "type": "قتل عمد",
+    "prosecutor": "Hanson McMaster",
+    "character": "وكيل",
+    "defendant": "Olivie Stappard",
+    "status": "قيد النظر",
+    "salary": 32788
   },
   {
     "id": 47,
-    "date": "2024/09/05",
-    "type": "أتعاب محامين أو وكلاء",
-    "prosecutor": "Inez Wason",
+    "date": "2024/08/15",
+    "type": "قتل عمد",
+    "prosecutor": "Seward Reardon",
     "character": "محامي",
-    "defendant": "Julian Pateman",
-    "status": "محكومة بحكم قطعي"
+    "defendant": "Jacinthe Kiellor",
+    "status": "محكومة بحكم قطعي",
+    "salary": 68491
   },
   {
     "id": 48,
-    "date": "2024/08/19",
-    "type": "قتل عمد",
-    "prosecutor": "Francoise Highwood",
+    "date": "2024/03/20",
+    "type": "أتعاب محامين أو وكلاء",
+    "prosecutor": "Kristoffer Dobrovolny",
     "character": "وكيل",
-    "defendant": "Angel Kitcher",
-    "status": "محكومة بحكم قطعي"
+    "defendant": "Lynnette Tutsell",
+    "status": "محكومة بحكم قطعي",
+    "salary": 67525
   },
   {
     "id": 49,
-    "date": "2023/11/06",
-    "type": "رد العين",
-    "prosecutor": "Carena Pales",
+    "date": "2024/03/21",
+    "type": "قتل عمد",
+    "prosecutor": "Steward Pitchford",
     "character": "محامي",
-    "defendant": "Elly Ferrige",
-    "status": "محكومة بحكم قطعي"
+    "defendant": "Jordan Antonutti",
+    "status": "محكومة بحكم قطعي",
+    "salary": 81872
   },
   {
     "id": 50,
-    "date": "2023/11/28",
-    "type": "قتل عمد",
-    "prosecutor": "Doretta Tasch",
+    "date": "2023/10/04",
+    "type": "تعاطي مسكر",
+    "prosecutor": "Valaria McKeowon",
     "character": "وكيل",
-    "defendant": "Marijo Whiskerd",
-    "status": "قيد النظر"
+    "defendant": "Helli Ratchford",
+    "status": "محكومة بحكم قطعي",
+    "salary": 53975
   }
 ]

@@ -1,48 +1,8 @@
 import React from "react";
+import { Bar } from "react-chartjs-2";
 
-const ChartWrapper = ({ Chart, data }) => {
-  const charData = [
-    {
-      label: "title here",
-      data: data.map((e) => {
-        return {
-          date: new Date(e.date),
-          stars: e.income,
-        };
-      }),
-    },
-  ];
-  const primaryAxis = React.useMemo(
-    () => ({
-      getValue: (datum) => datum.date,
-      formatters: {
-        // Ensure value is a Date and then format to show the short month name
-        tooltip: (value) =>
-          new Date(value).toLocaleDateString("en-US", {
-            month: "short",
-            year: "numeric",
-          }),
-        scale: (value) =>
-          new Date(value).toLocaleDateString("en-US", { month: "short" }), // For X-axis labels
-        // scale: (value) => new Date(value).toLocaleDateString('en-US', { month: 'short' }),
-      },
-      showGrid: false,
-      tickCount: 12,
-    }),
-    []
-  );
-
-  const secondaryAxes = React.useMemo(
-    () => [
-      {
-        getValue: (datum) => datum.stars, // Ensure this reflects the correct income data
-        scaleType: "linear", // Ensure linear scale
-        tickCount: 10, // You can adjust the number of ticks if needed
-        // showGrid: true,
-      },
-    ],
-    []
-  );
+const ChartWrapper = ({ Chart, data,chartType ,labels}) => {
+  console.log(data)
   return (
     <div className="flex justify-center bg-white yn-shadow p-4">
       <div className="w-full flex flex-col gap-4">
@@ -57,11 +17,26 @@ const ChartWrapper = ({ Chart, data }) => {
             </div>
             {/* Chart */}
             <div className="h-96 w-full">
-              <Chart
-                options={{
-                  data: charData,
-                  primaryAxis,
-                  secondaryAxes,
+              <Bar
+                data={{
+                  labels:[
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    // "November",
+                    // "December",
+                  ],
+                  datasets:[{
+                    label:"الايرادات",
+                    data: data.map(e=>e.income)
+                  }]
                 }}
               />
             </div>
