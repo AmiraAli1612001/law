@@ -15,6 +15,8 @@ const Popups = () => {
   const isHidden = useSelector((store) => store.popups?.isHidden);
   if (!isHidden) {
     document.querySelector("body").style.overflow = "hidden";
+  }else{
+    document.querySelector("body").style.overflow = "auto";
   }
 
   const issueRecord = useSelector((store) => store.popups?.issueRecord);
