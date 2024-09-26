@@ -2,10 +2,11 @@
 import ChartWrapper from "@/components/shared/charts/ChartWrapper";
 import React from "react";
 import monthsSalaryData from "@/fakeData/monthsSalaryData.json";
+import issuesData from "@/fakeData/issuesData.json";
 import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper";
 import DataItem from "@/components/pages/statistics/DataItem";
 import { Chart as ChartJS } from "chart.js/auto";
-// import { Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 
 const Statistics = () => {
   const dataItems = [
@@ -38,7 +39,7 @@ const Statistics = () => {
         ))}
       </section>
       <ChartWrapper
-        // Chart={Bar}
+        Chart={Line}
         labels={[
           "January",
           "February",
@@ -53,10 +54,26 @@ const Statistics = () => {
           // "November",
           // "December",
         ]}
-        chartType="line"
         data={monthsSalaryData}
       />
-      {/* <ChartWrapper Chart={Chart} chartType="bar" data={chartsData} /> */}
+      <ChartWrapper
+        Chart={Bar}
+        labels={[
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ]}
+        data={issuesData}
+      />
     </ScreenWrapper>
   );
 };

@@ -61,8 +61,8 @@ const Attendance = () => {
       noValidate
       id="addIssueRecord"
     >
-      {/* name arabic ! arabicName*/}
-      <div className="input">
+      {/* email !*/}
+      {/* <div className="input">
         <label htmlFor="">البريد الالكتروني</label>
         <input
           type="email"
@@ -74,9 +74,9 @@ const Attendance = () => {
           placeholder=""
         />
         <p className="input-error">{errors.email?.message}</p>
-      </div>
-      {/* name arabic ! arabicName*/}
-      <div className="input">
+      </div> */}
+      {/* password !*/}
+      {/* <div className="input">
         <label htmlFor="">كلمة المرور</label>
         <input
           type="password"
@@ -88,8 +88,8 @@ const Attendance = () => {
           placeholder=""
         />
         <p className="input-error">{errors.password?.message}</p>
-      </div>
-      {/* name arabic ! arabicName*/}
+      </div> */}
+      {/* datetime !*/}
       <div className="input">
         <label htmlFor="">تاريخ الحضور</label>
         <input
@@ -105,7 +105,7 @@ const Attendance = () => {
         />
         <p className="input-error">{errors.arabicName?.message}</p>
       </div>
-      {/* name arabic ! arabicName*/}
+      {/* delayReason ! */}
       <div className="input">
         <label htmlFor="">سبب التأخير ان وجد</label>
         <textarea

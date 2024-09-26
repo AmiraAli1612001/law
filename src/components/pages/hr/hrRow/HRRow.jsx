@@ -25,7 +25,7 @@ const HRRow = ({
           <p className="">{department}</p>
         </div>
         <div className="row-data-content">
-          <p className="">{status}</p>
+          <p className="">{status? "مفعل" : "غير مفعل"}</p>
         </div>
         <div className="w-[10%]">
           <button
