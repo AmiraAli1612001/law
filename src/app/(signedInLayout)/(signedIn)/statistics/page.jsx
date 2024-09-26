@@ -3,6 +3,7 @@ import ChartWrapper from "@/components/shared/charts/ChartWrapper";
 import React from "react";
 import monthsSalaryData from "@/fakeData/monthsSalaryData.json";
 import issuesData from "@/fakeData/issuesData.json";
+import HRData from "@/fakeData/HRData.json";
 import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper";
 import DataItem from "@/components/pages/statistics/DataItem";
 import { Chart as ChartJS } from "chart.js/auto";
@@ -54,25 +55,32 @@ const Statistics = () => {
           // "November",
           // "December",
         ]}
+        datasets={[
+          {
+            label: "الايرادات الشهرية",
+            data: monthsSalaryData.map((e) => e.salary),
+          },
+        ]}
         data={monthsSalaryData}
       />
       <ChartWrapper
         Chart={Bar}
-        labels={[
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
+        labels={HRData.map((e) => e.name)}
+        data={HRData}
+        datasets={[
+          {
+            label: "المرتب",
+            data: HRData.map((e) => e.salary/50),
+          },
+          {
+            label: "عدد القضايا",
+            data: HRData.map((e) => e.cases),
+          },
+          {
+            label: "عدد العقود",
+            data: HRData.map((e) => e.contracts),
+          },
         ]}
-        data={issuesData}
       />
     </ScreenWrapper>
   );
