@@ -4,7 +4,7 @@ import React from "react";
 import { Chart } from "react-charts";
 import chartsData from "@/fakeData/chartsData.json";
 import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper";
-import DataItem from "@/components/pages/statistics/dataItem";
+import DataItem from "@/components/pages/statistics/DataItem";
 const Statistics = () => {
   const dataItems=[
     {
