@@ -22,8 +22,8 @@ const IssueRow = ({
 }) => {
   // const cellStyles =;
   return (
-    <div className="shadow">
-      <div className="flex flex-col lg:flex-row gap-1 issueRow shadow rounded-lg relative cursor-pointer">
+    <div className="shadow flex flex-col w-full">
+      <div className="flex w-full flex-col lg:flex-row gap-1 issueRow shadow rounded-lg relative cursor-pointer">
         <button
           className={`p-4 h-full flex items-center justify-center bg-[#FAF9F4] bg-textGreen cursor-pointer order-12 lg:order-none`}
           onClick={(e) => {
@@ -93,7 +93,7 @@ const IssueRow = ({
           </svg>
         </Link>
       </div>
-      <div className="issueInnerDetailsWrapper overflow-hidden py-4">
+      <div className="issueInnerDetailsWrapper overflow-hidden py-4 w-fit">
         <h4 className="text-textGreen font-medium text-2xl">اخر التحديثات</h4>
         <div className="flex gap-4">
           <div className="border-textGreen border [&>*]:p-4 rounded">
