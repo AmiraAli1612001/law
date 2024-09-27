@@ -104,7 +104,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
         {/* data rows */}
         <div
           className={`${
-            filterMenuActive && " w-[calc(100%-304px)] "
+            filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
           } flex flex-1 flex-col gap-1`}
         >
           {page.map((row) => {
@@ -133,7 +133,8 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
                       setCurrentFilter(column.id);
                     }}
                     className={`${
-                      column.id === "actions" && " hidden "
+                      (column.id === "actions" || column.id === "actions2") &&
+                      " hidden "
                     }`}
                   >
                     <span
@@ -151,33 +152,6 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
                 ))}
               </div>
             ))}
-            {/* {headerGroups.map((headerGroup) => (
-              <div
-                {...headerGroup.getHeaderGroupProps()}
-                key={headerGroup.id}
-                className="grid grid-cols-2 gap-2"
-              >
-                {headerGroup.headers.map((column) => (
-                  <button
-                    {...column.getHeaderProps()}
-                    key={column.id}
-                    className={`${
-                      currentFilter === column.id
-                        ? "bg-[#34A853] text-white "
-                        : "bg-white "
-                    } ${
-                      column.id === "actions" && " hidden "
-                    } rounded p-2 whitespace-nowrap text-center `}
-                    onClick={() => {
-                      setCurrentFilter(column.id);
-                      column.toggleSortBy();
-                    }}
-                  >
-                    {column.render("Header")}
-                  </button>
-                ))}
-              </div>
-            ))} */}
           </div>
         </div>
       </div>

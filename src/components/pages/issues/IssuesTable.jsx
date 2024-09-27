@@ -41,6 +41,10 @@ const IssuesTable = () => {
         Header: "الحالة",
         accessor: "status",
       },
+      {
+        Header: "actions2",
+        accessor: "actions2",
+      },
     ],
     []
   );
