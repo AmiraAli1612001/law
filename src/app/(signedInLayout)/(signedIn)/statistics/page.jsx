@@ -1,6 +1,7 @@
 "use client";
+import "./styles/statistics.css";
 import ChartWrapper from "@/components/shared/charts/ChartWrapper";
-import React from "react";
+import React, { useRef, useState } from "react";
 import monthsSalaryData from "@/fakeData/monthsSalaryData.json";
 import issuesData from "@/fakeData/issuesData.json";
 import HRData from "@/fakeData/HRData.json";
@@ -9,7 +10,14 @@ import DataItem from "@/components/pages/statistics/DataItem";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Bar, Line } from "react-chartjs-2";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+
 const Statistics = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef();
   const dataItems = [
     {
       title: "ايرادات الشهر السابق",
@@ -32,59 +40,100 @@ const Statistics = () => {
       value: "85",
     },
   ];
+  const swipeTo = (index) => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(index);
+    }
+  };
   return (
-    <ScreenWrapper className="flex  gap-4 py-4">
-      <section className="grid grid-cols-1 h-fit gap-4 [&>div]:bg-bgGreen">
+    <ScreenWrapper className="flex  gap-4 py-4 statistics">
+      <section className="grid grid-cols-1 h-fit gap-4 [&>div]:bg-bgGreen w-[250px]">
         {dataItems.map((item, index) => (
           <DataItem key={index} title={item.title} value={item.value} />
         ))}
       </section>
-      <div className="flex flex-col flex-1 gap-4">
-        <ChartWrapper
-          title="الايرادات الشهرية"
-          Chart={Line}
-          labels={[
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            // "November",
-            // "December",
-          ]}
-          datasets={[
-            {
-              label: "الايرادات الشهرية",
-              data: monthsSalaryData.map((e) => e.salary),
-            },
-          ]}
-          data={monthsSalaryData}
-        />
-        <ChartWrapper
-          Chart={Bar}
-          labels={HRData.map((e) => e.name)}
-          data={HRData}
-          title="احصائيات الموظفين"
-          datasets={[
-            {
-              label: "ربحية الموظف",
-              data: HRData.map((e) => e.success),
-            },
-            {
-              label: "عدد القضايا",
-              data: HRData.map((e) => e.issues),
-            },
-            {
-              label: "عدد العقود",
-              data: HRData.map((e) => e.contracts),
-            },
-          ]}
-        />
+      <div className="flex-1 w-[calc(100%-250px)]">
+        <nav>
+          <ul className="flex gap-4 items-center px-4">
+            {["الايرادات الشهرية", "احصائيات الموظفين", "الجلسات الحالية"].map(
+              (item, index) => (
+                <li
+                  key={index}
+                  onClick={() => {
+                    setActiveIndex(index);
+                    swipeTo(index);
+                  }}
+                  className={`${
+                    index === swiperRef.current?.activeIndex ? " active " : ""
+                  } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
+                >
+                  {item}
+                </li>
+              )
+            )}
+          </ul>
+        </nav>
+        <Swiper
+          spaceBetween={5}
+          slidesPerView={1}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          className="!w-auto"
+        >
+          <SwiperSlide>
+            <ChartWrapper
+              // title="الايرادات الشهرية"
+              Chart={Line}
+              labels={[
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                // "November",
+                // "December",
+              ]}
+              datasets={[
+                {
+                  label: "الايرادات الشهرية",
+                  data: monthsSalaryData.map((e) => e.salary),
+                },
+                {
+                  label: "المصروفات الشهرية",
+                  data: monthsSalaryData.map((e) => e.salary / 2.1),
+                },
+              ]}
+              data={monthsSalaryData}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ChartWrapper
+              Chart={Bar}
+              labels={HRData.map((e) => e.name)}
+              data={HRData}
+              // title="احصائيات الموظفين"
+              datasets={[
+                {
+                  label: "ربحية الموظف",
+                  data: HRData.map((e) => e.success),
+                },
+                {
+                  label: "عدد القضايا",
+                  data: HRData.map((e) => e.issues),
+                },
+                {
+                  label: "عدد العقود",
+                  data: HRData.map((e) => e.contracts),
+                },
+              ]}
+            />
+          </SwiperSlide>
+          <SwiperSlide>3</SwiperSlide>
+        </Swiper>
       </div>
     </ScreenWrapper>
   );

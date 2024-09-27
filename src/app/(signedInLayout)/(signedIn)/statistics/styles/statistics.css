@@ -1,0 +1,7 @@
+.statistics nav ul li {
+  @apply text-[#a6b8bb] hover:text-[#008f5b] transition-all block whitespace-nowrap;
+}
+.statistics nav ul li:hover, .statistics nav ul li.active {
+  color: var(--text-green);
+  font-weight: bold;
+}/*# sourceMappingURL=statistics.css.map */
