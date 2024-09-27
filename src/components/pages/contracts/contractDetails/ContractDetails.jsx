@@ -9,7 +9,7 @@ import "swiper/css";
 import Parties from "./parties/Parties";
 import Clauses from "./clauses/Clauses";
 
-const ContractDetails = ({ id }) => {
+const ContractDetails = ({ id, contractData }) => {
   const [active, setActive] = useState(0);
   const outerSwiperRef = useRef(null);
   const innnerSwiperRef = useRef(null);
@@ -36,11 +36,12 @@ const ContractDetails = ({ id }) => {
   return (
     <div className="issue-details flex">
       <Swiper
-        spaceBetween={50}
+        spaceBetween={0}
         slidesPerView={1}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => (outerSwiperRef.current = swiper)}
         className="w-full"
+        allowTouchMove={false}
       >
         <SwiperSlide className="w-auto">
           <div className="issue-details flex w-full">
@@ -68,7 +69,9 @@ const ContractDetails = ({ id }) => {
                 slidesPerView={1}
                 onSlideChange={() => console.log("slide change")}
                 onSwiper={(swiper) => (innnerSwiperRef.current = swiper)}
-                className="w-full overflow-hidden"
+                className="w-full overflow-hidden [&>*>*.swiper-slide]:p-4"
+                allowTouchMove={false}
+
               >
                 {/* موضوع العقد*/}
                 <SwiperSlide>

@@ -1,0 +1,9 @@
+.issue-details-header::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--text-green);
+}

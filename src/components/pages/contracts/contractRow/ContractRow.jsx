@@ -1,7 +1,8 @@
+import Link from "next/link";
 import React from "react";
 
 const ContractRow = ({
-  data: { id, date, title, firstParty, secondParty, status },
+  data: { id, date, title, firstParty, secondParty, status },swipe
 }) => {
   // console.log(data)
   // const cellStyles =;
@@ -35,12 +36,13 @@ const ContractRow = ({
           <p className="row-data-content">{status}</p>
         </div>
         <div className="flex gap-2 items-center">
-          <button
+          <Link
             className="bg-[#048D5A] text-white px-4 py-2 rounded text-sm"
-            onClick={() => setState(!state)}
+            href={`/contracts/${id}`}
+            // onClick={() => swipe(1)}
           >
             التفاصيل
-          </button>
+          </Link>
           <button
             className="bg-mainRed bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
             onClick={() => dispatch(toggleEditEmployee(id))}

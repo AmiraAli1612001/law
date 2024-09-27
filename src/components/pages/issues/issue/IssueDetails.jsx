@@ -44,6 +44,7 @@ const IssueDetails = ({ id }) => {
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => (outerSwiperRef.current = swiper)}
         className="w-full"
+        allowTouchMove={false}
       >
         <SwiperSlide className="w-auto">
           <div className="issue-details flex w-full">
@@ -72,6 +73,7 @@ const IssueDetails = ({ id }) => {
                 onSlideChange={() => console.log("slide change")}
                 onSwiper={(swiper) => (innnerSwiperRef.current = swiper)}
                 className="w-full overflow-hidden"
+                allowTouchMove={false}
               >
                 {/* موضوع الدعوي */}
                 <SwiperSlide>
