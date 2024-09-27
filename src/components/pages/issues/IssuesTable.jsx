@@ -1,5 +1,5 @@
 "use client";
-import "./issuesTable.css";
+import "./styles/issuesTable.css";
 import React, { useMemo } from "react";
 
 import issuesData from "@/fakeData/issuesData.json";

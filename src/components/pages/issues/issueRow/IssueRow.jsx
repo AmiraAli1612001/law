@@ -92,7 +92,7 @@ const IssueRow = ({
         <div className="flex gap-4">
           <div className="border-textGreen border [&>*]:p-4 rounded">
             <section className="!pb-0">
-              <h3 className="text-textGreen font-medium text-lg">غير نهائي</h3>
+              <h3 className="text-green-900 font-bold text-xl">غير نهائي</h3>
             </section>
             <ul className="issueInnerDetails flex flex-col gap-1">
               <li>
@@ -102,6 +102,14 @@ const IssueRow = ({
               <li>
                 <p>صفة الحكم</p>
                 <p>حكم منهي للخصومة</p>
+              </li>
+              <li>
+                <p>المحكمة</p>
+                <p>المحكمة العامة</p>
+              </li>
+              <li>
+                <p>الدائرة</p>
+                <p>الدائرة الحجزئية العامة</p>
               </li>
             </ul>
             <section className="flex justify-between gap-4 border-t border-gray-400">

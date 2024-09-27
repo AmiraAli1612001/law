@@ -19,64 +19,77 @@
   color: green;
 } */
 table td:nth-child(1) {
+  width: -moz-fit-content;
   width: fit-content;
   max-width: 100px;
 }
-.issueRow {
-  @media screen and (min-width: 1024px) {
-    height: 98px;
-  }
-}
+
 .issueRow > div {
   display: flex;
-
   flex-direction: column;
   padding: 8px;
   gap: 4px;
-  @media screen and (min-width: 1024px) {
+}
+.issueRow > div > p:first-child {
+  color: var(--text-green);
+  font-size: 12px;
+  line-height: 16px;
+}
+@media screen and (min-width: 1024px) {
+  .issueRow > div > p:first-child {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+.issueRow > div > p:last-child {
+  font-size: 16px;
+  font-weight: 500;
+}
+@media screen and (min-width: 1024px) {
+  .issueRow > div > p:last-child {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .issueRow > div {
     width: calc((100% - 100px) / 8);
     padding: 16px;
     gap: 8px;
   }
 }
-.issueRow>div>p:first-child{
-  color: var(--text-green);
-  font-size: 12px;
-  line-height: 16px;
-  @media screen and (min-width: 1024px) {
-    font-size: 14px;
-    line-height: 20px;
+@media screen and (min-width: 1024px) {
+  .issueRow > div {
+    height: 98px;
   }
 }
-.issueRow>div>p:last-child{
-  font-size: 16px;
-  font-weight: 500;
-  @media screen and (min-width: 1024px) {
-    font-size: 20px;
-  }
-}
+
 .row-data-content {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
+
 /* .issueInnerDetails{
-  
+
 } */
-.issueInnerDetails li{
+.issueInnerDetails li {
+  font-weight: bold;
   display: flex;
   justify-content: space-between;
   gap: 24px;
 }
-.issueInnerDetails li p:first-child{
+.issueInnerDetails li p:first-child {
+  color: var(--text-green);
   width: 80px;
   white-space: nowrap;
 }
-.issueInnerDetails li p:last-child{
-  flex:1;
+.issueInnerDetails li p:last-child {
+  flex: 1;
 }
-.issueInnerDetailsWrapper{
+
+.issueInnerDetailsWrapper {
   height: 0;
-  padding: 0!important;
+  padding: 0 !important;
 }
-/* "flex flex-col gap-2 [&>p:first-child]:text-xs [&>p:last-child]:font-semibold [&>p:first-child]:whitespace-nowrap [ h-full" */
+
+/* "flex flex-col gap-2 [&>p:first-child]:text-xs [&>p:last-child]:font-semibold [&>p:first-child]:whitespace-nowrap [ h-full" *//*# sourceMappingURL=issuesTable.css.map */
