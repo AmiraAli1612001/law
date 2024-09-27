@@ -10,7 +10,7 @@ const ContractsTable = () => {
     () => [
       {
         Header: "actions",
-        accessor: "null",
+        accessor: "actions",
       },
       {
         Header: "رقم العقد",

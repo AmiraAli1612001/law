@@ -12,7 +12,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
   const tableColumns = useMemo(() => columns, []);
   const [searchFilter, setSearchFilter] = useState("");
   const [filterMenuActive, setFilterMenuActive] = useState(false);
-  const [currentFiler, setCurrentFiler] = useState("");
+  const [currentFilter, setCurrentFilter] = useState("");
   const data = useMemo(
     () =>
       tableData.filter((ele) =>
@@ -60,7 +60,6 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
           viewBox="0 0 24 24"
           className=""
         >
-          
           <path
             fill="none"
             stroke="#34A853"
@@ -122,24 +121,55 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
           <h2 className="text-3xl">تصفية</h2>
           <div>
             <h3 className="mb-2">ترتيب حسب:</h3>
-            {headerGroups.map((headerGroup) => (
+            {headerGroups.map((headerGroup, i) => (
+              <div
+                {...headerGroup.getHeaderGroupProps()}
+                key={i}
+                className="grid grid-cols-2 gap-2"
+              >
+                {headerGroup.headers.map((column, i) => (
+                  <button
+                    onClick={() => {
+                      setCurrentFilter(column.id);
+                    }}
+                    className={`${
+                      column.id === "actions" && " hidden "
+                    }`}
+                  >
+                    <span
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      className={`${
+                        currentFilter === column.id
+                          ? "bg-[#34A853] text-white "
+                          : "bg-white "
+                      }  rounded p-2 whitespace-nowrap text-center inline-block w-full`}
+                      key={i}
+                    >
+                      {column.render("Header")}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            ))}
+            {/* {headerGroups.map((headerGroup) => (
               <div
                 {...headerGroup.getHeaderGroupProps()}
                 key={headerGroup.id}
                 className="grid grid-cols-2 gap-2"
-
               >
                 {headerGroup.headers.map((column) => (
                   <button
                     {...column.getHeaderProps()}
                     key={column.id}
                     className={`${
-                      currentFiler === column.id
+                      currentFilter === column.id
                         ? "bg-[#34A853] text-white "
                         : "bg-white "
-                    }  rounded p-2 whitespace-nowrap text-center `}
+                    } ${
+                      column.id === "actions" && " hidden "
+                    } rounded p-2 whitespace-nowrap text-center `}
                     onClick={() => {
-                      setCurrentFiler(column.id);
+                      setCurrentFilter(column.id);
                       column.toggleSortBy();
                     }}
                   >
@@ -147,7 +177,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
                   </button>
                 ))}
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
@@ -169,7 +199,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
         </button>
         <button>{state.pageIndex + 1}</button>
         <span>...</span>
-        
+
         <button onClick={() => gotoPage(pageCount - 1)}>{pageCount}</button>
         <button
           className="prev"

@@ -10,7 +10,7 @@ const HRTable = () => {
     () => [
       {
         Header: "actions",
-        accessor: "null",
+        accessor: "actions",
       },
       {
         Header: "رقم الموظف",

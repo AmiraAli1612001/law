@@ -4,69 +4,69 @@
     "title": "january",
     "date": "1/1/2024",
     "salary": "657.58",
-    "status": true
+    "status": 1
   },
   {
     "id": 2,
     "title": "february",
     "date": "2/1/2024",
     "salary": "70.50",
-    "status": true
+    "status": 1
   },
   {
     "id": 3,
     "title": "march",
     "date": "3/1/2024",
     "salary": "855.26",
-    "status": false
+    "status": 2
   },
   {
     "id": 4,
     "title": "april",
     "date": "4/1/2024",
     "salary": "448.78",
-    "status": false
+    "status": 2
   },
   {
     "id": 5,
     "title": "may",
     "date": "5/1/2024",
     "salary": "487.73",
-    "status": false
+    "status": 2
   },
   {
     "id": 6,
     "title": "june",
     "date": "6/1/2024",
     "salary": "960.07",
-    "status": false
+    "status": 2
   },
   {
     "id": 7,
     "title": "july",
     "date": "7/1/2024",
     "salary": "69.08",
-    "status": false
+    "status": 2
   },
   {
     "id": 8,
     "title": "august",
     "date": "8/1/2024",
     "salary": "22.88",
-    "status": false
+    "status": 2
   },
   {
     "id": 9,
     "title": "september",
     "date": "9/1/2024",
     "salary": "22.23",
-    "status": true
+    "status": 1
   },
   {
     "id": 10,
     "title": "october",
     "date": "10/1/2024",
     "salary": "52.23",
-    "status": true
+    "status": 1
   }
 ]

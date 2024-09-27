@@ -11,7 +11,7 @@ const IssuesTable = () => {
     () => [
       {
         Header: "actions",
-        accessor: "null",
+        accessor: "actions",
       },
       {
         Header: "رقم القضية",

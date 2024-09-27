@@ -4,7 +4,7 @@ import { Line } from "react-chartjs-2";
 import { toggleEditEmployee } from "@/globalState/Features/popupsSlice";
 import { useDispatch } from "react-redux";
 const HRRow = ({
-  data: { id, name, title, department, status, vacations, work, loans, salary },
+  data: { id, name, title, department, status : status2, vacations, work, loans, salary },
 }) => {
   const [state, setState] = useState(false);
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const HRRow = ({
           <p className="">{department}</p>
         </div>
         <div className="row-data-content">
-          <p className="">{status ? "مفعل" : "غير مفعل"}</p>
+          <p className="">{status2 == 1 ? "مفعل" : "غير مفعل"}</p>
         </div>
         <div className="flex gap-2 items-center">
           <button
