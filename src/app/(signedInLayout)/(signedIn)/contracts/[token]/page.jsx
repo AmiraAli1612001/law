@@ -9,7 +9,12 @@ const Issue = ({ params: { token } }) => {
   const { title, date, status } = contractData;
   return (
     <ScreenWrapper className="flex-1 p-4 flex flex-col gap-4">
-      <LinkHeader to={`/issues/${token}`} title={`ملف القضية رقم ${token}`} />
+      <LinkHeader
+        title={`العقود`}
+        to={`/contracts`}
+        title2={`ملف العقد رقم ${token}`}
+        to2={`/contracts/${token}`}
+      />
       <div className="flex flex-col gap-4">
         {/*start  */}
         <div
