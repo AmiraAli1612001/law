@@ -1,5 +1,5 @@
 "use client";
-// import "./issuesTable.css";
+import "./customTable.css";
 import React, { useMemo, useState } from "react";
 import {
   useGlobalFilter,
@@ -63,9 +63,9 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
           <path
             fill="none"
             stroke="#34A853"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
             d="m17 17l4 4M3 11a8 8 0 1 0 16 0a8 8 0 0 0-16 0"
           />
         </svg>
@@ -88,8 +88,8 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
             <path
               fill="none"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeWidth="2"
               d="M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z"
             />
           </svg>
@@ -121,16 +121,19 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
             <h3 className="mb-2">ترتيب حسب:</h3>
             {headerGroups.map((headerGroup) => (
               <div
-                key={headerGroup.id}
                 {...headerGroup.getHeaderGroupProps()}
+                key={headerGroup.id}
                 className="grid grid-cols-2 gap-2"
+
               >
                 {headerGroup.headers.map((column) => (
                   <button
-                    key={column.id}
                     {...column.getHeaderProps()}
+                    key={column.id}
                     className={`${
-                      currentFiler === column.id ? "bg-[#34A853] text-white " : "bg-white "
+                      currentFiler === column.id
+                        ? "bg-[#34A853] text-white "
+                        : "bg-white "
                     }  rounded p-2 whitespace-nowrap text-center `}
                     onClick={() => {
                       setCurrentFiler(column.id);
@@ -146,7 +149,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
         </div>
       </div>
       {/* TABLE PAGINATION */}
-      <div className="flex justify-center pt-4 gap-1 courses-paginaion">
+      <div className="flex justify-center pt-4 gap-1 table-paginaion">
         <button className="next" onClick={nextPage} disabled={!canNextPage}>
           <svg
             width="8"
@@ -161,7 +164,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
             />
           </svg>
         </button>
-        <button onClick={() => gotoPage(0)}>1</button>
+        <button>{state.pageIndex + 1}</button>
         <span>...</span>
         <button onClick={() => gotoPage(pageCount - 1)}>{pageCount}</button>
         <button
