@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 const Appointment = () => {
   const [isHijri, setIsHijri] = useState(false);
   const isHijriDate = useSelector((state) => state?.formats?.isHijriDate);
+  
   // const islamicDate = moment().format("iYYYY-iMM-iDD"); // Hijri Date
   return (
     <li className="border border-gray-200 p-3 rounded items-center flex flex-1 gap-3 font-medium">
