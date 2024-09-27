@@ -60,6 +60,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
           viewBox="0 0 24 24"
           className=""
         >
+          
           <path
             fill="none"
             stroke="#34A853"
