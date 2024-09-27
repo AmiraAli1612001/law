@@ -9,7 +9,7 @@ const Issue = ({ params: { token } }) => {
   const { type, date, status } = issueData;
   return (
     <ScreenWrapper className="flex-1 p-4 flex flex-col gap-4">
-      <LinkHeader title={`ملف القضية رقم ${token}`} />
+      <LinkHeader to={`/issues/${token}`} title={`ملف القضية رقم ${token}`} />
       <div className="flex flex-col gap-4">
         {/*start  */}
         <div
@@ -27,7 +27,7 @@ const Issue = ({ params: { token } }) => {
             </p>
           </div>
         </div>
-        <IssueDetails issueData={issueData} />
+        <IssueDetails id={token} issueData={issueData} />
         {/*end  */}
       </div>
     </ScreenWrapper>
