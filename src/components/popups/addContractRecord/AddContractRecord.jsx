@@ -40,7 +40,7 @@ const AddContractRecord = () => {
       id="addIssueRecord"
     >
       <div className="small-inputs">
-        {/* contractt name ! contractName*/}
+        {/* contract name ! */}
         <div className="input">
           <label htmlFor="">العنوان</label>
           <input
@@ -54,7 +54,7 @@ const AddContractRecord = () => {
           />
           <p className="input-error">{errors.contractName?.message}</p>
         </div>
-        {/* name arabic ! arabicName*/}
+        {/* contractNumber !*/}
         <div className="input">
           <label htmlFor="">رقم العقد</label>
           <input
@@ -68,7 +68,7 @@ const AddContractRecord = () => {
           />
           <p className="input-error">{errors.contractNumber?.message}</p>
         </div>
-        {/* name arabic ! arabicName*/}
+        {/* contractDate ! */}
         <div className="input">
           <label htmlFor="">تاريخ العقد</label>
           <input

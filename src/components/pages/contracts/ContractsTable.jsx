@@ -1,5 +1,5 @@
 "use client";
-import "./contractTable.css";
+import "./styles/contractTable.css";
 import React, { useMemo } from "react";
 import CustomTable from "../../shared/customTable/CustomTable";
 import ContractRow from "./contractRow/ContractRow";

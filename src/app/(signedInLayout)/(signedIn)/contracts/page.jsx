@@ -1,4 +1,5 @@
 import ContractsTable from "@/components/pages/contracts/ContractsTable";
+import ContractsWrapper from "@/components/pages/contracts/ContractsWrapper";
 import AddRecord from "@/components/shared/addRecord/AddRecord";
 import LinkHeader from "@/components/shared/pageShared/linkHeader/LinkHeader";
 import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper";
@@ -11,7 +12,7 @@ const Contracts = () => {
         <AddRecord recordType={2} title={"اضافة عقد"} />
       </div>
       <div>
-        <ContractsTable />
+        <ContractsWrapper />
       </div>
     </ScreenWrapper>
   );

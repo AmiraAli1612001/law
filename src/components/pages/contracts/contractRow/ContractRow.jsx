@@ -6,36 +6,56 @@ const ContractRow = ({
   // console.log(data)
   // const cellStyles =;
   return (
+    <div className="">
+      <div
+        className={`bg-bgGreen flex gap-2 p-4 items-center custom-row rounded-lg relative`}
+      >
+        <div className={`w-[10%]`}>
+          <p>رقم العقد</p>
+          <p className="text-2xl row-data-content">{id}</p>
+        </div>
+        <div className="row-data-content">
+          <p>تاريخ العقد</p>
+          <p>{date}</p>
+        </div>
+        <div className="row-data-content">
+          <p>نوع العقد</p>
+          <p className="row-data-content">{title}</p>
+        </div>
+        <div className="row-data-content">
+          <p>الطرف الاول</p>
+          <p className="row-data-content">{firstParty}</p>
+        </div>
+        <div className="row-data-content">
+          <p>الطرف الثاني</p>
+          <p className="row-data-content">{secondParty}</p>
+        </div>
+        <div className="row-data-content">
+        <p>الحالة</p>
+          <p className="row-data-content">{status}</p>
+        </div>
+        <div className="flex gap-2 items-center">
+          <button
+            className="bg-[#048D5A] text-white px-4 py-2 rounded text-sm"
+            onClick={() => setState(!state)}
+          >
+            التفاصيل
+          </button>
+          <button
+            className="bg-mainRed bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
+            onClick={() => dispatch(toggleEditEmployee(id))}
+          >
+            تعديل
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+  return (
     <div className="shadow">
       <div
         className={`[&>div]:flex-1 [&>div>p:nth-child(1)]:text-xs [&>div>p]:font-semibold flex flex-col lg:flex-row gap-1 issueRow shadow rounded-lg`}
       >
-        {/* <button
-          className={`p-4 h-full flex items-center justify-center bg-[#FAF9F4] bg-textGreen cursor-pointer order-12 lg:order-none`}
-          onClick={(e) => {
-            // console.log(e.target.parentElement.parentElement);
-            e.target.parentElement.nextElementSibling.classList.toggle(
-              "issueInnerDetailsWrapper"
-            );
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="48"
-            height="48"
-            viewBox="0 0 24 24"
-            fill="none"
-            className="pointer-events-none"
-          >
-            <rect width="24" height="24" fill="none" />
-            <path
-              d="M12 6L12 18M12 18L17 13M12 18L7 13"
-              stroke="#FFFFFF"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button> */}
         <div className={` bg-[#FAF9F4]`}>
           <p>رقم العقد</p>
           <p className="text-2xl row-data-content">{id}</p>
