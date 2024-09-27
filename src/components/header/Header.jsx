@@ -244,11 +244,12 @@ const Header = () => {
                   </svg>
                 </NavItem>
                 <NavItem
-                  subList={[
-                    { title: "إصدار العقود", to: "/contracts?action=create" },
-                    { title: "قائمة العقود", to: "/contracts" },
-                    { title: "العقود المفتوحة", to: "/contracts?filter=open" },
-                  ]}
+                to="/contracts"
+                  // subList={[
+                  //   { title: "إصدار العقود", to: "/contracts?action=create" },
+                  //   { title: "قائمة العقود", to: "/contracts" },
+                  //   { title: "العقود المفتوحة", to: "/contracts?filter=open" },
+                  // ]}
                   title="العقود"
                 >
                   <svg
