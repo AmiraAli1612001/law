@@ -1,4 +1,4 @@
-.courses-paginaion > * {
+/* .courses-paginaion > * {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@
 .courses-paginaion .prev:not(:disabled):hover {
   border: 1px solid green;
   color: green;
-}
+} */
 table td:nth-child(1) {
   width: fit-content;
   max-width: 100px;

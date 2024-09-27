@@ -1,0 +1,43 @@
+.issue-sessions-table {
+  border-spacing: 0 4px;
+  border-collapse: separate;
+  thead {
+    tr {
+      background-color: #F1F0F8 ;
+      position: relative;
+
+      // #F1F0F8 #9586f5
+      th {
+        padding: 16px ;
+        color:black;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background-color: #9586f5;
+      }
+    }
+  }
+  tbody {
+    tr {
+      position: relative;
+      background-color: var(--bg-green);
+      td{
+        padding: 16px;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background-color: var(--text-green);
+      }
+    }
+  }
+}

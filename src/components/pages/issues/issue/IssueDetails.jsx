@@ -1,9 +1,11 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import "./style/issueDetails.css";
+import Sessions from "./sessions/Sessions";
 
 const IssueDetails = () => {
   const [active, setActive] = useState(0);
+  console.log(active);
   const sections = [
     "موضوع الدعوي",
     "مذكرة الدفاع الاولي",
@@ -20,7 +22,11 @@ const IssueDetails = () => {
       <nav className="bg-white drop-shadow w-max h-fit">
         <ul>
           {sections.map((section, index) => (
-            <li key={index} onClick={() => setActive(index)}>
+            <li
+              key={index}
+              className={`${active === index && "active"}`}
+              onClick={() => setActive(index)}
+            >
               {section}
             </li>
           ))}
@@ -30,7 +36,6 @@ const IssueDetails = () => {
         <ul>
           {/* موضوع الدعوي */}
           <li className={!(active === 0) && " !hidden "}>
-
             <label htmlFor="">موضوع الدعوي</label>
             <section name="" disabled id="">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum
@@ -58,7 +63,9 @@ const IssueDetails = () => {
           {/* اطراف الدعوي */}
           <li className={!(active === 2) && " !hidden "}>3</li>
           {/* الجلسات */}
-          <li className={!(active === 3) && " !hidden "}>4</li>
+          <li className={!(active === 3) && " !hidden "}>
+            <Sessions />
+          </li>
           {/* الاحكام */}
           <li className={!(active === 4) && " !hidden "}>5</li>
           {/* الطلبات */}

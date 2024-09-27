@@ -33,57 +33,59 @@ const Statistics = () => {
     },
   ];
   return (
-    <ScreenWrapper className="flex flex-col gap-4 py-4">
-      <section className="grid grid-cols-4 gap-4 [&>div]:bg-bgGreen">
+    <ScreenWrapper className="flex  gap-4 py-4">
+      <section className="grid grid-cols-1 h-fit gap-4 [&>div]:bg-bgGreen">
         {dataItems.map((item, index) => (
           <DataItem key={index} title={item.title} value={item.value} />
         ))}
       </section>
-      <ChartWrapper
-      title="الايرادات الشهرية"
-        Chart={Line}
-        labels={[
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          // "November",
-          // "December",
-        ]}
-        datasets={[
-          {
-            label: "الايرادات الشهرية",
-            data: monthsSalaryData.map((e) => e.salary),
-          },
-        ]}
-        data={monthsSalaryData}
-      />
-      <ChartWrapper
-        Chart={Bar}
-        labels={HRData.map((e) => e.name)}
-        data={HRData}
-        title="احصائيات الموظفين"
-        datasets={[
-          {
-            label: "ربحية الموظف",
-            data: HRData.map((e) => (e.success)),
-          },
-          {
-            label: "عدد القضايا",
-            data: HRData.map((e) => e.issues),
-          },
-          {
-            label: "عدد العقود",
-            data: HRData.map((e) => e.contracts),
-          },
-        ]}
-      />
+      <div className="flex flex-col flex-1 gap-4">
+        <ChartWrapper
+          title="الايرادات الشهرية"
+          Chart={Line}
+          labels={[
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            // "November",
+            // "December",
+          ]}
+          datasets={[
+            {
+              label: "الايرادات الشهرية",
+              data: monthsSalaryData.map((e) => e.salary),
+            },
+          ]}
+          data={monthsSalaryData}
+        />
+        <ChartWrapper
+          Chart={Bar}
+          labels={HRData.map((e) => e.name)}
+          data={HRData}
+          title="احصائيات الموظفين"
+          datasets={[
+            {
+              label: "ربحية الموظف",
+              data: HRData.map((e) => e.success),
+            },
+            {
+              label: "عدد القضايا",
+              data: HRData.map((e) => e.issues),
+            },
+            {
+              label: "عدد العقود",
+              data: HRData.map((e) => e.contracts),
+            },
+          ]}
+        />
+      </div>
     </ScreenWrapper>
   );
 };

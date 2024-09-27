@@ -1,0 +1,37 @@
+.issue-sessions-table {
+  border-spacing: 0 4px;
+  border-collapse: separate;
+}
+.issue-sessions-table thead tr {
+  background-color: #F1F0F8;
+  position: relative;
+}
+.issue-sessions-table thead tr th {
+  padding: 16px;
+  color: black;
+}
+.issue-sessions-table thead tr::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: #9586f5;
+}
+.issue-sessions-table tbody tr {
+  position: relative;
+  background-color: var(--bg-green);
+}
+.issue-sessions-table tbody tr td {
+  padding: 16px;
+}
+.issue-sessions-table tbody tr::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--text-green);
+}/*# sourceMappingURL=sessions.css.map */

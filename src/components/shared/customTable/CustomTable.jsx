@@ -102,6 +102,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
           filterMenuActive && " gap-1 "
         } transition-all flex w-full`}
       >
+        {/* data rows */}
         <div
           className={`${
             filterMenuActive && " w-[calc(100%-304px)] "
@@ -112,6 +113,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
             return <RenderElement key={row.original.id} data={row.original} />;
           })}
         </div>
+        {/* filter */}
         <div
           className={`${
             filterMenuActive ? " min-w-max max-w-[300px] p-4 " : " max-w-0 "

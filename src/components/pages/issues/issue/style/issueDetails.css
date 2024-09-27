@@ -3,7 +3,7 @@
   cursor: pointer;
   font-weight: 500;
 }
-.issue-details nav ul li:hover {
+.issue-details nav ul li:hover, .issue-details nav ul li.active {
   color: var(--text-green);
   background-color: var(--bg-green);
 }
