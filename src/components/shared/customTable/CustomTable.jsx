@@ -166,6 +166,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
         </button>
         <button>{state.pageIndex + 1}</button>
         <span>...</span>
+        
         <button onClick={() => gotoPage(pageCount - 1)}>{pageCount}</button>
         <button
           className="prev"
