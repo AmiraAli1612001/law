@@ -1,5 +1,5 @@
 "use client";
-import "./popups.css";
+import "./styles/popups.css";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -9,6 +9,7 @@ import AddContractRecord from "./addContractRecord/AddContractRecord";
 import { resetPopups } from "@/globalState/Features/popupsSlice";
 import Attendance from "./attendance/Attendance";
 import EditEmployee from "./editEmployee/EditEmployee";
+import AddEmployee from "./addEmployee/AddEmployee";
 
 const Popups = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Popups = () => {
   }
 
   const issueRecord = useSelector((store) => store.popups?.issueRecord);
+  const addEmployee = useSelector((store) => store.popups?.addEmployee);
   const contractRecord = useSelector((store) => store.popups?.contractRecord);
   const attendance = useSelector((store) => store.popups?.attendance);
   const editEmployee = useSelector((store) => store.popups?.editEmployee);
@@ -53,6 +55,7 @@ const Popups = () => {
           />
         </svg>
         {issueRecord && <AddIssueRecord />}
+        {addEmployee && <AddEmployee />}
         {contractRecord && <AddContractRecord />}
         {attendance && <Attendance />}
         {editEmployee && <EditEmployee />}

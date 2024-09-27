@@ -8,7 +8,7 @@ const HR = () => {
     <ScreenWrapper className="flex-1 p-4 flex flex-col gap-4">
       <div className="flex justify-between items-center">
         <LinkHeader title={"ادارة الموارد البشرية"} />
-        <AddRecord recordType={2} title={"اضافة موظف"} />
+        <AddRecord recordType={3} title={"اضافة موظف"} />
       </div>
       <div>
         <HRTable />
