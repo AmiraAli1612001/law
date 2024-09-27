@@ -53,30 +53,34 @@ const Statistics = () => {
         ))}
       </section>
       <div className="flex-1 w-[calc(100%-250px)]">
-        <nav>
-          <ul className="flex gap-4 items-center px-4">
-            {["الايرادات الشهرية", "احصائيات الموظفين", "الجلسات الحالية"].map(
-              (item, index) => (
-                <li
-                  key={index}
-                  onClick={() => {
-                    setActiveIndex(index);
-                    swipeTo(index);
-                  }}
-                  className={`${
-                    index === swiperRef.current?.activeIndex ? " active " : ""
-                  } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
-                >
-                  {item}
-                </li>
-              )
-            )}
-          </ul>
+        <nav className="flex gap-4 items-center px-4">
+          {["الايرادات الشهرية", "احصائيات الموظفين", "الجلسات الحالية"].map(
+            (item, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setActiveIndex(index);
+                  swipeTo(index);
+                }}
+                disabled={index === 2}
+                className={`${
+                  activeIndex == index
+                    ? " active "
+                    : ""
+                } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
+              >
+                {item}
+              </button>
+            )
+          )}
         </nav>
         <Swiper
           spaceBetween={5}
           slidesPerView={1}
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSwiper={(swiper) => {
+            setActiveIndex(0)
+            swiperRef.current = swiper;
+          }}
           className="!w-auto"
         >
           <SwiperSlide>
