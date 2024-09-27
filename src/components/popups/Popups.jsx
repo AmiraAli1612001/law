@@ -10,6 +10,7 @@ import { resetPopups } from "@/globalState/Features/popupsSlice";
 import Attendance from "./attendance/Attendance";
 import EditEmployee from "./editEmployee/EditEmployee";
 import AddEmployee from "./addEmployee/AddEmployee";
+import Task from "./task/Task";
 
 const Popups = () => {
   const dispatch = useDispatch();
@@ -17,11 +18,12 @@ const Popups = () => {
   const isHidden = useSelector((store) => store.popups?.isHidden);
   if (!isHidden && typeof document != "undefined") {
     document.querySelector("body").style.overflow = "hidden";
-  }else if (isHidden && typeof document != "undefined") {
+  } else if (isHidden && typeof document != "undefined") {
     document.querySelector("body").style.overflow = "auto";
   }
 
   const issueRecord = useSelector((store) => store.popups?.issueRecord);
+  const task = useSelector((store) => store.popups?.task);
   const addEmployee = useSelector((store) => store.popups?.addEmployee);
   const contractRecord = useSelector((store) => store.popups?.contractRecord);
   const attendance = useSelector((store) => store.popups?.attendance);
@@ -31,8 +33,8 @@ const Popups = () => {
   return (
     <div
       className={`${
-        isHidden && " hidden "
-      } p-4 fixed w-full h-full left-0 top-0 z-50 bg-[rgba(0,0,0,0.5)] flex items-center justify-center popups`}
+        isHidden ? " scale-0 " : " scale-100 "
+      } p-4 fixed w-full h-full left-0 top-0 z-50 bg-[rgba(0,0,0,0.5)] transition-all flex items-center justify-center popups`}
       onClick={() => dispatch(resetPopups())}
     >
       <div
@@ -55,6 +57,7 @@ const Popups = () => {
           />
         </svg>
         {issueRecord && <AddIssueRecord />}
+        {task && <Task />}
         {addEmployee && <AddEmployee />}
         {contractRecord && <AddContractRecord />}
         {attendance && <Attendance />}

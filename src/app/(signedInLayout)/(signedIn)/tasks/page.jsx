@@ -5,10 +5,9 @@ import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import { toast } from "react-toastify";
+import { store } from "@/globalState/store";
+import { toggleTask } from "@/globalState/Features/popupsSlice";
 const Issues = () => {
-  const handleDateClick = (arg) => {
-    toast(arg.dateStr);
-  };
   return (
     <ScreenWrapper className="flex-1 p-4 flex flex-col gap-4">
       <div className="flex justify-between items-center">
@@ -22,10 +21,9 @@ const Issues = () => {
           initialView="dayGridMonth"
           weekends={false}
           events={[
-            { title: "event 1", date: "2024-09-09" },
+            { title: "جلسة رقم 1", date: "2024-09-09" },
             { title: "event 2", date: "2024-09-16" },
           ]}
-          dateClick={handleDateClick}
           eventContent={renderEventContent}
         />
       </div>
@@ -33,10 +31,14 @@ const Issues = () => {
   );
 };
 function renderEventContent(eventInfo) {
-  console.log(eventInfo)
+  const handleDateClick = (arg) => {
+    // toast.info("ttt");
+    store.dispatch(toggleTask())
+  };
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 cursor-pointer" onClick={handleDateClick}>
       <b>{eventInfo.event.title}</b>
+      <i>9:00 am</i>
       <i>{eventInfo.event.startStr}</i>
     </div>
   );

@@ -1,7 +1,11 @@
 import React from "react";
 import InfoItem from "./infoItem/InfoItem";
 import Link from "next/link";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+// Import Swiper styles
+import 'swiper/css';
 const InfoBar = () => {
   return (
     <div className="bg-bgGray p-4 pb-2 gap-4 w-full h-full rounded-2xl flex flex-col md:flex-row">
