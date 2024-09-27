@@ -136,6 +136,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
                       (column.id === "actions" || column.id === "actions2") &&
                       " hidden "
                     }`}
+                    key={i}
                   >
                     <span
                       {...column.getHeaderProps(column.getSortByToggleProps())}

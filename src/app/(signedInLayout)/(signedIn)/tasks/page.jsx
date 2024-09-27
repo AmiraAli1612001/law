@@ -10,7 +10,7 @@ const Issues = () => {
         <AddRecord recordType={1} title={"اضافة قضية"} />
       </div>
       <div>
-        <IssuesTable />
+        {/* <IssuesTable /> */}
       </div>
     </ScreenWrapper>
   );
