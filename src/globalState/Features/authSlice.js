@@ -13,8 +13,9 @@ import { createSlice } from "@reduxjs/toolkit";
 //   return null;
 // };
 
-const initialState = { isHidden: false, isSignedIn: process.env.NEXT_PUBLIC_DEV??false, attendance: false };
+const initialState = { isHidden: false, isSignedIn: process.env.NEXT_PUBLIC_ENV=="dev", attendance: false };
 
+console.log(process.env.NEXT_PUBLIC_DEV)
 export const authSlice = createSlice({
   name: "auth",
   initialState,
