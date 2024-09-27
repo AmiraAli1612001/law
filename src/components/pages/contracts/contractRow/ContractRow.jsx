@@ -10,7 +10,7 @@ const ContractRow = ({
       <div
         className={`[&>div]:flex-1 [&>div>p:nth-child(1)]:text-xs [&>div>p]:font-semibold flex flex-col lg:flex-row gap-1 issueRow shadow rounded-lg`}
       >
-        <button
+        {/* <button
           className={`p-4 h-full flex items-center justify-center bg-[#FAF9F4] bg-textGreen cursor-pointer order-12 lg:order-none`}
           onClick={(e) => {
             // console.log(e.target.parentElement.parentElement);
@@ -35,7 +35,7 @@ const ContractRow = ({
               strokeLinejoin="round"
             />
           </svg>
-        </button>
+        </button> */}
         <div className={` bg-[#FAF9F4]`}>
           <p>رقم العقد</p>
           <p className="text-2xl row-data-content">{id}</p>
@@ -61,7 +61,7 @@ const ContractRow = ({
           <p className="row-data-content">{status}</p>
         </div>
       </div>
-      <div className="issueInnerDetailsWrapper overflow-hidden py-4">
+      {/* <div className="issueInnerDetailsWrapper overflow-hidden py-4">
         <h4 className="text-textGreen font-medium text-2xl">اخر التحديثات</h4>
         <div className="flex gap-4">
           <div className="border-textGreen border [&>*]:p-4 rounded">
@@ -88,7 +88,7 @@ const ContractRow = ({
             </section>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
