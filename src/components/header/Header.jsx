@@ -326,7 +326,7 @@ const Header = () => {
                     />
                   </svg>
                 </NavItem>
-                <NavItem title="المالية">
+                {/* <NavItem title="المالية">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -341,7 +341,7 @@ const Header = () => {
                       />
                     </g>
                   </svg>
-                </NavItem>
+                </NavItem> */}
               </ul>
             </nav>
           </section>
