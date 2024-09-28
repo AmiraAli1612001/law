@@ -8,17 +8,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Parties from "./parties/Parties";
 import Clauses from "./clauses/Clauses";
+import Finance from "./finance/Finance";
 
 const ContractDetails = ({ id, contractData }) => {
   const [active, setActive] = useState(0);
   const outerSwiperRef = useRef(null);
   const innnerSwiperRef = useRef(null);
-  console.log(active);
   const sections = [
     "موضوع العقد",
     "الاطراف",
     "البنود",
     "معلومات اضافية",
+    "المالية",
+    "المرفقات",
     "طباعة العقد",
   ];
 
@@ -71,7 +73,6 @@ const ContractDetails = ({ id, contractData }) => {
                 onSwiper={(swiper) => (innnerSwiperRef.current = swiper)}
                 className="w-full overflow-hidden [&>*>*.swiper-slide]:p-4"
                 allowTouchMove={false}
-
               >
                 {/* موضوع العقد*/}
                 <SwiperSlide>
@@ -119,6 +120,10 @@ const ContractDetails = ({ id, contractData }) => {
                     </section>
                   </div>
                 </SwiperSlide>
+                {/*المالية */}
+                <SwiperSlide><Finance contract={contractData}/></SwiperSlide>
+                {/* المرفقات*/}
+                <SwiperSlide>Slide 2</SwiperSlide>
                 {/* طباعة العقد */}
                 <SwiperSlide>Slide 2</SwiperSlide>
               </Swiper>

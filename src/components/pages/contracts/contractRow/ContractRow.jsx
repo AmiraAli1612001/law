@@ -1,12 +1,16 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 import "./contractRow.css";
-const ContractRow = ({
-  data: { id, date, title, firstParty, secondParty, status },
-  swipe,
-}) => {
-  // console.log(data)
-  // const cellStyles =;
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { setContract } from "@/globalState/Features/tempDataSlice";
+const ContractRow = ({ data, swipe }) => {
+  const { id, date, title, firstParty, secondParty, status } = data;
+
+  const router = useRouter()
+  const dispatch = useDispatch()
+
   return (
     <div className="">
       <div
@@ -39,6 +43,11 @@ const ContractRow = ({
         <div className="flex gap-2 items-center">
           <Link
             className="bg-[#048D5A] text-white px-4 py-2 rounded text-sm"
+            onClick={(e)=>{
+              e.preventDefault()
+              dispatch(setContract(data))
+              router.push(`/contracts/${id}`)
+            }}
             href={`/contracts/${id}`}
             // onClick={() => swipe(1)}
           >
