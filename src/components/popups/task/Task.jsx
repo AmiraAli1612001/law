@@ -65,7 +65,7 @@ const Task = () => {
             name=""
             id="date"
             {...register("date", {
-              required: "يجب كتابة الاسم الرباعي بالعربي",
+              required: "يجب ادخال التاريخ",
             })}
             placeholder=""
           />
