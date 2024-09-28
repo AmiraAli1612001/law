@@ -21,6 +21,9 @@ const Finance = ({ contract }) => {
   const contractInitialPrice = contract?.tax
     ? contract?.price - contract?.price * 0.15
     : contract?.price;
+  const finalCost =
+    contractInitialPrice -
+    (contract?.costs + (contract?.middleMan / 100) * contractInitialPrice);
   return (
     <div className="contract-finance">
       <div>
@@ -60,11 +63,7 @@ const Finance = ({ contract }) => {
       <div>
         <label>قيمة العقد بعد الخصومات</label>
         <section>
-          <span className="text-green-700">
-            {contractInitialPrice -
-              (contract?.costs +
-                (contract?.middleMan / 100) * contractInitialPrice)}
-          </span>{" "}
+          <span className="text-green-700">{finalCost.toFixed(2)}</span>{" "}
           <span className="text-base">ريال سعودي</span>
         </section>
       </div>
