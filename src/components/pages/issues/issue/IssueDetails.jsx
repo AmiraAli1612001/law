@@ -7,15 +7,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
+import Personnel from "./personnel/Personnel";
+import { useSelector } from "react-redux";
+import issuesData from "@/fakeData/issuesData.json";
 
 const IssueDetails = ({ id }) => {
   const [active, setActive] = useState(0);
   const outerSwiperRef = useRef(null);
   const innnerSwiperRef = useRef(null);
+  const issueDetails = issuesData.find((issue) => issue.id == id);
   console.log(active);
   const sections = [
     "موضوع الدعوي",
-    "مذكرة الدفاع الاولي",
+    "أطراف المسؤولية",
     "اطراف الدعوي",
     "الجلسات",
     "الاحكام",
@@ -101,12 +105,19 @@ const IssueDetails = ({ id }) => {
                     </section>
                   </div>
                 </SwiperSlide>
-                {/* مذكرة الدفاع الاولي */}
-                <SwiperSlide>Slide 2</SwiperSlide>
+                {/* أطراف المسؤولية */}
+                <SwiperSlide>
+                  <Personnel
+                    lawyer={issueDetails.lawyer}
+                    admin={issueDetails.admin}
+                  />
+                </SwiperSlide>
                 {/* اطراف الدعوي */}
                 <SwiperSlide>Slide 2</SwiperSlide>
                 {/* الجلسات */}
-                <SwiperSlide><Sessions id={id} /></SwiperSlide>
+                <SwiperSlide>
+                  <Sessions id={id} />
+                </SwiperSlide>
                 {/* الاحكام */}
                 <SwiperSlide>Slide 2</SwiperSlide>
                 {/* الطلبات */}
@@ -128,4 +139,3 @@ const IssueDetails = ({ id }) => {
 };
 
 export default IssueDetails;
-
