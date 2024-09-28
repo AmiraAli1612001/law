@@ -9,6 +9,7 @@
 .issue-sessions-table thead tr th {
   padding: 16px;
   color: black;
+  text-align: start;
 }
 .issue-sessions-table thead tr::after {
   content: "";
