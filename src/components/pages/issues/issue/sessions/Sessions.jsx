@@ -27,9 +27,9 @@ const Sessions = ({ id }) => {
             <td>1446/03/01</td>
             <td>الأربعاء</td>
             <td>
-              <button className="bg-[#048D5A] text-white px-4 py-2 rounded text-sm text-center">
+              <Link href={`/issues/${id}/sessions/${index}`} className="bg-[#048D5A] text-white px-4 py-2 rounded text-sm text-center">
                 التفاصيل
-              </button>
+              </Link>
             </td>
           </tr>
         ))}
