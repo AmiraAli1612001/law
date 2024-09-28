@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-// import "./style/issueDetails.css";
+import "./styles/contractDetails.css";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -34,7 +34,7 @@ const ContractDetails = ({ id, contractData }) => {
     }
   };
   return (
-    <div className="issue-details flex">
+    <div className="contract-details flex">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
@@ -44,7 +44,7 @@ const ContractDetails = ({ id, contractData }) => {
         allowTouchMove={false}
       >
         <SwiperSlide className="w-auto">
-          <div className="issue-details flex w-full">
+          <div className="contract-details flex w-full">
             <nav className="bg-white drop-shadow w-[160px] h-fit">
               <ul className="w-full">
                 {sections.map((section, index) => (
@@ -63,7 +63,7 @@ const ContractDetails = ({ id, contractData }) => {
                 ))}
               </ul>
             </nav>
-            <div className="issue-sections-details w-[calc(100%-160px)]">
+            <div className="contract-sections-details w-[calc(100%-160px)]">
               <Swiper
                 spaceBetween={0}
                 slidesPerView={1}

@@ -36,7 +36,7 @@ export const popupsSlice = createSlice({
           state.isHidden = !state.isHidden;
           // state.isHidden = true;
           break;
-        case 2:
+        case "record":
           // contract popup
           state.contractRecord = !state.contractRecord;
           state.isHidden = !state.isHidden;

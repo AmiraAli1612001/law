@@ -1,38 +1,39 @@
 import Link from "next/link";
 import React from "react";
-
+import "./contractRow.css";
 const ContractRow = ({
-  data: { id, date, title, firstParty, secondParty, status },swipe
+  data: { id, date, title, firstParty, secondParty, status },
+  swipe,
 }) => {
   // console.log(data)
   // const cellStyles =;
   return (
     <div className="">
       <div
-        className={`bg-bgGreen flex gap-2 p-4 items-center custom-row rounded-lg relative`}
+        className={`bg-bgGreen flex gap-2 p-4 items-center contract-row custom-row rounded-lg relative`}
       >
         <div className={`w-[10%]`}>
           <p>رقم العقد</p>
           <p className="text-2xl row-data-content">{id}</p>
         </div>
-        <div className="row-data-content">
+        <div>
           <p>تاريخ العقد</p>
-          <p>{date}</p>
+          <p className="row-data-content">{date}</p>
         </div>
-        <div className="row-data-content">
+        <div>
           <p>نوع العقد</p>
           <p className="row-data-content">{title}</p>
         </div>
-        <div className="row-data-content">
+        <div>
           <p>الطرف الاول</p>
           <p className="row-data-content">{firstParty}</p>
         </div>
-        <div className="row-data-content">
+        <div>
           <p>الطرف الثاني</p>
           <p className="row-data-content">{secondParty}</p>
         </div>
-        <div className="row-data-content">
-        <p>الحالة</p>
+        <div>
+          <p>الحالة</p>
           <p className="row-data-content">{status}</p>
         </div>
         <div className="flex gap-2 items-center">

@@ -1,0 +1,25 @@
+.contract-details nav ul li:hover, .contract-details nav ul li.active {
+  color: var(--text-green);
+  background-color: var(--bg-green);
+}
+.contract-details .contract-sections-details .swiper-wrapper .swiper-slide {
+  padding: 16px;
+}
+.contract-details .contract-sections-details .swiper-wrapper .swiper-slide > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+}
+.contract-details .contract-sections-details .swiper-wrapper .swiper-slide > div label {
+  font-weight: 500;
+  font-size: 18px;
+}
+.contract-details .contract-sections-details .swiper-wrapper .swiper-slide > div section {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 16px;
+  font-size: 20px;
+  width: 100%;
+  height: auto;
+}/*# sourceMappingURL=contractDetails.css.map */

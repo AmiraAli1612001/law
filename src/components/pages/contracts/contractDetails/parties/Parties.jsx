@@ -2,7 +2,20 @@ import React from 'react'
 
 const Parties = () => {
   return (
-    <div>Parties</div>
+    <div>
+      <div>
+        <label>الطرف الاول</label>
+        <section>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio repellendus inventore quam. Consequuntur culpa officiis provident natus illum autem eius aliquid eos doloremque.
+        </section>
+      </div>
+      <div>
+        <label>الطرف الثاني</label>
+        <section>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio repellendus inventore quam. Consequuntur culpa officiis provident natus illum autem eius aliquid eos doloremque.
+        </section>
+      </div>
+    </div>
   )
 }
 
