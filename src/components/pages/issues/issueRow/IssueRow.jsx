@@ -10,16 +10,22 @@ import Link from "next/link";
 import React from "react";
 
 const IssueRow = ({
-  data: {
-    id,
-    date,
-    type,
-    character,
-    prosecutor,
-    defendant,
-    status: issueStatus,
-  },
+  data: { id, date, type, client, prosecutor, defendant, status: issueStatus },
 }) => {
+  // {
+  //   "id": 49,
+  //   "title": "عقد استشارة",
+  //   "date": "2024/01/09",
+  //   "type": "ديوان المظالم",
+  //   "subType": "تصوير",
+  //   "client": true,
+  //   "prosecutor": "Amie Seager",
+  //   "defendant": "Irene Prescote",
+  //   "status": "قيد الدراسة",
+  //   "admin": "Saleem Laxon",
+  //   "lawyer": "Maurizia Shearston",
+  //   "salary": 7869
+  // }
   // const cellStyles =;
   return (
     <div className="shadow flex flex-col w-full">
@@ -63,8 +69,8 @@ const IssueRow = ({
           <p className="row-data-content">{type}</p>
         </div>
         <div>
-          <p>الصفة</p>
-          <p className="row-data-content">{character}</p>
+          <p>العميل</p>
+          <p className="row-data-content">{client ? prosecutor : defendant}</p>
         </div>
         <div>
           <p>المدعي</p>
