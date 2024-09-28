@@ -10,6 +10,7 @@ import "swiper/css";
 import Personnel from "./personnel/Personnel";
 import { useSelector } from "react-redux";
 import issuesData from "@/fakeData/issuesData.json";
+import Parties from "./parties/Parties";
 
 const IssueDetails = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -113,7 +114,9 @@ const IssueDetails = ({ id }) => {
                   />
                 </SwiperSlide>
                 {/* اطراف الدعوي */}
-                <SwiperSlide>Slide 2</SwiperSlide>
+                <SwiperSlide>
+                  <Parties prosecutor={issueDetails?.prosecutor}  defendant={issueDetails?.defendant} />
+                </SwiperSlide>
                 {/* الجلسات */}
                 <SwiperSlide>
                   <Sessions id={id} />
@@ -137,5 +140,18 @@ const IssueDetails = ({ id }) => {
     </div>
   );
 };
-
+// {
+//   "id": 49,
+//   "title": "عقد استشارة",
+//   "date": "2024/01/09",
+//   "type": "ديوان المظالم",
+//   "subType": "تصوير",
+//   "client": true,
+//   "prosecutor": "Amie Seager",
+//   "defendant": "Irene Prescote",
+//   "status": "قيد الدراسة",
+//   "admin": "Saleem Laxon",
+//   "lawyer": "Maurizia Shearston",
+//   "salary": 7869
+// }
 export default IssueDetails;
