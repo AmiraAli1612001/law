@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleHijriDate } from "@/globalState/Features/formatsSlice";
 
 const Appointments = () => {
-  const [checked, setChecked] = useState(false);
   const isHijriDate = useSelector((state) => state?.formats?.isHijriDate);
+  const [checked, setChecked] = useState(isHijriDate);
   const dispatch = useDispatch();
   return (
     <div className="bg-bgGray p-4 rounded-2xl h-full w-full">
