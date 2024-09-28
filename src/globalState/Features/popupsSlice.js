@@ -45,6 +45,10 @@ export const popupsSlice = createSlice({
           state.addEmployee = !state.addEmployee;
           state.isHidden = !state.isHidden;
           break;
+        case "task":
+          state.task = !state.task;
+          state.isHidden = !state.isHidden;
+          break;
         default:
           break;
       }
@@ -53,10 +57,10 @@ export const popupsSlice = createSlice({
       state.attendance = !state.attendance;
       state.isHidden = !state.isHidden;
     },
-    toggleTask: (state) => {
-      state.task = !state.task;
-      state.isHidden = !state.isHidden;
-    },
+    // toggleTask: (state) => {
+    //   state.task = !state.task;
+    //   state.isHidden = !state.isHidden;
+    // },
     toggleEditEmployee: (state, action) => {
       state.editEmployee = !state.editEmployee;
       state.isHidden = !state.isHidden;
