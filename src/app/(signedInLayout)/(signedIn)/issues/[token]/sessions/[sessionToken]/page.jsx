@@ -3,6 +3,7 @@ import "./session.css";
 import LinkHeader from "@/components/shared/pageShared/linkHeader/LinkHeader";
 import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper";
 import issuesData from "@/fakeData/issuesData.json";
+import SessionDetails from "@/components/pages/issues/issue/sessions/sessionDetails/SessionDetails";
 
 const Session = ({ params: { token, sessionToken } }) => {
   const issueData = issuesData.find((issue) => issue.id == token);
@@ -32,7 +33,7 @@ const Session = ({ params: { token, sessionToken } }) => {
             </p>
           </div>
         </div>
-        <IssueDetails id={token} issueData={issueData} />
+        <SessionDetails id={token} sessionData={issueData} />
         {/*end  */}
       </div>
     </ScreenWrapper>
