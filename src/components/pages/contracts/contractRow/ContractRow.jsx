@@ -5,6 +5,7 @@ import "./contractRow.css";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { setContract } from "@/globalState/Features/tempDataSlice";
+import { toggleAddRecordPopup, toggleEditEmployee } from "@/globalState/Features/popupsSlice";
 const ContractRow = ({ data, swipe }) => {
   const { id, date, title, firstParty, secondParty, status } = data;
 
@@ -55,7 +56,7 @@ const ContractRow = ({ data, swipe }) => {
           </Link>
           <button
             className="bg-mainRed bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
-            onClick={() => dispatch(toggleEditEmployee(id))}
+            onClick={() => dispatch(toggleAddRecordPopup("record"))}
           >
             تعديل
           </button>
