@@ -125,6 +125,17 @@ const SessionDetails = ({ id }) => {
                     </tbody>
                   </table>
                 </SwiperSlide>
+                <SwiperSlide>
+                  <div>
+                    <label htmlFor="">ملاحظات</label>
+                    <section name="" disabled id="">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Dolorum eveniet, tempora hic rerum nobis error obcaecati
+                      vel enim molestiae, fugit eligendi numquam ad quod magnam
+                      atque nam, veniam iste. Quisquam.
+                    </section>
+                  </div>
+                </SwiperSlide>
               </Swiper>
             </div>
           </div>
