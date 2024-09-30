@@ -54,7 +54,7 @@ const Statistics = () => {
       </section>
       <div className="flex-1 w-[calc(100%-250px)]">
         <nav className="flex gap-4 items-center px-4">
-          {["الايرادات الشهرية", "احصائيات الموظفين", "الجلسات الحالية"].map(
+          {["الايرادات الشهرية", "عدد القضايا", "احصائيات الموظفين"].map(
             (item, index) => (
               <button
                 key={index}
@@ -62,11 +62,9 @@ const Statistics = () => {
                   setActiveIndex(index);
                   swipeTo(index);
                 }}
-                disabled={index === 2}
+                // disabled={index === 2}
                 className={`${
-                  activeIndex == index
-                    ? " active "
-                    : ""
+                  activeIndex == index ? " active " : ""
                 } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
               >
                 {item}
@@ -78,7 +76,7 @@ const Statistics = () => {
           spaceBetween={5}
           slidesPerView={1}
           onSwiper={(swiper) => {
-            setActiveIndex(0)
+            setActiveIndex(0);
             swiperRef.current = swiper;
           }}
           className="!w-auto"
@@ -86,7 +84,7 @@ const Statistics = () => {
           <SwiperSlide>
             <ChartWrapper
               // title="الايرادات الشهرية"
-              Chart={Line}
+              Chart={Bar}
               labels={[
                 "January",
                 "February",
@@ -116,6 +114,20 @@ const Statistics = () => {
           </SwiperSlide>
           <SwiperSlide>
             <ChartWrapper
+              // title="الايرادات الشهرية"
+              Chart={Bar}
+              labels={[...new Set(issuesData.map((e) => e.subType))]}
+              datasets={[
+                {
+                  label: "انواع القضايا",
+                  data: [10, 50, 45, 23, 21, 15, 30, 46, 32, 38],
+                },
+              ]}
+              // data={monthsSalaryData}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ChartWrapper
               Chart={Bar}
               labels={HRData.map((e) => e.name)}
               data={HRData}
@@ -136,7 +148,6 @@ const Statistics = () => {
               ]}
             />
           </SwiperSlide>
-          <SwiperSlide>3</SwiperSlide>
         </Swiper>
       </div>
     </ScreenWrapper>

@@ -136,6 +136,19 @@ const SessionDetails = ({ id }) => {
                     </section>
                   </div>
                 </SwiperSlide>
+                <SwiperSlide>
+                  <div>
+                    <div>
+                      <label htmlFor="">المحامي المسند إليه القضية</label>
+                      <section>عبدالله السيد</section>
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div>
+                    <section>لا توجد مرفقات</section>
+                  </div>
+                </SwiperSlide>
               </Swiper>
             </div>
           </div>
