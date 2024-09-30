@@ -1,9 +1,9 @@
 "use client";
-import "./style/sessions.css";
+// import "./style/sessions.css";
 import Link from "next/link";
 const Sessions = ({ id }) => {
   return (
-    <table className="issue-sessions-table w-full">
+    <table className="simple-table">
       <thead>
         <tr>
           <th>المنفذ</th>

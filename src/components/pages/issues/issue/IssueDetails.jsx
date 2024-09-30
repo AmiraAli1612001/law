@@ -11,6 +11,7 @@ import Personnel from "./personnel/Personnel";
 import { useSelector } from "react-redux";
 import issuesData from "@/fakeData/issuesData.json";
 import Parties from "./parties/Parties";
+import Appointments from "./appointments/Appointments";
 
 const IssueDetails = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -19,15 +20,11 @@ const IssueDetails = ({ id }) => {
   const issueDetails = issuesData.find((issue) => issue.id == id);
   console.log(active);
   const sections = [
-    "موضوع الدعوي",
+    "التفاصيل",
     "أطراف المسؤولية",
     "اطراف الدعوي",
     "الجلسات",
-    "الاحكام",
-    "الطلبات",
-    "الاجراءات",
-    "القرارات",
-    "التكاليف القضائية",
+    "المواعيد",
   ];
 
   const swipeOuter = (id) => {
@@ -115,22 +112,19 @@ const IssueDetails = ({ id }) => {
                 </SwiperSlide>
                 {/* اطراف الدعوي */}
                 <SwiperSlide>
-                  <Parties prosecutor={issueDetails?.prosecutor}  defendant={issueDetails?.defendant} />
+                  <Parties
+                    prosecutor={issueDetails?.prosecutor}
+                    defendant={issueDetails?.defendant}
+                  />
                 </SwiperSlide>
                 {/* الجلسات */}
                 <SwiperSlide>
                   <Sessions id={id} />
                 </SwiperSlide>
-                {/* الاحكام */}
-                <SwiperSlide>Slide 2</SwiperSlide>
-                {/* الطلبات */}
-                <SwiperSlide>Slide 2</SwiperSlide>
-                {/* الاجراءات */}
-                <SwiperSlide>Slide 2</SwiperSlide>
-                {/* القرارات */}
-                <SwiperSlide>Slide 2</SwiperSlide>
-                {/* التكاليف القضائية */}
-                <SwiperSlide>Slide 2</SwiperSlide>
+                {/* المواعيد */}
+                <SwiperSlide>
+                  <Appointments />
+                </SwiperSlide>
               </Swiper>
             </div>
           </div>
