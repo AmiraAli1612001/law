@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const NotificationItem = ({ children }) => {
@@ -26,7 +27,15 @@ const NotificationItem = ({ children }) => {
 const Notifications = () => {
   return (
     <div className="bg-bgGray p-4 w-full flex flex-col h-full rounded-2xl justify-between overflow-auto border drop-shadow-sm">
-      <h3 className="text-xl font-semibold">ابرز الاشعارات</h3>
+      <div className="flex justify-between items-center">
+        <h3 className="text-xl font-semibold">ابرز الاشعارات</h3>
+        <Link
+          href={"/notifications"}
+          className="border border-gray-400 text-xs font-bold px-3 py-1 rounded hover:text-white hover:border-transparent hover:bg-textGreen transition-all underline"
+        >
+          عرض الكل
+        </Link>
+      </div>
       <ul className="bg-white p-4 rounded-2xl mt-4 flex-1 max-h-[255px] overflow-auto">
         {Array.from({ length: 11 }).map((_, index) => (
           <NotificationItem key={index}>

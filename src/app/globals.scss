@@ -75,6 +75,7 @@
 }
 .simple-row {
   position: relative;
+  background-color: var(--bg-green);
   &::after {
     content: "";
     position: absolute;
@@ -87,6 +88,7 @@
 }
 .simple-row-header {
   position: relative;
+  background-color: #f1f0f8;
   &::after {
     content: "";
     position: absolute;

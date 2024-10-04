@@ -75,6 +75,7 @@
 
 .simple-row {
   position: relative;
+  background-color: var(--bg-green);
 }
 .simple-row::after {
   content: "";
@@ -88,6 +89,7 @@
 
 .simple-row-header {
   position: relative;
+  background-color: #f1f0f8;
 }
 .simple-row-header::after {
   content: "";
