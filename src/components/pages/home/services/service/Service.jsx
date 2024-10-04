@@ -17,7 +17,7 @@ const Service = ({ link, title, description, Icon }) => {
             <path strokeLinecap="round" d="M7 7h4m-3 4H7m0 4h3" />
           </g>
         </svg> */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-1 flex-col gap-2">
           <h4 className="font-bold">{title}</h4>
           <p>{description}</p>
         </div>

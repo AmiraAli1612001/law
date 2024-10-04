@@ -14,6 +14,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import ChartWrapper from "@/components/shared/charts/ChartWrapper";
 import ExpensesTable from "@/components/pages/finance/expences/ExpensesTable";
+import CommitmentsTable from "@/components/pages/finance/commitments/CommitmentsTable";
 
 const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
@@ -80,7 +81,7 @@ const Finance = ({ params: { token } }) => {
                   {/* المصروفات */}
                   <SwiperSlide>
                     <nav className="flex gap-4 items-center px-4">
-                      {["رسم توضيحي", "التفاصيل"].map((item, index) => (
+                      {["التفاصيل", "رسم توضيحي"].map((item, index) => (
                         <button
                           key={index}
                           onClick={() => {
@@ -105,8 +106,11 @@ const Finance = ({ params: { token } }) => {
                       allowTouchMove={false}
                     >
                       <SwiperSlide>
+                        <ExpensesTable />
+                      </SwiperSlide>
+                      <SwiperSlide>
                         <ChartWrapper
-                        className={"max-w-[1024px]"}
+                          className={"max-w-[1024px]"}
                           // title="الايرادات الشهرية"
                           Chart={Bar}
                           labels={[
@@ -136,10 +140,68 @@ const Finance = ({ params: { token } }) => {
                           data={monthsSalaryData}
                         />
                       </SwiperSlide>
-                      <SwiperSlide><ExpensesTable/></SwiperSlide>
                     </Swiper>
                   </SwiperSlide>
-                  <SwiperSlide>tt</SwiperSlide>
+                  {/* الالتزامات */}
+                  <SwiperSlide>
+                    <nav className="flex gap-4 items-center px-4">
+                      {["التفاصيل", "رسم توضيحي"].map((item, index) => (
+                        <button
+                          key={index}
+                          onClick={() => {
+                            setActiveIndex(index);
+                            swipeInner(index);
+                          }}
+                          // disabled={index === 2}
+                          className={`${
+                            activeIndex == index ? " active " : ""
+                          } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
+                        >
+                          {item}
+                        </button>
+                      ))}
+                    </nav>
+                    <Swiper
+                      spaceBetween={0}
+                      slidesPerView={1}
+                      onSlideChange={() => console.log("slide change")}
+                      onSwiper={(swiper) => (innnerSwiperRef.current = swiper)}
+                      className="w-full"
+                      allowTouchMove={false}
+                    >
+                      <SwiperSlide>
+                        <CommitmentsTable />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <ChartWrapper
+                          className={"max-w-[1024px]"}
+                          // title="الايرادات الشهرية"
+                          Chart={Line}
+                          labels={[
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ]}
+                          datasets={[
+                            {
+                              label: "الالتزامات الشهرية",
+                              data: monthsSalaryData.map((e) => e.salary),
+                            },
+                          ]}
+                          data={monthsSalaryData}
+                        />
+                      </SwiperSlide>
+                    </Swiper>
+                  </SwiperSlide>
                 </Swiper>
               </div>
             </div>

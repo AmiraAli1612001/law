@@ -102,7 +102,7 @@ const InfoBar = () => {
               />
             </svg>
           </InfoItem>
-          <InfoItem to="#" title="الوكالات">
+          <InfoItem to="/hr" title="ادارة الموظفين">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
