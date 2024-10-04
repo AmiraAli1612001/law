@@ -15,7 +15,7 @@ const Header = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <header className="bg-bgGreen text-3xl  ">
+      <header className="bg-bgGreen text-3xl  z-[60]">
         <ScreenWrapper className={"relative z-50"}>
           <section className="flex items-center py-4 justify-between">
             <div className="flex items-center gap-4">
