@@ -20,7 +20,8 @@ const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const innnerSwiperRef = useRef(null);
+  const innnerSwiper1Ref = useRef(null);
+  const innnerSwiper2Ref = useRef(null);
 
   const outerSwiperRef = useRef(null);
   console.log(active);
@@ -38,9 +39,9 @@ const Finance = ({ params: { token } }) => {
     }
   };
 
-  const swipeInner = (id) => {
-    if (innnerSwiperRef.current) {
-      innnerSwiperRef.current.slideTo(id);
+  const swipeInner = (id,swiperRef) => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(id);
     }
   };
 
@@ -86,7 +87,7 @@ const Finance = ({ params: { token } }) => {
                           key={index}
                           onClick={() => {
                             setActiveIndex(index);
-                            swipeInner(index);
+                            swipeInner(index,innnerSwiper1Ref);
                           }}
                           // disabled={index === 2}
                           className={`${
@@ -101,7 +102,7 @@ const Finance = ({ params: { token } }) => {
                       spaceBetween={0}
                       slidesPerView={1}
                       onSlideChange={() => console.log("slide change")}
-                      onSwiper={(swiper) => (innnerSwiperRef.current = swiper)}
+                      onSwiper={(swiper) => (innnerSwiper1Ref.current = swiper)}
                       className="w-full"
                       allowTouchMove={false}
                     >
@@ -150,7 +151,7 @@ const Finance = ({ params: { token } }) => {
                           key={index}
                           onClick={() => {
                             setActiveIndex(index);
-                            swipeInner(index);
+                            swipeInner(index,innnerSwiper2Ref);
                           }}
                           // disabled={index === 2}
                           className={`${
@@ -165,7 +166,7 @@ const Finance = ({ params: { token } }) => {
                       spaceBetween={0}
                       slidesPerView={1}
                       onSlideChange={() => console.log("slide change")}
-                      onSwiper={(swiper) => (innnerSwiperRef.current = swiper)}
+                      onSwiper={(swiper) => (innnerSwiper2Ref.current = swiper)}
                       className="w-full"
                       allowTouchMove={false}
                     >
