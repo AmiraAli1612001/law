@@ -12,8 +12,8 @@ const InfoItem = ({ to = "#", children, title }) => {
           {children}
         </span>
 
-        <div className="group-hover:mt-3 transition-all text-center">
-          <p  >
+        <div className="group-hover:translate-y-2 transition-transform text-center [&>*]:!duration-0 [&>*]:transition-color">
+          <p>
             {title}
           </p>
           <h4 className="text-2xl font-bold mt-auto">10</h4>
