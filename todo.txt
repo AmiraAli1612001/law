@@ -1,0 +1,6 @@
+1- medani
+2-issues: appointments, tasks (add), sessions ( add), medani(add)
+3-موضع التابز عالمين
+4-الوكالات
+5-الموراد البشرية
+6- المالية

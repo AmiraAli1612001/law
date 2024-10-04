@@ -1,5 +1,4 @@
 "use client";
-import "./styles/statistics.css";
 import ChartWrapper from "@/components/shared/charts/ChartWrapper";
 import React, { useRef, useState } from "react";
 import monthsSalaryData from "@/fakeData/monthsSalaryData.json";
@@ -15,14 +14,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import Notifications from "@/components/pages/statistics/notifications/Notifications";
-import EmployeesStats from "@/components/pages/statistics/EmployeesStats/EmployeesStats";
 
-const Statistics = () => {
+const EmployeeStatistics = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef();
   const dataItems = [
     {
-      title: "ايرادات الشهر السابق",
+      title: "ارباح الشهر السابق",
       value: "$1500",
     },
     {
@@ -30,16 +28,16 @@ const Statistics = () => {
       value: "$1500",
     },
     {
-      title: "اجمالي القضايا النشطة",
+      title: "اجمالي القضايا",
       value: "10",
+    },
+    {
+      title: "اجمالي العقود",
+      value: "15",
     },
     {
       title: "ميعاد الجلسة الحالية",
       value: "10/10/2024",
-    },
-    {
-      title: "اجمالي القضايا المغلقة",
-      value: "85",
     },
   ];
   const swipeTo = (index) => {
@@ -55,7 +53,7 @@ const Statistics = () => {
         ))}
       </section>
       <div className="flex-1 w-[calc(100%-250px)]">
-        <nav className="flex gap-4 items-center px-4">
+        {/* <nav className="flex gap-4 items-center px-4">
           {["الايرادات الشهرية", "عدد القضايا", "احصائيات الموظفين"].map(
             (item, index) => (
               <button
@@ -73,8 +71,8 @@ const Statistics = () => {
               </button>
             )
           )}
-        </nav>
-        <div className="flex gap-4 py-4">
+        </nav> */}
+        <div className="flex gap-4">
           <Swiper
             spaceBetween={5}
             slidesPerView={1}
@@ -99,23 +97,23 @@ const Statistics = () => {
                   "August",
                   "September",
                   "October",
-                  // "November",
-                  // "December",
+                  "November",
+                  "December",
                 ]}
                 datasets={[
                   {
-                    label: "الايرادات الشهرية",
+                    label: "ارباح الموظف الشهرية",
                     data: monthsSalaryData.map((e) => e.salary),
                   },
                   {
-                    label: "المصروفات الشهرية",
+                    label: "مصروفات الموظف الشهرية",
                     data: monthsSalaryData.map((e) => e.salary / 2.1),
                   },
                 ]}
                 data={monthsSalaryData}
               />
             </SwiperSlide>
-            <SwiperSlide>
+            {/* <SwiperSlide>
               <ChartWrapper
                 // title="الايرادات الشهرية"
                 Chart={Bar}
@@ -130,7 +128,7 @@ const Statistics = () => {
               />
             </SwiperSlide>
             <SwiperSlide>
-              {/* <ChartWrapper
+              <ChartWrapper
                 Chart={Bar}
                 labels={HRData.map((e) => e.name)}
                 data={HRData}
@@ -149,9 +147,8 @@ const Statistics = () => {
                     data: HRData.map((e) => e.contracts),
                   },
                 ]}
-              /> */}
-              <EmployeesStats/>
-            </SwiperSlide>
+              />
+            </SwiperSlide> */}
           </Swiper>
           <Notifications />
         </div>
@@ -160,4 +157,4 @@ const Statistics = () => {
   );
 };
 
-export default Statistics;
+export default EmployeeStatistics;

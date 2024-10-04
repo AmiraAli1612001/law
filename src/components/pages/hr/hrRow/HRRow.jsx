@@ -3,8 +3,19 @@ import { Chart as ChartJS } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { toggleEditEmployee } from "@/globalState/Features/popupsSlice";
 import { useDispatch } from "react-redux";
+import EmployeeStatistics from "@/components/statistics/EmployeeStatistics";
 const HRRow = ({
-  data: { id, name, title, department, status : status2, vacations, work, loans, salary },
+  data: {
+    id,
+    name,
+    title,
+    department,
+    status: status2,
+    vacations,
+    work,
+    loans,
+    salary,
+  },
 }) => {
   const [state, setState] = useState(false);
   const dispatch = useDispatch();
@@ -14,7 +25,7 @@ const HRRow = ({
   return (
     <div className="">
       <div
-        className={`bg-bgGreen flex gap-2 p-4 items-center HR-row rounded-lg relative`}
+        className={`bg-bgGreen flex gap-2 p-4 items-center HR-row rounded-lg relative border drop-shadow-sm`}
       >
         <div className={`w-[10%]`}>
           <p className="text-base ">{id}</p>
@@ -33,7 +44,7 @@ const HRRow = ({
         </div>
         <div className="flex gap-2 items-center">
           <button
-            className="bg-[#048D5A] text-white px-4 py-2 rounded text-sm"
+            className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
             onClick={() => setState(!state)}
           >
             التفاصيل
@@ -51,64 +62,242 @@ const HRRow = ({
           state ? "p-4" : "overflow-hidden max-h-0"
         } flex gap-4 HR-row-details transition-all`}
       >
-        <section className="flex gap-4">
+        <section className="flex flex-col gap-4 w-full">
           <section>
-            <h3>الأجازات</h3>
-            {/* #F1F0F8 */}
-            <div
-              className={`bg-[#F1F0F8] after:!bg-[#9586f5] flex gap-2 p-4 items-center HR-row rounded-lg relative`}
-            >
-              <div className={``}>
-                <p className="text-base ">
-                  من {vacations} الي {vacations}
-                </p>
+            <table className="simple-table">
+              <thead>
+                <tr>
+                  <th>الراتب الشهري</th>
+                  <th>تاريخ التعيين</th>
+                  <th>ميعاد الجلسة الحالية</th>
+                  <th>المسمي الوظيفي</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>4500 ريال</td>
+                  <td>2024-10-10</td>
+                  <td>2024-10-10</td>
+                  <td>مدير عام</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section className="flex  gap-2 w-full">
+            <div className="flex flex-1 flex-col gap-2">
+              <div className="flex justify-between">
+                <h4 className="text-lg font-semibold">الرواتب</h4>
+                {/* <button className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm">
+                  اضافة راتب
+                </button> */}
               </div>
-              <div className={``}>
-                <p className="text-sm text-red-500 font-bold">اجازة مرضية</p>
+              <table className="simple-table">
+                <thead>
+                  <tr>
+                    <th>المدفوع</th>
+                    <th>التاريخ</th>
+                    <th>المستحق</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4500 ريال</td>
+                    <td>2024-10-10</td>
+                    <td>500 ريال</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text" />
+                    </td>
+                    <td>
+                      <input type="text" />
+                    </td>
+                    <td>
+                      <input type="text" />
+                    </td>
+                    <td className="flex justify-end">
+                      <button className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm">
+                        اضافة
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="flex flex-1 flex-col gap-2">
+              <div className="flex justify-between">
+                <h4 className="text-lg font-semibold">الخصومات</h4>
+                {/* <button className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm">
+                  اضافة خصم
+                </button> */}
               </div>
+              <table className="simple-table">
+                <thead>
+                  <tr>
+                    <th>القيمة</th>
+                    <th>العنوان</th>
+                    <th>التاريخ</th>
+                    <th>المدفوع</th>
+                    <th>المستحق</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>500 ريال</td>
+                    <td>تأخير</td>
+                    <td>2024-10-10</td>
+                    <td>0 ريال</td>
+                    <td>500 ريال</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text" />
+                    </td>
+                    <td>
+                      <input type="text" />
+                    </td>
+                    <td>
+                      <input type="text" />
+                    </td>
+                    <td>
+                      <input type="text" />
+                    </td>
+                    <td>
+                      <input type="text" />
+                    </td>
+                    <td className="flex justify-end">
+                      <button className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm">
+                        اضافة
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </section>
-          <section>
-            <h3>المباشرات</h3>
-            {/* #F1F0F8 */}
-            <div
-              className={`bg-[#F1F0F8] after:!bg-[#9586f5] flex gap-2 p-4 items-center HR-row rounded-lg relative`}
-            >
-              <div className={``}>
-                <p className="text-base ">علي رأس العمل</p>
-              </div>
+          <section className="flex flex-1 flex-col gap-2">
+            <div className="flex justify-between">
+              <h4 className="text-lg font-semibold">الحضور و الانصراف</h4>
+              {/* <button className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm">
+                  اضافة راتب
+                </button> */}
             </div>
+            <table className="simple-table">
+              <thead>
+                <tr>
+                  <th>وقت الحضور</th>
+                  <th>وقت الانصراف</th>
+                  <th>تأخير</th>
+                  <th>سبب التأخير</th>
+                  <th>اذن انصراف مبكر</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2024-10-10 08:45:00</td>
+                  <td>2024-10-10 08:45:00</td>
+                  <td>لا يوجد</td>
+                  <td>لا يوجد</td>
+                  <td>لا يوجد</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td className="flex justify-end">
+                    <button className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm">
+                      اضافة
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </section>
-          <section>
-            <h3>الراتب</h3>
-            {/* #F1F0F8 */}
-            <div
-              className={`bg-[#F1F0F8] after:!bg-[#9586f5] flex gap-2 p-4 items-center HR-row rounded-lg relative`}
-            >
-              <div className={``}>
-                <p className="text-base ">{salary} <span className="text-sm text-green-600 font-black">ريال</span></p>
-              </div>
+
+          <section className="flex flex-1 flex-col gap-2">
+            <div className="flex justify-between">
+              <h4 className="text-lg font-semibold">الإجازات</h4>
+              {/* <button className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm">
+                  اضافة راتب
+                </button> */}
             </div>
+            <table className="simple-table">
+              <thead>
+                <tr>
+                  <th>السبب</th>
+                  <th>من</th>
+                  <th>الي</th>
+                  <th>مدفوعة الأجر</th>
+                  <th>المدة</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>اجازة مرضية</td>
+                  <td>2024-10-10</td>
+                  <td>2024-10-12</td>
+                  <td>
+                    <span className="text-mainRed font-bold text-sm">
+                      غير مدفوع
+                    </span>
+                  </td>
+                  <td>3 ايام</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td className="flex justify-end">
+                    <button className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm">
+                      اضافة
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </section>
-          <section>
-            <h3>السلف</h3>
-            {/* #F1F0F8 */}
-            <div
-              className={`bg-[#F1F0F8] after:!bg-[#9586f5] flex gap-2 p-4 items-center HR-row rounded-lg relative`}
-            >
-              <div className={``}>
-                <p className="text-base ">1500 ريال</p>
-              </div>
-              <div className={``}>
-                <p className="text-base ">{vacations}</p>
-              </div>
-              <div className={``}>
-                <p className="text-sm text-red-500 font-bold ">لم تحصل</p>
-              </div>
+          <section className="flex flex-1 flex-col gap-2">
+            <div className="flex justify-between">
+              <h4 className="text-lg font-semibold">تقييم الأداء</h4>
+              {/* <button className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm">
+                  اضافة راتب
+                </button> */}
             </div>
+            <EmployeeStatistics />
           </section>
         </section>
-        <section></section>
       </div>
     </div>
   );

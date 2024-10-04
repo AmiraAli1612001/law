@@ -8,7 +8,13 @@ import {
   useTable,
 } from "react-table";
 
-const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
+const CustomTable = ({
+  RenderElement,
+  columns,
+  tableData,
+  filterOption,
+  tableType,
+}) => {
   const tableColumns = useMemo(() => columns, []);
   const [searchFilter, setSearchFilter] = useState("");
   const [filterMenuActive, setFilterMenuActive] = useState(false);
@@ -102,16 +108,59 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
         } transition-all flex w-full`}
       >
         {/* data rows */}
-        <div
-          className={`${
-            filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
-          } flex flex-1 flex-col gap-1`}
-        >
-          {page.map((row) => {
-            prepareRow(row);
-            return <RenderElement key={row.original.id} data={row.original} />;
-          })}
-        </div>
+
+        {tableType == 1 ? (
+          <table
+            {...getTableProps()}
+            className={`${
+              filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
+            } simple-table  `}
+          >
+            <thead className="">
+              {headerGroups.map((headerGroup, i) => (
+                <tr {...headerGroup.getHeaderGroupProps()} key={i}>
+                  {headerGroup.headers.map((column, i) => (
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      key={i}
+                    >
+                      {column.render("Header")}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()} className="">
+              {page.map((row, i) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()} className={``} key={i}>
+                    {row.cells.map((cell, i) => {
+                      return (
+                        <td {...cell.getCellProps()} key={i}>
+                          {cell.render("Cell")}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : (
+          <div
+            className={`${
+              filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
+            } flex flex-1 flex-col gap-1`}
+          >
+            {page.map((row) => {
+              prepareRow(row);
+              return (
+                <RenderElement key={row.original.id} data={row.original} />
+              );
+            })}{" "}
+          </div>
+        )}
         {/* filter */}
         <div
           className={`${
@@ -156,6 +205,7 @@ const CustomTable = ({ RenderElement, columns, tableData, filterOption }) => {
           </div>
         </div>
       </div>
+
       {/* TABLE PAGINATION */}
       <div className="flex justify-center pt-4 gap-1 table-paginaion">
         <button className="next" onClick={nextPage} disabled={!canNextPage}>
