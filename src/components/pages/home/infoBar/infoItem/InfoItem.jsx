@@ -3,7 +3,7 @@ import React from "react";
 
 const InfoItem = ({ to = "#", children, title }) => {
   return (
-    <li className="flex-1 pt-6 ">
+    <li className="w-[25%] pt-6 px-1">
       <Link
         href={to}
         className="flex relative hover:bg-textGreen  transition-all hover:shadow-hoverBg hover:text-hoverBg gap-1 items-center justify-center bg-white h-full px-2 py-10 rounded-2xl flex-col border drop-shadow-sm group"
@@ -13,10 +13,10 @@ const InfoItem = ({ to = "#", children, title }) => {
         </span>
 
         <div className="group-hover:translate-y-2 transition-transform text-center [&>*]:!duration-0 [&>*]:transition-color">
-          <p>
+          <p className="text-sm font-semibold">
             {title}
           </p>
-          <h4 className="text-2xl font-bold mt-auto">10</h4>
+          <h4 className="text-3xl font-bold mt-auto">10</h4>
         </div>
       </Link>
     </li>
