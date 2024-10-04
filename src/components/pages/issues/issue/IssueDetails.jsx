@@ -2,11 +2,13 @@
 import React, { useRef, useState } from "react";
 import "./style/issueDetails.css";
 import Sessions from "./sessions/Sessions";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
+
 import Personnel from "./personnel/Personnel";
 import { useSelector } from "react-redux";
 import issuesData from "@/fakeData/issuesData.json";

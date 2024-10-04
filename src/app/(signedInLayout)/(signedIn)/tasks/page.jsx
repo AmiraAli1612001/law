@@ -7,7 +7,9 @@ import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import { toast } from "react-toastify";
 import { store } from "@/globalState/store";
 import { toggleTask } from "@/globalState/Features/popupsSlice";
+import { useSelector } from "react-redux";
 const Issues = () => {
+  const tasks = useSelector((store) => store.tempData?.tasks);
   return (
     <ScreenWrapper className="flex-1 p-4 flex flex-col gap-4">
       <div className="flex justify-between items-center">
@@ -20,10 +22,7 @@ const Issues = () => {
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
           weekends={false}
-          events={[
-            { title: "جلسة رقم 1", date: "2024-09-09" },
-            { title: "event 2", date: "2024-09-16" },
-          ]}
+          events={tasks}
           eventContent={renderEventContent}
         />
       </div>

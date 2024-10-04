@@ -1,16 +1,18 @@
-"use client"
+"use client";
 import React from "react";
 import { useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetPopups } from "@/globalState/Features/popupsSlice";
 import { toast } from "react-toastify";
+import { setTasks } from "@/globalState/Features/tempDataSlice";
 // const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 // import "react-quill/dist/quill.snow.css";
 
 const Task = () => {
   const signUpForm = useForm();
   const dispatch = useDispatch();
+  const tasks = useSelector((store) => store.tempData.tasks);
   const {
     register,
     handleSubmit,
@@ -26,8 +28,11 @@ const Task = () => {
     // dispatch(openLoader("جاري التسجيل"));
 
     console.log(formData);
-    dispatch(resetPopups())
-    toast.success("تم الحفظ بنجاح")
+    dispatch(
+      setTasks([...tasks, { title: formData.title, date: formData.date }])
+    );
+    dispatch(resetPopups());
+    toast.success("تم الحفظ بنجاح");
     // const result = await fetchRegisterUser({
     //   ...formData,
     // });

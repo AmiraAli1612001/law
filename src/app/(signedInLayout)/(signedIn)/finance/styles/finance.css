@@ -1,0 +1,33 @@
+.issue-details nav ul li:hover, .issue-details nav ul li.active {
+  color: var(--text-green);
+  background-color: var(--bg-green);
+}
+.issue-details .issue-sections-details .swiper-wrapper .swiper-slide {
+  padding: 16px;
+}
+.issue-details .issue-sections-details .swiper-wrapper .swiper-slide > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+}
+.issue-details .issue-sections-details .swiper-wrapper .swiper-slide > div label {
+  font-weight: 500;
+  font-size: 18px;
+}
+.issue-details .issue-sections-details .swiper-wrapper .swiper-slide > div section {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 16px;
+  font-size: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.finance nav button {
+  @apply text-[#a6b8bb] hover:text-[#008f5b] transition-all block whitespace-nowrap;
+}
+.finance nav button:hover, .finance nav button.active {
+  color: var(--text-green);
+  font-weight: bold;
+}/*# sourceMappingURL=finance.css.map */
