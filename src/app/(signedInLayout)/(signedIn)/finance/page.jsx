@@ -106,6 +106,7 @@ const Finance = ({ params: { token } }) => {
                     >
                       <SwiperSlide>
                         <ChartWrapper
+                        className={"max-w-[1024px]"}
                           // title="الايرادات الشهرية"
                           Chart={Bar}
                           labels={[

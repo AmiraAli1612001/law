@@ -1,5 +1,8 @@
+"use client"
+import { dateNow } from "@/helperFunctions/date";
 import Link from "next/link";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const NotificationItem = ({ children }) => {
   return (
@@ -25,6 +28,7 @@ const NotificationItem = ({ children }) => {
 };
 
 const Notifications = () => {
+  const date = useSelector((state) => state.formats.isHijriDate);
   return (
     <div className="bg-bgGray p-4 w-full flex flex-col h-full rounded-2xl justify-between overflow-auto border drop-shadow-sm">
       <div className="flex justify-between items-center">
@@ -62,7 +66,7 @@ const Notifications = () => {
                 </span>
               </span>
               {"  "}
-              <span className="font-bold text-gray-700 text-xs">24-2-2024</span>
+              <span className="font-bold text-gray-700 text-xs">{dateNow()}</span>
             </div>
           </NotificationItem>
         ))}
