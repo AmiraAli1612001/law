@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Chart as ChartJS } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { toggleEditEmployee } from "@/globalState/Features/popupsSlice";
+import { toggleAddRecordPopup, toggleEditEmployee } from "@/globalState/Features/popupsSlice";
 import { useDispatch } from "react-redux";
 import EmployeeStatistics from "@/components/statistics/EmployeeStatistics";
 const HRRow = ({
@@ -51,7 +51,8 @@ const HRRow = ({
           </button>
           <button
             className="bg-mainRed bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
-            onClick={() => dispatch(toggleEditEmployee(id))}
+            // onClick={() => dispatch(toggleEditEmployee(id))}
+            onClick={() => dispatch(toggleAddRecordPopup(3))}
           >
             تعديل
           </button>
