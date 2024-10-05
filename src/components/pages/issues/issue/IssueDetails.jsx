@@ -148,8 +148,9 @@ const IssueDetails = ({ id }) => {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>علي عبدالله</td>
-                        <td>مشغول</td>
+                        <td>1</td>
+                        <td>2-3-2024</td>
+                        <td>2-3-2024</td>
                       </tr>
                     </tbody>
                   </table>
