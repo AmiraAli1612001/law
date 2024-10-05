@@ -18,7 +18,8 @@ import CommitmentsTable from "@/components/pages/finance/commitments/Commitments
 
 const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex1, setActiveIndex1] = useState(0);
+  const [activeIndex2, setActiveIndex2] = useState(0);
 
   const innnerSwiper1Ref = useRef(null);
   const innnerSwiper2Ref = useRef(null);
@@ -74,7 +75,7 @@ const Finance = ({ params: { token } }) => {
                 <Swiper
                   spaceBetween={0}
                   slidesPerView={1}
-                  onSlideChange={() => console.log("slide change")}
+                  // onSlideChange={() => setActiveIndex(0)}
                   onSwiper={(swiper) => (outerSwiperRef.current = swiper)}
                   className="w-full overflow-hidden"
                   allowTouchMove={false}
@@ -86,12 +87,12 @@ const Finance = ({ params: { token } }) => {
                         <button
                           key={index}
                           onClick={() => {
-                            setActiveIndex(index);
+                            setActiveIndex1(index);
                             swipeInner(index,innnerSwiper1Ref);
                           }}
                           // disabled={index === 2}
                           className={`${
-                            activeIndex == index ? " active " : ""
+                            activeIndex1 == index ? " active " : ""
                           } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
                         >
                           {item}
@@ -150,12 +151,12 @@ const Finance = ({ params: { token } }) => {
                         <button
                           key={index}
                           onClick={() => {
-                            setActiveIndex(index);
+                            setActiveIndex2(index);
                             swipeInner(index,innnerSwiper2Ref);
                           }}
                           // disabled={index === 2}
                           className={`${
-                            activeIndex == index ? " active " : ""
+                            activeIndex2 == index ? " active " : ""
                           } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
                         >
                           {item}
