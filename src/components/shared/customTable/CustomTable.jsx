@@ -12,7 +12,7 @@ const CustomTable = ({
   RenderElement,
   columns,
   tableData,
-  filterOption,
+  enableFilter = true,
   tableType,
 }) => {
   const tableColumns = useMemo(() => columns, []);
@@ -81,26 +81,28 @@ const CustomTable = ({
           onChange={(e) => setSearchFilter(e.target.value)}
           placeholder="ابحث..."
         />
-        <button
-          className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border-[2px] px-2 py-1 rounded"
-          onClick={() => setFilterMenuActive(!filterMenuActive)}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
+        {enableFilter && (
+          <button
+            className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border-[2px] px-2 py-1 rounded"
+            onClick={() => setFilterMenuActive(!filterMenuActive)}
           >
-            <path
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeWidth="2"
-              d="M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z"
-            />
-          </svg>
-          تصفية
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeWidth="2"
+                d="M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z"
+              />
+            </svg>
+            تصفية
+          </button>
+        )}
       </div>
       <div
         className={`${
@@ -162,48 +164,52 @@ const CustomTable = ({
           </div>
         )}
         {/* filter */}
-        <div
-          className={`${
-            filterMenuActive ? " min-w-max max-w-[300px] p-4 " : " max-w-0 "
-          } transition-all overflow-hidden bg-gray-200 h-fit flex flex-col gap-4`}
-        >
-          <h2 className="text-3xl">تصفية</h2>
-          <div>
-            <h3 className="mb-2">ترتيب حسب:</h3>
-            {headerGroups.map((headerGroup, i) => (
-              <div
-                {...headerGroup.getHeaderGroupProps()}
-                key={i}
-                className="grid grid-cols-2 gap-2"
-              >
-                {headerGroup.headers.map((column, i) => (
-                  <button
-                    onClick={() => {
-                      setCurrentFilter(column.id);
-                    }}
-                    className={`${
-                      (column.id === "actions" || column.id === "actions2") &&
-                      " hidden "
-                    }`}
-                    key={i}
-                  >
-                    <span
-                      {...column.getHeaderProps(column.getSortByToggleProps())}
+        {enableFilter && (
+          <div
+            className={`${
+              filterMenuActive ? " min-w-max max-w-[300px] p-4 " : " max-w-0 "
+            } transition-all overflow-hidden bg-gray-200 h-fit flex flex-col gap-4`}
+          >
+            <h2 className="text-3xl">تصفية</h2>
+            <div>
+              <h3 className="mb-2">ترتيب حسب:</h3>
+              {headerGroups.map((headerGroup, i) => (
+                <div
+                  {...headerGroup.getHeaderGroupProps()}
+                  key={i}
+                  className="grid grid-cols-2 gap-2"
+                >
+                  {headerGroup.headers.map((column, i) => (
+                    <button
+                      onClick={() => {
+                        setCurrentFilter(column.id);
+                      }}
                       className={`${
-                        currentFilter === column.id
-                          ? "bg-[#34A853] text-white "
-                          : "bg-white "
-                      }  rounded p-2 whitespace-nowrap text-center inline-block w-full`}
+                        (column.id === "actions" || column.id === "actions2") &&
+                        " hidden "
+                      }`}
                       key={i}
                     >
-                      {column.render("Header")}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            ))}
+                      <span
+                        {...column.getHeaderProps(
+                          column.getSortByToggleProps()
+                        )}
+                        className={`${
+                          currentFilter === column.id
+                            ? "bg-[#34A853] text-white "
+                            : "bg-white "
+                        }  rounded p-2 whitespace-nowrap text-center inline-block w-full`}
+                        key={i}
+                      >
+                        {column.render("Header")}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* TABLE PAGINATION */}

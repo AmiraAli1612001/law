@@ -14,6 +14,8 @@ import { useSelector } from "react-redux";
 import issuesData from "@/fakeData/issuesData.json";
 import Parties from "./parties/Parties";
 import Appointments from "./appointments/Appointments";
+import VisitsTable from "./visits/VisitsTable";
+import CallsTable from "./calls/CallsTable";
 
 const IssueDetails = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -27,6 +29,13 @@ const IssueDetails = ({ id }) => {
     "اطراف الدعوي",
     "الجلسات",
     "المواعيد",
+    "الوكالات",
+    "المعلومات الميدانية",
+    "الزيارات",
+    "إدارة المكالمات",
+    // "التقارير",
+    // "المالية",
+    // "التقارير المالية",
   ];
 
   const swipeOuter = (id) => {
@@ -81,7 +90,7 @@ const IssueDetails = ({ id }) => {
               >
                 {/* موضوع الدعوي */}
                 <SwiperSlide>
-                  <div className={!(active === 0) && " !hidden "}>
+                  <div className="simple-div">
                     <label htmlFor="">موضوع الدعوي</label>
                     <section name="" disabled id="">
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -126,6 +135,65 @@ const IssueDetails = ({ id }) => {
                 {/* المواعيد */}
                 <SwiperSlide>
                   <Appointments />
+                </SwiperSlide>
+                {/* الوكالات */}
+                <SwiperSlide>
+                  <table className="simple-table">
+                    <thead>
+                      <tr>
+                        <th>رقم الوكالة</th>
+                        <th>تاريخ الوكالة</th>
+                        <th>تاريخ الانتهاء</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>علي عبدالله</td>
+                        <td>مشغول</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </SwiperSlide>
+                {/* المعلومات الميدانية */}
+                <SwiperSlide>
+                  <table className="simple-table">
+                    {/* الموقع.  2. العميل.  3. ارتباطها بقضية أو لا.   4. التكلفة.  5. التاريخ. 6. الوقت. */}
+                    {/* 7. الموظف.  8. التنفيذ  9. الملخص */}
+                    <thead className="simple-table">
+                      <tr>
+                        <th>الموقع</th>
+                        <th>العميل</th>
+                        <th>الارتباط بالقضية</th>
+                        <th>التكلفة</th>
+                        <th>التاريخ</th>
+                        <th>الوقت</th>
+                        <th>الموظف</th>
+                        <th>التنفيذ</th>
+                        <th>الملخص</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>مكة</td>
+                        <td>علي عبدالله</td>
+                        <td>غير مرتبطة بالقضية</td>
+                        <td>1000</td>
+                        <td>2024-10-10</td>
+                        <td>10:00</td>
+                        <td>علي عبدالله</td>
+                        <td>مشغول</td>
+                        <td>علي عبدالله</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </SwiperSlide>
+                {/*  الزيارات */}
+                <SwiperSlide>
+                  <VisitsTable/>
+                </SwiperSlide>
+                {/* إدارة المكالمات */}
+                <SwiperSlide>
+                  <CallsTable/>
                 </SwiperSlide>
               </Swiper>
             </div>

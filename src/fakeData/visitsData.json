@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "date": "2023/10/13",
+    "name": "Keefer Potteridge",
+    "amount": 5,
+    "type": "قضية",
+    "status": true,
+    "clientType":"وكيل",
+    "phone":"0123456789",
+    "idNumber":"123456789",
+    "whatsapp":"0123456789",
+    "address":"123 Main St",
+    "reason":"استشارة",
+    "person":"علي عبدالله",
+    "hour":"10:00",
+    "notes":"لا يوجد"
+  }
+]

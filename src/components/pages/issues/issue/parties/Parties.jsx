@@ -2,7 +2,7 @@ import React from "react";
 
 const Parties = ({ defendant, prosecutor }) => {
   return (
-    <div>
+    <div className="simple-div">
       <div>
         <label htmlFor="">المدعي</label>
         <section>{prosecutor}</section>

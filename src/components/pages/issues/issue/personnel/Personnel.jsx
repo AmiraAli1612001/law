@@ -2,8 +2,8 @@ import React from "react";
 
 const Personnel = ({ lawyer, admin }) => {
   return (
-    <div>
-      <div>
+    <div className="simple-div">
+      <div c>
         <label htmlFor="">المشرف القائم على القضية</label>
         <section>{admin}</section>
       </div>
