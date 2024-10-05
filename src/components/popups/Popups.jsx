@@ -34,7 +34,7 @@ const Popups = () => {
     <div
       className={`${
         isHidden ? " scale-0 " : " scale-100 "
-      } p-4 fixed w-full h-full left-0 top-0 z-50 bg-[rgba(0,0,0,0.5)] transition-all flex items-center justify-center popups`}
+      } p-4 fixed w-full h-full left-0 top-0 z-[9999] bg-[rgba(0,0,0,0.5)] transition-all flex items-center justify-center popups`}
       onClick={() => dispatch(resetPopups())}
     >
       <div
