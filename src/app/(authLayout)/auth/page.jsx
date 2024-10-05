@@ -12,8 +12,8 @@ const Auth = () => {
       <section className="flex-1 bg-bgGreen lg:bg-white p-4 lg:p-10 flex justify-center items-center ">
         <form
           onSubmit={(e) => {
-            e.preventDefault();
-            handleSignIn(router);
+            // e.preventDefault();
+            // handleSignIn(router);
           }}
           action=""
           className="max-w-[500px] w-full flex flex-col gap-12"
