@@ -15,6 +15,9 @@ import "swiper/css";
 import ChartWrapper from "@/components/shared/charts/ChartWrapper";
 import ExpensesTable from "@/components/pages/finance/expences/ExpensesTable";
 import CommitmentsTable from "@/components/pages/finance/commitments/CommitmentsTable";
+import DebtsTable from "@/components/pages/finance/debts/DebtsTable";
+import PaymentsDueTable from "@/components/pages/finance/paymentsDue/PaymentsDueTable";
+import ReportsTable from "@/components/pages/finance/reports/ReportsTable";
 
 const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
@@ -40,7 +43,7 @@ const Finance = ({ params: { token } }) => {
     }
   };
 
-  const swipeInner = (id,swiperRef) => {
+  const swipeInner = (id, swiperRef) => {
     if (swiperRef.current) {
       swiperRef.current.slideTo(id);
     }
@@ -88,7 +91,7 @@ const Finance = ({ params: { token } }) => {
                           key={index}
                           onClick={() => {
                             setActiveIndex1(index);
-                            swipeInner(index,innnerSwiper1Ref);
+                            swipeInner(index, innnerSwiper1Ref);
                           }}
                           // disabled={index === 2}
                           className={`${
@@ -152,7 +155,7 @@ const Finance = ({ params: { token } }) => {
                           key={index}
                           onClick={() => {
                             setActiveIndex2(index);
-                            swipeInner(index,innnerSwiper2Ref);
+                            swipeInner(index, innnerSwiper2Ref);
                           }}
                           // disabled={index === 2}
                           className={`${
@@ -203,6 +206,18 @@ const Finance = ({ params: { token } }) => {
                         />
                       </SwiperSlide>
                     </Swiper>
+                  </SwiperSlide>
+                  {/* المديونات */}
+                  <SwiperSlide>
+                    <DebtsTable />
+                  </SwiperSlide>
+                  {/* الدفعات المستحقة */}
+                  <SwiperSlide>
+                    <PaymentsDueTable />
+                  </SwiperSlide>
+                  {/* التقارير المالية */}
+                  <SwiperSlide>
+                    <ReportsTable />
                   </SwiperSlide>
                 </Swiper>
               </div>
