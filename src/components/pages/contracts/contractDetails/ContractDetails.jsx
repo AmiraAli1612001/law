@@ -9,11 +9,14 @@ import "swiper/css";
 import Parties from "./parties/Parties";
 import Clauses from "./clauses/Clauses";
 import Finance from "./finance/Finance";
+import { togglePrintContractPopup } from "@/globalState/Features/popupsSlice";
+import { useDispatch } from "react-redux";
 
 const ContractDetails = ({ id, contractData }) => {
   const [active, setActive] = useState(0);
   const outerSwiperRef = useRef(null);
   const innnerSwiperRef = useRef(null);
+  const dispatch = useDispatch();
   const sections = [
     "موضوع العقد",
     "الاطراف",
@@ -21,7 +24,7 @@ const ContractDetails = ({ id, contractData }) => {
     "معلومات اضافية",
     "المالية",
     // "المرفقات",
-    // "طباعة العقد",
+    "طباعة العقد",
   ];
 
   const swipeOuter = (id) => {
@@ -121,11 +124,20 @@ const ContractDetails = ({ id, contractData }) => {
                   </div>
                 </SwiperSlide>
                 {/*المالية */}
-                <SwiperSlide><Finance contract={contractData}/></SwiperSlide>
+                <SwiperSlide>
+                  <Finance contract={contractData} />
+                </SwiperSlide>
                 {/* المرفقات*/}
-                <SwiperSlide>Slide 2</SwiperSlide>
+                {/* <SwiperSlide>Slide 2</SwiperSlide> */}
                 {/* طباعة العقد */}
-                <SwiperSlide>Slide 2</SwiperSlide>
+                <SwiperSlide>
+                  <button
+                    className="bg-[#048D5A] text-white px-4 py-2 rounded text-sm text-center"
+                    onClick={() => dispatch(togglePrintContractPopup())}
+                  >
+                    عرض العقد
+                  </button>
+                </SwiperSlide>
               </Swiper>
             </div>
           </div>

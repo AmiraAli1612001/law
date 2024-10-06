@@ -10,17 +10,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import Personnel from "./personnel/Personnel";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import issuesData from "@/fakeData/issuesData.json";
 import Parties from "./parties/Parties";
 import Appointments from "./appointments/Appointments";
 import VisitsTable from "./visits/VisitsTable";
 import CallsTable from "./calls/CallsTable";
+import { togglePrintContractPopup } from "@/globalState/Features/popupsSlice";
 
 const IssueDetails = ({ id }) => {
   const [active, setActive] = useState(0);
   const outerSwiperRef = useRef(null);
   const innnerSwiperRef = useRef(null);
+  const dispatch = useDispatch()
   const issueDetails = issuesData.find((issue) => issue.id == id);
   console.log(active);
   const sections = [
@@ -35,6 +37,7 @@ const IssueDetails = ({ id }) => {
     "إدارة المكالمات",
     // "التقارير",
     // "المالية",
+    "طباعة العقد",
     // "التقارير المالية",
   ];
 
@@ -190,11 +193,17 @@ const IssueDetails = ({ id }) => {
                 </SwiperSlide>
                 {/*  الزيارات */}
                 <SwiperSlide>
-                  <VisitsTable/>
+                  <VisitsTable />
                 </SwiperSlide>
                 {/* إدارة المكالمات */}
                 <SwiperSlide>
-                  <CallsTable/>
+                  <CallsTable />
+                </SwiperSlide>
+                {/* print */}
+                <SwiperSlide>
+                  <button className="bg-[#048D5A] text-white px-4 py-2 rounded text-sm text-center" onClick={() => dispatch(togglePrintContractPopup())}>
+                    عرض العقد
+                  </button>
                 </SwiperSlide>
               </Swiper>
             </div>

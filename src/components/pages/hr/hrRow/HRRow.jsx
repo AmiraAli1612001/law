@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Chart as ChartJS } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { toggleAddRecordPopup, toggleEditEmployee } from "@/globalState/Features/popupsSlice";
+import {
+  toggleAddRecordPopup,
+  toggleEditEmployee,
+} from "@/globalState/Features/popupsSlice";
 import { useDispatch } from "react-redux";
 import EmployeeStatistics from "@/components/statistics/EmployeeStatistics";
+import Link from "next/link";
 const HRRow = ({
   data: {
     id,
@@ -43,12 +47,13 @@ const HRRow = ({
           <p className="">{status2 == 1 ? "مفعل" : "غير مفعل"}</p>
         </div>
         <div className="flex gap-2 items-center">
-          <button
+          <Link
+            href={`/hr/${1}`}
             className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
-            onClick={() => setState(!state)}
+            // onClick={() => setState(!state)}
           >
             التفاصيل
-          </button>
+          </Link>
           <button
             className="bg-mainRed bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
             // onClick={() => dispatch(toggleEditEmployee(id))}

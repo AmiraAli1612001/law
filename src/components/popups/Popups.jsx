@@ -11,6 +11,7 @@ import Attendance from "./attendance/Attendance";
 import EditEmployee from "./editEmployee/EditEmployee";
 import AddEmployee from "./addEmployee/AddEmployee";
 import Task from "./task/Task";
+import PrintContract from "./printContract/PrintContract";
 
 const Popups = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Popups = () => {
   const contractRecord = useSelector((store) => store.popups?.contractRecord);
   const attendance = useSelector((store) => store.popups?.attendance);
   const editEmployee = useSelector((store) => store.popups?.editEmployee);
+  const printContract = useSelector((store) => store.popups?.printContract);
 
   console.log("popups");
   return (
@@ -62,6 +64,7 @@ const Popups = () => {
         {contractRecord && <AddContractRecord />}
         {attendance && <Attendance />}
         {editEmployee && <EditEmployee />}
+        {printContract && <PrintContract />}
       </div>
     </div>
   );

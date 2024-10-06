@@ -134,7 +134,7 @@ const Header = () => {
                     <h4 className="text-base">الاشعارات</h4>
                     <ul className="bg-[#008f5b0f] p-4">
                       <li className="text-base">
-                        <Link href={"/"}>
+                        <Link href={"/issues/1"}>
                           <div className="flex gap-4 items-center">
                             <svg
                               className="text-gray-800 dark:text-white"

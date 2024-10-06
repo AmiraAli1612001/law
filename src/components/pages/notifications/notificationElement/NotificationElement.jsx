@@ -5,7 +5,7 @@ const NotificationElement = ({
   data: { id, eventId, amount, type, status, date, name },
 }) => {
   return (
-    <Link href={`/`} className="simple-row flex items-center p-4 gap-3 hover:bg-hoverBg transition-all duration-75">
+    <Link href={`/issues/1`} className="simple-row flex items-center p-4 gap-3 hover:bg-hoverBg transition-all duration-75">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

@@ -1,0 +1,45 @@
+.issue-details {
+  nav {
+    ul {
+      li {
+        &:hover,
+        &.active {
+          color: var(--text-green);
+          background-color: var(--bg-green);
+        }
+      }
+    }
+  }
+  .issue-sections-details {
+    .swiper-wrapper {
+      .swiper-slide {
+        padding: 16px;
+        > div.simple-div {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          gap: 16px;
+          label {
+            font-weight: 500;
+            font-size: 18px;
+          }
+          section {
+            background-color: rgba(0, 0, 0, 0.04);
+            border-radius: 4px;
+            padding: 16px;
+            font-size: 20px;
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}
+.present {
+  background-color: #d4edda !important; /* Light green for present */
+}
+
+.absent {
+  background-color: #f8d7da !important; /* Light red for absent */
+}
