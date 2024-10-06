@@ -2,7 +2,7 @@ import React from "react";
 
 const PrintContract = () => {
   return (
-    <div className="printable w-full max-w-screen-lg mx-auto bg-white py-4">
+    <div className="printable w-full overflow-auto flex flex-col max-w-screen-lg mx-auto bg-white py-4">
       <section className="text-contract  relative">
         <div className=" w-[80%] flex justify-between  mx-auto">
           <div>
@@ -92,6 +92,9 @@ const PrintContract = () => {
         <section className="text-center leading-relaxed"></section>
         <section className="text-center leading-relaxed"></section>
       </div>
+      <button className="w-fit hover:bg-opacity-70 transition-all py-2 px-6 rounded bg-textGreen mx-auto text-white">
+        طباعة
+      </button>
     </div>
   );
 };
