@@ -32,7 +32,7 @@ const Appointments = ({ defendant, prosecutor }) => {
         <h3>تسجيل التواريخ</h3>
         <table className="simple-table">
           <thead>
-            <tr>
+            <tr className="[&>th]:!w-[20%]">
               <th>تاريخ النقد</th>
               <th>الاستئناف</th>
               <th>الاعتراض</th>
@@ -41,10 +41,10 @@ const Appointments = ({ defendant, prosecutor }) => {
             </tr>
           </thead>
           <tbody>
-            <tr className="[&>td>input]:!w-fit">
+            <tr className="[&>td>input]:!w-fit [&>td>input]:!inline-block [&>td]:!w-[20%]">
               <td>
                 <input
-                  className="!w-[150px]"
+                  className="!w-fit"
                   type="date"
                   defaultValue={"2024-10-10"}
                 />

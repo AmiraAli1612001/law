@@ -4,6 +4,7 @@ import { toggleAttendancePopup } from "@/globalState/Features/popupsSlice";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const Attendance = () => {
   const attendance = useSelector((store) => store.auth.attendance);
@@ -44,6 +45,7 @@ const Attendance = () => {
         <button
           className="text-white text-xl p-4 w-full bg-[#D00000]"
           onClick={() => {
+            toast.error("تم تسجيل الانصراف بنجاح");
             dispatch(toggleAttendancePopup());
             dispatch(toggleAttendance());
           }}
@@ -122,6 +124,7 @@ const Attendance = () => {
       <button
         className="text-white text-xl p-4 w-full bg-textGreen"
         onClick={() => {
+          toast.success("تم تسجيل الحضور بنجاح");
           dispatch(toggleAttendancePopup());
           dispatch(toggleAttendance());
         }}
