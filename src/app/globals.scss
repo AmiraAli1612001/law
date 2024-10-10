@@ -111,3 +111,58 @@
     background-color: #9586f5;
   }
 }
+.simple-div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  label {
+    font-weight: 500;
+    font-size: 18px;
+  }
+  section,input,textarea {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 16px;
+    font-size: 20px;
+    width: 100%;
+    height: auto;
+  }
+}
+nav.swiper-nav {
+  ul {
+    li {
+      &:hover,
+      &.active {
+        color: var(--text-green);
+        background-color: var(--bg-green);
+      }
+    }
+  }
+}
+.present {
+  background-color: #d4edda !important; /* Light green for present */
+}
+
+.absent {
+  background-color: #f8d7da !important; /* Light red for absent */
+}
+@media print {
+  .printable {
+    section {
+      page-break-before: always;
+      page-break-after: always;
+    }
+    *{
+      visibility: visible !important;
+      button{
+        display: none;
+      }
+    }
+  }
+  *{
+    visibility: hidden;
+  }
+  
+  
+}

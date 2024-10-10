@@ -30,7 +30,7 @@ const NotificationElement = ({
       <div className="flex gap-1">
         <span className="w-12">{status ? "اضاف" : "حذف"}</span>
         <span>{name}</span>
-        <span className={`${status ? "text-green-500" : "text-red-500"} font-semibold text-sm`}>({amount} {type})</span>
+        <span className={`${status ? "text-green-500" : "text-red-500"} font-semibold text-sm`}>({type})</span>
       </div>
     </Link>
   );

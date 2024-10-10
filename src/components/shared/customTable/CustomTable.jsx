@@ -14,6 +14,7 @@ const CustomTable = ({
   tableData,
   enableFilter = true,
   tableType,
+  addBtn = false,
 }) => {
   const tableColumns = useMemo(() => columns, []);
   const [searchFilter, setSearchFilter] = useState("");
@@ -211,7 +212,11 @@ const CustomTable = ({
           </div>
         )}
       </div>
-
+      {addBtn && (
+        <button className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+          اضائف
+        </button>
+      )}
       {/* TABLE PAGINATION */}
       <div className="flex justify-center pt-4 gap-1 table-paginaion">
         <button className="next" onClick={nextPage} disabled={!canNextPage}>

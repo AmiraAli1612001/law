@@ -4,6 +4,7 @@ import React, { useMemo } from "react";
 import CustomTable from "../../shared/customTable/CustomTable";
 import HRRow from "./hrRow/HRRow";
 import HRData from "@/fakeData/HRData.json";
+import Link from "next/link";
 
 const HRTable = () => {
   const tableColumns = useMemo(
@@ -19,6 +20,13 @@ const HRTable = () => {
       {
         Header: "اسم الموظف",
         accessor: "name",
+        Cell: ({ row, value }) => {
+          return (
+            <Link href={`/hr/${1}`} className="inline-block underline">
+              {value}
+            </Link>
+          );
+        },
       },
       {
         Header: "اسم الوظيفة",

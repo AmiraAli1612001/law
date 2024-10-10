@@ -34,7 +34,7 @@ const Employee = ({ params: { token } }) => {
           </div> */}
           <div className="row-data-content ms-auto">
             <button
-              className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
+              className="bg-textGreen bg-opacity-90  hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
               // onClick={() => dispatch(toggleAddRecordPopup("record"))}
             >
               حفظ

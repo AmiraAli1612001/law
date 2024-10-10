@@ -2,7 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   contract: null,
-  tasks:[]
+  tasks:[
+    {
+      title: "مهمة 1",
+      start: new Date(),
+    },
+    {
+      title: "مهمة 2",
+      start: new Date(),
+    }
+  ]
 };
 
 const tempDataSlice = createSlice({

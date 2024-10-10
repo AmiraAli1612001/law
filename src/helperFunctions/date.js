@@ -3,6 +3,9 @@ import { store } from "@/globalState/store";
 import moment from "moment-hijri";
 
 export function dateNow(date = null) {
+  if(date){
+    return moment(date).format("YYYY-MM-DD");
+  }
   const isHijriDate = store.getState().formats.isHijriDate;
   const islamicDate = moment().format("iYYYY-iMM-iDD"); // Hijri Date
   if (isHijriDate) {

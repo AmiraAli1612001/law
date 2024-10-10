@@ -104,4 +104,52 @@
   width: 4px;
   height: 100%;
   background-color: #9586f5;
+}
+
+.simple-div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+}
+.simple-div label {
+  font-weight: 500;
+  font-size: 18px;
+}
+.simple-div section, .simple-div input, .simple-div textarea {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 16px;
+  font-size: 20px;
+  width: 100%;
+  height: auto;
+}
+
+nav.swiper-nav ul li:hover, nav.swiper-nav ul li.active {
+  color: var(--text-green);
+  background-color: var(--bg-green);
+}
+
+.present {
+  background-color: #d4edda !important; /* Light green for present */
+}
+
+.absent {
+  background-color: #f8d7da !important; /* Light red for absent */
+}
+
+@media print {
+  .printable section {
+    page-break-before: always;
+    page-break-after: always;
+  }
+  .printable * {
+    visibility: visible !important;
+  }
+  .printable * button {
+    display: none;
+  }
+  * {
+    visibility: hidden;
+  }
 }/*# sourceMappingURL=globals.css.map */

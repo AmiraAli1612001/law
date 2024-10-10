@@ -22,7 +22,7 @@ const IssueDetails = ({ id }) => {
   const [active, setActive] = useState(0);
   const outerSwiperRef = useRef(null);
   const innnerSwiperRef = useRef(null);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const issueDetails = issuesData.find((issue) => issue.id == id);
   console.log(active);
   const sections = [
@@ -95,26 +95,29 @@ const IssueDetails = ({ id }) => {
                 <SwiperSlide>
                   <div className="simple-div">
                     <label htmlFor="">موضوع الدعوي</label>
-                    <section name="" disabled id="">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Dolorum eveniet, tempora hic rerum nobis error obcaecati
-                      vel enim molestiae, fugit eligendi numquam ad quod magnam
-                      atque nam, veniam iste. Quisquam.
-                    </section>
+                    <textarea
+                      name=""
+                      id=""
+                      defaultValue={
+                        "lorem ipsum dolor sit amet  consectetur adipisicing elit.orem ipsum dolor sit amet  consectetur adipisicing elit. orem ipsum dolor sit amet  consectetur adipisicing elit. "
+                      }
+                    ></textarea>
                     <label htmlFor="">طلبات المدعي</label>
-                    <section name="" disabled id="">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Dolorum eveniet, tempora hic rerum nobis error obcaecati
-                      vel enim molestiae, fugit eligendi numquam ad quod magnam
-                      atque nam, veniam iste. Quisquam.
-                    </section>
+                    <textarea
+                      name=""
+                      id=""
+                      defaultValue={
+                        "lorem ipsum dolor sit amet  consectetur adipisicing elit.orem ipsum dolor sit amet  consectetur adipisicing elit. orem ipsum dolor sit amet  consectetur adipisicing elit. "
+                      }
+                    ></textarea>
                     <label htmlFor="">اسانيد الدعوي</label>
-                    <section name="" disabled id="">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Dolorum eveniet, tempora hic rerum nobis error obcaecati
-                      vel enim molestiae, fugit eligendi numquam ad quod magnam
-                      atque nam, veniam iste. Quisquam.
-                    </section>
+                    <textarea
+                      name=""
+                      id=""
+                      defaultValue={
+                        "lorem ipsum dolor sit amet  consectetur adipisicing elit.orem ipsum dolor sit amet  consectetur adipisicing elit. orem ipsum dolor sit amet  consectetur adipisicing elit. "
+                      }
+                    ></textarea>
                   </div>
                 </SwiperSlide>
                 {/* أطراف المسؤولية */}
@@ -157,6 +160,9 @@ const IssueDetails = ({ id }) => {
                       </tr>
                     </tbody>
                   </table>
+                  <button className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+                    اضائف
+                  </button>
                 </SwiperSlide>
                 {/* المعلومات الميدانية */}
                 <SwiperSlide>
@@ -190,10 +196,14 @@ const IssueDetails = ({ id }) => {
                       </tr>
                     </tbody>
                   </table>
+                  <button className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+                    اضائف
+                  </button>
                 </SwiperSlide>
                 {/*  الزيارات */}
                 <SwiperSlide>
                   <VisitsTable />
+                  
                 </SwiperSlide>
                 {/* إدارة المكالمات */}
                 <SwiperSlide>
@@ -201,7 +211,10 @@ const IssueDetails = ({ id }) => {
                 </SwiperSlide>
                 {/* print */}
                 <SwiperSlide>
-                  <button className="bg-[#048D5A] text-white px-4 py-2 rounded text-sm text-center" onClick={() => dispatch(togglePrintContractPopup())}>
+                  <button
+                    className="bg-[#048D5A] text-white px-4 py-2 rounded text-sm text-center"
+                    onClick={() => dispatch(togglePrintContractPopup())}
+                  >
                     عرض العقد
                   </button>
                 </SwiperSlide>

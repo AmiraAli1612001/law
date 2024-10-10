@@ -73,9 +73,9 @@ const Services = () => {
               <path
                 fill="none"
                 stroke="#34A853"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
                 d="M16 20v-8m0 0l3 3m-3-3l-3 3m-9-1l8-8l3 3l5-5"
               />
             </svg>

@@ -93,7 +93,7 @@ const Task = () => {
         {/* <p className="input-error">{errors.details?.message}</p> */}
       </div>
       <button className="text-white text-xl p-4 w-full bg-textGreen">
-        اضافة
+        حفظ
       </button>
     </form>
   );

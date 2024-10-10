@@ -63,13 +63,13 @@ const CallsTable = () => {
         Header: "ملاحظات",
         accessor: "notes",
       },
-      
     ],
     []
   );
   return (
     <>
       <CustomTable
+        addBtn={true}
         enableFilter={false}
         tableData={CallsData}
         columns={tableColumns}

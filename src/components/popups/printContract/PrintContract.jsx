@@ -1,15 +1,26 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 
 const PrintContract = () => {
+  const printableRef = useRef();
+  // const printCountRef = useRef(0)
+  console.log("print render")
+  function handlePrint(){
+    // if(printCountRef.current > 0) return
+    // printCountRef.current++
+    console.log("print function") 
+    printableRef.current.scrollTo(0,0)
+    window.print()
+  }
   return (
-    <div className="printable w-full overflow-auto flex flex-col max-w-screen-lg mx-auto bg-white py-4">
-      <section className="text-contract  relative">
+    <div ref={printableRef} className="printable w-full overflow-auto flex flex-col max-w-screen-lg mx-auto bg-white py-4">
+      <section className="text-contract  relative ">
         <div className=" w-[80%] flex justify-between  mx-auto">
           <div>
             <h1 className="text-xl font-semibold">
               شركة صقور القمة للمحاماة والاستشاريات القانونية
             </h1>
-            <h2 className="uppercase text-sm">
+            <h2 className="uppercase text-sm py-2">
               soqour al aemma law firm and legal consultations
             </h2>
           </div>
@@ -23,7 +34,7 @@ const PrintContract = () => {
         </div>
         <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-contract w-full h-2"></span>
       </section>
-      <div className="w-[80%] mx-auto flex flex-col gap-6">
+      <div className="w-[80%] mx-auto flex flex-col gap-6 ">
         <section className="text-center font-semibold leading-relaxed">
           <h4 className=" underline text-lg">عقد اتعاب محاماة رقم 1041</h4>
           <p>
@@ -92,7 +103,7 @@ const PrintContract = () => {
         <section className="text-center leading-relaxed"></section>
         <section className="text-center leading-relaxed"></section>
       </div>
-      <button className="w-fit hover:bg-opacity-70 transition-all py-2 px-6 rounded bg-textGreen mx-auto text-white">
+      <button onClick={handlePrint} className="w-fit hover:bg-opacity-70 transition-all py-2 px-6 rounded bg-textGreen mx-auto text-white">
         طباعة
       </button>
     </div>

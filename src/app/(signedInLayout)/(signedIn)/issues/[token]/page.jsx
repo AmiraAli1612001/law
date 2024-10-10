@@ -7,6 +7,7 @@ import issuesData from "@/fakeData/issuesData.json";
 const Issue = ({ params: { token } }) => {
   const issueData = issuesData.find((issue) => issue.id == token);
   const { type, date, status } = issueData;
+  
   return (
     <ScreenWrapper className="flex-1 p-4 flex flex-col gap-4">
       <LinkHeader to={`/issues/${token}`} title={`ملف القضية رقم ${token}`} />

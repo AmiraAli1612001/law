@@ -97,6 +97,7 @@ const VisitsTable = () => {
   return (
     <>
       <CustomTable
+      addBtn={true}
         enableFilter={false}
         tableData={visitsData}
         columns={tableColumns}

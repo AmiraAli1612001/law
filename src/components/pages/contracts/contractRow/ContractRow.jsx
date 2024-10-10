@@ -43,7 +43,7 @@ const ContractRow = ({ data, swipe }) => {
         </div>
         <div className="flex gap-2 items-center">
           <Link
-            className="bg-[#048D5A] text-white px-4 py-2 rounded text-sm"
+            className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
             onClick={(e)=>{
               e.preventDefault()
               dispatch(setContract(data))
@@ -55,7 +55,7 @@ const ContractRow = ({ data, swipe }) => {
             التفاصيل
           </Link>
           <button
-            className="bg-mainRed bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
+            className="bg-mainRed bg-opacity-90 hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
             onClick={() => dispatch(toggleAddRecordPopup("record"))}
           >
             تعديل

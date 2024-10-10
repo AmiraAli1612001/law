@@ -32,8 +32,15 @@ const Countdown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="text-red-500">
-        {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+    <div className="text-red-500 flex items-center gap-1">
+      <span className="text-lg font-semibold">{timeLeft.days}</span>
+      <span className="text-xs font-bold text-gray-800">يوم</span>
+      <span className="text-lg font-semibold">{timeLeft.hours}</span>
+      <span className="text-xs font-bold text-gray-800">ساعة</span>
+      <span className="text-lg font-semibold">{timeLeft.minutes}</span>
+      <span className="text-xs font-bold text-gray-800">دقيقة</span>
+      <span className="text-lg font-semibold">{timeLeft.seconds}</span>
+      <span className="text-xs font-bold text-gray-800">ثانية</span>
     </div>
   );
 };

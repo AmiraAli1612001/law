@@ -13,7 +13,7 @@ module.exports = {
         bgGray: "var(--bg-gray)",
         hoverBg: "var(--hover-bg)",
         textGreen: "#048d5a",
-        mainRed: "var(--main-red)",
+        mainRed: "#d00000",
         contract: "#C89F5C",
       },
     },

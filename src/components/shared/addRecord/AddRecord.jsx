@@ -7,7 +7,7 @@ const AddRecord = ({ title, recordType }) => {
   const disptach = useDispatch();
   return (
     <button
-      className="flex items-center gap-4 p-4 bg-textGreen rounded"
+      className="flex items-center gap-4 p-4  bg-textGreen hover:bg-opacity-70 hover:drop-shadow transition-all rounded"
       onClick={() => disptach(toggleAddRecordPopup(recordType))}
     >
       <svg

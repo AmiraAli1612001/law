@@ -55,7 +55,7 @@ const Finance = ({ params: { token } }) => {
       <div className="flex flex-col gap-4">
         <div className="issue-details flex">
           <div className="w-full">
-            <div className="issue-details flex w-full">
+            <div className="issue-details flex w-full gap-4">
               <nav className="bg-white drop-shadow w-[160px] h-fit">
                 <ul className="w-full">
                   {sections.map((section, index) => (
@@ -74,7 +74,7 @@ const Finance = ({ params: { token } }) => {
                   ))}
                 </ul>
               </nav>
-              <div className="issue-sections-details w-[calc(100%-160px)]">
+              <div className="items-sections-details w-[calc(100%-176px)]">
                 <Swiper
                   spaceBetween={0}
                   slidesPerView={1}
@@ -85,7 +85,7 @@ const Finance = ({ params: { token } }) => {
                 >
                   {/* المصروفات */}
                   <SwiperSlide>
-                    <nav className="flex gap-4 items-center px-4">
+                    <nav className="flex gap-4 items-center pb-2">
                       {["التفاصيل", "رسم توضيحي"].map((item, index) => (
                         <button
                           key={index}
@@ -149,7 +149,7 @@ const Finance = ({ params: { token } }) => {
                   </SwiperSlide>
                   {/* الالتزامات */}
                   <SwiperSlide>
-                    <nav className="flex gap-4 items-center px-4">
+                    <nav className="flex gap-4 items-center pb-2">
                       {["التفاصيل", "رسم توضيحي"].map((item, index) => (
                         <button
                           key={index}

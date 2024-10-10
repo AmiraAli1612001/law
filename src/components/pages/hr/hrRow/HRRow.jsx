@@ -35,7 +35,7 @@ const HRRow = ({
           <p className="text-base ">{id}</p>
         </div>
         <div className="row-data-content">
-          <p className="">{name}</p>
+          <Link href={`/hr/${1}`} className="underline">{name}</Link>
         </div>
         <div className="row-data-content">
           <p className="">{title}</p>
@@ -49,13 +49,13 @@ const HRRow = ({
         <div className="flex gap-2 items-center">
           <Link
             href={`/hr/${1}`}
-            className="bg-textGreen bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
+            className="bg-textGreen bg-opacity-90 hover:bg-opacity-65 transition-all text-white px-4 py-2 rounded text-sm"
             // onClick={() => setState(!state)}
           >
             التفاصيل
           </Link>
           <button
-            className="bg-mainRed bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
+            className="bg-mainRed bg-opacity-90 hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
             // onClick={() => dispatch(toggleEditEmployee(id))}
             onClick={() => dispatch(toggleAddRecordPopup(3))}
           >

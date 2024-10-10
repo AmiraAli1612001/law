@@ -66,7 +66,7 @@ const Notifications = () => {
             <p className="text-sm font-bold text-gray-500">2024-01-01</p>
           </div>
         </Notification>
-        <Notification>
+        {/* <Notification>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="26"
@@ -84,7 +84,7 @@ const Notifications = () => {
             <span>ايراد عقد</span>
             <p className="text-sm font-bold text-gray-500">2024-01-01</p>
           </div>
-        </Notification>
+        </Notification> */}
       </ul>
     </div>
   );

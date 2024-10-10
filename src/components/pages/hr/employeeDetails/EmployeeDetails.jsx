@@ -85,6 +85,7 @@ const EmployeeDetails = ({ id }) => {
                 {/* التفاصيل */}
                 <SwiperSlide>
                   <Details />
+                  
                 </SwiperSlide>
                 {/* الرواتب */}
                 <SwiperSlide>

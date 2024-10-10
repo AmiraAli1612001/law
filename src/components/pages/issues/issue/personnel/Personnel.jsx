@@ -5,11 +5,11 @@ const Personnel = ({ lawyer, admin }) => {
     <div className="simple-div">
       <div c>
         <label htmlFor="">المشرف القائم على القضية</label>
-        <section>{admin}</section>
+        <textarea>{admin}</textarea>
       </div>
       <div>
         <label htmlFor="">المحامي المسند إليه القضية</label>
-        <section>{lawyer}</section>
+        <textarea>{lawyer}</textarea>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { dateNow } from "@/helperFunctions/date";
 import Link from "next/link";
 import React from "react";
@@ -41,35 +41,60 @@ const Notifications = () => {
         </Link>
       </div>
       <ul className="bg-white p-4 rounded-2xl mt-4 flex-1 max-h-[255px] overflow-auto">
-        {Array.from({ length: 11 }).map((_, index) => (
-          <NotificationItem key={index}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <rect width="24" height="24" fill="none" />
-              <path
-                fill="#34A853"
-                d="m2.3 20.28l9.6-9.6l-1.4-1.42l-.72.71a.996.996 0 0 1-1.41 0l-.71-.71a.996.996 0 0 1 0-1.41l5.66-5.66a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.69l1.42 1.43a.996.996 0 0 1 1.41 0c.39.39.39 1.03 0 1.42l1.41 1.41l.71-.71c.39-.39 1.03-.39 1.42 0l.7.71c.39.39.39 1.03 0 1.42l-5.65 5.65c-.39.39-1.03.39-1.42 0l-.7-.7a.99.99 0 0 1 0-1.42l.7-.71l-1.41-1.41l-9.61 9.61a.996.996 0 0 1-1.41 0c-.39-.39-.39-1.03 0-1.42M20 19a2 2 0 0 1 2 2v1H12v-1a2 2 0 0 1 2-2z"
-              />
-            </svg>
-            <div>
-              <span className="text-textGreen">اضاف</span>{" "}
-              <span className="underline">عبدالرحمن راشد</span>
-              {" - "}
-              <span>
-                <span className="text-gray-500">قضية رقم</span>{" "}
-                <span className="font-bold   text-red-500 text-xs">
-                  (41411)
-                </span>
-              </span>
-              {"  "}
-              <span className="font-bold text-gray-700 text-xs">{dateNow()}</span>
-            </div>
-          </NotificationItem>
-        ))}
+        <NotificationItem>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <rect width="24" height="24" fill="none" />
+            <path
+              fill="#34A853"
+              d="m2.3 20.28l9.6-9.6l-1.4-1.42l-.72.71a.996.996 0 0 1-1.41 0l-.71-.71a.996.996 0 0 1 0-1.41l5.66-5.66a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.69l1.42 1.43a.996.996 0 0 1 1.41 0c.39.39.39 1.03 0 1.42l1.41 1.41l.71-.71c.39-.39 1.03-.39 1.42 0l.7.71c.39.39.39 1.03 0 1.42l-5.65 5.65c-.39.39-1.03.39-1.42 0l-.7-.7a.99.99 0 0 1 0-1.42l.7-.71l-1.41-1.41l-9.61 9.61a.996.996 0 0 1-1.41 0c-.39-.39-.39-1.03 0-1.42M20 19a2 2 0 0 1 2 2v1H12v-1a2 2 0 0 1 2-2z"
+            />
+          </svg>
+          <div>
+            <span className="text-textGreen">اضاف</span>{" "}
+            <Link href={"/hr/1"} className="underline">
+              عبدالرحمن راشد
+            </Link>
+            {" - "}
+            <Link href={"/issues/1/sessions/1"}>
+              <span className="text-gray-500">قضية رقم</span>{" "}
+              <span className="font-bold   text-red-500 text-xs underline">(41411)</span>
+            </Link>
+            {"  "}
+            <span className="font-bold text-gray-700 text-xs">{dateNow()}</span>
+          </div>
+        </NotificationItem>
+        <NotificationItem>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <rect width="24" height="24" fill="none" />
+            <path
+              fill="#34A853"
+              d="m2.3 20.28l9.6-9.6l-1.4-1.42l-.72.71a.996.996 0 0 1-1.41 0l-.71-.71a.996.996 0 0 1 0-1.41l5.66-5.66a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.69l1.42 1.43a.996.996 0 0 1 1.41 0c.39.39.39 1.03 0 1.42l1.41 1.41l.71-.71c.39-.39 1.03-.39 1.42 0l.7.71c.39.39.39 1.03 0 1.42l-5.65 5.65c-.39.39-1.03.39-1.42 0l-.7-.7a.99.99 0 0 1 0-1.42l.7-.71l-1.41-1.41l-9.61 9.61a.996.996 0 0 1-1.41 0c-.39-.39-.39-1.03 0-1.42M20 19a2 2 0 0 1 2 2v1H12v-1a2 2 0 0 1 2-2z"
+            />
+          </svg>
+          <div>
+            <span className="text-textGreen">اضاف</span>{" "}
+            <Link href={"/hr/1"} className="underline">
+              محمد احمد
+            </Link>
+            {" - "}
+            <Link href={"/issues/1/sessions/1"}>
+              <span className="text-gray-500">جسلة رقم</span>{" "}
+              <span className="font-bold   text-red-500 text-xs underline">(14)</span>
+            </Link>
+            {"  "}
+            <span className="font-bold text-gray-700 text-xs">{dateNow()}</span>
+          </div>
+        </NotificationItem>
       </ul>
     </div>
   );
