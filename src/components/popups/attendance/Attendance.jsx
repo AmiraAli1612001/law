@@ -124,6 +124,7 @@ const Attendance = () => {
       <button
         className="text-white text-xl p-4 w-full bg-textGreen"
         onClick={() => {
+          
           toast.success("تم تسجيل الحضور بنجاح");
           dispatch(toggleAttendancePopup());
           dispatch(toggleAttendance());
