@@ -17,6 +17,7 @@ import Appointments from "./appointments/Appointments";
 import VisitsTable from "./visits/VisitsTable";
 import CallsTable from "./calls/CallsTable";
 import { togglePrintContractPopup } from "@/globalState/Features/popupsSlice";
+import { toast } from "react-toastify";
 
 const IssueDetails = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -150,19 +151,31 @@ const IssueDetails = ({ id }) => {
                         <th>رقم الوكالة</th>
                         <th>تاريخ الوكالة</th>
                         <th>تاريخ الانتهاء</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>2-3-2024</td>
-                        <td>2-3-2024</td>
+                      <tr className="[&>td>input]:!w-fit">
+                        <td>
+                          <input type="text" defaultValue={1} />
+                        </td>
+                        <td>
+                          <input type="date" defaultValue={"2-3-2024"} />
+                        </td>
+                        <td>
+                          <input type="date" defaultValue={"2-3-2024"} />
+                        </td>
+                        <td>
+                          <button
+                            onClick={() => toast.success("تمت الاضافة بنجاح")}
+                            className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center"
+                          >
+                            اضافة
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
-                  <button className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
-                    اضائف
-                  </button>
                 </SwiperSlide>
                 {/* المعلومات الميدانية */}
                 <SwiperSlide>
@@ -186,24 +199,71 @@ const IssueDetails = ({ id }) => {
                       <tr>
                         <td>مكة</td>
                         <td>علي عبدالله</td>
+
                         <td>غير مرتبطة بالقضية</td>
                         <td>1000</td>
+
                         <td>2024-10-10</td>
                         <td>10:00</td>
+
                         <td>علي عبدالله</td>
                         <td>مشغول</td>
                         <td>علي عبدالله</td>
+                        <td>
+                          <button
+                            onClick={() => toast.error("تم الحذف بنجاح")}
+                            className="bg-mainRed block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center"
+                          >
+                            حذف
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <button
+                            onClick={() => toast.success("تمت الاضافة بنجاح")}
+                            className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center"
+                          >
+                            اضافة
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
-                  <button className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
-                    اضائف
-                  </button>
                 </SwiperSlide>
                 {/*  الزيارات */}
                 <SwiperSlide>
                   <VisitsTable />
-                  
                 </SwiperSlide>
                 {/* إدارة المكالمات */}
                 <SwiperSlide>

@@ -214,7 +214,7 @@ const CustomTable = ({
       </div>
       {addBtn && (
         <button className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
-          اضائف
+          اضافة
         </button>
       )}
       {/* TABLE PAGINATION */}

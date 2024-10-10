@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const Appointments = ({ defendant, prosecutor }) => {
   const sectionStyles = {
@@ -21,13 +22,16 @@ const Appointments = ({ defendant, prosecutor }) => {
                   defaultValue={"2024-10-10"}
                 />
               </td>
+              <td className="w-full" dir="ltr">
+                <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+                  اضافة
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
       </section>
-      <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
-        اضائف
-      </button>
+
       <section style={sectionStyles}>
         <h3>تسجيل التواريخ</h3>
         <table className="simple-table">
@@ -38,6 +42,7 @@ const Appointments = ({ defendant, prosecutor }) => {
               <th>الاعتراض</th>
               <th>الحكم</th>
               <th>والانتهاء</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -61,13 +66,18 @@ const Appointments = ({ defendant, prosecutor }) => {
               <td>
                 <input type="text" defaultValue={"08:45:00"} />
               </td>
+              <td>
+                <button
+                  onClick={() => toast.success("تمت الاضافة بنجاح")}
+                  className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center"
+                >
+                  اضافة
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
       </section>
-      <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
-        اضائف
-      </button>
     </div>
   );
 };
