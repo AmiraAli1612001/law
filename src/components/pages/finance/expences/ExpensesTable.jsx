@@ -19,6 +19,20 @@ const ExpensesTable = () => {
       Header: "المبلغ بالريال",
       accessor: "salary",
     },
+    {
+      Header: "",
+      accessor: "actions",
+      Cell: ({ row }) => (
+        <div className="flex gap-1 items-center">
+          <button className="bg-mainRed bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+            حذف
+          </button>
+          <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+            تعديل
+          </button>
+        </div>
+      ),
+    },
   ]
   return <CustomTable tableType={1} tableData={issuesData} columns={columns}/>;
 };
