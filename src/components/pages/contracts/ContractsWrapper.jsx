@@ -23,6 +23,7 @@ const ContractsWrapper = () => {
         // onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => swiperRef.current = swiper}
         allowTouchMove={false}
+        className="w-full"
       >
         <SwiperSlide>
           <ContractsTable swipe={swipe} />
