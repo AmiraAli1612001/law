@@ -55,7 +55,7 @@ const EmployeeDetails = ({ id }) => {
       >
         <SwiperSlide className="w-auto">
           <div className="issue-details flex w-full">
-            <nav className="bg-white drop-shadow w-[160px] h-fit">
+            <nav className="bg-white drop-shadow w-[160px] h-fit swiper-nav">
               <ul className="w-full">
                 {sections.map((section, index) => (
                   <li
@@ -73,7 +73,7 @@ const EmployeeDetails = ({ id }) => {
                 ))}
               </ul>
             </nav>
-            <div className="issue-sections-details w-[calc(100%-160px)]">
+            <div className="item-sections-details w-[calc(100%-160px)]">
               <Swiper
                 spaceBetween={0}
                 slidesPerView={1}

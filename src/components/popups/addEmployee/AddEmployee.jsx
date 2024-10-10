@@ -2,6 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { resetPopups } from "@/globalState/Features/popupsSlice";
 // const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 // import "react-quill/dist/quill.snow.css";
 
@@ -21,13 +23,18 @@ const AddEmployee = () => {
   async function handleSubmitSignUp(formData, e) {
     // setGeneralError("");
     // dispatch(openLoader("جاري التسجيل"));
-
+    toast.success("تم اضافة الموظف بنجاح");
+    dispatch(resetPopups());
     console.log(formData);
     // const result = await fetchRegisterUser({
     //   ...formData,
     // });
 
     // dispatch(closeLoader());
+  }
+  function handleKick() {
+    toast.error("تم انهاء خدمات الموظف بنجاح");
+    dispatch(resetPopups());
   }
   return (
     <form
@@ -588,6 +595,7 @@ const AddEmployee = () => {
         </div>
         <div className="p-2 ">
           <button
+            onClick={handleKick}
             type="button"
             className=" input !min-w-full flex-1 !flex-row  flex justify-center bg-mainRed text-white font-bold"
           >

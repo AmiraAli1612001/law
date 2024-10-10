@@ -7,16 +7,20 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import Parties from "./subComponents/Parties";
 import Clauses from "./subComponents/Clauses";
+import { resetPopups } from "@/globalState/Features/popupsSlice";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const AddContractRecord = () => {
   const signUpForm = useForm();
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
     control,
     formState,
     setError,
-    reset,
+    // reset,
     trigger,
   } = signUpForm;
   let { errors, isSubmitted } = formState;
@@ -31,6 +35,7 @@ const AddContractRecord = () => {
 
     // dispatch(closeLoader());
   }
+  
   return (
     <form
       method="POST"
