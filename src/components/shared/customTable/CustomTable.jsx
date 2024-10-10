@@ -15,6 +15,7 @@ const CustomTable = ({
   enableFilter = true,
   tableType,
   addBtn = false,
+  addTop = false,
 }) => {
   const tableColumns = useMemo(() => columns, []);
   const [searchFilter, setSearchFilter] = useState("");
@@ -82,6 +83,11 @@ const CustomTable = ({
           onChange={(e) => setSearchFilter(e.target.value)}
           placeholder="ابحث..."
         />
+        {addTop && (
+          <button className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border-[2px] px-2 py-1 rounded">
+            اضافة
+          </button>
+        )}
         {enableFilter && (
           <button
             className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border-[2px] px-2 py-1 rounded"

@@ -23,7 +23,7 @@ const ReportsTable = () => {
       Header: "",
       accessor: "actions",
       Cell: ({ row }) => (
-        <div className="flex gap-1 items-center">
+        <div className="flex gap-1 items-center justify-center">
           <button className="bg-mainRed bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
             حذف
           </button>
@@ -34,7 +34,14 @@ const ReportsTable = () => {
       ),
     },
   ];
-  return <CustomTable tableType={1} tableData={issuesData} columns={columns} />;
+  return (
+    <CustomTable
+      addTop={true}
+      tableType={1}
+      tableData={issuesData}
+      columns={columns}
+    />
+  );
 };
 
 export default ReportsTable;
