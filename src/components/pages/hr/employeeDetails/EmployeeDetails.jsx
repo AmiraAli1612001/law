@@ -25,6 +25,8 @@ const EmployeeDetails = ({ id }) => {
   const sections = [
     "التفاصيل",
     "الرواتب",
+    "الخصومات",
+    "السلف",
     "الحضور و الانصراف",
     "الاجازات",
     "تقييم الاداء",
@@ -85,9 +87,96 @@ const EmployeeDetails = ({ id }) => {
                 {/* التفاصيل */}
                 <SwiperSlide>
                   <Details />
-                  
                 </SwiperSlide>
                 {/* الرواتب */}
+                <SwiperSlide>
+                  <table className="simple-table">
+                    <thead>
+                      <tr>
+                        <th>رقم الدفعة</th>
+                        <th>تاريخ الدفعة</th>
+                        <th>المبلغ</th>
+                        <th>الخصومات</th>
+                        <th>المدفوع</th>
+                        <th>المستحق</th>
+                        <th>الحالة</th>
+                        <th>التفاصيل</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>{new Date("2022-01-01").toLocaleDateString()}</td>
+                        <td>2000 ريال</td>
+                        <td>0 ريال</td>
+                        <td>2000 ريال</td>
+                        <td>0 ريال</td>
+                        <td>تم الدفع</td>
+                        <td>لا يوجد</td>
+                        <td>
+                          <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+                            تعديل
+                          </button>
+                        </td>
+                      </tr>
+                      <tr className="absent">
+                        <td>2</td>
+                        <td>{new Date().toLocaleDateString()}</td>
+
+                        <td>2000 ريال</td>
+                        <td>500 ريال</td>
+
+                        <td>0 ريال</td>
+                        <td>1500 ريال</td>
+
+                        <td>لم يتم الدفع</td>
+                        <td>500 ريال خصومات تأخر</td>
+                        <td>
+                          <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+                            تعديل
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+                            اضافة
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </SwiperSlide>
+                {/* الخصومات */}
                 <SwiperSlide>
                   <table className="simple-table">
                     <thead>
@@ -106,22 +195,127 @@ const EmployeeDetails = ({ id }) => {
                       <tr>
                         <td>1</td>
                         <td>{new Date("2022-01-01").toLocaleDateString()}</td>
+
                         <td>2000 ريال</td>
                         <td>0 ريال</td>
+
                         <td>2000 ريال</td>
                         <td>0 ريال</td>
+
                         <td>تم الدفع</td>
                         <td>لا يوجد</td>
+                        <td>
+                          <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+                            تعديل
+                          </button>
+                        </td>
                       </tr>
-                      <tr className="absent">
-                        <td>2</td>
-                        <td>{new Date().toLocaleDateString()}</td>
+                      <tr>
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+                            اضافة
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </SwiperSlide>
+                {/* السلف */}
+                <SwiperSlide>
+                  <table className="simple-table">
+                    <thead>
+                      <tr>
+                        <th>رقم الدفعة</th>
+                        <th>تاريخ الدفعة</th>
+                        <th>المبلغ</th>
+                        <th>الخصومات</th>
+                        <th>المدفوع</th>
+                        <th>المستحق</th>
+                        <th>الحالة</th>
+                        <th>التفاصيل</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>{new Date("2022-01-01").toLocaleDateString()}</td>
+
                         <td>2000 ريال</td>
-                        <td>500 ريال</td>
                         <td>0 ريال</td>
-                        <td>1500 ريال</td>
-                        <td>لم يتم الدفع</td>
-                        <td>500 ريال خصومات تأخر</td>
+
+                        <td>2000 ريال</td>
+                        <td>0 ريال</td>
+
+                        <td>تم الدفع</td>
+                        <td>لا يوجد</td>
+                        <td>
+                          <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+                            تعديل
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <input type="text" />
+                        </td>
+                        <td>
+                          <input type="text" />
+                        </td>
+
+                        <td>
+                          <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+                            اضافة
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>

@@ -39,6 +39,28 @@ const Vacations = () => {
               </button>
             </td>
           </tr>
+          <tr className="">
+            <td>
+              <input type="text" defaultValue={3} />
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+            <td>
+              <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm text-center">
+                اضافة
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
