@@ -28,8 +28,8 @@ const Popups = () => {
   const task = useSelector((store) => store.popups?.task);
   const addEmployee = useSelector((store) => store.popups?.addEmployee);
   const contractRecord = useSelector((store) => store.popups?.contractRecord);
-  const AttachmentsPopup = useSelector(
-    (store) => store.popups?.AttachmentsPopup
+  const attachmentsPopup = useSelector(
+    (store) => store.popups?.attachments
   );
   const attendance = useSelector((store) => store.popups?.attendance);
   const editEmployee = useSelector((store) => store.popups?.editEmployee);
@@ -70,7 +70,7 @@ const Popups = () => {
       {/* close icon end */}
       {issueRecord && <AddIssueRecord />}
       {task && <Task />}
-      {AttachmentsPopup && <AttachmentsPopup />}
+      {attachmentsPopup && <AttachmentsPopup />}
       {addEmployee && <AddEmployee />}
       {contractRecord && <AddContractRecord />}
       {attendance && <Attendance />}

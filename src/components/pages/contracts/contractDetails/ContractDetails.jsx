@@ -9,7 +9,7 @@ import "swiper/css";
 import Parties from "./parties/Parties";
 import Clauses from "./clauses/Clauses";
 import Finance from "./finance/Finance";
-import { togglePrintContractPopup } from "@/globalState/Features/popupsSlice";
+import { toggleAttachmentsPopup, togglePrintContractPopup } from "@/globalState/Features/popupsSlice";
 import { useDispatch } from "react-redux";
 
 const ContractDetails = ({ id, contractData }) => {
@@ -133,31 +133,31 @@ const ContractDetails = ({ id, contractData }) => {
                     <div className="simple-div">
                       <label htmlFor="">مرفقات العقد</label>
                       <section>
-                        <button>مرفق 1</button>
+                        <button onClick={()=>dispatch(toggleAttachmentsPopup())}>مرفق 1</button>
                       </section>
                     </div>
                     <div className="simple-div">
                       <label htmlFor="">مرفقات القضية</label>
                       <section>
-                        <button>مرفق 1</button>
+                        <button onClick={()=>dispatch(toggleAttachmentsPopup())}>مرفق 1</button>
                       </section>
                     </div>
                     <div className="simple-div">
                       <label htmlFor="">مرفقات الجلسات</label>
                       <section>
-                        <button>مرفق 1</button>
+                        <button onClick={()=>dispatch(toggleAttachmentsPopup())}>مرفق 1</button>
                       </section>
                     </div>
                     <div className="simple-div">
                       <label htmlFor="">مرفقات المهمات</label>
                       <section>
-                        <button>مرفق 1</button>
+                        <button onClick={()=>dispatch(toggleAttachmentsPopup())}>مرفق 1</button>
                       </section>
                     </div>
                     <div className="simple-div">
                       <label htmlFor="">مرفقات الميداني</label>
                       <section>
-                        <button>مرفق 1</button>
+                        <button onClick={()=>dispatch(toggleAttachmentsPopup())}>مرفق 1</button>
                       </section>
                     </div>
                   </div>
