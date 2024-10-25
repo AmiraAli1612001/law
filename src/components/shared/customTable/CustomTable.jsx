@@ -19,6 +19,7 @@ const CustomTable = ({
   tableType,
   addBtn = false,
   addTop = false,
+  topFilter = false,
 }) => {
   const tableColumns = useMemo(() => columns, []);
   const [searchFilter, setSearchFilter] = useState("");
@@ -91,9 +92,22 @@ const CustomTable = ({
             اضافة
           </button>
         )}
+        {/* topFilter */}
+        {topFilter &&
+          topFilter.map((ele,i) => (
+            <button
+              key={i}
+              className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
+                searchFilter === ele ? "bg-[#34A853] text-white" : ""
+              }`}
+              onClick={() => setSearchFilter(ele)}
+            >
+              {ele}
+            </button>
+          ))}
         {enableFilter && (
           <button
-            className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border-[2px] px-2 py-1 rounded"
+            className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border px-2 py-1 rounded"
             onClick={() => setFilterMenuActive(!filterMenuActive)}
           >
             <svg

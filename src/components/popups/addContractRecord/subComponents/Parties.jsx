@@ -48,8 +48,8 @@ const Party = ({
               e.name.toLowerCase().includes(nameInput.toLowerCase())
             )
               .slice(0, 6)
-              .map((client) => (
-                <option value={client.id}>{client.name}</option>
+              .map((client,i) => (
+                <option key={i} value={client.id}>{client.name}</option>
               ))}
           </select>
           {/* add btn */}

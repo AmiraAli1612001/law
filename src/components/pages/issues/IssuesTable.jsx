@@ -52,6 +52,7 @@ const IssuesTable = () => {
   return (
     <>
       <CustomTable
+        topFilter={["قيد الدراسة", "مكتملة", "جديدة", "محكوم بها حكم غير قطعي","محكوم بها حكم قطعي"]}
         tableData={issuesData}
         columns={tableColumns}
         RenderElement={IssueRow}

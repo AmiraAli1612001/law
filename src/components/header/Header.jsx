@@ -87,7 +87,10 @@ const Header = () => {
                 </svg>
               </div>
               {/* user */}
-              <Link href="/hr/1" className="hidden lg:flex items-center  gap-2 bg-white p-2 rounded h-10 drop-shadow-sm">
+              <Link
+                href="/hr/1"
+                className="hidden lg:flex items-center  gap-2 bg-white p-2 rounded h-10 drop-shadow-sm"
+              >
                 <div className="text-[#048D5A] text-base flex gap-1">
                   <p>مرحبا /</p>
                   <p>ابراهيم</p>
@@ -227,7 +230,7 @@ const Header = () => {
       </header>
       <div className="sticky top-0 z-50 drop-shadow">
         {/* mid header nav */}
-        <div className="bg-white drop-shadow  z-40 ">
+        <div className="bg-white drop-shadow relative z-40 ">
           <ScreenWrapper className="">
             <section className="">
               <nav>
@@ -345,13 +348,32 @@ const Header = () => {
                       </g>
                     </svg>
                   </NavItem>
+                  <NavItem
+                    subList={[{ title: "جميع الجلسات", to: "/sessions" }]}
+                    title="مركز المعلومات"
+                    // to="/finance"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="#7CB09D"
+                        strokeWidth={2}
+                        d="M1 19h22V1H1zm4 4h14zm3 0h8v-4H8zM7.757 5.757l2.122 2.122zM9 10H6zm.879 2.121l-2.122 2.122zM12 13v3zm2.121-.879l2.122 2.122zM18 10h-3zm-1.757-4.243l-2.122 2.122zM12 7V4zm0 0a3 3 0 1 0 0 6a3 3 0 0 0 0-6Z"
+                      ></path>
+                    </svg>
+                  </NavItem>
                 </ul>
               </nav>
             </section>
           </ScreenWrapper>
         </div>
         {/* advertisment */}
-        <div className="notification-bar flex">
+        <div className="notification-bar relative flex z-30">
           <div className="notification-content font-medium notification-content-1">
             هنا تعرض الاعلانات هنا تعرض الاعلانات هنا تعرض الاعلانات هنا تعرض
             الاعلانات هنا تعرض الاعلانات هنا تعرض الاعلانات هنا تعرض الاعلانات

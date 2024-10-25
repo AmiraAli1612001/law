@@ -4,16 +4,21 @@ import { toggleAddRecordPopup } from "@/globalState/Features/popupsSlice";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const AddRecord = ({ title, recordType }) => {
+const AddRecord = ({ title, recordType,innerForm }) => {
   const disptach = useDispatch();
   const addRecord = useSelector((store) => store.formState?.addRecord);
   function handleClick() {
-    // disptach(toggleAddRecordPopup(recordType));
-    if(addRecord){
-      disptach(closeAddFormRecord())
+    // disptach(toggleAddRecordPopup(recordType));]
+    if(innerForm){
+      if(addRecord){
+        disptach(closeAddFormRecord())
+      }else{
+        disptach(openAddFormRecord())
+      }
     }else{
-      disptach(openAddFormRecord())
+      disptach(toggleAddRecordPopup(recordType));
     }
+    
   }
   return (
     <button

@@ -28,12 +28,12 @@ const IssueDetails = ({ id }) => {
   console.log(active);
   const sections = [
     "التفاصيل",
-    "أطراف المسؤولية",
+    "القائمين علي القضية",
     "اطراف الدعوي",
     "الجلسات",
     "المواعيد",
     "الوكالات",
-    "المعلومات الميدانية",
+    "المهام الميدانية",
     "الزيارات",
     "إدارة المكالمات",
     // "التقارير",
@@ -185,29 +185,29 @@ const IssueDetails = ({ id }) => {
                     <thead className="simple-table">
                       <tr>
                         <th>الموقع</th>
-                        <th>العميل</th>
-                        <th>الارتباط بالقضية</th>
+                        {/* <th>العميل</th> */}
+                        {/* <th>الارتباط بالقضية</th> */}
                         <th>التكلفة</th>
                         <th>التاريخ</th>
                         <th>الوقت</th>
                         <th>الموظف</th>
-                        <th>التنفيذ</th>
+                        {/* <th>التنفيذ</th> */}
                         <th>الملخص</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>مكة</td>
-                        <td>علي عبدالله</td>
+                        {/* <td>علي عبدالله</td> */}
 
-                        <td>غير مرتبطة بالقضية</td>
+                        {/* <td>غير مرتبطة بالقضية</td> */}
                         <td>1000</td>
 
                         <td>2024-10-10</td>
                         <td>10:00</td>
 
                         <td>علي عبدالله</td>
-                        <td>مشغول</td>
+                        {/* <td>مشغول</td> */}
                         <td>علي عبدالله</td>
                         <td>
                           <button
@@ -219,33 +219,39 @@ const IssueDetails = ({ id }) => {
                         </td>
                       </tr>
                       <tr>
+                        {/* الموقع */}
                         <td>
                           <input type="text" />
                         </td>
+                        {/* العميل */}
+                        {/* <td>
+                          <input type="text" />
+                        </td> */}
+                        {/* الارتباط بالقضية */}
+                        {/* <td>
+                          <input type="text" />
+                        </td> */}
+                        {/* التكلفة */}
                         <td>
                           <input type="text" />
                         </td>
-
+                        {/* التاريخ */}
                         <td>
                           <input type="text" />
                         </td>
+                        {/* الوقت */}
                         <td>
                           <input type="text" />
                         </td>
-
+                        {/* الموظف */}
                         <td>
                           <input type="text" />
                         </td>
-                        <td>
+                        {/* التنفيذ */}
+                        {/* <td>
                           <input type="text" />
-                        </td>
-
-                        <td>
-                          <input type="text" />
-                        </td>
-                        <td>
-                          <input type="text" />
-                        </td>
+                        </td> */}
+                        {/* الملخص */}
                         <td>
                           <input type="text" />
                         </td>
