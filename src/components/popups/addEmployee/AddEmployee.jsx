@@ -45,12 +45,12 @@ const AddEmployee = () => {
       id="addIssueRecord"
     >
       {/* معلومات الموظف */}
+      <h3 className="small-inputs-title !min-w-full text-2xl p-2 mb-6">
+        معلومات الموظف
+      </h3>
       <div className="small-inputs">
-        <h3 className="small-inputs-title !min-w-full text-2xl p-2 mb-6">
-          معلومات الموظف
-        </h3>
         {/* name arabic ! */}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">الاسم الرباعي باللغة العربية</label>
           <input
             type="text"
@@ -72,7 +72,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.arabicName?.message}</p>
         </div>
         {/* name english ! */}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">الاسم الرباعي باللغة الانجليزية</label>
           <input
             type="text"
@@ -94,7 +94,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.englishName?.message}</p>
         </div>
         {/* email! */}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">البريد الالكتروني</label>
           <input
             type="email"
@@ -115,7 +115,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.email?.message}</p>
         </div>
         {/* phone ! */}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">رقم الهاتف</label>
           <input
             type="text"
@@ -129,7 +129,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.phone?.message}</p>
         </div>
         {/* idNumber ! */}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">رقم الهوية</label>
           <input
             type="text"
@@ -143,7 +143,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.idNumber?.message}</p>
         </div>
         {/* idNumber end date ! */}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">تاريخ انتهاء الهوية</label>
           <input
             type="date"
@@ -157,7 +157,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.idNumberEndDate?.message}</p>
         </div>
         {/* hiringDate !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">تاريخ التعيين</label>
           <input
             type="date"
@@ -171,7 +171,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.hiringDate?.message}</p>
         </div>
         {/* nationality !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">الجنسية</label>
           <input
             type="text"
@@ -185,7 +185,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.nationality?.message}</p>
         </div>
         {/* jobTitle !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">الوظيفة</label>
           <input
             type="text"
@@ -199,7 +199,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.jobTitle?.message}</p>
         </div>
         {/* gender !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">الجنس</label>
           <select
             type="text"
@@ -216,7 +216,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.gender?.message}</p>
         </div>
         {/* passport end date !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">تاريخ انتهاء الجواز</label>
           <input
             type="date"
@@ -230,7 +230,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.passportEndDate?.message}</p>
         </div>
         {/* social status !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">الحالة الاجتماعية</label>
           <select
             type="text"
@@ -248,7 +248,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.socialStatus?.message}</p>
         </div>
         {/* drivingLicence !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">رخصة القيادة</label>
           <select
             type="checkbox"
@@ -265,7 +265,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.drivingLicence?.message}</p>
         </div>
         {/* drivingLicence end date !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">تاريخ انتهاء رخصة القيادة</label>
           <input
             type="date"
@@ -279,7 +279,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.drivingLicenceEndDate?.message}</p>
         </div>
         {/* lawyerLicence !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">رخصة المحاماة</label>
           <select
             type="checkbox"
@@ -296,7 +296,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.lawyerLicence?.message}</p>
         </div>
         {/* lawyerLicence end date !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">تاريخ انتهاء رخصة المحاماة</label>
           <input
             type="date"
@@ -310,7 +310,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.lawyerLicenceEndDate?.message}</p>
         </div>
         {/* workPlace !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">موقع العمل</label>
           <input
             type="text"
@@ -324,7 +324,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.workPlace?.message}</p>
         </div>
         {/* department !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">القسم</label>
           <input
             type="text"
@@ -338,7 +338,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.department?.message}</p>
         </div>
         {/* residenceJob !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">المهنة في الإقامة</label>
           <input
             type="text"
@@ -352,7 +352,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.residenceJob?.message}</p>
         </div>
         {/* medicalInsurance !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">التأمين الطبي</label>
           <input
             type="text"
@@ -366,7 +366,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.medicalInsurance?.message}</p>
         </div>
         {/* medicalInsuranceEndDate !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">تاريخ انتهاء التأمين الطبي</label>
           <input
             type="text"
@@ -382,7 +382,7 @@ const AddEmployee = () => {
           </p>
         </div>
         {/* employeeStatus !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">حالة الموظف</label>
           <select
             type="text"
@@ -402,7 +402,7 @@ const AddEmployee = () => {
         </div>
       </div>
       {/* experience !*/}
-      <div className="input !min-w-full flex-1 flex flex-col">
+      <div className="simple-input !min-w-full flex-1 flex flex-col">
         <label htmlFor="">الخبرة السابقة</label>
         <textarea
           type="text"
@@ -417,12 +417,12 @@ const AddEmployee = () => {
         <p className="input-error">{errors.experience?.message}</p>
       </div>
       {/* تفاصيل عقد الموظف !*/}
+      <h3 className="small-inputs-title !min-w-full text-2xl p-2 mb-6">
+        تفاصيل عقد الموظف
+      </h3>
       <div className="small-inputs">
-        <h3 className="small-inputs-title !min-w-full text-2xl p-2 mb-6">
-          تفاصيل عقد الموظف
-        </h3>
         {/* الراتب الأساسي!*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">الراتب الأساسي</label>
           <input
             type="text"
@@ -436,7 +436,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.salary?.message}</p>
         </div>
         {/* بدل السكن !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">بدل السكن</label>
           <input
             type="text"
@@ -450,7 +450,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.housingExchange?.message}</p>
         </div>
         {/* بدل النقل !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">بدل النقل</label>
           <input
             type="text"
@@ -464,7 +464,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.transportExchange?.message}</p>
         </div>
         {/* بدل الاتصال !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">بدل الاتصال</label>
           <input
             type="text"
@@ -478,7 +478,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.contactExchange?.message}</p>
         </div>
         {/* الحساب البنكي */}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">الحساب البنكي</label>
           <input
             type="text"
@@ -492,7 +492,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.bankAccount?.message}</p>
         </div>
         {/* بدلات أخرى */}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">بدلات أخرى</label>
           <input
             type="text"
@@ -506,7 +506,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.otherExchanges?.message}</p>
         </div>
         {/* مرفقات العقد */}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">مرفقات العقد</label>
           <input
             type="file"
@@ -521,12 +521,12 @@ const AddEmployee = () => {
         </div>
       </div>
       {/* مباشرة الموظف!*/}
+      <h3 className="small-inputs-title !min-w-full text-2xl p-2 mb-6">
+        تفاصيل مباشرة الموظف
+      </h3>
       <div className="small-inputs">
-        <h3 className="small-inputs-title !min-w-full text-2xl p-2 mb-6">
-          تفاصيل مباشرة الموظف
-        </h3>
         {/* تاريخ المباشرة!*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">تاريخ المباشرة</label>
           <input
             type="text"
@@ -540,7 +540,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.contractDate?.message}</p>
         </div>
         {/* حالة الموظف !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">حالة الموظف</label>
           <input
             type="text"
@@ -554,7 +554,7 @@ const AddEmployee = () => {
           <p className="input-error">{errors.statusAfterContract?.message}</p>
         </div>
         {/* العودة من الإجازة !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">تسجيل العودة من الإجازة</label>
           <select
             type="text"
@@ -572,9 +572,9 @@ const AddEmployee = () => {
         </div>
       </div>
       {/* إنهاء خدمات الموظف */}
-      <div className="input !min-w-full flex-1 flex flex-col !gap-0">
+      <div className="simple-input !min-w-full flex-1 flex flex-col !gap-0">
         {/* العودة من الإجازة !*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">إنهاء خدمات الموظف</label>
           <select
             type="text"
@@ -597,7 +597,7 @@ const AddEmployee = () => {
           <button
             onClick={handleKick}
             type="button"
-            className=" input !min-w-full flex-1 !flex-row  flex justify-center bg-mainRed text-white font-bold"
+            className=" simple-input !min-w-full flex-1 !flex-row  flex justify-center bg-mainRed text-white font-bold"
           >
             تأكيد
           </button>

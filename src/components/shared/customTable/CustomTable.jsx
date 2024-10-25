@@ -7,9 +7,12 @@ import {
   useSortBy,
   useTable,
 } from "react-table";
+import AddWrapper from "../wrappers/adds/AddWrapper";
+import AddContractRecord from "@/components/popups/addContractRecord/AddContractRecord";
 
 const CustomTable = ({
   RenderElement,
+  AddRecordEle,
   columns,
   tableData,
   enableFilter = true,
@@ -111,6 +114,12 @@ const CustomTable = ({
           </button>
         )}
       </div>
+      {/* add record */}
+      {AddRecordEle && (
+        <AddWrapper>
+          <AddRecordEle />
+        </AddWrapper>
+      )}
       <div
         className={`${
           filterMenuActive && " gap-1 "

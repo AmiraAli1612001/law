@@ -5,12 +5,14 @@ import authSlice from "./Features/authSlice";
 import popupsSlice from "./Features/popupsSlice";
 import formatsSlice  from "./Features/formatsSlice";
 import tempDataSlice from "./Features/tempDataSlice";
+import formStateSlice from "./Features/formStateSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
     popups: popupsSlice,
     formats: formatsSlice,
-    tempData: tempDataSlice
+    tempData: tempDataSlice,
+    formState: formStateSlice,
   },
 });

@@ -1,13 +1,121 @@
 import React, { useRef, useState } from "react";
-
+import HRData from "@/fakeData/HRData.json";
+import { useDispatch } from "react-redux";
+import { toggleAddRecordPopup, toggleEditEmployee } from "@/globalState/Features/popupsSlice";
+const Party = ({
+  last = false,
+  removeParty,
+  addParty,
+  index,
+  party,
+  length,
+}) => {
+  const [nameInput, setNameInput] = useState("");
+  const dispatch = useDispatch()
+  function handleAddClient(){
+    dispatch(toggleAddRecordPopup("addEmployee"))
+  }
+  return (
+    <div className="flex justify-between items-center ">
+      <div className="flex-1 simple-input">
+        {/* <h4>
+          الطرف <span>{index + 1}</span>
+        </h4> */}
+        <div className="flex  overflow-hidden gap-2">
+          <div className="bg-contract rounded p-2 text-lg font-bold flex justify-center items-center">
+            <span>{index + 1}</span>
+          </div>
+          {/* search type */}
+          <select name="" id="">
+            <option value="" className="hidden">
+              طريقة التحديد
+            </option>
+            <option value="">اسم العميل</option>
+            <option value="">رقم العميل</option>
+            <option value="">هاتف العميل</option>
+          </select>
+          {/* search input */}
+          <input
+            type="text"
+            name=""
+            id=""
+            value={nameInput}
+            onChange={(e) => setNameInput(e.target.value)}
+          />
+          {/* results list */}
+          <select name="" id="" className="max-h-[100px]">
+            {HRData.filter((e) =>
+              e.name.toLowerCase().includes(nameInput.toLowerCase())
+            )
+              .slice(0, 6)
+              .map((client) => (
+                <option value={client.id}>{client.name}</option>
+              ))}
+          </select>
+          {/* add btn */}
+          {last && (
+            <>
+              <button
+                onClick={handleAddClient}
+                className="bg-textGreen hover:opacity-80 text-white transition-all  rounded py-2 px-4 font-medium whitespace-nowrap"
+              >
+                عميل جديد
+              </button>
+              <button
+                onClick={addParty}
+                className="bg-textGreen hover:opacity-80 text-white transition-all  rounded p-2 font-medium whitespace-nowrap"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
+                  ></path>
+                </svg>
+              </button>
+            </>
+          )}
+          {/* <textarea
+                  value={party.value}
+                  onChange={(e) => setPartyData(party.id, e.target.value)}
+                  className="w-full  min-h-[100px]"
+                  name=""
+                  id=""
+                ></textarea> */}
+          {/* {index == parties.length - 1 && parties.length > 1 && ( */}
+          {(index > 0 || length > 1) && (
+            <button
+              onClick={() => removeParty(party)}
+              className="bg-red-500 text-white rounded aspect-square w-max p-2 h-auto font-medium"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path fill="currentColor" d="M19 12.998H5v-2h14z"></path>
+              </svg>
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 const Parties = () => {
   const currentNumber = useRef(0);
+  const [nameInput, setNameInput] = useState("");
   const [parties, setParties] = useState([
     { id: 0, value: "mohammed ahmed mahmoud" },
   ]);
   function addParty() {
-    setParties([...parties, { id: currentNumber.current + 1, value: "" }]);
-    currentNumber.current++;
+    setParties([...parties, { id: ++currentNumber.current, value: "" }]);
+    // currentNumber.current++;
   }
   function setPartyData(id, data) {
     setParties(
@@ -23,96 +131,15 @@ const Parties = () => {
     <div className="flex flex-col gap-2">
       <h3 className="text-lg font-semibold">اطراف العقد</h3>
       {parties.map((party, index) => (
-        <div key={index} className="flex justify-between items-center ">
-          <div className="flex-1">
-            <h4>
-              الطرف <span>{index + 1}</span>
-            </h4>
-            <div className="flex rounded  overflow-hidden">
-              {index === parties.length - 1 && (
-                <button
-                  onClick={addParty}
-                  className="bg-textGreen text-white p-2 h-auto font-medium"
-                >
-                  اضافة <br /> طرف
-                </button>
-              )}
-              <div
-                dir="ltr"
-                className="flex-1 h-auto [&>div]:rounded-t flex min-h-[100px] flex-col"
-              >
-                {/* <div id={`contract-party-toolbar-${party.id}`}>
-                  <span className="ql-formats">
-                    <select className="ql-font"></select>
-                    <select className="ql-size"></select>
-                  </span>
-                  <span className="ql-formats">
-                    <button className="ql-bold"></button>
-                    <button className="ql-italic"></button>
-                    <button className="ql-underline"></button>
-                    <button className="ql-strike"></button>
-                  </span>
-                  <span className="ql-formats">
-                    <select className="ql-color"></select>
-                    <select className="ql-background"></select>
-                  </span>
-                  <span className="ql-formats">
-                    <button className="ql-script" value="sub"></button>
-                    <button className="ql-script" value="super"></button>
-                  </span>
-                  <span className="ql-formats">
-                    <button className="ql-header" value="1"></button>
-                    <button className="ql-header" value="2"></button>
-                    <button className="ql-blockquote"></button>
-                    <button className="ql-code-block"></button>
-                  </span>
-                  <span className="ql-formats">
-                    <button className="ql-list" value="ordered"></button>
-                    <button className="ql-list" value="bullet"></button>
-                    <button className="ql-indent" value="-1"></button>
-                    <button className="ql-indent" value="+1"></button>
-                  </span>
-                  <span className="ql-formats">
-                    <button className="ql-direction" value="rtl"></button>
-                    <select className="ql-align"></select>
-                  </span>
-                  <span className="ql-formats">
-                    <button className="ql-link"></button>
-                    <button className="ql-image"></button>
-                    <button className="ql-video"></button>
-                  </span>
-                  <span className="ql-formats">
-                    <button className="ql-clean"></button>
-                  </span>
-                </div> */}
-                {/* <ReactQuill
-                  modules={{
-                    toolbar: `#contract-party-toolbar-${party.id}`,
-                  }}
-                  id={`contract-party-${party.id}`}
-                  theme="snow"
-                  value={party.value}
-                  onChange={(e) => setPartyData(party.id, e)}
-                /> */}
-                <textarea
-                  value={party.value}
-                  onChange={(e) => setPartyData(party.id, e.target.value)}
-                  className="w-full  min-h-[100px]"
-                  name=""
-                  id=""
-                ></textarea>
-              </div>
-              {index == parties.length - 1 && parties.length > 1 && (
-                <button
-                  onClick={() => removeParty(party)}
-                  className="bg-red-500 text-white p-2 h-auto font-medium"
-                >
-                  حذف
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
+        <Party
+          length={parties.length}
+          key={index}
+          party={party}
+          last={index == parties.length - 1}
+          removeParty={removeParty}
+          addParty={addParty}
+          index={index}
+        />
       ))}
     </div>
   );

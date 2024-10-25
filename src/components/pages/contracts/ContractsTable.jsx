@@ -4,6 +4,7 @@ import React, { useMemo } from "react";
 import CustomTable from "../../shared/customTable/CustomTable";
 import ContractRow from "./contractRow/ContractRow";
 import contractsData from "@/fakeData/contractsData.json";
+import AddContractRecord from "@/components/popups/addContractRecord/AddContractRecord";
 
 const ContractsTable = ({ swipe }) => {
   const tableColumns = useMemo(
@@ -44,6 +45,7 @@ const ContractsTable = ({ swipe }) => {
       <CustomTable
         tableData={contractsData}
         columns={tableColumns}
+        AddRecordEle={()=><AddContractRecord/>}
         RenderElement={(data)=><ContractRow swipe={swipe} {...data} />}
       />
     </>

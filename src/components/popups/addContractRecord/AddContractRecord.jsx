@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 
 const AddContractRecord = () => {
   const signUpForm = useForm();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -35,7 +35,7 @@ const AddContractRecord = () => {
 
     // dispatch(closeLoader());
   }
-  
+
   return (
     <form
       method="POST"
@@ -43,12 +43,13 @@ const AddContractRecord = () => {
       action=""
       noValidate
       id="addIssueRecord"
+      className="py-4"
     >
-      <div className="small-inputs">
-        {/* contract name ! */}
-        <div className="input">
-          <label htmlFor="">العنوان</label>
-          <input
+      <div className="small-inputs flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5">
+        {/* contract type ! */}
+        <div className="simple-input">
+          <label htmlFor="">نوع العقد</label>
+          <select
             type="text"
             name=""
             id="contractName"
@@ -56,46 +57,80 @@ const AddContractRecord = () => {
               required: "يجب كتابة عنوان العقد",
             })}
             placeholder=""
-          />
+          >
+            <option className="hidden" value="">
+              اختر نوع العقد
+            </option>
+            <option value="قرار موظف">قرار موظف</option>
+            <option value="قرار عميل">قرار عميل</option>
+          </select>
           <p className="input-error">{errors.contractName?.message}</p>
         </div>
-        {/* contractNumber !*/}
-        <div className="input">
-          <label htmlFor="">رقم العقد</label>
-          <input
+        {/* contract status ! */}
+        <div className="simple-input">
+          <label htmlFor="">حالة العقد</label>
+          <select
             type="text"
             name=""
-            id="contractNumber"
-            {...register("contractNumber", {
-              required: "يجب كتابة رقم العقد",
+            id="contractStatus"
+            {...register("contractStatus", {
+              required: "يجب كتابة عنوان العقد",
             })}
             placeholder=""
-          />
-          <p className="input-error">{errors.contractNumber?.message}</p>
+          >
+            <option className="hidden" value="">
+              اختر حالة العقد
+            </option>
+            <option value="قرار موظف">معاينة</option>
+            <option value="قرار عميل">اصدار</option>
+          </select>
+          <p className="input-error">{errors.contractStatus?.message}</p>
         </div>
-        {/* contractDate ! */}
-        <div className="input">
+        {/* contract pay type !*/}
+        <div className="simple-input">
+          <label htmlFor="">نوع الدفع</label>
+          <select
+            type="text"
+            name=""
+            id="contractPayType"
+            {...register("contractPayType", {
+              required: "يجب كتابة عنوان العقد",
+            })}
+            placeholder=""
+          >
+            <option className="hidden" value="">
+              اختر نوع الدفع
+            </option>
+            <option value="قرار موظف">1</option>
+            <option value="قرار عميل">2</option>
+          </select>
+          <p className="input-error">{errors.contractPayType?.message}</p>
+        </div>
+        {/* contract Date ! */}
+        <div className="simple-input">
           <label htmlFor="">تاريخ العقد</label>
           <input
             type="date"
             name=""
+            defaultValue={new Date().toISOString().split("T")[0]}
             id="contractDate"
             {...register("contractDate", {
-              required: "يجب كتابة الاسم الرباعي بالعربي",
+              // required: "يجب كتابة الاسم الرباعي بالعربي",
             })}
             placeholder=""
           />
           <p className="input-error">{errors.contractDate?.message}</p>
         </div>
       </div>
+      <hr className="shadow" />
       {/* parties */}
       <div className="input !min-w-full">
         <Parties />
       </div>
       {/* name arabic ! arabicName*/}
-      <div className="input !min-w-full flex-1">
+      <div className="simple-input !min-w-full flex-1 ">
         <h3 className="text-lg font-semibold">التمهيد</h3>
-        <div dir="ltr" className="flex-1 min-h-fit h-fit">
+        {/* <div dir="ltr" className="flex-1 min-h-fit h-fit bg-white">
           <div id={`contract-details-toolbar`}>
             <span className="ql-formats">
               <select className="ql-font"></select>
@@ -144,7 +179,8 @@ const AddContractRecord = () => {
             modules={{ toolbar: "#contract-details-toolbar" }}
             theme="snow"
           />
-        </div>
+        </div> */}
+        <textarea className="text-lg" name="" id=""></textarea>
         <p className="input-error">{errors.arabicName?.message}</p>
       </div>
 
@@ -152,7 +188,7 @@ const AddContractRecord = () => {
       <div className="input !min-w-full">
         <Clauses />
       </div>
-      <button className="text-white text-xl p-4 w-full bg-textGreen rounded">
+      <button className="text-white text-xl mt-4 p-4 w-full bg-textGreen rounded">
         اضافة
       </button>
     </form>

@@ -1,0 +1,19 @@
+.simple-input {
+  @apply rounded flex flex-col gap-2 text-gray-800;
+}
+.simple-input label {
+  @apply text-sm md:text-base font-bold;
+}
+.simple-input input, .simple-input select {
+  @apply h-[50px];
+}
+.simple-input input, .simple-input textarea, .simple-input select {
+  @apply w-full p-2 border border-[#a6b8bb] rounded;
+}
+.simple-input .input-error {
+  @apply text-red-500 text-sm font-bold;
+}
+
+.small-inputs {
+  @apply w-full grid md:grid-cols-2 lg:grid-cols-4   lg:flex-row gap-2 text-gray-800;
+}/*# sourceMappingURL=form.css.map */

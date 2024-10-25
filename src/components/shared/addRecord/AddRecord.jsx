@@ -1,14 +1,25 @@
 "use client";
+import { closeAddFormRecord, openAddFormRecord } from "@/globalState/Features/formStateSlice";
 import { toggleAddRecordPopup } from "@/globalState/Features/popupsSlice";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const AddRecord = ({ title, recordType }) => {
   const disptach = useDispatch();
+  const addRecord = useSelector((store) => store.formState?.addRecord);
+  function handleClick() {
+    // disptach(toggleAddRecordPopup(recordType));
+    if(addRecord){
+      disptach(closeAddFormRecord())
+    }else{
+      disptach(openAddFormRecord())
+    }
+  }
   return (
     <button
-      className="flex items-center gap-4 p-4  bg-textGreen hover:bg-opacity-70 hover:drop-shadow transition-all rounded"
-      onClick={() => disptach(toggleAddRecordPopup(recordType))}
+      className={`flex items-center gap-4 p-4   hover:bg-opacity-70 hover:drop-shadow transition-all rounded ${
+        addRecord ? "bg-mainRed" : "bg-textGreen"}`}
+      onClick={handleClick}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

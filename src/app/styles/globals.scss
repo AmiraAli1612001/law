@@ -86,11 +86,11 @@
     background-color: var(--text-green);
   }
 }
-.row-titles{
-  tbody{
-    tr{
-      td{
-        >span{
+.row-titles {
+  tbody {
+    tr {
+      td {
+        > span {
           font-size: 12px;
           font-weight: bold;
         }
@@ -120,7 +120,9 @@
     font-weight: 500;
     font-size: 18px;
   }
-  section,input,textarea {
+  section,
+  input,
+  textarea {
     background-color: rgba(0, 0, 0, 0.04);
     border-radius: 4px;
     padding: 16px;
@@ -153,16 +155,18 @@ nav.swiper-nav {
       page-break-before: always;
       page-break-after: always;
     }
-    *{
+    * {
       visibility: visible !important;
-      button{
+      button {
         display: none;
       }
     }
   }
-  *{
+  * {
     visibility: hidden;
   }
-  
-  
+}
+.delay-3 {
+  animation-delay: 0.3s;
+  transition-duration: 0.3s;
 }

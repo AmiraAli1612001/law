@@ -42,7 +42,7 @@ export const popupsSlice = createSlice({
           state.contractRecord = !state.contractRecord;
           state.isHidden = !state.isHidden;
           break;
-        case 3:
+        case "addEmployee":
           state.addEmployee = !state.addEmployee;
           state.isHidden = !state.isHidden;
           break;

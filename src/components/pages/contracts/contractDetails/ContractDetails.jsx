@@ -23,7 +23,7 @@ const ContractDetails = ({ id, contractData }) => {
     "البنود",
     "معلومات اضافية",
     "المالية",
-    // "المرفقات",
+    "المرفقات",
     "طباعة العقد",
   ];
 
@@ -128,7 +128,9 @@ const ContractDetails = ({ id, contractData }) => {
                   <Finance contract={contractData} />
                 </SwiperSlide>
                 {/* المرفقات*/}
-                {/* <SwiperSlide>Slide 2</SwiperSlide> */}
+                <SwiperSlide>
+                  <embed src="/files/عقد عميل.pdf" className="w-full min-h-screen" />
+                </SwiperSlide>
                 {/* طباعة العقد */}
                 <SwiperSlide>
                   <button

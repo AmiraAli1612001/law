@@ -116,7 +116,9 @@
   font-weight: 500;
   font-size: 18px;
 }
-.simple-div section, .simple-div input, .simple-div textarea {
+.simple-div section,
+.simple-div input,
+.simple-div textarea {
   background-color: rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   padding: 16px;
@@ -152,4 +154,8 @@ nav.swiper-nav ul li:hover, nav.swiper-nav ul li.active {
   * {
     visibility: hidden;
   }
+}
+.delay-3 {
+  animation-delay: 0.3s;
+  transition-duration: 0.3s;
 }/*# sourceMappingURL=globals.css.map */
