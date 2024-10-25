@@ -19,19 +19,17 @@ import { useRef, useState } from "react";
 import TasksTable from "@/components/pages/tasks/tasksTable/TasksTable";
 import issuesData from "@/fakeData/issuesData.json";
 import Link from "next/link";
+import SessionsTable from "@/components/pages/sessions/sessionsTable/SessionsTable";
 
 const Sessions = () => {
-  const tasks = issuesData.map((issue) => ({
-      title: issue.title,
-      start: new Date(issue.date),
-  }));
+  const tasks = [{ title: "جلسة قضية رقم 1 ", start: new Date() }];
   const [active, setActive] = useState(0);
   const outerSwiperRef = useRef(null);
   const innnerSwiperRef = useRef(null);
   console.log(new Date().toISOString());
   const dispatch = useDispatch();
   console.log(active);
-  const sections = ["الجدول","التفاصيل"];
+  const sections = ["الجدول", "التفاصيل"];
   const swipeOuter = (id) => {
     if (outerSwiperRef.current) {
       outerSwiperRef.current.slideTo(id);
@@ -50,7 +48,7 @@ const Sessions = () => {
       >
         <b>{eventInfo.event.title}</b>
         <i>9:00 am</i>
-        <i>{eventInfo.event.startStr}</i>
+        <i>{eventInfo.event.startStr.split("T")[0]}</i>
       </Link>
     );
   }
@@ -105,7 +103,7 @@ const Sessions = () => {
               />
             </SwiperSlide>
             <SwiperSlide>
-              <TasksTable/>
+              <SessionsTable />
             </SwiperSlide>
           </Swiper>
         </div>

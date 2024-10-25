@@ -1,18 +1,19 @@
 [
-  {
-    "id": 1,
-    "title": "Caramel (Sukkar banat)",
-    "date": "2024/07/12",
-    "status": 1,
-    "name": "Keefer Potteridge",
-    "details": "lorem ipsum dolor sit amet consectetur adipisicing elit. Optio repellendus inventore quam. Consequuntur culpa officiis provident natus illum autem eius aliquid eos doloremque."
-  },
-  {
-    "id": 2,
-    "title": "Wild Target",
-    "name": "Keefer Potteridge",
-    "date": "2024/08/30",
-    "status": 2,
-    "details": "lorem ipsum dolor sit amet consectetur adipisicing elit. Optio repellendus inventore quam. Consequuntur culpa officiis provident natus illum autem eius aliquid eos doloremque."
-  }
-]
+    {
+      "id": 1,
+      "title": "Caramel (Sukkar banat)",
+      "date": "2024/07/12",
+      "status": 1,
+      "name": "Keefer Potteridge",
+      "details": "lorem ipsum dolor sit amet consectetur adipisicing elit. Optio repellendus inventore quam. Consequuntur culpa officiis provident natus illum autem eius aliquid eos doloremque."
+    },
+    {
+      "id": 2,
+      "title": "Wild Target",
+      "name": "Keefer Potteridge",
+      "date": "2024/08/30",
+      "status": 2,
+      "details": "lorem ipsum dolor sit amet consectetur adipisicing elit. Optio repellendus inventore quam. Consequuntur culpa officiis provident natus illum autem eius aliquid eos doloremque."
+    }
+  ]
+  
