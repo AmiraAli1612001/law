@@ -26,7 +26,7 @@ const Finance = ({ contract }) => {
     (contract?.costs + (contract?.middleMan / 100) * contractInitialPrice);
   return (
     <div className="contract-finance">
-      <div>
+      <div className="simple-div">
         <label>مبلغ العقد</label>
         <section>
           <span>
@@ -39,11 +39,13 @@ const Finance = ({ contract }) => {
           </span>
         </section>
       </div>
-      <div>
+
+      <div className="simple-div">
         <label>نوع الدفع</label>
         <section>{contract?.pricePlan}</section>
       </div>
-      <div>
+
+      <div className="simple-div">
         <label>الخصومات</label>
         <section>
           <ul>
@@ -60,7 +62,8 @@ const Finance = ({ contract }) => {
           </ul>
         </section>
       </div>
-      <div>
+
+      <div className="simple-div">
         <label>قيمة العقد بعد الخصومات</label>
         <section>
           <span className="text-green-700">{finalCost.toFixed(2)}</span>{" "}

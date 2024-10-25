@@ -8,6 +8,7 @@ import AddContractRecord from "./addContractRecord/AddContractRecord";
 
 import { resetPopups } from "@/globalState/Features/popupsSlice";
 import Attendance from "./attendance/Attendance";
+import AttachmentsPopup from "./attachments/AttachmentsPopup";
 import EditEmployee from "./editEmployee/EditEmployee";
 import AddEmployee from "./addEmployee/AddEmployee";
 import Task from "./task/Task";
@@ -27,6 +28,9 @@ const Popups = () => {
   const task = useSelector((store) => store.popups?.task);
   const addEmployee = useSelector((store) => store.popups?.addEmployee);
   const contractRecord = useSelector((store) => store.popups?.contractRecord);
+  const AttachmentsPopup = useSelector(
+    (store) => store.popups?.AttachmentsPopup
+  );
   const attendance = useSelector((store) => store.popups?.attendance);
   const editEmployee = useSelector((store) => store.popups?.editEmployee);
   const printContract = useSelector((store) => store.popups?.printContract);
@@ -49,28 +53,29 @@ const Popups = () => {
         }  p-4 rounded relative flex flex-col`}
         onClick={(e) => e.stopPropagation()}
       > */}
-        {/* close icon start */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          className="absolute top-2 right-2 cursor-pointer border border-red-500  rounded"
-          onClick={() => dispatch(resetPopups())}
-        >
-          <path
-            fill="#FF0000"
-            d="M18.36 19.78L12 13.41l-6.36 6.37l-1.42-1.42L10.59 12L4.22 5.64l1.42-1.42L12 10.59l6.36-6.36l1.41 1.41L13.41 12l6.36 6.36z"
-          />
-        </svg>
-        {/* close icon end */}
-        {issueRecord && <AddIssueRecord />}
-        {task && <Task />}
-        {addEmployee && <AddEmployee />}
-        {contractRecord && <AddContractRecord />}
-        {attendance && <Attendance />}
-        {editEmployee && <EditEmployee />}
-        {printContract && <PrintContract />}
+      {/* close icon start */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        className="absolute top-2 right-2 cursor-pointer border border-red-500  rounded"
+        onClick={() => dispatch(resetPopups())}
+      >
+        <path
+          fill="#FF0000"
+          d="M18.36 19.78L12 13.41l-6.36 6.37l-1.42-1.42L10.59 12L4.22 5.64l1.42-1.42L12 10.59l6.36-6.36l1.41 1.41L13.41 12l6.36 6.36z"
+        />
+      </svg>
+      {/* close icon end */}
+      {issueRecord && <AddIssueRecord />}
+      {task && <Task />}
+      {AttachmentsPopup && <AttachmentsPopup />}
+      {addEmployee && <AddEmployee />}
+      {contractRecord && <AddContractRecord />}
+      {attendance && <Attendance />}
+      {editEmployee && <EditEmployee />}
+      {printContract && <PrintContract />}
       {/* </div> */}
     </div>
   );

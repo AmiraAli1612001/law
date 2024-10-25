@@ -79,7 +79,7 @@ const ContractDetails = ({ id, contractData }) => {
               >
                 {/* موضوع العقد*/}
                 <SwiperSlide>
-                  <div className={!(active === 0) && " !hidden "}>
+                  <div className={`simple-div ${!(active === 0) && " !hidden "}`}>
                     <label htmlFor="">موضوع الدعوي</label>
                     <section name="" disabled id="">
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -113,7 +113,7 @@ const ContractDetails = ({ id, contractData }) => {
                 </SwiperSlide>
                 {/* معلومات اضافية */}
                 <SwiperSlide>
-                  <div>
+                  <div className="simple-div">
                     <label htmlFor="">معلومات اضافية</label>
                     <section name="" disabled id="">
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -129,7 +129,39 @@ const ContractDetails = ({ id, contractData }) => {
                 </SwiperSlide>
                 {/* المرفقات*/}
                 <SwiperSlide>
-                  <embed src="/files/عقد عميل.pdf" className="w-full min-h-screen" />
+                  <div className="attachments !grid lg:grid-cols-2 gap-4">
+                    <div className="simple-div">
+                      <label htmlFor="">مرفقات العقد</label>
+                      <section>
+                        <button>مرفق 1</button>
+                      </section>
+                    </div>
+                    <div className="simple-div">
+                      <label htmlFor="">مرفقات القضية</label>
+                      <section>
+                        <button>مرفق 1</button>
+                      </section>
+                    </div>
+                    <div className="simple-div">
+                      <label htmlFor="">مرفقات الجلسات</label>
+                      <section>
+                        <button>مرفق 1</button>
+                      </section>
+                    </div>
+                    <div className="simple-div">
+                      <label htmlFor="">مرفقات المهمات</label>
+                      <section>
+                        <button>مرفق 1</button>
+                      </section>
+                    </div>
+                    <div className="simple-div">
+                      <label htmlFor="">مرفقات الميداني</label>
+                      <section>
+                        <button>مرفق 1</button>
+                      </section>
+                    </div>
+                  </div>
+                  {/* <embed src="/files/عقد عميل.pdf" className="w-full min-h-screen" /> */}
                 </SwiperSlide>
                 {/* طباعة العقد */}
                 <SwiperSlide>

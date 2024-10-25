@@ -110,11 +110,12 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 }
 .simple-div label {
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #333;
 }
 .simple-div section,
 .simple-div input,

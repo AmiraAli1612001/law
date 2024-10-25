@@ -21,6 +21,7 @@ const initialState = {
   contractRecord: false,
   addEmployee: false,
   attendance: false,
+  attachments: false,
   editEmployee: false,
   currentEmployee: null,
 };
@@ -58,6 +59,10 @@ export const popupsSlice = createSlice({
       state.attendance = !state.attendance;
       state.isHidden = !state.isHidden;
     },
+    toggleAttachmentsPopup: (state) => {
+      state.attachments = !state.attachments;
+      state.isHidden = !state.isHidden;
+    },
     togglePrintContractPopup: (state) => {
       state.printContract = !state.printContract;
       state.isHidden = !state.isHidden;
@@ -80,6 +85,7 @@ export const popupsSlice = createSlice({
 export const {
   toggleAddRecordPopup,
   toggleAttendancePopup,
+  toggleAttachmentsPopup,
   toggleEditEmployee,
   togglePrintContractPopup,
   toggleTask,
