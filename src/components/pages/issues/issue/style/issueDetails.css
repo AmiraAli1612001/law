@@ -22,4 +22,7 @@
   font-size: 20px;
   width: 100%;
   height: auto;
+}
+.issue-details .attachments button {
+  @apply bg-textGreen  bg-opacity-90 hover:bg-opacity-55 transition-all   px-4 py-2 rounded text-sm text-white block whitespace-nowrap;
 }/*# sourceMappingURL=issueDetails.css.map */

@@ -16,7 +16,7 @@ import Parties from "./parties/Parties";
 import Appointments from "./appointments/Appointments";
 import VisitsTable from "./visits/VisitsTable";
 import CallsTable from "./calls/CallsTable";
-import { togglePrintContractPopup } from "@/globalState/Features/popupsSlice";
+import { toggleAttachmentsPopup, togglePrintContractPopup } from "@/globalState/Features/popupsSlice";
 import { toast } from "react-toastify";
 
 const IssueDetails = ({ id }) => {
@@ -36,7 +36,7 @@ const IssueDetails = ({ id }) => {
     "المهام الميدانية",
     "الزيارات",
     "إدارة المكالمات",
-    // "التقارير",
+    "المرفقات",
     // "المالية",
     "طباعة العقد",
     // "التقارير المالية",
@@ -274,6 +274,60 @@ const IssueDetails = ({ id }) => {
                 {/* إدارة المكالمات */}
                 <SwiperSlide>
                   <CallsTable />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="attachments !grid lg:grid-cols-2 gap-4">
+                    <div className="simple-div">
+                      <label htmlFor="">مرفقات العقد</label>
+                      <section>
+                        <button
+                          onClick={() => dispatch(toggleAttachmentsPopup())}
+                        >
+                          مرفق 1
+                        </button>
+                      </section>
+                    </div>
+                    <div className="simple-div">
+                      <label htmlFor="">مرفقات القضية</label>
+                      <section>
+                        <button
+                          onClick={() => dispatch(toggleAttachmentsPopup())}
+                        >
+                          مرفق 1
+                        </button>
+                      </section>
+                    </div>
+                    <div className="simple-div">
+                      <label htmlFor="">مرفقات الجلسات</label>
+                      <section>
+                        <button
+                          onClick={() => dispatch(toggleAttachmentsPopup())}
+                        >
+                          مرفق 1
+                        </button>
+                      </section>
+                    </div>
+                    <div className="simple-div">
+                      <label htmlFor="">مرفقات المهمات</label>
+                      <section>
+                        <button
+                          onClick={() => dispatch(toggleAttachmentsPopup())}
+                        >
+                          مرفق 1
+                        </button>
+                      </section>
+                    </div>
+                    <div className="simple-div">
+                      <label htmlFor="">مرفقات الميداني</label>
+                      <section>
+                        <button
+                          onClick={() => dispatch(toggleAttachmentsPopup())}
+                        >
+                          مرفق 1
+                        </button>
+                      </section>
+                    </div>
+                  </div>
                 </SwiperSlide>
                 {/* print */}
                 <SwiperSlide>
