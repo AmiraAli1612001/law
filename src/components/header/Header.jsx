@@ -6,7 +6,7 @@ import NavItem from "./navItem/NavItem";
 import ScreenWrapper from "../shared/screenWrapper/Wrapper";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleAttendancePopup } from "@/globalState/Features/popupsSlice";
+import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
 import { resetAuth } from "@/globalState/Features/authSlice";
 
 const Header = () => {

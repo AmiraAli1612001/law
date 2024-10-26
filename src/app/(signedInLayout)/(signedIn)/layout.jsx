@@ -1,5 +1,6 @@
 "use client";
 import Popups from "@/components/popups/Popups";
+import SmallPopups from "@/components/smallPopups/SmallPopups";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 
@@ -15,6 +16,7 @@ export default function Layout({ children }) {
     return (
       <>
         <Popups />
+        <SmallPopups/>
         {children}
       </>
     );

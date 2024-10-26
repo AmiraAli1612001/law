@@ -1,6 +1,6 @@
 "use client"
 import { toggleAttendance } from "@/globalState/Features/authSlice";
-import { toggleAttendancePopup } from "@/globalState/Features/popupsSlice";
+import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
