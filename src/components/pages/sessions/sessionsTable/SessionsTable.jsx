@@ -4,6 +4,7 @@ import React, { useMemo } from "react";
 import CustomTable from "@/components/shared/customTable/CustomTable";
 import tasksData from "@/fakeData/tasksData.json";
 import CustomRow from "./taskRow/TaskRow";
+import AddSession from "@/components/adds/session/AddSession";
 
 const SessionsTable = () => {
   // "id": 1,
@@ -54,6 +55,8 @@ const SessionsTable = () => {
     <>
       <CustomTable
         // enableFilter={false}
+        AddRecordEle={()=><AddSession/>}
+
         tableData={tasksData}
         columns={tableColumns}
         RenderElement={CustomRow}
