@@ -6,13 +6,17 @@ import {
   toggleEditEmployee,
 } from "@/globalState/Features/popupsSlice";
 import PersonSelector from "@/components/shared/personSelector/PersonSelector";
-const Party = ({
+const ListItem = ({
+  children,
   last = false,
-  removeParty,
-  addParty,
+  removeListItem,
+  addListItem,
   index,
-  party,
+  item,
   length,
+  btnTitle = "",
+  recordType = "",
+  personsSelectorFilter = [],
 }) => {
   const [nameInput, setNameInput] = useState("");
   const dispatch = useDispatch();
@@ -29,36 +33,8 @@ const Party = ({
           <div className="bg-contract rounded p-2 text-lg font-bold flex justify-center items-center">
             <span>{index + 1}</span>
           </div>
-          <PersonSelector
-            inputValue={nameInput}
-            setInputFn={setNameInput}
-            handleAddPerson={handleAddClient}
-            personName="عميل"
-            last={last}
-            data={HRData}
-            filterArr={[
-              {
-                name: "اسم الجلسة",
-                value: "name",
-              },
-              {
-                name: "رقم الجلسة",
-                value: "id",
-              },
-              {
-                name: "اسم العميل",
-                value: "phone",
-              },
-              {
-                name: "رقم العميل",
-                value: "id",
-              },
-              {
-                name: "هاتف العميل",
-                value: "phone",
-              },
-            ]}
-          />
+          {children}
+
           {/* search type */}
           {/* <select name="" id="">
             <option value="" className="hidden">
@@ -93,10 +69,10 @@ const Party = ({
                 onClick={handleAddClient}
                 className="bg-textGreen hover:opacity-80 text-white transition-all  rounded py-2 px-4 font-medium whitespace-nowrap"
               >
-                عميل جديد
+                اضافة {btnTitle || ""}
               </button> */}
               <button
-                onClick={addParty}
+                onClick={addListItem}
                 className="bg-textGreen hover:opacity-80 text-white transition-all  rounded p-2 font-medium whitespace-nowrap"
               >
                 <svg
@@ -114,16 +90,16 @@ const Party = ({
             </>
           )}
           {/* <textarea
-                  value={party.value}
-                  onChange={(e) => setPartyData(party.id, e.target.value)}
+                  value={item.value}
+                  onChange={(e) => setListItemData(item.id, e.target.value)}
                   className="w-full  min-h-[100px]"
                   name=""
                   id=""
                 ></textarea> */}
-          {/* {index == parties.length - 1 && parties.length > 1 && ( */}
+          {/* {index == listItems.length - 1 && listItems.length > 1 && ( */}
           {(index > 0 || length > 1) && (
             <button
-              onClick={() => removeParty(party)}
+              onClick={() => removeListItem(item)}
               className="bg-red-500 text-white rounded aspect-square w-max p-2 h-auto font-medium"
             >
               <svg
@@ -141,42 +117,59 @@ const Party = ({
     </div>
   );
 };
-const Parties = () => {
+const DynamicList = ({
+  personsSelectorFilter = [],
+  title,
+  recordType,
+  btnTitle,
+}) => {
   const currentNumber = useRef(0);
   const [nameInput, setNameInput] = useState("");
-  const [parties, setParties] = useState([
+  const [listItems, setListItems] = useState([
     { id: 0, value: "mohammed ahmed mahmoud" },
   ]);
-  function addParty() {
-    setParties([...parties, { id: ++currentNumber.current, value: "" }]);
+  function addListItem() {
+    setListItems([...listItems, { id: ++currentNumber.current, value: "" }]);
     // currentNumber.current++;
   }
-  function setPartyData(id, data) {
-    setParties(
-      parties.map((party) =>
-        party.id === id ? { ...party, value: data } : party
+  function setListItemData(id, data) {
+    setListItems(
+      listItems.map((item) =>
+        item.id === id ? { ...item, value: data } : item
       )
     );
   }
-  function removeParty(party) {
-    setParties(parties.filter((p) => p.id !== party.id));
+  function removeListItem(item) {
+    setListItems(listItems.filter((p) => p.id !== item.id));
   }
   return (
     <div className="flex flex-col gap-2">
-      <h3 className="text-lg font-semibold">اطراف العقد</h3>
-      {parties.map((party, index) => (
-        <Party
-          length={parties.length}
+      <h3 className="text-lg font-semibold">{title || ""}</h3>
+      {listItems.map((item, index) => (
+        <ListItem
+          length={listItems.length}
           key={index}
-          party={party}
-          last={index == parties.length - 1}
-          removeParty={removeParty}
-          addParty={addParty}
+          item={item}
+          btnTitle={btnTitle}
+          recordType={recordType}
+          personsSelectorFilter={personsSelectorFilter}
+          last={index == listItems.length - 1}
+          removeListItem={removeListItem}
+          addListItem={addListItem}
           index={index}
-        />
+        >
+          <PersonSelector
+            personName="عميل"
+            last={index == listItems.length - 1}
+            data={HRData}
+            // handleAddPerson={handleAddClient}
+            recordType={recordType}
+            filterArr={personsSelectorFilter}
+          />
+        </ListItem>
       ))}
     </div>
   );
 };
 
-export default Parties;
+export default DynamicList;

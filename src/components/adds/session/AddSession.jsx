@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
 
@@ -8,12 +8,18 @@ import "react-quill/dist/quill.snow.css";
 import Parties from "./subComponents/Parties";
 import Clauses from "./subComponents/Clauses";
 import { resetPopups } from "@/globalState/Features/popupsSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import DynamicList from "@/components/shared/dynamicList/DynamicList";
+import {
+  setCurrentErrors,
+  setCurrentForm,
+} from "@/globalState/Features/formStateSlice";
 
 const AddSession = () => {
   const signUpForm = useForm();
   const dispatch = useDispatch();
+  const currentForm = useSelector((store) => store.formState.currentForm);
   const {
     register,
     handleSubmit,
@@ -28,14 +34,31 @@ const AddSession = () => {
     // setGeneralError("");
     // dispatch(openLoader("جاري التسجيل"));
 
-    console.log(formData);
+    console.log(currentForm);
     // const result = await fetchRegisterUser({
     //   ...formData,
     // });
 
     // dispatch(closeLoader());
   }
-
+  const sessionsFilterArr = [
+    {
+      name: "اسم الموظف",
+      value: "phone",
+    },
+    {
+      name: "رقم الموظف",
+      value: "id",
+    },
+    {
+      name: "هاتف الموظف",
+      value: "phone",
+    },
+  ];
+  useEffect(() => {
+    dispatch(setCurrentForm(register));
+    dispatch(setCurrentErrors(errors));
+  }, [register,errors]);
   return (
     <form
       method="POST"
@@ -48,18 +71,18 @@ const AddSession = () => {
       <div className="small-inputs flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5">
         {/* contract type ! */}
         <div className="simple-input">
-          <label htmlFor="">نوع العقد</label>
+          <label htmlFor="">نوع الجلسة</label>
           <select
             type="text"
             name=""
             id="contractName"
             {...register("contractName", {
-              required: "يجب كتابة عنوان العقد",
+              required: "يجب كتابة عنوان الجلسة",
             })}
             placeholder=""
           >
             <option className="hidden" value="">
-              اختر نوع العقد
+              اختر نوع الجلسة
             </option>
             <option value="قرار موظف">قرار موظف</option>
             <option value="قرار عميل">قرار عميل</option>
@@ -68,18 +91,18 @@ const AddSession = () => {
         </div>
         {/* contract status ! */}
         <div className="simple-input">
-          <label htmlFor="">حالة العقد</label>
+          <label htmlFor="">حالة الجلسة</label>
           <select
             type="text"
             name=""
             id="contractStatus"
             {...register("contractStatus", {
-              required: "يجب كتابة عنوان العقد",
+              required: "يجب كتابة عنوان الجلسة",
             })}
             placeholder=""
           >
             <option className="hidden" value="">
-              اختر حالة العقد
+              اختر حالة الجلسة
             </option>
             <option value="قرار موظف">معاينة</option>
             <option value="قرار عميل">اصدار</option>
@@ -94,7 +117,7 @@ const AddSession = () => {
             name=""
             id="contractPayType"
             {...register("contractPayType", {
-              required: "يجب كتابة عنوان العقد",
+              required: "يجب كتابة عنوان الجلسة",
             })}
             placeholder=""
           >
@@ -108,7 +131,7 @@ const AddSession = () => {
         </div>
         {/* contract Date ! */}
         <div className="simple-input">
-          <label htmlFor="">تاريخ العقد</label>
+          <label htmlFor="">تاريخ الجلسة</label>
           <input
             type="date"
             name=""
@@ -125,7 +148,13 @@ const AddSession = () => {
       <hr className="shadow" />
       {/* parties */}
       <div className="input !min-w-full">
-        <Parties />
+        {/* <Parties /> */}
+        <DynamicList
+          title={"المنفذين"}
+          personsSelectorFilter={sessionsFilterArr}
+          btnTitle={"جلسة"}
+          recordType={"record"}
+        />
       </div>
       {/* name arabic ! arabicName*/}
       <div className="simple-input !min-w-full flex-1 ">
