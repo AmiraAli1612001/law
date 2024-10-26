@@ -349,7 +349,11 @@ const Header = () => {
                     </svg>
                   </NavItem>
                   <NavItem
-                    subList={[{ title: "جميع الجلسات", to: "/sessions" }]}
+                    subList={[
+                      { title: "جميع الجلسات", to: "/sessions" },
+                      { title: "المهام", to: "/tasks" },
+                      { title: "اخر التحديثات", to: "/updates" },
+                    ]}
                     title="مركز المعلومات"
                     // to="/finance"
                   >

@@ -77,7 +77,7 @@ const Issues = () => {
               <FullCalendar
                 plugins={[dayGridPlugin]}
                 initialView="dayGridMonth"
-                weekends={false}
+                weekends={true}
                 events={tasks}
                 eventContent={renderEventContent}
               />

@@ -45,7 +45,7 @@ const NavItem = ({ to = "#", title, children, subList }) => {
         >
           {subList.map((e, i) => (
             <li className={subListItemStyles} key={i}>
-              <Link className="inline-block p-3" href={e.to}>{e.title}</Link>
+              <Link className="inline-block w-full p-3" href={e.to}>{e.title}</Link>
             </li>
           ))}
         </ul>
