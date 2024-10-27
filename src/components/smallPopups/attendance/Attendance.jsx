@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import DynamicList from "@/components/shared/dynamicList/DynamicList";
 import { toggleAttendance } from "@/globalState/Features/authSlice";
 import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
 import React from "react";
@@ -40,8 +41,14 @@ const Attendance = () => {
         action=""
         noValidate
         id="addIssueRecord"
+        className="flex flex-col gap-4"
       >
-        <h3 className="mb-8 text-2xl">هل انت متأكد من تسجيل الانصراف؟</h3>
+        <h3 className="text-2xl">هل انت متأكد من تسجيل الانصراف؟</h3>
+        <div className="max-h-[50vh] overflow-auto">
+          <DynamicList title={"مهام اليوم"}>
+            <textarea name="" placeholder="حدد مهامك" id=""></textarea>
+          </DynamicList>
+        </div>
         <button
           className="text-white text-xl p-4 w-full bg-[#D00000]"
           onClick={() => {
@@ -124,7 +131,6 @@ const Attendance = () => {
       <button
         className="text-white text-xl p-4 w-full bg-textGreen"
         onClick={() => {
-          
           toast.success("تم تسجيل الحضور بنجاح");
           dispatch(toggleAttendancePopup());
           dispatch(toggleAttendance());

@@ -118,6 +118,7 @@ const ListItem = ({
   );
 };
 const DynamicList = ({
+  children,
   personsSelectorFilter = [],
   title,
   recordType,
@@ -158,14 +159,15 @@ const DynamicList = ({
           addListItem={addListItem}
           index={index}
         >
-          <PersonSelector
+          {/* <PersonSelector
             personName="عميل"
             last={index == listItems.length - 1}
             data={HRData}
             // handleAddPerson={handleAddClient}
             recordType={recordType}
             filterArr={personsSelectorFilter}
-          />
+          /> */}
+          {children}
         </ListItem>
       ))}
     </div>
