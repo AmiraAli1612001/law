@@ -5,6 +5,7 @@ import CustomTable from "../../shared/customTable/CustomTable";
 import HRRow from "./hrRow/HRRow";
 import HRData from "@/fakeData/HRData.json";
 import Link from "next/link";
+import AddEmployee from "@/components/popups/addEmployee/AddEmployee";
 
 const HRTable = () => {
   const tableColumns = useMemo(
@@ -46,6 +47,8 @@ const HRTable = () => {
   return (
     <>
       <CustomTable
+        addTop={true}
+        AddRecordEle={AddEmployee}
         tableData={HRData}
         columns={tableColumns}
         RenderElement={HRRow}

@@ -19,6 +19,8 @@ import issuesData from "@/fakeData/issuesData.json";
 import { togglePrintContractPopup } from "@/globalState/Features/popupsSlice";
 import Attendance from "./employeeDetails/attendance/Attendance";
 import HRTable from "./HRTable";
+import VacationsTable from "./vacations/VacationsTable";
+import { resetFormState } from "@/globalState/Features/formStateSlice";
 
 const HRWrapper = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -28,7 +30,7 @@ const HRWrapper = ({ id }) => {
   const issueDetails = issuesData.find((issue) => issue.id == id);
   console.log(active);
 
-  const sections = ["الموظفين", "الحضور والانصراف"];
+  const sections = ["الموظفين", "الحضور والانصراف", "الاجازات"];
 
   const swipeOuter = (id) => {
     if (outerSwiperRef.current) {
@@ -62,6 +64,7 @@ const HRWrapper = ({ id }) => {
                       active === index && "active"
                     } w-full whitespace-nowrap p-4 font-medium cursor-pointer`}
                     onClick={() => {
+                      dispatch(resetFormState())
                       setActive(index);
                       swipeInner(index);
                     }}
@@ -87,6 +90,10 @@ const HRWrapper = ({ id }) => {
                 {/* الحضور والانصراف */}
                 <SwiperSlide>
                   <Attendance />
+                </SwiperSlide>
+                {/* الحضور والانصراف */}
+                <SwiperSlide>
+                  <VacationsTable/>
                 </SwiperSlide>
               </Swiper>
             </div>
