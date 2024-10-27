@@ -1,19 +1,19 @@
 import CustomTable from "@/components/shared/customTable/CustomTable";
 import React from "react";
-import issuesData from "@/fakeData/issuesData.json";
+import HRData from "@/fakeData/HRData.json";
 const PaymentsDueTable = () => {
   const columns = [
     {
-      Header: "رقم الدفعة المستحقة",
+      Header: "رقم الراتب",
       accessor: "id",
     },
     {
-      Header: "العنوان",
+      Header: "اسم الموظف",
       accessor: "title",
     },
     {
       Header: "التاريخ",
-      accessor: "date",
+      accessor: "vacations",
     },
     {
       Header: "المبلغ بالريال",
@@ -34,7 +34,7 @@ const PaymentsDueTable = () => {
       ),
     },
   ];
-  return <CustomTable addTop={true} tableType={1} tableData={issuesData} columns={columns} />;
+  return <CustomTable addTop={true} tableType={1} tableData={HRData} columns={columns} />;
 };
 
 export default PaymentsDueTable;

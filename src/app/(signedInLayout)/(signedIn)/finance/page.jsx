@@ -35,7 +35,7 @@ const Finance = ({ params: { token } }) => {
     "المصروفات",
     "الالتزامات",
     "الايرادات",
-    "الدفعات المستحقة",
+    "الرواتب",
     "التقارير المالية",
   ];
 
@@ -281,7 +281,7 @@ const Finance = ({ params: { token } }) => {
                   {/* <SwiperSlide>
                     <DebtsTable />
                   </SwiperSlide> */}
-                  {/* الدفعات المستحقة */}
+                  {/* الرواتب*/}
                   <SwiperSlide>
                     <PaymentsDueTable />
                   </SwiperSlide>
