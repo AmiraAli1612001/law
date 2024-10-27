@@ -30,7 +30,7 @@ const HRWrapper = ({ id }) => {
   const issueDetails = issuesData.find((issue) => issue.id == id);
   console.log(active);
 
-  const sections = ["الموظفين", "الحضور والانصراف", "الاجازات"];
+  const sections = ["الموظفين", "الحضور والانصراف", "الاجازات","الرخص"];
 
   const swipeOuter = (id) => {
     if (outerSwiperRef.current) {
@@ -64,7 +64,7 @@ const HRWrapper = ({ id }) => {
                       active === index && "active"
                     } w-full whitespace-nowrap p-4 font-medium cursor-pointer`}
                     onClick={() => {
-                      dispatch(resetFormState())
+                      dispatch(resetFormState());
                       setActive(index);
                       swipeInner(index);
                     }}
@@ -91,9 +91,13 @@ const HRWrapper = ({ id }) => {
                 <SwiperSlide>
                   <Attendance />
                 </SwiperSlide>
-                {/* الحضور والانصراف */}
+                {/* الاجازات */}
                 <SwiperSlide>
-                  <VacationsTable/>
+                  <VacationsTable />
+                </SwiperSlide>
+                {/* الرخص */}
+                <SwiperSlide>
+                  <HRTable />
                 </SwiperSlide>
               </Swiper>
             </div>
