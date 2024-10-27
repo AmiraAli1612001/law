@@ -142,7 +142,7 @@ const CustomTable = ({
       <div
         className={`${
           filterMenuActive && " gap-1 "
-        } transition-all flex w-full`}
+        } transition-all flex w-full relative`}
       >
         {/* data rows */}
 
@@ -203,7 +203,7 @@ const CustomTable = ({
           <div
             className={`${
               filterMenuActive ? " min-w-max max-w-[300px] p-4 " : " max-w-0 "
-            } transition-all overflow-hidden bg-gray-200 h-fit flex flex-col gap-4`}
+            } transition-all absolute my-1 left-0 top-0 overflow-hidden bg-gray-200 h-fit flex flex-col gap-4`}
           >
             <h2 className="text-3xl">تصفية</h2>
             <div>

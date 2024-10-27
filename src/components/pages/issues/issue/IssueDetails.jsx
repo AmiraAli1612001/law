@@ -35,7 +35,7 @@ const IssueDetails = ({ id }) => {
   const sections = [
     "التفاصيل",
     "القائمين علي القضية",
-    "اطراف الدعوي",
+    // "اطراف الدعوي",
     "الجلسات",
     "المواعيد",
     "الوكالات",
@@ -150,12 +150,12 @@ const IssueDetails = ({ id }) => {
                   />
                 </SwiperSlide>
                 {/* اطراف الدعوي */}
-                <SwiperSlide>
+                {/* <SwiperSlide>
                   <Parties
                     prosecutor={issueDetails?.prosecutor}
                     defendant={issueDetails?.defendant}
                   />
-                </SwiperSlide>
+                </SwiperSlide> */}
                 {/* الجلسات */}
                 <SwiperSlide>
                   {/* <Sessions id={id} /> */}
