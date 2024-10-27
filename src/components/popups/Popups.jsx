@@ -3,7 +3,7 @@ import "./styles/popups.css";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import AddIssueRecord from "./addIssueRecord/AddIssueRecord";
+import AddIssue from "./addIssue/AddIssue";
 import AddContractRecord from "./addContractRecord/AddContractRecord";
 
 import { resetPopups } from "@/globalState/Features/popupsSlice";
@@ -13,6 +13,7 @@ import EditEmployee from "./editEmployee/EditEmployee";
 import AddEmployee from "./addEmployee/AddEmployee";
 import Task from "./task/Task";
 import PrintContract from "./printContract/PrintContract";
+import AddClient from "./Client/AddClient/AddClient";
 
 const Popups = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const Popups = () => {
   }
 
   const addIssue = useSelector((store) => store.popups?.addIssue);
+  const addClient = useSelector((store) => store.popups?.addClient);
   const addTask = useSelector((store) => store.popups?.addTask);
   const addEmployee = useSelector((store) => store.popups?.addEmployee);
   const addContract = useSelector((store) => store.popups?.addContract);
@@ -68,7 +70,8 @@ const Popups = () => {
         />
       </svg>
       {/* close icon end */}
-      {addIssue && <AddIssueRecord />}
+      {addIssue && <AddIssue />}
+      {addClient && <AddClient />}
       {addTask && <Task />}
       {attachmentsPopup && <AttachmentsPopup />}
       {addEmployee && <AddEmployee />}

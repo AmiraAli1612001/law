@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
 
@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 
 const AddContractRecord = () => {
   const signUpForm = useForm();
+  const [middlemanPayType, setMiddlemanPayType] = useState(0);
   const dispatch = useDispatch();
   const {
     register,
@@ -35,7 +36,17 @@ const AddContractRecord = () => {
 
     // dispatch(closeLoader());
   }
-
+  const contractType = [
+    "اتعاب محاماة أفراد",
+    "اتعاب محاماة شركات",
+    "عقد خدمات",
+    "عقد استشارة",
+  ];
+  const contractPayTypes = [
+    "كامل",
+    "دفعات: تقسم وفقًا لتواريخ استحقاق",
+    "مجاني تتحمله الشركة",
+  ];
   return (
     <form
       method="POST"
@@ -61,8 +72,13 @@ const AddContractRecord = () => {
             <option className="hidden" value="">
               اختر نوع العقد
             </option>
-            <option value="قرار موظف">قرار موظف</option>
-            <option value="قرار عميل">قرار عميل</option>
+            {contractType.map((item, index) => {
+              return (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              );
+            })}
           </select>
           <p className="input-error">{errors.contractName?.message}</p>
         </div>
@@ -74,7 +90,7 @@ const AddContractRecord = () => {
             name=""
             id="contractStatus"
             {...register("contractStatus", {
-              required: "يجب كتابة عنوان العقد",
+              required: "يجب اختيار حالة العقد",
             })}
             placeholder=""
           >
@@ -85,6 +101,28 @@ const AddContractRecord = () => {
             <option value="قرار عميل">اصدار</option>
           </select>
           <p className="input-error">{errors.contractStatus?.message}</p>
+        </div>
+        {/* contract classification ! */}
+        <div className="simple-input">
+          <label htmlFor="">تصنيف العقد</label>
+          <select
+            type="text"
+            name=""
+            id="contractClassification"
+            {...register("contractClassification", {
+              required: "يجب اختيار تصنيف العقد",
+            })}
+            placeholder=""
+          >
+            <option className="hidden" value="">
+              اختر تصنيف العقد
+            </option>
+            <option value="قرار موظف">معتمد</option>
+            <option value="قرار عميل">غير معتمد</option>
+          </select>
+          <p className="input-error">
+            {errors.contractClassification?.message}
+          </p>
         </div>
         {/* contract pay type !*/}
         <div className="simple-input">
@@ -101,8 +139,13 @@ const AddContractRecord = () => {
             <option className="hidden" value="">
               اختر نوع الدفع
             </option>
-            <option value="قرار موظف">1</option>
-            <option value="قرار عميل">2</option>
+            {contractPayTypes.map((item, index) => {
+              return (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              );
+            })}
           </select>
           <p className="input-error">{errors.contractPayType?.message}</p>
         </div>
@@ -120,6 +163,56 @@ const AddContractRecord = () => {
             placeholder=""
           />
           <p className="input-error">{errors.contractDate?.message}</p>
+        </div>
+        {/* contract value !*/}
+        <div className="simple-input">
+          <label htmlFor="">مبلغ العقد</label>
+          <input
+            type="text"
+            name=""
+            id="contractValue"
+            {...register("contractValue", {
+              required: "يجب ادخال مبلغ العقد",
+            })}
+            placeholder="ادخل مبلغ العقد"
+          />
+          <p className="input-error">{errors.contractValue?.message}</p>
+        </div>
+        {/* middleman percentage !*/}
+        <div className="simple-input">
+          <label htmlFor="">
+            {middlemanPayType == 0 ? "نسبة الوسيط" : "قيمة الوسيط"}
+          </label>
+          <div className=" relative flex">
+            <input
+              type="text"
+              name=""
+              defaultValue={0}
+              id="middlemanPercentage"
+              {...register("middlemanPercentag", {
+                required: "يجب ادخال مبلغ العقد",
+              })}
+              className="!rounded-e-none"
+              placeholder=""
+            />
+            <select
+              type="text"
+              name=""
+              id="middlemanPayType"
+              className=" !w-20 !rounded-s-none"
+              {...register("middlemanPayType", {
+                required: "يجب كتابة عنوان العقد",
+              })}
+              placeholder=""
+              onChange={(e) => {
+                setMiddlemanPayType(e.target.value);
+              }}
+            >
+              <option value="0">نسبة</option>
+              <option value="1">قيمة</option>
+            </select>
+          </div>
+          <p className="input-error">{errors.middlemanPercentage?.message}</p>
         </div>
       </div>
       <hr className="shadow" />

@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
-const AddIssueRecord = () => {
+const AddIssue = () => {
   const signUpForm = useForm();
   const {
     register,
@@ -193,4 +193,4 @@ const AddIssueRecord = () => {
   );
 };
 
-export default AddIssueRecord;
+export default AddIssue;

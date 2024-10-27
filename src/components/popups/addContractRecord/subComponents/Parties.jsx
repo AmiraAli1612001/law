@@ -13,7 +13,7 @@ const Party = ({
   const [nameInput, setNameInput] = useState("");
   const dispatch = useDispatch()
   function handleAddClient(){
-    dispatch(toggleAddRecordPopup("addEmployee"))
+    dispatch(toggleAddRecordPopup("addClient"))
   }
   return (
     <div className="flex justify-between items-center ">
@@ -38,6 +38,7 @@ const Party = ({
           <input
             type="text"
             name=""
+            placeholder="بحث"
             id=""
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
