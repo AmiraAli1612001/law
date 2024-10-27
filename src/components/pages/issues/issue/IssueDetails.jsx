@@ -22,6 +22,7 @@ import {
 } from "@/globalState/Features/popupsSlice";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import SessionsTable from "../../sessions/sessionsTable/SessionsTable";
 
 const IssueDetails = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -155,7 +156,8 @@ const IssueDetails = ({ id }) => {
                 </SwiperSlide>
                 {/* الجلسات */}
                 <SwiperSlide>
-                  <Sessions id={id} />
+                  {/* <Sessions id={id} /> */}
+                  <SessionsTable addTop={true}/>
                 </SwiperSlide>
                 {/* المواعيد */}
                 <SwiperSlide>

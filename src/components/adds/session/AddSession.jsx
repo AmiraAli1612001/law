@@ -15,6 +15,8 @@ import {
   setCurrentErrors,
   setCurrentForm,
 } from "@/globalState/Features/formStateSlice";
+import PersonSelector from "@/components/shared/personSelector/PersonSelector";
+import HRData from "@/fakeData/HRData.json";
 
 const AddSession = () => {
   const signUpForm = useForm();
@@ -58,7 +60,7 @@ const AddSession = () => {
   useEffect(() => {
     dispatch(setCurrentForm(register));
     dispatch(setCurrentErrors(errors));
-  }, [register,errors]);
+  }, [register, errors]);
   return (
     <form
       method="POST"
@@ -154,7 +156,20 @@ const AddSession = () => {
           personsSelectorFilter={sessionsFilterArr}
           btnTitle={"جلسة"}
           recordType={"record"}
-        />
+        >
+          <PersonSelector
+            data={HRData}
+            filterArr={[
+              { name: "اسم الموظف", value: "name" },
+              { name: "رقم الموظف", value: "id" },
+              { name: "رقم الهاتف", value: "phone" },
+            ]}
+            last={true}
+            recordType={"employee"}
+            personName="موظف"
+
+          />
+        </DynamicList>
       </div>
       {/* name arabic ! arabicName*/}
       <div className="simple-input !min-w-full flex-1 ">

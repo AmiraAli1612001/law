@@ -6,7 +6,7 @@ import tasksData from "@/fakeData/tasksData.json";
 import CustomRow from "./taskRow/TaskRow";
 import AddSession from "@/components/adds/session/AddSession";
 
-const SessionsTable = () => {
+const SessionsTable = ({addTop=false}) => {
   // "id": 1,
   // "case":true,
   // "name": "John Doe",
@@ -56,7 +56,7 @@ const SessionsTable = () => {
       <CustomTable
         // enableFilter={false}
         AddRecordEle={()=><AddSession/>}
-
+        addTop={addTop}
         tableData={tasksData}
         columns={tableColumns}
         RenderElement={CustomRow}

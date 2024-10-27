@@ -23,7 +23,7 @@ const Sessions = ({ id }) => {
           </tr>
         </thead>
         <tbody>
-          {Array.from({ length: 3 }).map((_, index) => (
+          {Array.from({ length: 1 }).map((_, index) => (
             <tr key={index}>
               <td>أ. علي العنزي</td>
               <td>يزيد عبدالله الحربي</td>
@@ -35,7 +35,7 @@ const Sessions = ({ id }) => {
               <td>1446/03/01</td>
               {/* 6 */}
               <td>الأربعاء</td>
-              <td>منتهية</td>
+              <td>تم التنفيذ</td>
               <td>
                 <button
                   onClick={() => dispatch(toggleAttachmentsPopup())}
