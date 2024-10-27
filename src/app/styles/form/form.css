@@ -4,10 +4,14 @@
 .simple-input label {
   @apply text-sm md:text-base font-bold;
 }
-.simple-input input, .simple-input select {
+.simple-input input,
+.simple-input select {
   @apply h-[50px];
 }
-.simple-input input, .simple-input textarea, .simple-input select {
+.simple-input input,
+.simple-input textarea,
+.simple-input select,
+.simple-input .input {
   @apply w-full p-2 border border-[#a6b8bb] rounded;
 }
 .simple-input .input-error {

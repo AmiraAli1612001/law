@@ -16,8 +16,12 @@ import Parties from "./parties/Parties";
 import Appointments from "./appointments/Appointments";
 import VisitsTable from "./visits/VisitsTable";
 import CallsTable from "./calls/CallsTable";
-import { toggleAttachmentsPopup, togglePrintContractPopup } from "@/globalState/Features/popupsSlice";
+import {
+  toggleAttachmentsPopup,
+  togglePrintContractPopup,
+} from "@/globalState/Features/popupsSlice";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 const IssueDetails = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -95,6 +99,20 @@ const IssueDetails = ({ id }) => {
                 {/* موضوع الدعوي */}
                 <SwiperSlide>
                   <div className="simple-div">
+                    <div className="grid grid-cols-2  gap-6">
+                      <div className="simple-input">
+                        <label htmlFor="">المدعي</label>
+                        <Link className="text-red-500 input"  href={"/clients/1"}>
+                          ahmed alsayed
+                        </Link>
+                      </div>
+                      <div className="simple-input">
+                        <label htmlFor="">المدعي عليه</label>
+                        <Link className="text-green-500 input" href={"/clients/2"}>
+                          ibrahim mohammed
+                        </Link>
+                      </div>
+                    </div>
                     <label htmlFor="">موضوع الدعوي</label>
                     <textarea
                       name=""
@@ -103,7 +121,7 @@ const IssueDetails = ({ id }) => {
                         "lorem ipsum dolor sit amet  consectetur adipisicing elit.orem ipsum dolor sit amet  consectetur adipisicing elit. orem ipsum dolor sit amet  consectetur adipisicing elit. "
                       }
                     ></textarea>
-                    <label htmlFor="">طلبات المدعي</label>
+                    {/* <label htmlFor="">طلبات المدعي</label>
                     <textarea
                       name=""
                       id=""
@@ -118,10 +136,10 @@ const IssueDetails = ({ id }) => {
                       defaultValue={
                         "lorem ipsum dolor sit amet  consectetur adipisicing elit.orem ipsum dolor sit amet  consectetur adipisicing elit. orem ipsum dolor sit amet  consectetur adipisicing elit. "
                       }
-                    ></textarea>
+                    ></textarea> */}
                   </div>
                 </SwiperSlide>
-                {/* أطراف المسؤولية */}
+                {/* القائمين علي القضية */}
                 <SwiperSlide>
                   <Personnel
                     lawyer={issueDetails.lawyer}

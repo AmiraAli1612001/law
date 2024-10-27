@@ -5,11 +5,11 @@ const Parties = ({ defendant, prosecutor }) => {
     <div className="simple-div">
       <div>
         <label htmlFor="">المدعي</label>
-        <textarea>{prosecutor}</textarea>
+        <textarea className="text-red-500">{prosecutor}</textarea>
       </div>
       <div>
         <label htmlFor="">المدعي عليه</label>
-        <textarea>{defendant}</textarea>
+        <textarea className="text-green-500">{defendant}</textarea>
       </div>
     </div>
   );
