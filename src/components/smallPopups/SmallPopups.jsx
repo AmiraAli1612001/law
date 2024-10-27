@@ -4,7 +4,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPopups } from "@/globalState/Features/smallPopupsSlice";
 import Attendance from "./attendance/Attendance";
-
+import DelaySession from "./sessions/delay/DelaySession";
 
 const SmallPopups = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,7 @@ const SmallPopups = () => {
   }
 
   const attendance = useSelector((store) => store.smallPopups?.attendance);
+  const delaySession = useSelector((store) => store.smallPopups?.delaySession);
 
   console.log("smallPopups");
   return (
@@ -31,27 +32,28 @@ const SmallPopups = () => {
       onClick={() => dispatch(resetPopups())}
     >
       <div
-        className={`${
-          attendance ? "w-full max-w-[500px] " : "  w-full h-full "
-        }  p-4 pt-10 rounded relative flex flex-col bg-white`}
+        className={`
+          w-full max-w-[500px] 
+          p-4 pt-10 rounded relative flex flex-col bg-white`}
         onClick={(e) => e.stopPropagation()}
       >
-      {/* close icon start */}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        className="absolute top-2 right-2 cursor-pointer border border-red-500  rounded"
-        onClick={() => dispatch(resetPopups())}
-      >
-        <path
-          fill="#FF0000"
-          d="M18.36 19.78L12 13.41l-6.36 6.37l-1.42-1.42L10.59 12L4.22 5.64l1.42-1.42L12 10.59l6.36-6.36l1.41 1.41L13.41 12l6.36 6.36z"
-        />
-      </svg>
-      {/* close icon end */}
-      {attendance && <Attendance />}
+        {/* close icon start */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          className="absolute top-2 right-2 cursor-pointer border border-red-500  rounded"
+          onClick={() => dispatch(resetPopups())}
+        >
+          <path
+            fill="#FF0000"
+            d="M18.36 19.78L12 13.41l-6.36 6.37l-1.42-1.42L10.59 12L4.22 5.64l1.42-1.42L12 10.59l6.36-6.36l1.41 1.41L13.41 12l6.36 6.36z"
+          />
+        </svg>
+        {/* close icon end */}
+        {attendance && <Attendance />}
+        {delaySession && <DelaySession />}
       </div>
     </div>
   );

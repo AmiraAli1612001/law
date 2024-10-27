@@ -8,6 +8,7 @@ import {
 import { useDispatch } from "react-redux";
 import EmployeeStatistics from "@/components/statistics/EmployeeStatistics";
 import Link from "next/link";
+import { toggleDelaySessionPopup } from "@/globalState/Features/smallPopupsSlice";
 const CustomRow = ({ data: { id, name, title, date, details, status } }) => {
   const [state, setState] = useState(false);
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const CustomRow = ({ data: { id, name, title, date, details, status } }) => {
                   عرض التفاصيل
                 </Link>
                 <button
-                  // onClick={() => dispatch(toggleAddRecordPopup("task"))}
+                  onClick={() => dispatch(toggleDelaySessionPopup())}
                   className="text-white bg-[#048D5A] py-1.5 px-4 rounded text-sm font-semibold"
                 >
                   تأجيل

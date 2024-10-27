@@ -15,15 +15,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isHidden: true,
-  task: false,
-  printContract: false,
-  issueRecord: false,
-  contractRecord: false,
-  addEmployee: false,
   attendance: false,
-  attachments: false,
-  editEmployee: false,
-  currentEmployee: null,
+  delaySession: false,
 };
 
 export const smallPopupsSlice = createSlice({
@@ -34,6 +27,11 @@ export const smallPopupsSlice = createSlice({
       state.attendance = !state.attendance;
       state.isHidden = !state.isHidden;
     },
+
+    toggleDelaySessionPopup: (state) => {
+      state.delaySession = !state.delaySession;
+      state.isHidden = !state.isHidden;
+    },
     resetPopups: (state) => {
       return initialState;
     },
@@ -42,6 +40,7 @@ export const smallPopupsSlice = createSlice({
 
 export const {
   toggleAttendancePopup,
+  toggleDelaySessionPopup,
   resetPopups,
 } = smallPopupsSlice.actions;
 
