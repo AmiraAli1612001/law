@@ -15,6 +15,7 @@ import EmployeeStatistics from "@/components/statistics/EmployeeStatistics";
 import IssuesTable from "../../issues/IssuesTable";
 import ContractsWrapper from "../../contracts/ContractsWrapper";
 import VacationsTable from "./vacations/VacationsTable";
+import AddEmployee from "@/components/popups/addEmployee/AddEmployee";
 
 const EmployeeDetails = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -24,6 +25,7 @@ const EmployeeDetails = ({ id }) => {
   console.log(active);
   const sections = [
     "التفاصيل",
+    "العقد",
     "الرواتب",
     "الخصومات",
     "السلف",
@@ -88,6 +90,11 @@ const EmployeeDetails = ({ id }) => {
                 {/* التفاصيل */}
                 <SwiperSlide>
                   <Details />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="px-4">
+                  <AddEmployee />
+                  </div>
                 </SwiperSlide>
                 {/* الرواتب */}
                 <SwiperSlide>
