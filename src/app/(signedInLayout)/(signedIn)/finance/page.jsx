@@ -23,16 +23,18 @@ const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
   const [activeIndex1, setActiveIndex1] = useState(0);
   const [activeIndex2, setActiveIndex2] = useState(0);
+  const [activeIndex3, setActiveIndex3] = useState(0);
 
   const innnerSwiper1Ref = useRef(null);
   const innnerSwiper2Ref = useRef(null);
+  const innnerSwiper3Ref = useRef(null);
 
   const outerSwiperRef = useRef(null);
   console.log(active);
   const sections = [
     "المصروفات",
     "الالتزامات",
-    "المديونات",
+    "الايرادات",
     "الدفعات المستحقة",
     "التقارير المالية",
   ];
@@ -181,7 +183,7 @@ const Finance = ({ params: { token } }) => {
                         <ChartWrapper
                           className={"max-w-[1024px]"}
                           // title="الايرادات الشهرية"
-                          Chart={Line}
+                          Chart={Bar}
                           labels={[
                             "January",
                             "February",
@@ -198,8 +200,12 @@ const Finance = ({ params: { token } }) => {
                           ]}
                           datasets={[
                             {
-                              label: "الالتزامات الشهرية",
+                              label: "الايرادات الشهرية",
                               data: monthsSalaryData.map((e) => e.salary),
+                            },
+                            {
+                              label: "المصروفات الشهرية",
+                              data: monthsSalaryData.map((e) => e.salary / 2.1),
                             },
                           ]}
                           data={monthsSalaryData}
@@ -207,10 +213,74 @@ const Finance = ({ params: { token } }) => {
                       </SwiperSlide>
                     </Swiper>
                   </SwiperSlide>
-                  {/* المديونات */}
+                  {/* الايرادات */}
                   <SwiperSlide>
-                    <DebtsTable />
+                    <nav className="flex gap-4 items-center pb-2">
+                      {["التفاصيل", "رسم توضيحي"].map((item, index) => (
+                        <button
+                          key={index}
+                          onClick={() => {
+                            setActiveIndex3(index);
+                            swipeInner(index, innnerSwiper3Ref);
+                          }}
+                          // disabled={index === 2}
+                          className={`${
+                            activeIndex3 == index ? " active " : ""
+                          } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
+                        >
+                          {item}
+                        </button>
+                      ))}
+                    </nav>
+                    <Swiper
+                      spaceBetween={0}
+                      slidesPerView={1}
+                      onSlideChange={() => console.log("slide change")}
+                      onSwiper={(swiper) => (innnerSwiper3Ref.current = swiper)}
+                      className="w-full"
+                      allowTouchMove={false}
+                    >
+                      <SwiperSlide>
+                        <DebtsTable />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <ChartWrapper
+                          className={"max-w-[1024px]"}
+                          // title="الايرادات الشهرية"
+                          Chart={Bar}
+                          labels={[
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ]}
+                          datasets={[
+                            {
+                              label: "الايرادات الشهرية",
+                              data: monthsSalaryData.map((e) => e.salary),
+                            },
+                            {
+                              label: "المصروفات الشهرية",
+                              data: monthsSalaryData.map((e) => e.salary / 2.1),
+                            },
+                          ]}
+                          data={monthsSalaryData}
+                        />
+                      </SwiperSlide>
+                    </Swiper>
                   </SwiperSlide>
+                  {/* الايرادات */}
+                  {/* <SwiperSlide>
+                    <DebtsTable />
+                  </SwiperSlide> */}
                   {/* الدفعات المستحقة */}
                   <SwiperSlide>
                     <PaymentsDueTable />

@@ -4,7 +4,7 @@ import issuesData from "@/fakeData/issuesData.json";
 const DebtsTable = () => {
   const columns = [
     {
-      Header: "رقم الدين",
+      Header: "رقم الايراد",
       accessor: "id",
     },
     {
