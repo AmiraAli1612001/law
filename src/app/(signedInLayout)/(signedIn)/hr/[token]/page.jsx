@@ -26,14 +26,16 @@ const Employee = ({ params: { token } }) => {
           <div className="row-data-content">
             <p className="">محمداحمد</p>
           </div>
+          -
           <div className="row-data-content">
             <p className="">محامي</p>
           </div>
-          {/* <div className="row-data-content">
-            <p className="" dir="ltr">
-              {date}
-            </p>
-          </div> */}
+          -
+          <div className="row-data-content flex gap-2 items-center">
+            <span className="text-mainRed font-bold">7</span>
+            <span >من</span>
+            <span className="text-textGreen font-bold">21 يوم أجازة</span>
+          </div>
           <div className="row-data-content ms-auto">
             <button
               className="bg-textGreen bg-opacity-90  hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
