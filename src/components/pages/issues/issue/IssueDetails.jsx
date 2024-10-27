@@ -23,6 +23,7 @@ import {
 import { toast } from "react-toastify";
 import Link from "next/link";
 import SessionsTable from "../../sessions/sessionsTable/SessionsTable";
+import { resetFormState } from "@/globalState/Features/formStateSlice";
 
 const IssueDetails = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -79,6 +80,7 @@ const IssueDetails = ({ id }) => {
                       active === index && "active"
                     } w-full whitespace-nowrap p-4 font-medium cursor-pointer`}
                     onClick={() => {
+                      dispatch(resetFormState())
                       setActive(index);
                       swipeInner(index);
                     }}
