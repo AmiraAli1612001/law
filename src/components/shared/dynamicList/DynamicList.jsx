@@ -13,10 +13,7 @@ const ListItem = ({
   addListItem,
   index,
   item,
-  length,
-  btnTitle = "",
-  recordType = "",
-  personsSelectorFilter = [],
+  length,multi
 }) => {
   const [nameInput, setNameInput] = useState("");
   const dispatch = useDispatch();
@@ -35,35 +32,8 @@ const ListItem = ({
           </div>
           {children}
 
-          {/* search type */}
-          {/* <select name="" id="">
-            <option value="" className="hidden">
-              طريقة التحديد
-            </option>
-            <option value="">اسم العميل</option>
-            <option value="">رقم العميل</option>
-            <option value="">هاتف العميل</option>
-          </select> */}
-          {/* search input */}
-          {/* <input
-            type="text"
-            name=""
-            id=""
-            value={nameInput}
-            onChange={(e) => setNameInput(e.target.value)}
-          /> */}
-          {/* results list */}
-          {/* <select name="" id="" className="max-h-[100px]">
-            {HRData.filter((e) =>
-              e.name.toLowerCase().includes(nameInput.toLowerCase())
-            )
-              .slice(0, 6)
-              .map((client,i) => (
-                <option key={i} value={client.id}>{client.name}</option>
-              ))}
-          </select> */}
           {/* add btn */}
-          {last && (
+          {multi && last && (
             <>
               {/* <button
                 onClick={handleAddClient}
@@ -117,13 +87,7 @@ const ListItem = ({
     </div>
   );
 };
-const DynamicList = ({
-  children,
-  personsSelectorFilter = [],
-  title,
-  recordType,
-  btnTitle,
-}) => {
+const DynamicList = ({ children, multi = true, title }) => {
   const currentNumber = useRef(0);
   const [nameInput, setNameInput] = useState("");
   const [listItems, setListItems] = useState([
@@ -150,10 +114,8 @@ const DynamicList = ({
         <ListItem
           length={listItems.length}
           key={index}
+          multi={multi}
           item={item}
-          btnTitle={btnTitle}
-          recordType={recordType}
-          personsSelectorFilter={personsSelectorFilter}
           last={index == listItems.length - 1}
           removeListItem={removeListItem}
           addListItem={addListItem}

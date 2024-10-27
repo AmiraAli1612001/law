@@ -16,7 +16,7 @@ import {
 import PersonSelector from "@/components/shared/personSelector/PersonSelector";
 import HRData from "@/fakeData/HRData.json";
 
-const AddSession = () => {
+const AddVisit = () => {
   const signUpForm = useForm();
   const dispatch = useDispatch();
   const currentForm = useSelector((store) => store.formState.currentForm);
@@ -43,15 +43,15 @@ const AddSession = () => {
   }
   const sessionsFilterArr = [
     {
-      name: "اسم الموظف",
+      name: "اسم العميل",
       value: "phone",
     },
     {
-      name: "رقم الموظف",
+      name: "رقم العميل",
       value: "id",
     },
     {
-      name: "هاتف الموظف",
+      name: "هاتف العميل",
       value: "phone",
     },
   ];
@@ -68,29 +68,29 @@ const AddSession = () => {
       id="addIssueRecord"
       className="py-4"
     >
-      <div className="small-inputs flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5">
+      <div className="small-inputs !grid-cols-3">
         {/* contract type ! */}
         <div className="simple-input">
-          <label htmlFor="">نوع الجلسة</label>
+          <label htmlFor="">سبب الزيارة</label>
           <select
             type="text"
             name=""
             id="contractName"
             {...register("contractName", {
-              required: "يجب كتابة عنوان الجلسة",
+              required: "يجب اختيار سبب الزيارة",
             })}
             placeholder=""
           >
             <option className="hidden" value="">
-              اختر نوع الجلسة
+              اختر سبب الزيارة
             </option>
-            <option value="قرار موظف">قرار موظف</option>
-            <option value="قرار عميل">قرار عميل</option>
+            <option value="قرار موظف">استشارة</option>
+            <option value="قرار عميل">مشاورة</option>
           </select>
           <p className="input-error">{errors.contractName?.message}</p>
         </div>
         {/* contract status ! */}
-        <div className="simple-input">
+        {/* <div className="simple-input">
           <label htmlFor="">حالة الجلسة</label>
           <select
             type="text"
@@ -108,9 +108,9 @@ const AddSession = () => {
             <option value="قرار عميل">اصدار</option>
           </select>
           <p className="input-error">{errors.contractStatus?.message}</p>
-        </div>
+        </div> */}
         {/* contract pay type !*/}
-        <div className="simple-input">
+        {/* <div className="simple-input">
           <label htmlFor="">نوع الدفع</label>
           <select
             type="text"
@@ -128,10 +128,10 @@ const AddSession = () => {
             <option value="قرار عميل">2</option>
           </select>
           <p className="input-error">{errors.contractPayType?.message}</p>
-        </div>
+        </div> */}
         {/* contract Date ! */}
         <div className="simple-input">
-          <label htmlFor="">تاريخ الجلسة</label>
+          <label htmlFor="">تاريخ الزيارة</label>
           <input
             type="date"
             name=""
@@ -150,10 +150,8 @@ const AddSession = () => {
       <div className="input !min-w-full">
         {/* <Parties /> */}
         <DynamicList
-          title={"المنفذين"}
-          personsSelectorFilter={sessionsFilterArr}
-          btnTitle={"جلسة"}
-          recordType={"record"}
+          title={"العميل"}
+          multi={false}
         >
           <PersonSelector
             data={HRData}
@@ -172,70 +170,20 @@ const AddSession = () => {
       {/* name arabic ! arabicName*/}
       <div className="simple-input !min-w-full flex-1 ">
         <h3 className="text-lg font-semibold">التمهيد</h3>
-        {/* <div dir="ltr" className="flex-1 min-h-fit h-fit bg-white">
-          <div id={`contract-details-toolbar`}>
-            <span className="ql-formats">
-              <select className="ql-font"></select>
-              <select className="ql-size"></select>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-bold"></button>
-              <button className="ql-italic"></button>
-              <button className="ql-underline"></button>
-              <button className="ql-strike"></button>
-            </span>
-            <span className="ql-formats">
-              <select className="ql-color"></select>
-              <select className="ql-background"></select>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-script" value="sub"></button>
-              <button className="ql-script" value="super"></button>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-header" value="1"></button>
-              <button className="ql-header" value="2"></button>
-              <button className="ql-blockquote"></button>
-              <button className="ql-code-block"></button>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-list" value="ordered"></button>
-              <button className="ql-list" value="bullet"></button>
-              <button className="ql-indent" value="-1"></button>
-              <button className="ql-indent" value="+1"></button>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-direction" value="rtl"></button>
-              <select className="ql-align"></select>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-link"></button>
-              <button className="ql-image"></button>
-              <button className="ql-video"></button>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-clean"></button>
-            </span>
-          </div>
-          <ReactQuill
-            modules={{ toolbar: "#contract-details-toolbar" }}
-            theme="snow"
-          />
-        </div> */}
+        
         <textarea className="text-lg" name="" id=""></textarea>
         <p className="input-error">{errors.arabicName?.message}</p>
       </div>
 
       {/* clauses */}
-      <div className="input !min-w-full">
-        {/* <Clauses /> */}
+      {/* <div className="input !min-w-full">
         <DynamicList
           title={"البنود"}
 
         >
           <textarea name="" id=""></textarea>
         </DynamicList>
-      </div>
+      </div> */}
       <button className="text-white text-xl mt-4 p-4 w-full bg-textGreen rounded">
         اضافة
       </button>
@@ -243,4 +191,4 @@ const AddSession = () => {
   );
 };
 
-export default AddSession;
+export default AddVisit;

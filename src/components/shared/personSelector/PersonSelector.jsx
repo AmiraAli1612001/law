@@ -18,7 +18,6 @@ const PersonSelector = ({
   //   );
   let register = useSelector((store) => store.formState.currentForm);
   const errors = useSelector((store) => store.formState.currentErrors);
-  console.log(register)
   function handleAddPerson() {
     dispatch(toggleAddRecordPopup(recordType));
   }
@@ -76,6 +75,7 @@ const PersonSelector = ({
       {last && (
         <button
           onClick={handleAddPerson}
+          type="button"
           className="bg-textGreen hover:opacity-80 text-white transition-all  rounded py-2 px-4 font-medium whitespace-nowrap"
         >
          اضافة {personName} 
