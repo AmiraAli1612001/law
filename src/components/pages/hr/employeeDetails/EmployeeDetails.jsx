@@ -11,10 +11,10 @@ import "swiper/css";
 import { useDispatch } from "react-redux";
 import Details from "./details/Details";
 import Attendance from "./attendance/Attendance";
-import Vacations from "./vacations/Vacations";
 import EmployeeStatistics from "@/components/statistics/EmployeeStatistics";
 import IssuesTable from "../../issues/IssuesTable";
 import ContractsWrapper from "../../contracts/ContractsWrapper";
+import VacationsTable from "./vacations/VacationsTable";
 
 const EmployeeDetails = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -94,8 +94,8 @@ const EmployeeDetails = ({ id }) => {
                   <table className="simple-table">
                     <thead>
                       <tr>
-                        <th>رقم الدفعة</th>
-                        <th>تاريخ الدفعة</th>
+                        <th>الرقم </th>
+                        <th>التاريخ </th>
                         <th>المبلغ</th>
                         <th>الخصومات</th>
                         <th>المدفوع</th>
@@ -182,13 +182,10 @@ const EmployeeDetails = ({ id }) => {
                   <table className="simple-table">
                     <thead>
                       <tr>
-                        <th>رقم الدفعة</th>
-                        <th>تاريخ الدفعة</th>
+                        <th>الرقم </th>
+                        <th>التاريخ </th>
                         <th>المبلغ</th>
                         <th>الخصومات</th>
-                        <th>المدفوع</th>
-                        <th>المستحق</th>
-                        <th>الحالة</th>
                         <th>التفاصيل</th>
                       </tr>
                     </thead>
@@ -200,10 +197,6 @@ const EmployeeDetails = ({ id }) => {
                         <td>2000 ريال</td>
                         <td>0 ريال</td>
 
-                        <td>2000 ريال</td>
-                        <td>0 ريال</td>
-
-                        <td>تم الدفع</td>
                         <td>لا يوجد</td>
                         <td>
                           <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
@@ -226,16 +219,7 @@ const EmployeeDetails = ({ id }) => {
                           <input type="text" />
                         </td>
 
-                        <td>
-                          <input type="text" />
-                        </td>
-                        <td>
-                          <input type="text" />
-                        </td>
 
-                        <td>
-                          <input type="text" />
-                        </td>
                         <td>
                           <input type="text" />
                         </td>
@@ -254,8 +238,8 @@ const EmployeeDetails = ({ id }) => {
                   <table className="simple-table">
                     <thead>
                       <tr>
-                        <th>رقم الدفعة</th>
-                        <th>تاريخ الدفعة</th>
+                        <th>الرقم</th>
+                        <th>التاريخ</th>
                         <th>المبلغ</th>
                         <th>الخصومات</th>
                         <th>المدفوع</th>
@@ -399,7 +383,7 @@ const EmployeeDetails = ({ id }) => {
                 </SwiperSlide>
                 {/* الاجازات */}
                 <SwiperSlide>
-                  <Vacations />
+                  <VacationsTable />
                 </SwiperSlide>
                 {/* تقييم الاداء */}
                 <SwiperSlide>
