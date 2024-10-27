@@ -274,7 +274,8 @@ const Header = () => {
                   <NavItem
                     subList={[
                       { title: "جميع القضايا", to: "/issues" },
-                      { title: "قضايا الدرجة الأولى", to: "/issues" },
+                      { title: "قضايا الدرجة الأولى", to: "/firstDegreeIssues" },
+                      { title: "قضايا التنفيذ", to: "/executiveIssues" },
                     ]}
                     // to="/issues"
                     title="القضايا"

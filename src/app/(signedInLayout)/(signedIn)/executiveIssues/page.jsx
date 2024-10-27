@@ -7,7 +7,7 @@ const Issues = () => {
   return (
     <ScreenWrapper className="flex-1 p-4 flex flex-col gap-4">
       <div className="flex justify-between items-center">
-        <LinkHeader to={"/issues"} title={"قضايا الدرجة الأولى"} />
+        <LinkHeader to={"/issues"} title={"قضايا التنفيذ"} />
         <AddRecord recordType={"addIssue"} title={"اضافة قضية"} />
       </div>
       <div>
