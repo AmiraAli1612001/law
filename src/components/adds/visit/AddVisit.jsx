@@ -155,11 +155,7 @@ const AddVisit = () => {
         >
           <PersonSelector
             data={HRData}
-            filterArr={[
-              { name: "اسم الموظف", value: "name" },
-              { name: "رقم الموظف", value: "id" },
-              { name: "رقم الهاتف", value: "phone" },
-            ]}
+            filterArr={sessionsFilterArr}
             last={true}
             recordType={"addEmployee"}
             personName="موظف"
