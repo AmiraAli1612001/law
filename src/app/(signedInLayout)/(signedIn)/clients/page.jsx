@@ -10,7 +10,7 @@ const Clients = () => {
     <ScreenWrapper className="flex-1 p-4 flex flex-col gap-4">
       <div className="flex justify-between items-center">
         <LinkHeader title={"العملاء"} />
-        <AddRecord innerForm={true} recordType={"client"} title={"اضافة عميل"} />
+        <AddRecord innerForm={true} recordType={"addClient"} title={"اضافة عميل"} />
       </div>
       <div>
         <ContractsWrapper />

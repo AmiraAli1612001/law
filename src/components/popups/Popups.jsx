@@ -24,10 +24,10 @@ const Popups = () => {
     document.querySelector("body").style.overflow = "auto";
   }
 
-  const issueRecord = useSelector((store) => store.popups?.issueRecord);
-  const task = useSelector((store) => store.popups?.task);
+  const addIssue = useSelector((store) => store.popups?.addIssue);
+  const addTask = useSelector((store) => store.popups?.addTask);
   const addEmployee = useSelector((store) => store.popups?.addEmployee);
-  const contractRecord = useSelector((store) => store.popups?.contractRecord);
+  const addContract = useSelector((store) => store.popups?.addContract);
   const attachmentsPopup = useSelector(
     (store) => store.popups?.attachments
   );
@@ -68,11 +68,11 @@ const Popups = () => {
         />
       </svg>
       {/* close icon end */}
-      {issueRecord && <AddIssueRecord />}
-      {task && <Task />}
+      {addIssue && <AddIssueRecord />}
+      {addTask && <Task />}
       {attachmentsPopup && <AttachmentsPopup />}
       {addEmployee && <AddEmployee />}
-      {contractRecord && <AddContractRecord />}
+      {addContract && <AddContractRecord />}
       {attendance && <Attendance />}
       {editEmployee && <EditEmployee />}
       {printContract && <PrintContract />}

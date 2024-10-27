@@ -38,7 +38,7 @@ const AddIssueRecord = () => {
     >
       <div className="small-inputs">
         {/* name arabic ! arabicName*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">العنوان</label>
           <input
             type="text"
@@ -52,7 +52,7 @@ const AddIssueRecord = () => {
           <p className="input-error">{errors.arabicName?.message}</p>
         </div>
         {/* name arabic ! arabicName*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">اسم المدعي</label>
           <input
             type="text"
@@ -66,7 +66,7 @@ const AddIssueRecord = () => {
           <p className="input-error">{errors.arabicName?.message}</p>
         </div>
         {/* name arabic ! arabicName*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">اسم المدعي علية</label>
           <input
             type="text"
@@ -80,7 +80,7 @@ const AddIssueRecord = () => {
           <p className="input-error">{errors.arabicName?.message}</p>
         </div>
         {/* name arabic ! arabicName*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">الصفة</label>
           <input
             type="text"
@@ -94,7 +94,7 @@ const AddIssueRecord = () => {
           <p className="input-error">{errors.arabicName?.message}</p>
         </div>
         {/* name arabic ! arabicName*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">تاريخ القضية</label>
           <input
             type="date"
@@ -108,7 +108,7 @@ const AddIssueRecord = () => {
           <p className="input-error">{errors.arabicName?.message}</p>
         </div>
         {/* name arabic ! arabicName*/}
-        <div className="input">
+        <div className="simple-input">
           <label htmlFor="">نوع القضية</label>
           <input
             type="text"
@@ -123,7 +123,7 @@ const AddIssueRecord = () => {
         </div>
       </div>
       {/* name arabic ! arabicName*/}
-      <div className="input !min-w-full flex-1">
+      <div className="simple-input !min-w-full flex-1">
         <label htmlFor="">التفاصيل</label>
         {/* <textarea
           type="text"

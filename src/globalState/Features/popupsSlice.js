@@ -15,10 +15,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isHidden: true,
-  task: false,
+  addTask: false,
   printContract: false,
-  issueRecord: false,
-  contractRecord: false,
+  addIssue: false,
+  addContract: false,
   addEmployee: false,
   attachments: false,
   editEmployee: false,
@@ -32,22 +32,22 @@ export const popupsSlice = createSlice({
     toggleAddRecordPopup: (state, action) => {
       switch (action.payload) {
         // record popup
-        case 1:
-          state.issueRecord = !state.issueRecord;
+        case "addIssue":
+          state.addIssue = !state.addIssue;
           state.isHidden = !state.isHidden;
           // state.isHidden = true;
           break;
-        case "record":
+        case "addRecord":
           // contract popup
-          state.contractRecord = !state.contractRecord;
+          state.addContract = !state.addContract;
           state.isHidden = !state.isHidden;
           break;
         case "addEmployee":
           state.addEmployee = !state.addEmployee;
           state.isHidden = !state.isHidden;
           break;
-        case "task":
-          state.task = !state.task;
+        case "addTask":
+          state.addTask = !state.addTask;
           state.isHidden = !state.isHidden;
           break;
         default:
