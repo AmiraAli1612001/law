@@ -61,7 +61,7 @@ const PersonSelector = ({
           required: "يجب ادخال البيانات",
         })}
       >
-        <option>قائمة البحث</option>
+        <option value="" className="hidden">قائمة البحث</option>
         {data
           .filter((e) =>
             e.name.toLowerCase().includes(inputValue.toLowerCase())

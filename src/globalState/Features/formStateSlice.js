@@ -4,13 +4,15 @@ const initialState = {
   addRecord: false,
   currentForm: null,
   currentErrors: null,
-
 };
 
 const formStateSlice = createSlice({
   name: "formState",
   initialState,
   reducers: {
+    toggleAddRecordPopup: (state) => {
+      state.addRecord = !state.addRecord;
+    },
     openAddFormRecord: (state) => {
       state.addRecord = true;
     },
@@ -29,6 +31,13 @@ const formStateSlice = createSlice({
   },
 });
 
-export const { openAddFormRecord, closeAddFormRecord , setCurrentForm, setCurrentErrors, resetFormState } = formStateSlice.actions;
+export const {
+  toggleAddRecordPopup,
+  openAddFormRecord,
+  closeAddFormRecord,
+  setCurrentForm,
+  setCurrentErrors,
+  resetFormState,
+} = formStateSlice.actions;
 
 export default formStateSlice.reducer;

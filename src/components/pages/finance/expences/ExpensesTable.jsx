@@ -1,6 +1,7 @@
 import CustomTable from "@/components/shared/customTable/CustomTable";
 import React from "react";
 import issuesData from "@/fakeData/issuesData.json";
+import Expense from "../adds/expense/Expense";
 const ExpensesTable = () => {
   const columns = [
     {
@@ -34,7 +35,7 @@ const ExpensesTable = () => {
       ),
     },
   ]
-  return <CustomTable addTop={true} tableType={1} tableData={issuesData} columns={columns}/>;
+  return <CustomTable   AddRecordEle={()=><Expense/>} addTop={true} tableType={1} tableData={issuesData} columns={columns}/>;
 };
 
 export default ExpensesTable;

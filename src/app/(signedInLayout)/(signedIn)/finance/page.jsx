@@ -18,9 +18,12 @@ import CommitmentsTable from "@/components/pages/finance/commitments/Commitments
 import DebtsTable from "@/components/pages/finance/debts/DebtsTable";
 import PaymentsDueTable from "@/components/pages/finance/paymentsDue/PaymentsDueTable";
 import ReportsTable from "@/components/pages/finance/reports/ReportsTable";
+import { closeAddFormRecord } from "@/globalState/Features/formStateSlice";
+import { useDispatch } from "react-redux";
 
 const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
+  const dispatch = useDispatch()
   const [activeIndex1, setActiveIndex1] = useState(0);
   const [activeIndex2, setActiveIndex2] = useState(0);
   const [activeIndex3, setActiveIndex3] = useState(0);
@@ -67,6 +70,7 @@ const Finance = ({ params: { token } }) => {
                         active === index && "active"
                       } w-full whitespace-nowrap p-4 font-medium cursor-pointer`}
                       onClick={() => {
+                        dispatch(closeAddFormRecord())
                         setActive(index);
                         swipeOuter(index);
                       }}
@@ -115,6 +119,7 @@ const Finance = ({ params: { token } }) => {
                       <SwiperSlide>
                         <ExpensesTable />
                       </SwiperSlide>
+                      {/* chart */}
                       <SwiperSlide>
                         <ChartWrapper
                           className={"max-w-[1024px]"}

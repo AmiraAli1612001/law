@@ -1,6 +1,7 @@
 import CustomTable from "@/components/shared/customTable/CustomTable";
 import React from "react";
 import HRData from "@/fakeData/HRData.json";
+import EmployeePayment from "../adds/employeePayment/EmployeePayment";
 const PaymentsDueTable = () => {
   const columns = [
     {
@@ -34,7 +35,15 @@ const PaymentsDueTable = () => {
       ),
     },
   ];
-  return <CustomTable addTop={true} tableType={1} tableData={HRData} columns={columns} />;
+  return (
+    <CustomTable
+      AddRecordEle={() => <EmployeePayment />}
+      addTop={true}
+      tableType={1}
+      tableData={HRData}
+      columns={columns}
+    />
+  );
 };
 
 export default PaymentsDueTable;

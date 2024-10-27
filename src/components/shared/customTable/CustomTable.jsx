@@ -8,7 +8,8 @@ import {
   useTable,
 } from "react-table";
 import AddWrapper from "../wrappers/adds/AddWrapper";
-import AddContractRecord from "@/components/popups/addContractRecord/AddContractRecord";
+import { useDispatch } from "react-redux";
+import { toggleAddRecordPopup } from "@/globalState/Features/formStateSlice";
 
 const CustomTable = ({
   RenderElement,
@@ -25,6 +26,7 @@ const CustomTable = ({
   const [searchFilter, setSearchFilter] = useState("");
   const [filterMenuActive, setFilterMenuActive] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("");
+  const dispatch = useDispatch();
   const data = useMemo(
     () =>
       tableData.filter((ele) =>
@@ -88,13 +90,16 @@ const CustomTable = ({
           placeholder="ابحث..."
         />
         {addTop && (
-          <button className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border-[2px] px-2 py-1 rounded">
+          <button
+            onClick={() => dispatch(toggleAddRecordPopup())}
+            className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border px-2 py-1 rounded"
+          >
             اضافة
           </button>
         )}
         {/* topFilter */}
         {topFilter &&
-          topFilter.map((ele,i) => (
+          topFilter.map((ele, i) => (
             <button
               key={i}
               className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
