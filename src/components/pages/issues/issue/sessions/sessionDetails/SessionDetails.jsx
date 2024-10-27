@@ -10,10 +10,11 @@ import "swiper/css";
 // import Personnel from "./personnel/Personnel";
 import { useSelector } from "react-redux";
 import issuesData from "@/fakeData/issuesData.json";
+import Link from "next/link";
 // import Parties from "./parties/Parties";
 // import Appointments from "./appointments/Appointments";
 
-const SessionDetails = ({ id }) => {
+const SessionDetails = ({ id = 1 }) => {
   const [active, setActive] = useState(0);
   const outerSwiperRef = useRef(null);
   const innnerSwiperRef = useRef(null);
@@ -80,14 +81,28 @@ const SessionDetails = ({ id }) => {
                 {/* موضوع الدعوي */}
                 <SwiperSlide>
                   <div>
-                    <label htmlFor="">موضوع الدعوي</label>
+                    <div>
+                      <span>اخر تحديث: </span>
+                      <Link href={"/hr/1"} className="font-semibold underline text-blue-700">محمد ابارهيم</Link>
+                    </div>
                     <section name="" disabled id="">
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                       Dolorum eveniet, tempora hic rerum nobis error obcaecati
                       vel enim molestiae, fugit eligendi numquam ad quod magnam
-                      atque nam, veniam iste. Quisquam.
+                      atque nam, veniam iste. Quisquam. Lorem ipsum dolor, sit
+                      amet consectetur adipisicing elit. Dolorum eveniet,
+                      tempora hic rerum nobis error obcaecati vel enim
+                      molestiae, fugit eligendi numquam ad quod magnam atque
+                      nam, veniam iste. Quisquam. Lorem ipsum dolor, sit amet
+                      consectetur adipisicing elit. Dolorum eveniet, tempora hic
+                      rerum nobis error obcaecati vel enim molestiae, fugit
+                      eligendi numquam ad quod magnam atque nam, veniam iste.
+                      Quisquam. Lorem ipsum dolor, sit amet consectetur
+                      adipisicing elit. Dolorum eveniet, tempora hic rerum nobis
+                      error obcaecati vel enim molestiae, fugit eligendi numquam
+                      ad quod magnam atque nam, veniam iste. Quisquam.
                     </section>
-                    <label htmlFor="">طلبات المدعي</label>
+                    {/* <label htmlFor="">طلبات المدعي</label>
                     <section name="" disabled id="">
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                       Dolorum eveniet, tempora hic rerum nobis error obcaecati
@@ -100,7 +115,7 @@ const SessionDetails = ({ id }) => {
                       Dolorum eveniet, tempora hic rerum nobis error obcaecati
                       vel enim molestiae, fugit eligendi numquam ad quod magnam
                       atque nam, veniam iste. Quisquam.
-                    </section>
+                    </section> */}
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>

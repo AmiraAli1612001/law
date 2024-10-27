@@ -51,12 +51,12 @@ const CustomRow = ({ data: { id, name, title, date, details, status } }) => {
                 >
                   عرض التفاصيل
                 </Link>
-                {/* <button
-                  onClick={() => dispatch(toggleAddRecordPopup("task"))}
+                <button
+                  // onClick={() => dispatch(toggleAddRecordPopup("task"))}
                   className="text-white bg-[#048D5A] py-1.5 px-4 rounded text-sm font-semibold"
                 >
-                  تعديل
-                </button> */}
+                  تأجيل
+                </button>
               </div>
             </td>
           </tr>
