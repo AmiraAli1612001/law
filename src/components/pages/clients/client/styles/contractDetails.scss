@@ -1,0 +1,25 @@
+.contract-details {
+  nav {
+    ul {
+      li {
+        &:hover,
+        &.active {
+          color: var(--text-green);
+          background-color: var(--bg-green);
+        }
+      }
+    }
+  }
+  .contract-sections-details {
+    .swiper-wrapper {
+      .swiper-slide {
+        padding: 16px;
+      }
+    }
+  }
+  .attachments {
+    button {
+      @apply bg-textGreen  bg-opacity-90 hover:bg-opacity-55 transition-all   px-4 py-2 rounded text-sm text-white block whitespace-nowrap;
+    }
+  }
+}

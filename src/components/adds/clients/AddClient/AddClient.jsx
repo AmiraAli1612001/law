@@ -233,21 +233,6 @@ const AddClient = () => {
           <p className="input-error">{errors.residenceJob?.message}</p>
         </div>
       </div>
-      {/* experience !*/}
-      <div className="simple-input !min-w-full flex-1 flex flex-col">
-        <label htmlFor="">الخبرة السابقة</label>
-        <textarea
-          type="text"
-          name=""
-          id="experience"
-          {...register("experience", {
-            required: "يجب إدخال الخبرة السابقة",
-          })}
-          placeholder=""
-          className="flex-1"
-        ></textarea>
-        <p className="input-error">{errors.experience?.message}</p>
-      </div>
       {/* extraInfo !*/}
       <div className="simple-input !min-w-full flex-1 flex flex-col">
         <label htmlFor="">معلومات اضافية</label>

@@ -13,7 +13,7 @@ import EditEmployee from "./editEmployee/EditEmployee";
 import AddEmployee from "./addEmployee/AddEmployee";
 import Task from "./task/Task";
 import PrintContract from "./printContract/PrintContract";
-import AddClient from "./Client/AddClient/AddClient";
+import AddClient from "../adds/clients/AddClient/AddClient";
 
 const Popups = () => {
   const dispatch = useDispatch();

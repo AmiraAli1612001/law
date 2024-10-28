@@ -1,5 +1,4 @@
-import ContractsTable from "@/components/pages/contracts/ContractsTable";
-import ContractsWrapper from "@/components/pages/contracts/ContractsWrapper";
+import ClientsTable from "@/components/pages/clients/ClientsTable";
 import AddRecord from "@/components/shared/addRecord/AddRecord";
 import LinkHeader from "@/components/shared/pageShared/linkHeader/LinkHeader";
 import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper";
@@ -13,7 +12,7 @@ const Clients = () => {
         <AddRecord innerForm={true} recordType={"addClient"} title={"اضافة عميل"} />
       </div>
       <div>
-        <ContractsWrapper />
+        <ClientsTable />
       </div>
     </ScreenWrapper>
   );
