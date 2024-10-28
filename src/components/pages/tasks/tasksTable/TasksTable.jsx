@@ -4,6 +4,7 @@ import React, { useMemo } from "react";
 import CustomTable from "@/components/shared/customTable/CustomTable";
 import CallRow from "./taskRow/TaskRow";
 import tasksData from "@/fakeData/tasksData.json";
+import AddTask from "@/components/adds/tasks/addTask/AddTask";
 
 const TasksTable = () => {
   // "id": 1,
@@ -55,6 +56,7 @@ const TasksTable = () => {
       <CustomTable
         // enableFilter={false}
         tableData={tasksData}
+        AddRecordEle={AddTask}
         columns={tableColumns}
         RenderElement={CallRow}
       />
