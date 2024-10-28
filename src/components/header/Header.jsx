@@ -1,18 +1,24 @@
 "use client";
 import "./header.css";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavItem from "./navItem/NavItem";
 import ScreenWrapper from "../shared/screenWrapper/Wrapper";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
 import { resetAuth } from "@/globalState/Features/authSlice";
+import { usePathname } from "next/navigation";
+import { resetFormState } from "@/globalState/Features/formStateSlice";
 
 const Header = () => {
   const [notificationsState, setNotificationsState] = useState(false);
   const attendance = useSelector((store) => store.auth.attendance);
   const dispatch = useDispatch();
+  const pathname = usePathname()
+  useEffect(() => {
+    dispatch(resetFormState())
+  },[pathname])
   return (
     <>
       <header className="bg-bgGreen text-3xl  z-[60]">

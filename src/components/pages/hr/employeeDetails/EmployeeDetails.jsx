@@ -17,6 +17,7 @@ import ContractsWrapper from "../../contracts/ContractsWrapper";
 import VacationsTable from "./vacations/VacationsTable";
 import AddEmployee from "@/components/popups/addEmployee/AddEmployee";
 import PromotionsTable from "./promotions/PromotionsTable";
+import EmployeeContract from "./employeeContract/EmployeeContract";
 
 const EmployeeDetails = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -96,14 +97,14 @@ const EmployeeDetails = ({ id }) => {
                 {/* العقد */}
                 <SwiperSlide>
                   <div className="px-4">
-                  <AddEmployee />
+                    <EmployeeContract />
                   </div>
                 </SwiperSlide>
                 {/* الترقيات */}
                 <SwiperSlide>
                   <PromotionsTable />
                 </SwiperSlide>
-                
+
                 {/* الرواتب */}
                 <SwiperSlide>
                   <table className="simple-table">
@@ -233,7 +234,6 @@ const EmployeeDetails = ({ id }) => {
                         <td>
                           <input type="text" />
                         </td>
-
 
                         <td>
                           <input type="text" />
