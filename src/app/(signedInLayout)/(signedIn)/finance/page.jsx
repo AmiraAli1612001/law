@@ -20,6 +20,7 @@ import PaymentsDueTable from "@/components/pages/finance/paymentsDue/PaymentsDue
 import ReportsTable from "@/components/pages/finance/reports/ReportsTable";
 import { closeAddFormRecord } from "@/globalState/Features/formStateSlice";
 import { useDispatch } from "react-redux";
+import ContractsTable from "@/components/pages/finance/contracts/ContractsTable";
 
 const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
@@ -40,6 +41,7 @@ const Finance = ({ params: { token } }) => {
     "الايرادات",
     "الرواتب",
     "التقارير المالية",
+    "العقود"
   ];
 
   const swipeOuter = (id) => {
@@ -293,6 +295,10 @@ const Finance = ({ params: { token } }) => {
                   {/* التقارير المالية */}
                   <SwiperSlide>
                     <ReportsTable />
+                  </SwiperSlide>
+                  {/* العقود */}
+                  <SwiperSlide>
+                    <ContractsTable />
                   </SwiperSlide>
                 </Swiper>
               </div>

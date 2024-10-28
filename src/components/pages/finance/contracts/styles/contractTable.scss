@@ -1,0 +1,27 @@
+table td:nth-child(1) {
+  width: fit-content;
+  max-width: 100px;
+}
+.row-data-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.custom-row {
+  >*{
+    flex: 1 1 0;
+  }
+  .row-data-content {
+    // width: calc(20%);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--text-green);
+  }
+}
+/* "flex flex-col gap-2 [&>p:first-child]:text-xs [&>p:last-child]:font-semibold [&>p:first-child]:whitespace-nowrap [ h-full" */
