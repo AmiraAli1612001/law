@@ -9,17 +9,25 @@ const Expense = () => {
     <form className="bg-bgGreen p-4">
       <div className="small-inputs !grid-cols-3">
         <div className="simple-input">
-          <label htmlFor="">اسم المصورف</label>
+          <label htmlFor="">اسم البند</label>
+          <select name="" id="">
+            <option value="" className="hidden">اختر البند</option>
+            <option value="">بند 1</option>
+            <option value="">بند 2</option>
+          </select>
+        </div>
+        <div className="simple-input">
+          <label htmlFor="">قيمة البند بالريال</label>
           <input type="text" name="" id="" />
         </div>
         <div className="simple-input">
-          <label htmlFor="">قيمة المصروف بالريال</label>
-          <input type="text" name="" id="" />
-        </div>
-        <div className="simple-input">
-          <label htmlFor="">تاريخ المصورف</label>
+          <label htmlFor="">تاريخ البند</label>
           <input type="date" name="" id="" />
         </div>
+      </div>
+      <div className="simple-input">
+        <label htmlFor="">تفاصيل اضافية</label>
+        <textarea name="" id=""></textarea>
       </div>
       <button
         onClick={() => {

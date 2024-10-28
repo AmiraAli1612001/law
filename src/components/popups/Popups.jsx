@@ -10,10 +10,10 @@ import { resetPopups } from "@/globalState/Features/popupsSlice";
 import Attendance from "./attendance/Attendance";
 import AttachmentsPopup from "./attachments/AttachmentsPopup";
 import EditEmployee from "./editEmployee/EditEmployee";
-import AddEmployee from "./addEmployee/AddEmployee";
 import Task from "./task/Task";
 import PrintContract from "./printContract/PrintContract";
 import AddClient from "../adds/clients/AddClient/AddClient";
+import AddEmployeePopup from "./addEmployee/AddEmployee";
 
 const Popups = () => {
   const dispatch = useDispatch();
@@ -74,7 +74,7 @@ const Popups = () => {
       {addClient && <AddClient />}
       {addTask && <Task />}
       {attachmentsPopup && <AttachmentsPopup />}
-      {addEmployee && <AddEmployee />}
+      {addEmployee && <AddEmployeePopup />}
       {addContract && <AddContractRecord />}
       {attendance && <Attendance />}
       {editEmployee && <EditEmployee />}

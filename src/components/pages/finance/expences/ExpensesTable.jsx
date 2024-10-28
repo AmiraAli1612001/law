@@ -9,7 +9,7 @@ const ExpensesTable = () => {
       accessor: "id",
     },
     {
-      Header: "اسم المصورف",
+      Header: "البند",
       accessor: "title",
     },
     {

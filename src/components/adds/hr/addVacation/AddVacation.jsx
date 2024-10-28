@@ -111,7 +111,7 @@ const AddVacation = () => {
         </div>
         {/* contract pay type !*/}
         <div className="simple-input">
-          <label htmlFor="">نوع الدفع</label>
+          <label htmlFor="">مدفوعة الأجر</label>
           <select
             type="text"
             name=""
@@ -121,33 +121,30 @@ const AddVacation = () => {
             })}
             placeholder=""
           >
-            <option className="hidden" value="">
-              اختر نوع الدفع
-            </option>
-            <option value="قرار موظف">1</option>
-            <option value="قرار عميل">2</option>
+            <option value="1">نعم</option>
+            <option value="2">لا</option>
           </select>
           <p className="input-error">{errors.contractPayType?.message}</p>
         </div>
         
-        {/* contract Date ! */}
+        {/* vacation Date ! */}
         <div className="simple-input">
-          <label htmlFor="">تاريخ الاجازة</label>
+          <label htmlFor="">بداية الاجازة</label>
           <input
             type="date"
             name=""
             defaultValue={new Date().toISOString().split("T")[0]}
-            id="contractDate"
-            {...register("contractDate", {
+            id="vacationDate"
+            {...register("vacationDate", {
               // required: "يجب كتابة الاسم الرباعي بالعربي",
             })}
             placeholder=""
           />
-          <p className="input-error">{errors.contractDate?.message}</p>
+          <p className="input-error">{errors.vacationDate?.message}</p>
         </div>
         {/* vacation due Date ! */}
         <div className="simple-input">
-          <label htmlFor="">تاريخ الانتهاء</label>
+          <label htmlFor="">نهاية الاجازة</label>
           <input
             type="date"
             name=""
