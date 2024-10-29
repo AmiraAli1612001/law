@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./styles/globals.css";
 import "./styles/form/form.css";
+import "./styles/table/styles.css";
 import { StateProvider } from "@/globalState/StateProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

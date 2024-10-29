@@ -1,0 +1,6 @@
+.custom-table-row {
+  @apply flex border;
+}
+.custom-table-row > * {
+  @apply flex-1 p-4;
+}/*# sourceMappingURL=styles.css.map */

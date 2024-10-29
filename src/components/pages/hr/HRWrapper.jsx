@@ -21,6 +21,7 @@ import Attendance from "./employeeDetails/attendance/Attendance";
 import HRTable from "./HRTable";
 import VacationsTable from "./vacations/VacationsTable";
 import { resetFormState } from "@/globalState/Features/formStateSlice";
+import LicensesTable from "./licenses/LicensesTable";
 
 const HRWrapper = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -97,7 +98,7 @@ const HRWrapper = ({ id }) => {
                 </SwiperSlide>
                 {/* الرخص */}
                 <SwiperSlide>
-                  <HRTable />
+                  <LicensesTable />
                 </SwiperSlide>
               </Swiper>
             </div>
