@@ -3,4 +3,12 @@
 }
 .payment-selector .select-type button.active {
   @apply bg-textGreen text-white;
+}
+.payment-selector .payment-sections .full-payment,
+.payment-selector .payment-sections .payments {
+  @apply opacity-0 h-0 overflow-hidden transition-all;
+}
+.payment-selector .payment-sections .full-payment.active,
+.payment-selector .payment-sections .payments.active {
+  @apply opacity-100 h-auto;
 }/*# sourceMappingURL=styles.css.map */

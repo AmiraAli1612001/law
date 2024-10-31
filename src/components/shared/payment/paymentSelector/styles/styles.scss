@@ -7,4 +7,13 @@
       }
     }
   }
+  .payment-sections {
+    .full-payment,
+    .payments {
+      @apply opacity-0 h-0 overflow-hidden transition-all;
+      &.active {
+        @apply opacity-100 h-auto;
+      }
+    }
+  }
 }

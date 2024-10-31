@@ -24,7 +24,7 @@ const ListItem = ({
   function handleAddPerson() {
     dispatch(toggleAddRecordPopup(recordType));
   }
-  
+
   return (
     <div className="flex justify-between items-center ">
       <div className="flex-1 simple-input">
@@ -40,7 +40,8 @@ const ListItem = ({
           {/* add btn */}
           {multi && last && (
             <>
-              {last && (
+              {/* add person btn */}
+              {last && btnTitle && recordType && (
                 <button
                   onClick={handleAddPerson}
                   type="button"
@@ -49,6 +50,7 @@ const ListItem = ({
                   {btnTitle}
                 </button>
               )}
+              {/* add item btn */}
               <button
                 onClick={addListItem}
                 className="bg-textGreen hover:opacity-80 text-white transition-all  rounded p-2 font-medium whitespace-nowrap"

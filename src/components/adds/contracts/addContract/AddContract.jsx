@@ -145,9 +145,9 @@ const AddContract = () => {
         </div>
       </div>
       {/* payment */}
-      <div className="small-inputs flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5 main-section">
+      {/* <div className="small-inputs flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5 main-section"> */}
         {/* contract pay type !*/}
-        <div className="simple-input">
+        {/* <div className="simple-input">
           <label htmlFor="">نوع الدفع</label>
           <select
             type="text"
@@ -170,10 +170,10 @@ const AddContract = () => {
             })}
           </select>
           <p className="input-error">{errors.contractPayType?.message}</p>
-        </div>
+        </div> */}
 
         {/* contract value !*/}
-        <div className="simple-input">
+        {/* <div className="simple-input">
           <label htmlFor="">مبلغ العقد</label>
           <input
             type="text"
@@ -185,9 +185,9 @@ const AddContract = () => {
             placeholder="ادخل مبلغ العقد"
           />
           <p className="input-error">{errors.contractValue?.message}</p>
-        </div>
+        </div> */}
         {/* middleman percentage !*/}
-        <div className="simple-input">
+        {/* <div className="simple-input">
           <label htmlFor="">
             {middlemanPayType == 0 ? "نسبة الوسيط" : "قيمة الوسيط"}
           </label>
@@ -221,8 +221,8 @@ const AddContract = () => {
             </select>
           </div>
           <p className="input-error">{errors.middlemanPercentage?.message}</p>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
       <div className="main-section">
         <PaymentSelector/>
       </div>
