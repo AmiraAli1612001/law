@@ -1,3 +1,6 @@
 .add-wrapper form {
-  @apply flex flex-col w-full flex-1 px-4 gap-8 overflow-auto bg-bgGreen;
+  @apply flex flex-col w-full flex-1 gap-4 overflow-auto;
+}
+.add-wrapper .main-section {
+  @apply bg-bgGreen p-4 rounded-lg drop-shadow;
 }/*# sourceMappingURL=styles.css.map */

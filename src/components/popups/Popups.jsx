@@ -4,7 +4,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import AddIssue from "./addIssue/AddIssue";
-import AddContractRecord from "./addContractRecord/AddContractRecord";
+// import AddContractRecord from "./addContractRecord/AddContractRecord";
 
 import { resetPopups } from "@/globalState/Features/popupsSlice";
 import Attendance from "./attendance/Attendance";
@@ -14,6 +14,7 @@ import Task from "./task/Task";
 import PrintContract from "./printContract/PrintContract";
 import AddClient from "../adds/clients/AddClient/AddClient";
 import AddEmployeePopup from "./addEmployee/AddEmployee";
+import AddContract from "../adds/contracts/addContract/AddContract";
 
 const Popups = () => {
   const dispatch = useDispatch();
@@ -75,7 +76,7 @@ const Popups = () => {
       {addTask && <Task />}
       {attachmentsPopup && <AttachmentsPopup />}
       {addEmployee && <AddEmployeePopup />}
-      {addContract && <AddContractRecord />}
+      {addContract && <AddContract />}
       {attendance && <Attendance />}
       {editEmployee && <EditEmployee />}
       {printContract && <PrintContract />}

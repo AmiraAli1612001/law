@@ -6,10 +6,33 @@ import { toggleAddRecordPopup } from "@/globalState/Features/popupsSlice";
 import { toast } from "react-toastify";
 const PersonSelector = ({
   last = false,
-  data = [],
-  personName = "",
-  recordType,
-  filterArr = [],
+  data = [
+    { id: 0, name: "mohammed ahmed mahmoud" },
+    {
+      id: 1,
+      name: "mohammed ibrahim ahmed",
+    },
+    { id: 2, name: "mohammed ibrahim" },
+    { id: 3, name: "ahmed ibrahim" },
+    { id: 4, name: "ahmed mohammed" },
+    { id: 5, name: "mohammed ahmed" },
+  ],
+  // personName = "",
+  // recordType,
+  filterArr = [
+    {
+      name: "الاسم",
+      value: "name",
+    },
+    {
+      name: "الرقم",
+      value: "id",
+    },
+    {
+      name: "رقم الهاتف",
+      value: "phone",
+    },
+  ],
 }) => {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
@@ -18,16 +41,16 @@ const PersonSelector = ({
   //   );
   let register = useSelector((store) => store.formState.currentForm);
   const errors = useSelector((store) => store.formState.currentErrors);
-  function handleAddPerson() {
-    dispatch(toggleAddRecordPopup(recordType));
-  }
-  console.log(`select-${recordType}-${personName}`)
-  if (errors?.[`select-${recordType}-${personName}`]?.message.length > 0) {
-    toast.error(errors[`select-${recordType}-${personName}`]?.message);
-  }
+  // function handleAddPerson() {
+  //   dispatch(toggleAddRecordPopup(recordType));
+  // }
+  // console.log(`select-${recordType}-${personName}`);
+  // if (errors?.[`select-${recordType}-${personName}`]?.message.length > 0) {
+  //   toast.error(errors[`select-${recordType}-${personName}`]?.message);
+  // }
   if (typeof register != "function") {
-    console.log(register)
-    console.log("not fn")
+    console.log(register);
+    console.log("not fn");
     register = () => {};
   }
   return (
@@ -55,32 +78,34 @@ const PersonSelector = ({
       <select
         name=""
         id=""
-        className="max-h-[100px]"
-        {...register(`select-${recordType}-${personName}`, {
-          required: "يجب ادخال البيانات",
-        })}
+        className="max-h-[100px] text-textGreen"
+        // {...register(`select-${recordType}-${personName}`, {
+        //   required: "يجب ادخال البيانات",
+        // })}
       >
-        <option value="" className="hidden">قائمة البحث</option>
+        <option value="" className="hidden text-black">
+          قائمة البحث
+        </option>
         {data
           .filter((e) =>
             e.name.toLowerCase().includes(inputValue.toLowerCase())
           )
           .slice(0, 6)
           .map((client, i) => (
-            <option key={i} value={client.id}>
+            <option className="text-textGreen" key={i} value={client.id}>
               {client.name}
             </option>
           ))}
       </select>
-      {last && (
+      {/* {last && (
         <button
           onClick={handleAddPerson}
           type="button"
           className="bg-textGreen hover:opacity-80 text-white transition-all  rounded py-2 px-4 font-medium whitespace-nowrap"
         >
-         اضافة {personName} 
+          اضافة {personName}
         </button>
-      )}
+      )} */}
     </div>
   );
 };

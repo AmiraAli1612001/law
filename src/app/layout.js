@@ -6,6 +6,7 @@ import { StateProvider } from "@/globalState/StateProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Cairo } from "next/font/google";
+import 'swiper/css';
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
 //   variable: "--font-geist-sans",

@@ -1,0 +1,10 @@
+.payment-selector {
+  .select-type {
+    button {
+      @apply border border-textGreen hover:bg-textGreen hover:text-white  bg-opacity-90 hover:bg-opacity-55 transition-all   px-4 py-0.5 rounded text-sm text-textGreen block whitespace-nowrap;
+      &.active {
+        @apply bg-textGreen text-white;
+      }
+    }
+  }
+}

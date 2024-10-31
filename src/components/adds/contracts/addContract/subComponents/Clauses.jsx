@@ -1,30 +1,16 @@
 import React, { useRef, useState } from "react";
 import HRData from "@/fakeData/HRData.json";
 import { useDispatch } from "react-redux";
-import {
-  toggleAddRecordPopup,
-  toggleEditEmployee,
-} from "@/globalState/Features/popupsSlice";
-import PersonSelector from "@/components/shared/personSelector/PersonSelector";
-const ListItem = ({
-  children,
+import { toggleAddRecordPopup, toggleEditEmployee } from "@/globalState/Features/popupsSlice";
+const Clause = ({
   last = false,
-  removeListItem,
-  addListItem,
+  removeClause,
+  addClause,
   index,
-  item,
+  clause,
   length,
-  multi,
-  recordType,
-  btnTitle,
 }) => {
-  const [nameInput, setNameInput] = useState("");
-  const dispatch = useDispatch();
-
-  function handleAddPerson() {
-    dispatch(toggleAddRecordPopup(recordType));
-  }
-  
+  const dispatch = useDispatch()
   return (
     <div className="flex justify-between items-center ">
       <div className="flex-1 simple-input">
@@ -35,22 +21,18 @@ const ListItem = ({
           <div className="bg-contract rounded p-2 text-lg font-bold flex justify-center items-center">
             <span>{index + 1}</span>
           </div>
-          {children}
-
+          {/* search input */}
+          <textarea
+            // type="text"
+            name=""
+            id=""
+            // value={nameInput}
+            // onChange={(e) => setNameInput(e.target.value)}
+          ></textarea>
           {/* add btn */}
-          {multi && last && (
-            <>
-              {last && (
-                <button
-                  onClick={handleAddPerson}
-                  type="button"
-                  className="bg-textGreen hover:opacity-80 text-white transition-all  rounded py-2 px-4 font-medium whitespace-nowrap"
-                >
-                  {btnTitle}
-                </button>
-              )}
+          {last && (
               <button
-                onClick={addListItem}
+                onClick={addClause}
                 className="bg-textGreen hover:opacity-80 text-white transition-all  rounded p-2 font-medium whitespace-nowrap"
               >
                 <svg
@@ -65,19 +47,18 @@ const ListItem = ({
                   ></path>
                 </svg>
               </button>
-            </>
           )}
           {/* <textarea
-                  value={item.value}
-                  onChange={(e) => setListItemData(item.id, e.target.value)}
+                  value={clause.value}
+                  onChange={(e) => setClauseData(clause.id, e.target.value)}
                   className="w-full  min-h-[100px]"
                   name=""
                   id=""
                 ></textarea> */}
-          {/* {index == listItems.length - 1 && listItems.length > 1 && ( */}
+          {/* {index == clauses.length - 1 && clauses.length > 1 && ( */}
           {(index > 0 || length > 1) && (
             <button
-              onClick={() => removeListItem(item)}
+              onClick={() => removeClause(clause)}
               className="bg-red-500 text-white rounded aspect-square w-max p-2 h-auto font-medium"
             >
               <svg
@@ -95,53 +76,42 @@ const ListItem = ({
     </div>
   );
 };
-const DynamicList = ({
-  children,
-  multi = true,
-  title,
-  recordType,
-  btnTitle,
-}) => {
+const Clauses = () => {
   const currentNumber = useRef(0);
   const [nameInput, setNameInput] = useState("");
-  const [listItems, setListItems] = useState([
+  const [clauses, setClauses] = useState([
     { id: 0, value: "mohammed ahmed mahmoud" },
   ]);
-  function addListItem() {
-    setListItems([...listItems, { id: ++currentNumber.current, value: "" }]);
+  function addClause() {
+    setClauses([...clauses, { id: ++currentNumber.current, value: "" }]);
     // currentNumber.current++;
   }
-  function setListItemData(id, data) {
-    setListItems(
-      listItems.map((item) =>
-        item.id === id ? { ...item, value: data } : item
+  function setClauseData(id, data) {
+    setClauses(
+      clauses.map((clause) =>
+        clause.id === id ? { ...clause, value: data } : clause
       )
     );
   }
-  function removeListItem(item) {
-    setListItems(listItems.filter((p) => p.id !== item.id));
+  function removeClause(clause) {
+    setClauses(clauses.filter((p) => p.id !== clause.id));
   }
   return (
     <div className="flex flex-col gap-2">
-      <h3 className="text-lg font-semibold">{title || ""}</h3>
-      {listItems.map((item, index) => (
-        <ListItem
-          length={listItems.length}
+      <h3 className="text-lg font-semibold">البنود</h3>
+      {clauses.map((clause, index) => (
+        <Clause
+          length={clauses.length}
           key={index}
-          recordType={recordType}
-          btnTitle={btnTitle}
-          multi={multi}
-          item={item}
-          last={index == listItems.length - 1}
-          removeListItem={removeListItem}
-          addListItem={addListItem}
+          clause={clause}
+          last={index == clauses.length - 1}
+          removeClause={removeClause}
+          addClause={addClause}
           index={index}
-        >
-          {children}
-        </ListItem>
+        />
       ))}
     </div>
   );
 };
 
-export default DynamicList;
+export default Clauses;
