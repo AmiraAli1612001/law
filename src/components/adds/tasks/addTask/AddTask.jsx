@@ -58,7 +58,7 @@ const AddTask = () => {
           <PersonSelector />
         </div>
       </div>
-      <div className="small-inputs main-section">
+      <div className="small-inputs main-section !grid-cols-3">
         {/* title ! */}
         <div className="simple-input">
           <label htmlFor="">العنوان</label>
@@ -75,7 +75,21 @@ const AddTask = () => {
         </div>
         {/* name arabic ! date*/}
         <div className="simple-input">
-          <label htmlFor="">التاريخ</label>
+          <label htmlFor="">تاريخ الاسناد</label>
+          <input
+            type="date"
+            name=""
+            id="date"
+            {...register("date", {
+              required: "يجب ادخال التاريخ",
+            })}
+            placeholder=""
+          />
+          <p className="input-error">{errors.date?.message}</p>
+        </div>
+        {/* name arabic ! date*/}
+        <div className="simple-input">
+          <label htmlFor="">تاريخ الانتهاء</label>
           <input
             type="date"
             name=""
