@@ -4,6 +4,7 @@ import React, { useMemo } from "react";
 import CustomTable from "@/components/shared/customTable/CustomTable";
 import CallRow from "./callRow/CallRow";
 import CallsData from "@/fakeData/callsData.json";
+import AddCall from "@/components/adds/issues/addCall/AddCall";
 
 const CallsTable = () => {
   // "id": 1,
@@ -69,11 +70,13 @@ const CallsTable = () => {
   return (
     <>
       <CustomTable
-        addBtn={true}
+        // addBtn={true}
+        addTop={true}
         enableFilter={false}
         tableData={CallsData}
         columns={tableColumns}
         RenderElement={CallRow}
+        AddRecordEle={AddCall}
       />
     </>
   );

@@ -1,23 +1,15 @@
 import PersonSelector from "@/components/shared/personSelector/PersonSelector";
 import React from "react";
 import HRData from "@/fakeData/HRData.json";
+import DynamicList from "@/components/shared/dynamicList/DynamicList";
 
 const EmployeePayment = () => {
   return (
     <form className="bg-bgGreen p-4 !gap-4">
       <div>
-        <h3 className="font-bold mb-2 text-[#333]">اسم الموظف</h3>
-        <PersonSelector
-          recordType={"employee"}
-          last={true}
-          personName="موظف"
-          data={HRData}
-          filterArr={[
-            { name: "اسم الموظف", value: "name" },
-            { name: "رقم الموظف", value: "id" },
-            { name: "رقم الهاتف", value: "phone" },
-          ]}
-        />
+        <DynamicList recordType={"addEmployee"} btnTitle={"اضافة موظف"} title={"الموظف"}>
+          <PersonSelector />
+        </DynamicList>
       </div>
       <hr />
       <div className="small-inputs !grid-cols-2">

@@ -53,10 +53,15 @@ const IssuesTable = () => {
   return (
     <>
       <CustomTable
-        topFilter={["قيد الدراسة", "مكتملة", "جديدة", "محكوم بها حكم غير قطعي","محكوم بها حكم قطعي"]}
+        topFilter={[
+          { title: "قيد الدراسة", value: "قيد الدراسة" },
+          { title: "مكتملة", value: "مكتملة" },
+          { title: "جديدة", value: "جديدة" },
+          { title: "محكوم بها حكم غير قطعي", value: "محكوم بها حكم غير قطعي" },
+          { title: "محكوم بها حكم قطعي", value: "محكوم بها حكم قطعي" },
+        ]}
         tableData={issuesData}
         columns={tableColumns}
-
         RenderElement={IssueRow}
         AddRecordEle={AddIssue}
         filterOption={"status"}

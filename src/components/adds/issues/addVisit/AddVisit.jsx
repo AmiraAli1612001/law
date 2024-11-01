@@ -68,8 +68,8 @@ const AddVisit = () => {
       id="addIssueRecord"
       className="py-4"
     >
-      <div className="small-inputs !grid-cols-3">
-        {/* contract type ! */}
+      <div className="small-inputs main-section ">
+        {/* reason ! */}
         <div className="simple-input">
           <label htmlFor="">سبب الزيارة</label>
           <select
@@ -89,46 +89,42 @@ const AddVisit = () => {
           </select>
           <p className="input-error">{errors.contractName?.message}</p>
         </div>
-        {/* contract status ! */}
-        {/* <div className="simple-input">
-          <label htmlFor="">حالة الجلسة</label>
+        {/* address ! */}
+        <div className="simple-input">
+          <label htmlFor="">العنوان</label>
+          <input
+            type="text"
+            name=""
+            id="issueVisitaddress"
+            // {...register("contractName", {
+            //   required: "يجب اختيار سبب الزيارة",
+            // })}
+            placeholder="ادخل العنوان"
+          />
+            
+          <p className="input-error">{errors.contractName?.message}</p>
+        </div>
+        {/* client category ! */}
+        <div className="simple-input">
+          <label htmlFor="">تصنيف العميل</label>
           <select
             type="text"
             name=""
-            id="contractStatus"
-            {...register("contractStatus", {
-              required: "يجب كتابة عنوان الجلسة",
-            })}
+            id="issueVisitaddress"
+            // {...register("contractName", {
+            //   required: "يجب اختيار سبب الزيارة",
+            // })}
             placeholder=""
           >
-            <option className="hidden" value="">
-              اختر حالة الجلسة
-            </option>
-            <option value="قرار موظف">معاينة</option>
-            <option value="قرار عميل">اصدار</option>
+            <option value="" className="hidden">اختر تصنيف العميل</option>
+            <option value="وكيل">وكيل</option>
+            <option value="عميل">عميل</option>
+            <option value="موظف">موظف</option>
+            
           </select>
-          <p className="input-error">{errors.contractStatus?.message}</p>
-        </div> */}
-        {/* contract pay type !*/}
-        {/* <div className="simple-input">
-          <label htmlFor="">نوع الدفع</label>
-          <select
-            type="text"
-            name=""
-            id="contractPayType"
-            {...register("contractPayType", {
-              required: "يجب كتابة عنوان الجلسة",
-            })}
-            placeholder=""
-          >
-            <option className="hidden" value="">
-              اختر نوع الدفع
-            </option>
-            <option value="قرار موظف">1</option>
-            <option value="قرار عميل">2</option>
-          </select>
-          <p className="input-error">{errors.contractPayType?.message}</p>
-        </div> */}
+            
+          <p className="input-error">{errors.contractName?.message}</p>
+        </div>
         {/* contract Date ! */}
         <div className="simple-input">
           <label htmlFor="">تاريخ الزيارة</label>
@@ -145,26 +141,22 @@ const AddVisit = () => {
           <p className="input-error">{errors.contractDate?.message}</p>
         </div>
       </div>
-      <hr className="shadow" />
+
       {/* parties */}
-      <div className="input !min-w-full">
+      <div className="input !min-w-full main-section">
         {/* <Parties /> */}
         <DynamicList
           title={"العميل"}
-          multi={false}
+          btnTitle={"اضافة عميل"}
+          recordType={"addClient"}
         >
           <PersonSelector
-            data={HRData}
-            filterArr={sessionsFilterArr}
-            last={true}
-            recordType={"addEmployee"}
-            personName="موظف"
 
           />
         </DynamicList>
       </div>
       {/* name arabic ! arabicName*/}
-      <div className="simple-input !min-w-full flex-1 ">
+      <div className="simple-input !min-w-full flex-1 main-section">
         <h3 className="text-lg font-semibold">التمهيد</h3>
         
         <textarea className="text-lg" name="" id=""></textarea>

@@ -54,12 +54,12 @@ const ContractRow = ({ data, swipe }) => {
           >
             التفاصيل
           </Link>
-          <button
+          {/* <button
             className="bg-mainRed bg-opacity-90 hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
             onClick={() => dispatch(toggleAddRecordPopup("record"))}
           >
             تعديل
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

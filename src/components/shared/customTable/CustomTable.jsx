@@ -89,27 +89,29 @@ const CustomTable = ({
           onChange={(e) => setSearchFilter(e.target.value)}
           placeholder="ابحث..."
         />
-        {addTop && (
-          <button
-            onClick={() => dispatch(toggleAddRecordPopup())}
-            className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border px-2 py-1 rounded"
-          >
-            اضافة
-          </button>
-        )}
+
         {/* topFilter */}
         {topFilter &&
           topFilter.map((ele, i) => (
             <button
               key={i}
               className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
-                searchFilter === ele ? "bg-[#34A853] text-white" : ""
+                searchFilter === ele.value ? "bg-[#34A853] text-white" : ""
               }`}
-              onClick={() => setSearchFilter(ele)}
+              onClick={() => setSearchFilter(ele.value)}
             >
-              {ele}
+              {ele.title}
             </button>
           ))}
+        {/* top add record */}
+        {addTop && (
+          <button
+            onClick={() => dispatch(toggleAddRecordPopup())}
+            className="flex mr-8 hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border px-2 py-1 rounded"
+          >
+            اضافة
+          </button>
+        )}
         {enableFilter && (
           <button
             className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border px-2 py-1 rounded"

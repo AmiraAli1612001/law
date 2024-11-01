@@ -1,15 +1,18 @@
+import PersonSelector from "@/components/shared/personSelector/PersonSelector";
 import React from "react";
 
 const Personnel = ({ lawyer, admin }) => {
   return (
     <div className="simple-div">
-      <div c>
+      {/* lawyer !*/}
+      <div className="simple-input bg-bgGreen p-4">
         <label htmlFor="">المشرف القائم على القضية</label>
-        <textarea>{admin}</textarea>
+        <PersonSelector />
       </div>
-      <div>
+      {/* helper !*/}
+      <div className="simple-input bg-bgGreen p-4">
         <label htmlFor="">المحامي المسند إليه القضية</label>
-        <textarea>{lawyer}</textarea>
+        <PersonSelector />
       </div>
     </div>
   );

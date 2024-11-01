@@ -48,6 +48,13 @@ const HRTable = () => {
     <>
       <CustomTable
         addTop={true}
+        topFilter={[
+          { title: "الجميع", value: "" },
+          { title: "على رأس العمل", value: "على رأس العمل" },
+          { title: "إجازة", value: "إجازة" },
+          { title: "متدرب", value: "متدرب" },
+          { title: "إنهاء خدمات", value: "إنهاء خدمات" },
+        ]}
         AddRecordEle={AddEmployee}
         tableData={HRData}
         columns={tableColumns}

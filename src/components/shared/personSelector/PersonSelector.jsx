@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleAddRecordPopup } from "@/globalState/Features/popupsSlice";
 import { toast } from "react-toastify";
 const PersonSelector = ({
+  defaultValue = "",
   last = false,
   data = [
     { id: 0, name: "mohammed ahmed mahmoud" },
@@ -16,6 +17,7 @@ const PersonSelector = ({
     { id: 3, name: "ahmed ibrahim" },
     { id: 4, name: "ahmed mohammed" },
     { id: 5, name: "mohammed ahmed" },
+    { id: 6, name: "mohammed abdallah" },
   ],
   // personName = "",
   // recordType,
@@ -73,6 +75,7 @@ const PersonSelector = ({
         placeholder="ابحث هنا"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        className="!bg-white"
       />
       {/* results list */}
       <select
@@ -83,14 +86,16 @@ const PersonSelector = ({
         //   required: "يجب ادخال البيانات",
         // })}
       >
-        <option value="" className="hidden text-black">
-          قائمة البحث
-        </option>
+        {inputValue.length == 0 && (
+          <option value="" className="hidden text-black">
+            قائمة البحث
+          </option>
+        )}
         {data
           .filter((e) =>
             e.name.toLowerCase().includes(inputValue.toLowerCase())
           )
-          .slice(0, 6)
+          // .slice(0, 6)
           .map((client, i) => (
             <option className="text-textGreen" key={i} value={client.id}>
               {client.name}

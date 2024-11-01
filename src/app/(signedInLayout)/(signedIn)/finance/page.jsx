@@ -15,7 +15,7 @@ import "swiper/css";
 import ChartWrapper from "@/components/shared/charts/ChartWrapper";
 import ExpensesTable from "@/components/pages/finance/expences/ExpensesTable";
 import CommitmentsTable from "@/components/pages/finance/commitments/CommitmentsTable";
-import DebtsTable from "@/components/pages/finance/debts/DebtsTable";
+import IncomesTable from "@/components/pages/finance/incomes/IncomesTable";
 import PaymentsDueTable from "@/components/pages/finance/paymentsDue/PaymentsDueTable";
 import ReportsTable from "@/components/pages/finance/reports/ReportsTable";
 import { closeAddFormRecord } from "@/globalState/Features/formStateSlice";
@@ -248,7 +248,7 @@ const Finance = ({ params: { token } }) => {
                       allowTouchMove={false}
                     >
                       <SwiperSlide>
-                        <DebtsTable />
+                        <IncomesTable />
                       </SwiperSlide>
                       <SwiperSlide>
                         <ChartWrapper

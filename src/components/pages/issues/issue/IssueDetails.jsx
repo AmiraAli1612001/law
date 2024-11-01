@@ -80,7 +80,7 @@ const IssueDetails = ({ id }) => {
                       active === index && "active"
                     } w-full whitespace-nowrap p-4 font-medium cursor-pointer`}
                     onClick={() => {
-                      dispatch(resetFormState())
+                      dispatch(resetFormState());
                       setActive(index);
                       swipeInner(index);
                     }}
@@ -105,13 +105,19 @@ const IssueDetails = ({ id }) => {
                     <div className="grid grid-cols-2  gap-6">
                       <div className="simple-input">
                         <label htmlFor="">المدعي</label>
-                        <Link className="text-red-500 input"  href={"/clients/1"}>
+                        <Link
+                          className="text-red-500 input"
+                          href={"/clients/1"}
+                        >
                           ahmed alsayed
                         </Link>
                       </div>
                       <div className="simple-input">
                         <label htmlFor="">المدعي عليه</label>
-                        <Link className="text-green-500 input" href={"/clients/2"}>
+                        <Link
+                          className="text-green-500 input"
+                          href={"/clients/2"}
+                        >
                           ibrahim mohammed
                         </Link>
                       </div>
@@ -159,7 +165,7 @@ const IssueDetails = ({ id }) => {
                 {/* الجلسات */}
                 <SwiperSlide>
                   {/* <Sessions id={id} /> */}
-                  <SessionsTable addTop={true}/>
+                  <SessionsTable addTop={true} />
                 </SwiperSlide>
                 {/* المواعيد */}
                 <SwiperSlide>
@@ -215,11 +221,13 @@ const IssueDetails = ({ id }) => {
                         {/* 3 */}
                         <th>التاريخ</th>
                         {/* 4 */}
-                        <th>الوقت</th>
+                        <th>تاريخ الانتهاء</th>
                         {/* 5 */}
+                        <th>الوقت</th>
+                        {/* 6 */}
                         <th>الموظف</th>
                         {/* <th>التنفيذ</th> */}
-                        {/* 6 */}
+                        {/* 7 */}
                         <th>الملخص</th>
                         <th></th>
                       </tr>
@@ -233,11 +241,14 @@ const IssueDetails = ({ id }) => {
                         <td>1000</td>
 
                         <td>2024-10-10</td>
+                        <td>2024-10-10</td>
                         <td>10:00</td>
 
                         <td>علي عبدالله</td>
                         {/* <td>مشغول</td> */}
-                        <td>علي عبدالله</td>
+                        <td>
+                          Lorem ipsum
+                        </td>
                         <td>
                           <button
                             onClick={() => toast.error("تم الحذف بنجاح")}
@@ -266,7 +277,11 @@ const IssueDetails = ({ id }) => {
                         </td>
                         {/* التاريخ */}
                         <td>
-                          <input type="text" />
+                          <input type="date" className="!w-fit" />
+                        </td>
+                        {/* التاريخ */}
+                        <td>
+                          <input type="date" className="!w-fit" />
                         </td>
                         {/* الوقت */}
                         <td>
@@ -338,6 +353,16 @@ const IssueDetails = ({ id }) => {
                     </div>
                     <div className="simple-div">
                       <label htmlFor="">مرفقات المهمات</label>
+                      <section>
+                        <button
+                          onClick={() => dispatch(toggleAttachmentsPopup())}
+                        >
+                          مرفق 1
+                        </button>
+                      </section>
+                    </div>
+                    <div className="simple-div">
+                      <label htmlFor="">ضبط الجلسة</label>
                       <section>
                         <button
                           onClick={() => dispatch(toggleAttachmentsPopup())}

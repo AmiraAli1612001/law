@@ -68,13 +68,14 @@ const AddIssue = () => {
       noValidate
       id="addIssueRecord"
     >
+      {/* personnel */}
       <div className="main-section">
         {/* admin !*/}
         <div className="simple-input">
           <label htmlFor="">المشرف القائم على القضية</label>
           <PersonSelector />
         </div>
-        {/* admin !*/}
+        {/* lawyer !*/}
         <div className="simple-input mt-4">
           <label htmlFor="">المحامي المسند إليه القضية</label>
           <PersonSelector />

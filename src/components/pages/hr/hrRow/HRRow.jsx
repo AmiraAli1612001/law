@@ -8,6 +8,7 @@ import {
 import { useDispatch } from "react-redux";
 import EmployeeStatistics from "@/components/statistics/EmployeeStatistics";
 import Link from "next/link";
+import { deleteRecord } from "@/helperFunctions/dom";
 const HRRow = ({
   data: {
     id,
@@ -27,7 +28,7 @@ const HRRow = ({
   // const cellStyles =;
   //bg-[#FAF9F4]
   return (
-    <div className="">
+    <div className="hr-row-custom-wrapper">
       <div
         className={`bg-bgGreen flex gap-2 p-4 items-center HR-row rounded-lg relative border drop-shadow-sm`}
       >
@@ -57,9 +58,10 @@ const HRRow = ({
           <button
             className="bg-mainRed bg-opacity-90 hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
             // onClick={() => dispatch(toggleEditEmployee(id))}
-            onClick={() => dispatch(toggleAddRecordPopup(3))}
+            // onClick={() => dispatch(toggleAddRecordPopup(""))}
+            onClick={(e)=>deleteRecord(e,".hr-row-custom-wrapper")}
           >
-            تعديل
+            حذف
           </button>
         </div>
       </div>

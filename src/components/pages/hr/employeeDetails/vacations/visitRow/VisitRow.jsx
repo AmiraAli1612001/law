@@ -4,12 +4,13 @@ import { Line } from "react-chartjs-2";
 import { toggleEditEmployee } from "@/globalState/Features/popupsSlice";
 import { useDispatch } from "react-redux";
 import EmployeeStatistics from "@/components/statistics/EmployeeStatistics";
+import { deleteRecord } from "@/helperFunctions/dom";
 const VisitRow = ({ data: { id, from, to, notes, status } }) => {
   const [state, setState] = useState(false);
   const dispatch = useDispatch();
 
   return (
-    <div className="">
+    <div className="hr-vacation-custom-wrapper">
       <table className="simple-table row-titles">
         <tbody>
           <tr>
@@ -42,7 +43,7 @@ const VisitRow = ({ data: { id, from, to, notes, status } }) => {
               <p>{status}</p>
             </td>
             <td>
-              <button className="bg-mainRed transition-all hover:bg-opacity-[0.7] text-white px-4 py-2 rounded text-sm">
+              <button onClick={(e)=>deleteRecord(e,".hr-vacation-custom-wrapper")} className="bg-mainRed transition-all hover:bg-opacity-[0.7] text-white px-4 py-2 rounded text-sm">
                 الغاء
               </button>
             </td>

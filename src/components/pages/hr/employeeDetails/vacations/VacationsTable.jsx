@@ -3,9 +3,7 @@ import "./styles/hrTable.css";
 import React, { useMemo } from "react";
 import CustomTable from "@/components/shared/customTable/CustomTable";
 import VisitRow from "./visitRow/VisitRow";
-import visitsData from "@/fakeData/visitsData.json";
-import AddVisit from "@/components/adds/visit/AddVisit";
-import AddVacation from "@/components/adds/addVacation/AddVacation";
+import AddVacation from "@/components/adds/hr/addVacation/AddVacation";
 
 const VacationsTable = () => {
   const data =[

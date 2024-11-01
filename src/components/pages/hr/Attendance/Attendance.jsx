@@ -2,6 +2,7 @@
 import CustomTable from "@/components/shared/customTable/CustomTable";
 import React, { useEffect, useRef } from "react";
 import attendanceData from "@/fakeData/attendanceData.json";
+import AddAttendance from "@/components/adds/hr/attendance/AddAttendance";
 const Attendance = () => {
   const columns = [
     {
@@ -57,7 +58,7 @@ const Attendance = () => {
   } */
 
   return (
-    <CustomTable tableType={1} columns={columns} tableData={attendanceData} />
+    <CustomTable tableType={1} AddRecordEle={AddAttendance} addTop={true}  columns={columns} tableData={attendanceData} />
   );
 };
 

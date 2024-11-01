@@ -4,7 +4,7 @@ import React, { useMemo } from "react";
 import CustomTable from "@/components/shared/customTable/CustomTable";
 import VisitRow from "./visitRow/VisitRow";
 import visitsData from "@/fakeData/visitsData.json";
-import AddVisit from "@/components/adds/visit/AddVisit";
+import AddVisit from "@/components/adds/issues/addVisit/AddVisit";
 
 const VisitsTable = () => {
   //<th>الارتباط بالقضية</th>
@@ -104,7 +104,7 @@ const VisitsTable = () => {
         tableData={visitsData}
         columns={tableColumns}
         AddRecordEle={AddVisit}
-
+        
         RenderElement={VisitRow}
       />
     </>

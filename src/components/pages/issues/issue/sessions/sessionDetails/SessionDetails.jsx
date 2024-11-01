@@ -11,6 +11,7 @@ import "swiper/css";
 import { useSelector } from "react-redux";
 import issuesData from "@/fakeData/issuesData.json";
 import Link from "next/link";
+import PersonSelector from "@/components/shared/personSelector/PersonSelector";
 // import Parties from "./parties/Parties";
 // import Appointments from "./appointments/Appointments";
 
@@ -84,7 +85,12 @@ const SessionDetails = ({ id = 1 }) => {
                   <div>
                     <div>
                       <span>اخر تحديث: </span>
-                      <Link href={"/hr/1"} className="font-semibold underline text-blue-700">محمد ابارهيم</Link>
+                      <Link
+                        href={"/hr/1"}
+                        className="font-semibold underline text-blue-700"
+                      >
+                        محمد ابارهيم
+                      </Link>
                     </div>
                     <section name="" disabled id="">
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -141,6 +147,7 @@ const SessionDetails = ({ id = 1 }) => {
                     </tbody>
                   </table>
                 </SwiperSlide>
+                {/* notes */}
                 <SwiperSlide>
                   <div>
                     <label htmlFor="">ملاحظات</label>
@@ -154,9 +161,15 @@ const SessionDetails = ({ id = 1 }) => {
                 </SwiperSlide>
                 <SwiperSlide>
                   <div>
-                    <div>
+                    {/* lawyer !*/}
+                    <div className="simple-input bg-bgGreen p-4">
                       <label htmlFor="">المحامي المسند إليه القضية</label>
-                      <section>عبدالله السيد</section>
+                      <PersonSelector defaultValue="mohamed abdullah"/>
+                    </div>
+                    {/* helper !*/}
+                    <div className="simple-input bg-bgGreen p-4">
+                      <label htmlFor="">المحامي المساعد</label>
+                      <PersonSelector defaultValue="mohamed abdullah" />
                     </div>
                   </div>
                 </SwiperSlide>

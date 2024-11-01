@@ -43,13 +43,13 @@ const EmployeeContract = () => {
       action=""
       noValidate
       id="addIssueRecord"
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-4 [&>.main-section]:p-4 [&>.main-section]:bg-bgGreen [&>.main-section]:rounded-lg [&>.main-section]:drop-shadow"
     >
       {/* معلومات الموظف */}
-      <h3 className="small-inputs-title !min-w-full text-2xl p-2 mb-6">
+      {/* <h3 className="small-inputs-title   !min-w-full text-2xl p-2 mb-6">
         معلومات الموظف
-      </h3>
-      <div className="small-inputs">
+      </h3> */}
+      <div className="small-inputs main-section ">
         {/* name arabic ! */}
         <div className="simple-input">
           <label htmlFor="">الاسم الرباعي باللغة العربية</label>
@@ -402,9 +402,8 @@ const EmployeeContract = () => {
           <p className="input-error">{errors.employeeStatus?.message}</p>
         </div>
       </div>
-      <hr />
       {/* experience !*/}
-      <div className="simple-input !min-w-full flex-1 flex flex-col">
+      <div className="simple-input main-section  !min-w-full flex-1 flex flex-col">
         <label htmlFor="" className="!text-2xl">
           الخبرة السابقة
         </label>
@@ -420,12 +419,11 @@ const EmployeeContract = () => {
         ></textarea>
         <p className="input-error">{errors.experience?.message}</p>
       </div>
-      <hr />
       {/* تفاصيل عقد الموظف !*/}
-      <h3 className="small-inputs-title !min-w-full font-bold text-[#333] text-2xl p-2 mb-6">
+      {/* <h3 className="small-inputs-title !min-w-full font-bold text-[#333] text-2xl p-2 mb-6">
         تفاصيل عقد الموظف
-      </h3>
-      <div className="small-inputs">
+      </h3> */}
+      <div className="small-inputs main-section">
         {/* الراتب الأساسي!*/}
         <div className="simple-input">
           <label htmlFor="">الراتب الأساسي</label>
@@ -525,12 +523,11 @@ const EmployeeContract = () => {
           <p className="input-error">{errors.contractAttachments?.message}</p>
         </div>
       </div>
-      <hr />
       {/* مباشرة الموظف!*/}
-      <h3 className="small-inputs-title text-[#333] font-bold !min-w-full text-2xl p-2 mb-6">
+      {/* <h3 className="small-inputs-title text-[#333] font-bold !min-w-full text-2xl p-2 mb-6">
         تفاصيل مباشرة الموظف
-      </h3>
-      <div className="small-inputs">
+      </h3> */}
+      <div className="small-inputs main-section">
         {/* تاريخ المباشرة!*/}
         <div className="simple-input">
           <label htmlFor="">تاريخ المباشرة</label>
@@ -577,9 +574,9 @@ const EmployeeContract = () => {
           <p className="input-error">{errors.transportExchange?.message}</p>
         </div>
       </div>
-      <hr />
+
       {/* إنهاء خدمات الموظف */}
-      <div className="simple-input !min-w-full flex-1 flex flex-col !gap-0">
+      <div className="simple-input main-section  !min-w-full flex-1 flex flex-col !gap-0">
         {/* العودة من الإجازة !*/}
         <div className="simple-input">
           <label htmlFor="">إنهاء خدمات الموظف</label>
@@ -614,9 +611,9 @@ const EmployeeContract = () => {
           </div>
         </div>
       </div>
-      <hr />
+
       {/* extraInfo !*/}
-      <div className="simple-input !min-w-full flex-1 flex flex-col">
+      <div className="simple-input main-section  !min-w-full flex-1 flex flex-col">
         <label htmlFor="">معلومات اضافية</label>
         <textarea
           type="text"
@@ -631,7 +628,7 @@ const EmployeeContract = () => {
       </div>
       <button
         type="submit"
-        className="text-white text-xl p-4 w-full bg-textGreen"
+        className="text-white text-xl p-4 w-full bg-textGreen rounded-lg"
       >
         اضافة
       </button>
