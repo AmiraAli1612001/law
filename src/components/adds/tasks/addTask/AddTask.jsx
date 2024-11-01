@@ -1,15 +1,18 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPopups } from "@/globalState/Features/popupsSlice";
 import { toast } from "react-toastify";
 import { setTasks } from "@/globalState/Features/tempDataSlice";
+import PersonSelector from "@/components/shared/personSelector/PersonSelector";
+import Swiper2 from "@/components/shared/swiper2/Swiper2";
 // const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 // import "react-quill/dist/quill.snow.css";
 
 const AddTask = () => {
+  const [isIssue, setIsIssue] = useState(false);
   const signUpForm = useForm();
   const dispatch = useDispatch();
   const tasks = useSelector((store) => store.tempData.tasks);
@@ -40,7 +43,6 @@ const AddTask = () => {
     // dispatch(closeLoader());
   }
   return (
-   
     <form
       method="POST"
       onSubmit={handleSubmit(handleSubmitSignUp)}
@@ -48,6 +50,14 @@ const AddTask = () => {
       noValidate
       id="addIssueRecord"
     >
+      <Swiper2 />
+      <div className="main-section">
+        {/* lawyer !*/}
+        <div className="simple-input mt-4">
+          <label htmlFor="">المشرف المسند إليه المهمة</label>
+          <PersonSelector />
+        </div>
+      </div>
       <div className="small-inputs main-section">
         {/* title ! */}
         <div className="simple-input">
