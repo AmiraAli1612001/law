@@ -78,7 +78,7 @@ const AddVacation = () => {
       id="addIssueRecord"
       className="py-4 px-0.5"
     >
-      <div className="small-inputs main-section flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5">
+      <div className="small-inputs main-section !grid-cols-3 flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5">
         {/* contract type ! */}
         <div className="simple-input">
           <label htmlFor="">نوع الاجازة</label>
@@ -100,7 +100,7 @@ const AddVacation = () => {
           <p className="input-error">{errors.contractName?.message}</p>
         </div>
         {/* contract status ! */}
-        <div className="simple-input">
+        {/* <div className="simple-input">
           <label htmlFor="">حالة الاجازة</label>
           <select
             type="text"
@@ -118,7 +118,7 @@ const AddVacation = () => {
             <option value="قرار عميل">اصدار</option>
           </select>
           <p className="input-error">{errors.contractStatus?.message}</p>
-        </div>
+        </div> */}
         {/* contract pay type !*/}
         <div className="simple-input">
           <label htmlFor="">مدفوعة الأجر</label>

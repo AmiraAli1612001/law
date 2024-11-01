@@ -90,7 +90,7 @@ const AddVacation = () => {
           <p className="input-error">{errors.contractName?.message}</p>
         </div>
         {/* contract status ! */}
-        <div className="simple-input">
+        {/* <div className="simple-input">
           <label htmlFor="">حالة الاجازة</label>
           <select
             type="text"
@@ -108,7 +108,7 @@ const AddVacation = () => {
             <option value="قرار عميل">اصدار</option>
           </select>
           <p className="input-error">{errors.contractStatus?.message}</p>
-        </div>
+        </div> */}
         {/* contract pay type !*/}
         <div className="simple-input">
           <label htmlFor="">نوع الدفع</label>
