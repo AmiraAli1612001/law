@@ -52,6 +52,7 @@ const ListItem = ({
               )}
               {/* add item btn */}
               <button
+                type="button"
                 onClick={addListItem}
                 className="bg-textGreen hover:opacity-80 text-white transition-all  rounded p-2 font-medium whitespace-nowrap"
               >
@@ -79,6 +80,7 @@ const ListItem = ({
           {/* {index == listItems.length - 1 && listItems.length > 1 && ( */}
           {(index > 0 || length > 1) && (
             <button
+            type="button"
               onClick={() => removeListItem(item)}
               className="bg-red-500 text-white rounded aspect-square w-max p-2 h-auto font-medium"
             >

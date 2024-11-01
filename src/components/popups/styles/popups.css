@@ -1,3 +1,12 @@
 .popups form {
-  @apply flex flex-col w-full flex-1 px-4 gap-8 overflow-auto;
+  @apply flex flex-col w-full flex-1  gap-2 overflow-auto;
+}
+.popups .main-section {
+  @apply bg-bgGreen p-4 rounded-lg drop-shadow;
+}
+.popups .main-section:nth-child(1) {
+  @apply pt-6;
+}
+.popups .popups-bg {
+  @apply bg-white drop-shadow;
 }/*# sourceMappingURL=popups.css.map */

@@ -1,4 +1,5 @@
 "use client";
+import PaymentSelector from "@/components/shared/payment/paymentSelector/PaymentSelector";
 import "./finance.css";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -26,6 +27,7 @@ const Finance = ({ contract }) => {
     (contract?.costs + (contract?.middleMan / 100) * contractInitialPrice);
   return (
     <div className="contract-finance">
+      {/* <PaymentSelector/> */}
       <div className="simple-div">
         <label>مبلغ العقد</label>
         <section>

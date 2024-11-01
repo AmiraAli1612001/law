@@ -26,6 +26,7 @@ const SessionDetails = ({ id = 1 }) => {
     "التنفيذ",
     "المحامي الحاضر",
     "مرفقات الجلسة",
+    "الملاحظات",
   ];
 
   const swipeOuter = (id) => {
@@ -162,6 +163,41 @@ const SessionDetails = ({ id = 1 }) => {
                 <SwiperSlide>
                   <div>
                     <section>لا توجد مرفقات</section>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div>
+                    <section name="" disabled id="">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Dolorum eveniet, tempora hic rerum nobis error obcaecati
+                      vel enim molestiae, fugit eligendi numquam ad quod magnam
+                      atque nam, veniam iste. Quisquam. Lorem ipsum dolor, sit
+                      amet consectetur adipisicing elit. Dolorum eveniet,
+                      tempora hic rerum nobis error obcaecati vel enim
+                      molestiae, fugit eligendi numquam ad quod magnam atque
+                      nam, veniam iste. Quisquam. Lorem ipsum dolor, sit amet
+                      consectetur adipisicing elit. Dolorum eveniet, tempora hic
+                      rerum nobis error obcaecati vel enim molestiae, fugit
+                      eligendi numquam ad quod magnam atque nam, veniam iste.
+                      Quisquam. Lorem ipsum dolor, sit amet consectetur
+                      adipisicing elit. Dolorum eveniet, tempora hic rerum nobis
+                      error obcaecati vel enim molestiae, fugit eligendi numquam
+                      ad quod magnam atque nam, veniam iste. Quisquam.
+                    </section>
+                    {/* <label htmlFor="">طلبات المدعي</label>
+                    <section name="" disabled id="">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Dolorum eveniet, tempora hic rerum nobis error obcaecati
+                      vel enim molestiae, fugit eligendi numquam ad quod magnam
+                      atque nam, veniam iste. Quisquam.
+                    </section>
+                    <label htmlFor="">اسانيد الدعوي</label>
+                    <section name="" disabled id="">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Dolorum eveniet, tempora hic rerum nobis error obcaecati
+                      vel enim molestiae, fugit eligendi numquam ad quod magnam
+                      atque nam, veniam iste. Quisquam.
+                    </section> */}
                   </div>
                 </SwiperSlide>
               </Swiper>

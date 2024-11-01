@@ -8,7 +8,7 @@ const Issues = () => {
     <ScreenWrapper className="flex-1 p-4 flex flex-col gap-4">
       <div className="flex justify-between items-center">
         <LinkHeader to={"/issues"} title={"القضايا"} />
-        <AddRecord recordType={"addIssue"} title={"اضافة قضية"} />
+        <AddRecord recordType={"addIssue"} innerForm={true} title={"اضافة قضية"} />
       </div>
       <div>
         <IssuesTable />

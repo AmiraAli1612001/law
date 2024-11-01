@@ -96,13 +96,12 @@ const Payment = () => {
             />
             {/* <p className="input-error">{errors.contractValue?.message}</p> */}
           </div>
-          
         </>
       )}
     </div>
   );
 };
-const PaymentSelector = () => {
+const PaymentSelector = ({ className = "" }) => {
   const [activeSection, setActiveSection] = useState(0);
   const [payType, setPayType] = useState(0);
   const [middlemanPayType, setMiddlemanPayType] = useState(0);
@@ -110,7 +109,7 @@ const PaymentSelector = () => {
     setPayType(payType);
   }
   return (
-    <div className="payment-selector">
+    <div className={`${className} payment-selector`}>
       {/* nav */}
       <div className="select-type flex mb-4 gap-1.5">
         <h3 className="font-bold text-gray-800">طريقة الدفع: </h3>
@@ -135,7 +134,7 @@ const PaymentSelector = () => {
         <section
           className={`${
             payType == 0 && "active"
-          } full-payment h-full bg-bgGreen`}
+          } full-payment h-full`}
         >
           <div className="small-inputs !grid-cols-3">
             {/* contract value !*/}
@@ -208,7 +207,7 @@ const PaymentSelector = () => {
         </section>
         {/* payments */}
         <section
-          className={`${payType == 1 && "active"} payments h-full bg-bgGreen  `}
+          className={`${payType == 1 && "active"} payments h-full `}
         >
           <div>
             <DynamicList title={"الدفعات"}>

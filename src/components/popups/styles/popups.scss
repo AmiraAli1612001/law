@@ -1,5 +1,14 @@
 .popups {
   form {
-    @apply flex flex-col w-full flex-1 px-4 gap-8 overflow-auto;
+    @apply flex flex-col w-full flex-1  gap-2 overflow-auto;
+  }
+  .main-section{
+    @apply bg-bgGreen p-4 rounded-lg drop-shadow;
+    &:nth-child(1){
+      @apply pt-6;
+    }
+  }
+  .popups-bg{
+    @apply bg-white drop-shadow;
   }
 }

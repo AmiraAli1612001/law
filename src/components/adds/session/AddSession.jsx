@@ -68,7 +68,7 @@ const AddSession = () => {
       id="addIssueRecord"
       className="py-4"
     >
-      <div className="small-inputs flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5">
+      <div className="main-section small-inputs !grid-cols-3 flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5">
         {/* contract type ! */}
         <div className="simple-input">
           <label htmlFor="">نوع الجلسة</label>
@@ -104,13 +104,14 @@ const AddSession = () => {
             <option className="hidden" value="">
               اختر حالة الجلسة
             </option>
-            <option value="قرار موظف">معاينة</option>
-            <option value="قرار عميل">اصدار</option>
+            <option value="قرار موظف">جديدة</option>
+            <option value="قرار عميل">تنفذت</option>
+            <option value="قرار عميل">قيد التنفيذ</option>
           </select>
           <p className="input-error">{errors.contractStatus?.message}</p>
         </div>
         {/* contract pay type !*/}
-        <div className="simple-input">
+        {/* <div className="simple-input">
           <label htmlFor="">نوع الدفع</label>
           <select
             type="text"
@@ -128,7 +129,7 @@ const AddSession = () => {
             <option value="قرار عميل">2</option>
           </select>
           <p className="input-error">{errors.contractPayType?.message}</p>
-        </div>
+        </div> */}
         {/* contract Date ! */}
         <div className="simple-input">
           <label htmlFor="">تاريخ الجلسة</label>
@@ -145,15 +146,14 @@ const AddSession = () => {
           <p className="input-error">{errors.contractDate?.message}</p>
         </div>
       </div>
-      <hr className="shadow" />
       {/* parties */}
-      <div className="input !min-w-full">
+      <div className="input main-section !min-w-full">
         {/* <Parties /> */}
         <DynamicList
-          title={"المنفذين"}
+          title={"المحامين"}
           personsSelectorFilter={sessionsFilterArr}
-          btnTitle={"جلسة"}
-          recordType={"record"}
+          btnTitle={"اضافة موظف"}
+          recordType={"addEmployee"}
         >
           <PersonSelector
             data={HRData}
@@ -165,12 +165,11 @@ const AddSession = () => {
             last={true}
             recordType={"addEmployee"}
             personName="موظف"
-
           />
         </DynamicList>
       </div>
       {/* name arabic ! arabicName*/}
-      <div className="simple-input !min-w-full flex-1 ">
+      <div className="simple-input main-section !min-w-full flex-1 ">
         <h3 className="text-lg font-semibold">التمهيد</h3>
         {/* <div dir="ltr" className="flex-1 min-h-fit h-fit bg-white">
           <div id={`contract-details-toolbar`}>
@@ -227,13 +226,26 @@ const AddSession = () => {
       </div>
 
       {/* clauses */}
-      <div className="input !min-w-full">
+      <div className="input main-section !min-w-full">
         {/* <Clauses /> */}
-        <DynamicList
-          title={"البنود"}
-
-        >
+        <DynamicList title={"البنود"}>
           <textarea name="" id=""></textarea>
+        </DynamicList>
+      </div>
+      {/* attachments */}
+      <div className="main-section">
+        <DynamicList title={"مرفقات الجلسة"}>
+          <div className="flex flex-1 gap-2">
+            <select className="flex-1" name="" id="">
+              <option value="">نوع المرفق</option>
+              <option value="">ضبط الجلسة</option>
+              <option value="">اخري</option>
+            </select>
+            <input className="flex-1" type="text" placeholder="اسم المرفق" />
+            <div className="bg-white flex-1">
+              <input type="file" name="" id="" />
+            </div>
+          </div>
         </DynamicList>
       </div>
       <button className="text-white text-xl mt-4 p-4 w-full bg-textGreen rounded">

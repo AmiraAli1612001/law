@@ -5,6 +5,7 @@ import React, { useMemo } from "react";
 import issuesData from "@/fakeData/issuesData.json";
 import IssueRow from "./issueRow/IssueRow";
 import CustomTable from "../../shared/customTable/CustomTable";
+import AddIssue from "@/components/adds/issues/addIssue/AddIssue";
 
 const IssuesTable = () => {
   const tableColumns = useMemo(
@@ -55,7 +56,9 @@ const IssuesTable = () => {
         topFilter={["قيد الدراسة", "مكتملة", "جديدة", "محكوم بها حكم غير قطعي","محكوم بها حكم قطعي"]}
         tableData={issuesData}
         columns={tableColumns}
+
         RenderElement={IssueRow}
+        AddRecordEle={AddIssue}
         filterOption={"status"}
       />
     </>

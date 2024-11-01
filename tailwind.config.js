@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bgGreen: "var(--bg-green)",
+        bgGreen: "#f0f8f5",
         iconGreen: "var(--icon-green)",
         bgGray: "var(--bg-gray)",
         hoverBg: "var(--hover-bg)",
