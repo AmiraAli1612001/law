@@ -68,7 +68,7 @@ const AddLicense = () => {
       id="addIssueRecord"
       className="py-4"
     >
-      <div className="small-inputs flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5">
+      <div className="small-inputs main-section flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5">
         {/* license type ! */}
         <div className="simple-input">
           <label htmlFor="">نوع الرخصة</label>
@@ -147,9 +147,8 @@ const AddLicense = () => {
           </p>
         </div>
       </div>
-      <hr className="shadow" />
       {/* parties */}
-      <div className="input !min-w-full">
+      <div className="input main-section !min-w-full">
         {/* <Parties /> */}
         <DynamicList
           title={" الموظف"}
@@ -172,7 +171,7 @@ const AddLicense = () => {
         </DynamicList>
       </div>
       {/* name arabic ! arabicName*/}
-      <div className="simple-input !min-w-full flex-1 ">
+      <div className="simple-input !min-w-full flex-1 main-section">
         <h3 className="text-lg font-semibold">السبب</h3>
 
         <textarea className="text-lg" name="" id=""></textarea>
