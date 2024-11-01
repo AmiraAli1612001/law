@@ -1,0 +1,30 @@
+.row-data-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.simple-row {
+  .row-data-content {
+    width: calc(20%);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--text-green);
+  }
+  .HR-row-details {
+    > section{
+      &:nth-child(1) {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  }
+}
+
+/* "flex flex-col gap-2 [&>p:first-child]:text-xs [&>p:last-child]:font-semibold [&>p:first-child]:whitespace-nowrap [ h-full" */
