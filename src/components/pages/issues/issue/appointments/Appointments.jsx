@@ -1,6 +1,9 @@
-import React from "react";
+import AddDate from "@/components/adds/issues/addDate/AddDate";
+import CustomTable from "@/components/shared/customTable/CustomTable";
+import React, { useMemo } from "react";
 import { toast } from "react-toastify";
-
+import HRData from "@/fakeData/HRData.json";
+import Link from "next/link";
 const Appointments = ({ defendant, prosecutor }) => {
   const sectionStyles = {
     width: "100%",
@@ -8,77 +11,57 @@ const Appointments = ({ defendant, prosecutor }) => {
     flexDirection: "column",
     gap: "8px",
   };
+  const tableColumns = useMemo(
+    () => [
+      // {
+      //   Header: "actions",
+      //   accessor: "actions",
+      // },
+      {
+        Header: "رقم الموظف",
+        accessor: "id",
+      },
+      {
+        Header: "اسم الموظف",
+        accessor: "name",
+        Cell: ({ row, value }) => {
+          return (
+            <Link href={`/hr/${1}`} className="inline-block underline">
+              {value}
+            </Link>
+          );
+        }
+      },
+      {
+        Header: "اسم الوظيفة",
+        accessor: "title",
+      },
+      {
+        Header: "عدد القضايا",
+        accessor: "issues",
+      },
+      {
+        Header: "عدد العقود",
+        accessor: "contracts",
+      },
+      {
+        Header: "نسبة النجاح",
+        accessor: "success",
+      },
+    ],
+    []
+  );
   return (
-    <div className="flex flex-col gap-4">
-      <section style={sectionStyles}>
-        <h3>موعد انتهاء المدة الاعتراضية للاستئناف</h3>
-        <table className="simple-table">
-          <tbody>
-            <tr>
-              <td className="w-[200px]">
-                <input
-                  className="!w-full"
-                  type="date"
-                  defaultValue={"2024-10-10"}
-                />
-              </td>
-              <td className="w-full" dir="ltr">
-                <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
-                  اضافة
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section style={sectionStyles}>
-        <h3>تسجيل التواريخ</h3>
-        <table className="simple-table">
-          <thead>
-            <tr className="[&>th]:!w-[20%]">
-              <th>تاريخ النقد</th>
-              <th>الاستئناف</th>
-              <th>الاعتراض</th>
-              <th>الحكم</th>
-              <th>والانتهاء</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="[&>td>input]:!w-fit [&>td>input]:!inline-block [&>td]:!w-[20%]">
-              <td>
-                <input
-                  className="!w-fit"
-                  type="date"
-                  defaultValue={"2024-10-10"}
-                />
-              </td>
-              <td>
-                <input type="text" defaultValue={"علي عبدالله"} />
-              </td>
-              <td>
-                <input type="text" defaultValue={"يزيد عبدالله الحربي"} />
-              </td>
-              <td>
-                <input type="text" defaultValue={"غير محدد"} />
-              </td>
-              <td>
-                <input type="text" defaultValue={"08:45:00"} />
-              </td>
-              <td>
-                <button
-                  onClick={() => toast.success("تمت الاضافة بنجاح")}
-                  className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center"
-                >
-                  اضافة
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </div>
+    <CustomTable
+        tableData={HRData}
+        columns={tableColumns}
+        tableType={1}
+        allowFilter={true}
+        AddRecordEle={AddDate}
+        addTop={true}
+        // RenderElement={HRRow}
+      />
+    
   );
 };
 

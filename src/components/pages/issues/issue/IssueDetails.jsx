@@ -319,6 +319,7 @@ const IssueDetails = ({ id }) => {
                 <SwiperSlide>
                   <CallsTable />
                 </SwiperSlide>
+                {/* المرفقات */}
                 <SwiperSlide>
                   <div className="attachments !grid lg:grid-cols-2 gap-4">
                     <div className="simple-div">

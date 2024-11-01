@@ -18,6 +18,7 @@ import VacationsTable from "./vacations/VacationsTable";
 import AddEmployee from "@/components/popups/addEmployee/AddEmployee";
 import PromotionsTable from "./promotions/PromotionsTable";
 import EmployeeContract from "./employeeContract/EmployeeContract";
+import WarningsTable from "./warnings/WarningsTable";
 
 const EmployeeDetails = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -29,6 +30,7 @@ const EmployeeDetails = ({ id }) => {
     "التفاصيل",
     "العقد",
     "الترقيات",
+    "الانذارات",
     "الرواتب",
     "الخصومات",
     "السلف",
@@ -103,6 +105,10 @@ const EmployeeDetails = ({ id }) => {
                 {/* الترقيات */}
                 <SwiperSlide>
                   <PromotionsTable />
+                </SwiperSlide>
+                {/* الانذارات */}
+                <SwiperSlide>
+                  <WarningsTable />
                 </SwiperSlide>
 
                 {/* الرواتب */}
@@ -256,9 +262,9 @@ const EmployeeDetails = ({ id }) => {
                         <th>الرقم</th>
                         <th>التاريخ</th>
                         <th>المبلغ</th>
-                        <th>الخصومات</th>
-                        <th>المدفوع</th>
-                        <th>المستحق</th>
+                        {/* <th>الخصومات</th> */}
+                        {/* <th>المدفوع</th>
+                        <th>المستحق</th> */}
                         <th>الحالة</th>
                         <th>التفاصيل</th>
                       </tr>
@@ -269,10 +275,10 @@ const EmployeeDetails = ({ id }) => {
                         <td>{new Date("2022-01-01").toLocaleDateString()}</td>
 
                         <td>2000 ريال</td>
-                        <td>0 ريال</td>
+                        {/* <td>0 ريال</td> */}
 
-                        <td>2000 ريال</td>
-                        <td>0 ريال</td>
+                        {/* <td>2000 ريال</td>
+                        <td>0 ريال</td> */}
 
                         <td>تم الدفع</td>
                         <td>لا يوجد</td>
@@ -293,16 +299,16 @@ const EmployeeDetails = ({ id }) => {
                         <td>
                           <input type="text" />
                         </td>
-                        <td>
+                        {/* <td>
                           <input type="text" />
-                        </td>
+                        </td> */}
 
-                        <td>
+                        {/* <td>
                           <input type="text" />
                         </td>
                         <td>
                           <input type="text" />
-                        </td>
+                        </td> */}
 
                         <td>
                           <input type="text" />

@@ -16,6 +16,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isHidden: true,
   addTask: false,
+  requestVacation: false,
   addClient: false,
   printContract: false,
   addIssue: false,
@@ -49,6 +50,10 @@ export const popupsSlice = createSlice({
           break;
         case "addTask":
           state.addTask = !state.addTask;
+          state.isHidden = !state.isHidden;
+          break;
+        case "requestVacation":
+          state.requestVacation = !state.requestVacation;
           state.isHidden = !state.isHidden;
           break;
         case "addClient":

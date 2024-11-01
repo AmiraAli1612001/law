@@ -10,15 +10,17 @@ import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
 import { resetAuth } from "@/globalState/Features/authSlice";
 import { usePathname } from "next/navigation";
 import { resetFormState } from "@/globalState/Features/formStateSlice";
+import { toggleAddRecordPopup } from "@/globalState/Features/popupsSlice";
 
 const Header = () => {
   const [notificationsState, setNotificationsState] = useState(false);
+  const [profileMenu, setProfileMenu] = useState(false);
   const attendance = useSelector((store) => store.auth.attendance);
   const dispatch = useDispatch();
-  const pathname = usePathname()
+  const pathname = usePathname();
   useEffect(() => {
-    dispatch(resetFormState())
-  },[pathname])
+    dispatch(resetFormState());
+  }, [pathname]);
   return (
     <>
       <header className="bg-bgGreen text-3xl  z-[60]">
@@ -93,9 +95,10 @@ const Header = () => {
                 </svg>
               </div>
               {/* user */}
-              <Link
-                href="/hr/1"
-                className="hidden lg:flex items-center  gap-2 bg-white p-2 rounded h-10 drop-shadow-sm"
+              <div
+                // href="/hr/1"
+                onClick={() => setProfileMenu(!profileMenu)}
+                className="hidden lg:flex items-center  gap-2 bg-white p-2 rounded h-10 drop-shadow-sm relative cursor-pointer"
               >
                 <div className="text-[#048D5A] text-base flex gap-1">
                   <p>مرحبا /</p>
@@ -112,7 +115,104 @@ const Header = () => {
                     d="M8 8a3 3 0 1 0 0-6a3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0a2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1s1-4 6-4s6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"
                   />
                 </svg>
-              </Link>
+                <div
+                  className={`${
+                    profileMenu ? "!max-h-96 " : " "
+                  } flex flex-col gap-4 max-h-0 bg-white absolute left-0 top-full cursor-default translate-y-2 z-50 drop-shadow overflow-hidden  transition-all`}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <ul className="">
+                    <li >
+                      <Link href={"/hr/1"} className="text-base  border-b hover:bg-[#008f5b0f] transition-all p-4 hover:scale-110 inline-block w-full">
+                        <div className="flex gap-4 items-center justify-between w-full rounded-xl">
+                          {/* <svg
+                            className="text-gray-800 dark:text-white"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                            />
+                          </svg> */}
+                          <p className="text-xs whitespace-nowrap">
+                            الصفحة الشخصية
+                          </p>
+                          {/* <div className="relative aspect-square w-fit hover:animate-none">
+                            <svg
+                              className="w-4 h-4 text-gray-800 dark:text-white"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M3.933 13.909A4.357 4.357 0 0 1 3 12c0-1 4-6 9-6m7.6 3.8A5.068 5.068 0 0 1 21 12c0 1-3 6-9 6-.314 0-.62-.014-.918-.04M5 19 19 5m-4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                              />
+                            </svg>
+                            <span className="absolute -z-10 top-0 right-0 w-full h-full animate-ping bg-green-300 rounded-full"></span>
+                          </div> */}
+                        </div>
+                      </Link>
+                    </li>
+                    <li >
+                      <button onClick={()=>dispatch(toggleAddRecordPopup("requestVacation"))} href={"/hr/1"} className="text-base border-b hover:bg-[#008f5b0f] transition-all p-4 hover:scale-110 inline-block w-full">
+                        <div className="flex gap-4 justify-between w-full items-center rounded-xl">
+                          {/* <svg
+                            className="text-gray-800 dark:text-white"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                            />
+                          </svg> */}
+                          <p className="text-xs whitespace-nowrap">
+                            طلب اجازة
+                          </p>
+                          {/* <div className="relative aspect-square w-fit hover:animate-none">
+                            <svg
+                              className="w-4 h-4 text-gray-800 dark:text-white"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M3.933 13.909A4.357 4.357 0 0 1 3 12c0-1 4-6 9-6m7.6 3.8A5.068 5.068 0 0 1 21 12c0 1-3 6-9 6-.314 0-.62-.014-.918-.04M5 19 19 5m-4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                              />
+                            </svg>
+                            <span className="absolute -z-10 top-0 right-0 w-full h-full animate-ping bg-green-300 rounded-full"></span>
+                          </div> */}
+                        </div>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <ul className="flex gap-4 items-center">
                 {/* notifications */}
                 <li
@@ -280,7 +380,10 @@ const Header = () => {
                   <NavItem
                     subList={[
                       { title: "جميع القضايا", to: "/issues" },
-                      { title: "قضايا الدرجة الأولى", to: "/firstDegreeIssues" },
+                      {
+                        title: "قضايا الدرجة الأولى",
+                        to: "/firstDegreeIssues",
+                      },
                       { title: "قضايا التنفيذ", to: "/executiveIssues" },
                     ]}
                     // to="/issues"

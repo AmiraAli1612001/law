@@ -80,7 +80,7 @@ const ListItem = ({
           {/* {index == listItems.length - 1 && listItems.length > 1 && ( */}
           {(index > 0 || length > 1) && (
             <button
-            type="button"
+              type="button"
               onClick={() => removeListItem(item)}
               className="bg-red-500 text-white rounded aspect-square w-max p-2 h-auto font-medium"
             >
@@ -105,6 +105,7 @@ const DynamicList = ({
   title,
   recordType,
   btnTitle,
+  className,
 }) => {
   const currentNumber = useRef(0);
   const [nameInput, setNameInput] = useState("");
@@ -126,7 +127,7 @@ const DynamicList = ({
     setListItems(listItems.filter((p) => p.id !== item.id));
   }
   return (
-    <div className="flex flex-col gap-2">
+    <div className={`${className ?? " "} flex flex-col gap-2`}>
       <h3 className="text-lg font-semibold">{title || ""}</h3>
       {listItems.map((item, index) => (
         <ListItem

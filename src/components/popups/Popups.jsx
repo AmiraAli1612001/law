@@ -16,6 +16,7 @@ import AddClient from "../adds/clients/AddClient/AddClient";
 // import AddEmployeePopup from "./addEmployee/AddEmployee";
 import AddContract from "../adds/contracts/addContract/AddContract";
 import AddEmployee from "../adds/hr/addEmployee/AddEmployee";
+import RequestVacation from "../adds/hr/requestVacation/RequestVacation";
 const Popups = () => {
   const dispatch = useDispatch();
 
@@ -27,6 +28,7 @@ const Popups = () => {
   }
 
   const addIssue = useSelector((store) => store.popups?.addIssue);
+  const requestVacation = useSelector((store) => store.popups?.requestVacation);
   const addClient = useSelector((store) => store.popups?.addClient);
   const addTask = useSelector((store) => store.popups?.addTask);
   const addEmployee = useSelector((store) => store.popups?.addEmployee);
@@ -81,6 +83,7 @@ const Popups = () => {
         </svg>
         {/* close icon end */}
         {addIssue && <AddIssuePopup />}
+        {requestVacation && <RequestVacation />}
         {addClient && <AddClient />}
         {addTask && <Task />}
         {attachmentsPopup && <AttachmentsPopup />}

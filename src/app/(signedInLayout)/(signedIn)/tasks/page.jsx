@@ -25,7 +25,7 @@ const Issues = () => {
   const innnerSwiperRef = useRef(null);
   const dispatch = useDispatch();
   console.log(active);
-  const sections = ["الجدول","التفاصيل"];
+  const sections = ["التفاصيل","الجدول",];
   const swipeOuter = (id) => {
     if (outerSwiperRef.current) {
       outerSwiperRef.current.slideTo(id);
@@ -74,6 +74,9 @@ const Issues = () => {
           >
             {/* موضوع الدعوي */}
             <SwiperSlide>
+              <TasksTable/>
+            </SwiperSlide>
+            <SwiperSlide>
               <FullCalendar
                 plugins={[dayGridPlugin]}
                 initialView="dayGridMonth"
@@ -82,9 +85,7 @@ const Issues = () => {
                 eventContent={renderEventContent}
               />
             </SwiperSlide>
-            <SwiperSlide>
-              <TasksTable/>
-            </SwiperSlide>
+            
           </Swiper>
         </div>
       </div>

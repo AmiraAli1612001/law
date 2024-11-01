@@ -162,7 +162,21 @@ const AddVisit = () => {
         <textarea className="text-lg" name="" id=""></textarea>
         <p className="input-error">{errors.arabicName?.message}</p>
       </div>
-
+      <div className="main-section">
+        <DynamicList title={"المرفقات "}>
+          <div className="flex flex-1 gap-2">
+            <select className="flex-1" name="" id="">
+              <option value="">نوع المرفق</option>
+              <option value="">ضبط الجلسة</option>
+              <option value="">اخري</option>
+            </select>
+            <input className="flex-1" type="text" placeholder="اسم المرفق" />
+            <div className="bg-white flex-1">
+              <input type="file" name="" id="" />
+            </div>
+          </div>
+        </DynamicList>
+      </div>
       {/* clauses */}
       {/* <div className="input !min-w-full">
         <DynamicList

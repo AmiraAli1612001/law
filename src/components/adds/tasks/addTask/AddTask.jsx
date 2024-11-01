@@ -40,6 +40,7 @@ const AddTask = () => {
     // dispatch(closeLoader());
   }
   return (
+   
     <form
       method="POST"
       onSubmit={handleSubmit(handleSubmitSignUp)}
@@ -47,7 +48,7 @@ const AddTask = () => {
       noValidate
       id="addIssueRecord"
     >
-      <div className="small-inputs">
+      <div className="small-inputs main-section">
         {/* title ! */}
         <div className="simple-input">
           <label htmlFor="">العنوان</label>
@@ -78,7 +79,7 @@ const AddTask = () => {
         </div>
       </div>
       {/* details !*/}
-      <div className="simple-input !min-w-full flex-1 flex flex-col">
+      <div className="simple-input main-section !min-w-full flex-1 flex flex-col">
         <label htmlFor="">التفاصيل</label>
         <textarea
           type="text"

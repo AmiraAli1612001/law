@@ -43,10 +43,22 @@ const Attendance = () => {
         id="addIssueRecord"
         className="flex flex-col gap-4"
       >
-        <h3 className="text-2xl">هل انت متأكد من تسجيل الانصراف؟</h3>
+        <h3 className="text-2xl ">هل انت متأكد من تسجيل الانصراف؟</h3>
         <div className="max-h-[50vh] overflow-auto">
-          <DynamicList title={"مهام اليوم"}>
-            <textarea name="" placeholder="حدد مهامك" id=""></textarea>
+          <DynamicList className={"!gap-4"} title={"مهام اليوم"}>
+            <div className="flex flex-1 flex-col gap-2">
+              <div className="flex gap-2">
+                <div className="simple-input flex-1">
+                  <label htmlFor="">من</label>
+                  <input type="time" name="" id="" />
+                </div>
+                <div className="simple-input flex-1">
+                  <label htmlFor="">الي</label>
+                  <input type="time" name="" id="" />
+                </div>
+              </div>
+              <textarea name="" placeholder="حدد مهامك" id=""></textarea>
+            </div>
           </DynamicList>
         </div>
         <button

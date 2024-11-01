@@ -35,6 +35,16 @@ const TasksTable = () => {
       {
         Header: "تاريخ المهمة",
         accessor: "date",
+        
+      },
+      {
+        Header: "تاريخ الانتهاء المحدد",
+        accessor: "deadLine",
+
+      },
+      {
+        Header: "تاريخ الانتهاء الفعلي",
+        accessor: "actualEndDate",
       },
       {
         Header: "الموظف",

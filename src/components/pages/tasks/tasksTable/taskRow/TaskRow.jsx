@@ -8,12 +8,13 @@ import {
 import { useDispatch } from "react-redux";
 import EmployeeStatistics from "@/components/statistics/EmployeeStatistics";
 import Link from "next/link";
-const TaskRow = ({ data: { id, name, title, date, details, status } }) => {
+import { deleteRecord } from "@/helperFunctions/dom";
+const TaskRow = ({ data: { id, name, title, date,deadLine,actualEndDate, details, status } }) => {
   const [state, setState] = useState(false);
   const dispatch = useDispatch();
 
   return (
-    <div className="">
+    <div className="custom-task-wrapper">
       <table className="simple-table row-titles">
         <tbody>
           <tr
@@ -21,7 +22,7 @@ const TaskRow = ({ data: { id, name, title, date, details, status } }) => {
               status == 1 ? "present" : "absent"
             } [&>td]:w-[calc(100%/5)]`}
           >
-            <td className="w-[calc(100%/10)]">
+            <td className="w-[calc(100%/16)]">
               <span>رقم المهمة</span>
               <p>{id}</p>
             </td>
@@ -34,11 +35,19 @@ const TaskRow = ({ data: { id, name, title, date, details, status } }) => {
               <p>{date}</p>
             </td>
             <td>
+              <span>تاريخ الانتهاء</span>
+              <p>{deadLine}</p>
+            </td>
+            <td>
+              <span>تاريخ الانتهاء الفعلي</span>
+              <p>{actualEndDate}</p>
+            </td>
+            <td>
               <span>اسم الموظف</span>
-              <Link href={`/employees/${1}`}>{name}</Link>
+              <Link className="inline-block" href={`/employees/${1}`}>{name}</Link>
             </td>
 
-            <td className="w-[calc(100%/10)]">
+            <td className="w-[calc(100%/16)]">
               <span>الحالة</span>
               <p>{status == 1 ? "تم الانجاز" : "لم يتم الانجاز"}</p>
             </td>
@@ -51,10 +60,11 @@ const TaskRow = ({ data: { id, name, title, date, details, status } }) => {
                   عرض التفاصيل
                 </button>
                 <button
-                  onClick={() => dispatch(toggleAddRecordPopup("task"))}
-                  className="text-white bg-[#048D5A] py-1.5 px-4 rounded text-sm font-semibold"
+                  // onClick={() => dispatch(toggleAddRecordPopup("task"))}
+                  onClick={(e)=>deleteRecord(e,".custom-task-wrapper")}
+                  className="text-white bg-mainRed py-1.5 px-4 rounded text-sm font-semibold"
                 >
-                  تعديل
+                  حذف
                 </button>
               </div>
             </td>

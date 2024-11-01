@@ -16,7 +16,7 @@ import {
 import PersonSelector from "@/components/shared/personSelector/PersonSelector";
 import HRData from "@/fakeData/HRData.json";
 
-const AddVacation = () => {
+const RequestVacation = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [delayDate, setDelayDate] = useState(new Date());
   const signUpForm = useForm();
@@ -76,7 +76,7 @@ const AddVacation = () => {
       action=""
       noValidate
       id="addIssueRecord"
-      className="py-4 px-0.5"
+      className="px-0.5 "
     >
       <div className="small-inputs main-section flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5">
         {/* contract type ! */}
@@ -101,7 +101,7 @@ const AddVacation = () => {
         </div>
         {/* contract status ! */}
         <div className="simple-input">
-          <label htmlFor="">حالة الاجازة</label>
+          <label htmlFor="">سبب الاجازة</label>
           <select
             type="text"
             name=""
@@ -112,10 +112,10 @@ const AddVacation = () => {
             placeholder=""
           >
             <option className="hidden" value="">
-              اختر حالة الاجازة
+              اختر سبب الاجازة
             </option>
-            <option value="قرار موظف">معاينة</option>
-            <option value="قرار عميل">اصدار</option>
+            <option value="قرار موظف">مرضية</option>
+            <option value="قرار عميل">اخر</option>
           </select>
           <p className="input-error">{errors.contractStatus?.message}</p>
         </div>
@@ -187,8 +187,7 @@ const AddVacation = () => {
         </div>
       </div>
       {/* parties */}
-      <div className="input !min-w-full main-section">
-        {/* <Parties /> */}
+      {/* <div className="input !min-w-full main-section">
         <DynamicList
           title={"اسم الموظف"}
           personsSelectorFilter={sessionsFilterArr}
@@ -208,20 +207,20 @@ const AddVacation = () => {
             personName="موظف"
           />
         </DynamicList>
-      </div>
+      </div> */}
       {/* name arabic ! arabicName*/}
-      <div className="simple-input !min-w-full flex-1 main-section">
+      <div className="simple-input !min-w-full main-section">
         <h3 className="text-lg font-semibold">السبب</h3>
 
         <textarea className="text-lg" name="" id=""></textarea>
         <p className="input-error">{errors.arabicName?.message}</p>
       </div>
 
-      <button className="text-white text-xl mt-4 p-4 w-full bg-textGreen rounded">
+      <button className="text-white text-xl p-4 w-full bg-textGreen rounded">
         اضافة
       </button>
     </form>
   );
 };
 
-export default AddVacation;
+export default RequestVacation;

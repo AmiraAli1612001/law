@@ -29,7 +29,7 @@ const Sessions = () => {
   console.log(new Date().toISOString());
   const dispatch = useDispatch();
   console.log(active);
-  const sections = ["الجدول", "التفاصيل"];
+  const sections = ["التفاصيل", "الجدول"];
   const swipeOuter = (id) => {
     if (outerSwiperRef.current) {
       outerSwiperRef.current.slideTo(id);
@@ -94,6 +94,9 @@ const Sessions = () => {
           >
             {/* موضوع الدعوي */}
             <SwiperSlide>
+              <SessionsTable />
+            </SwiperSlide>
+            <SwiperSlide>
               <FullCalendar
                 plugins={[dayGridPlugin]}
                 initialView="dayGridMonth"
@@ -101,9 +104,6 @@ const Sessions = () => {
                 events={tasks}
                 eventContent={renderEventContent}
               />
-            </SwiperSlide>
-            <SwiperSlide>
-              <SessionsTable />
             </SwiperSlide>
           </Swiper>
         </div>

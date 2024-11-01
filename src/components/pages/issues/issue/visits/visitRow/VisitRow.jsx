@@ -101,10 +101,7 @@ const VisitRow = ({
               <span>اسم العميل</span>
               <p>{name}</p>
             </td>
-            <td>
-              <span>الارتباط بالقضية</span>
-              <p>{status2 ? "متربطة" : "غير متربطة"}</p>
-            </td>
+           
             <td>
               <span>رقم الجوال</span>
               <p>{phone}</p>
@@ -132,6 +129,10 @@ const VisitRow = ({
             <td>
               <span>تاريخ الزيارة</span>
               <p>{date}</p>
+            </td>
+            <td>
+              <span>الارتباط بالقضية</span>
+              <input className="block !w-[95px]" type="file" name="" id="" />
             </td>
             <td>
               <span>الوقت</span>

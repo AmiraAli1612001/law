@@ -44,10 +44,7 @@ const VisitsTable = () => {
         Header: "اسم العميل",
         accessor: "name",
       },
-      {
-        Header: "الارتباط بالقضية",
-        accessor: "status",
-      },
+      
       {
         Header: "رقم الجوال",
         accessor: "phone",
@@ -87,6 +84,15 @@ const VisitsTable = () => {
       {
         Header: "المبلغ",
         accessor: "amount",
+      },
+      {
+        Header: "المرفقات",
+        accessor: "status",
+        Cell: ({ row, value }) => {
+          return (
+           <input type="file" />
+          );
+        }
       },
       {
         Header: "الملاحظات",

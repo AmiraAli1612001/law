@@ -1,15 +1,17 @@
-.employee-details .input {
+.employee-details .simple-input {
   padding: 16px;
   width: 50%;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-.employee-details .input label {
+.employee-details .simple-input label {
   font-size: 16px;
   font-weight: 500;
 }
-.employee-details .input input {
+.employee-details .simple-input input,
+.employee-details .simple-input select,
+.employee-details .simple-input .input {
   width: 100%;
   border: 1px solid #dfe3e8;
   border-radius: 8px;
