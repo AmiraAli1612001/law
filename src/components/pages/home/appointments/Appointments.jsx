@@ -28,7 +28,7 @@ const Appointments = () => {
       </div>
       <div className="bg-white p-4 mt-4 rounded">
         <h4 className="mb-4 font-medium text-lg">المواعيد المتستقبلية</h4>
-        <ul className="flex-1 flex gap-4 items-center">
+        <ul className="flex-1 flex flex-col gap-4 items-center">
           <Appointment />
         </ul>
       </div>
