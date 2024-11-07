@@ -144,87 +144,9 @@ const AddContract = () => {
           <p className="input-error">{errors.contractDate?.message}</p>
         </div>
       </div>
-      {/* payment */}
-      {/* <div className="small-inputs flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5 main-section"> */}
-        {/* contract pay type !*/}
-        {/* <div className="simple-input">
-          <label htmlFor="">نوع الدفع</label>
-          <select
-            type="text"
-            name=""
-            id="contractPayType"
-            {...register("contractPayType", {
-              required: "يجب كتابة عنوان العقد",
-            })}
-            placeholder=""
-          >
-            <option className="hidden" value="">
-              اختر نوع الدفع
-            </option>
-            {contractPayTypes.map((item, index) => {
-              return (
-                <option key={index} value={item}>
-                  {item}
-                </option>
-              );
-            })}
-          </select>
-          <p className="input-error">{errors.contractPayType?.message}</p>
-        </div> */}
 
-        {/* contract value !*/}
-        {/* <div className="simple-input">
-          <label htmlFor="">مبلغ العقد</label>
-          <input
-            type="text"
-            name=""
-            id="contractValue"
-            {...register("contractValue", {
-              required: "يجب ادخال مبلغ العقد",
-            })}
-            placeholder="ادخل مبلغ العقد"
-          />
-          <p className="input-error">{errors.contractValue?.message}</p>
-        </div> */}
-        {/* middleman percentage !*/}
-        {/* <div className="simple-input">
-          <label htmlFor="">
-            {middlemanPayType == 0 ? "نسبة الوسيط" : "قيمة الوسيط"}
-          </label>
-          <div className=" relative flex">
-            <input
-              type="text"
-              name=""
-              defaultValue={0}
-              id="middlemanPercentage"
-              {...register("middlemanPercentag", {
-                required: "يجب ادخال مبلغ العقد",
-              })}
-              className="!rounded-e-none"
-              placeholder=""
-            />
-            <select
-              type="text"
-              name=""
-              id="middlemanPayType"
-              className=" !w-20 !rounded-s-none"
-              {...register("middlemanPayType", {
-                required: "يجب كتابة عنوان العقد",
-              })}
-              placeholder=""
-              onChange={(e) => {
-                setMiddlemanPayType(e.target.value);
-              }}
-            >
-              <option value="0">نسبة</option>
-              <option value="1">قيمة</option>
-            </select>
-          </div>
-          <p className="input-error">{errors.middlemanPercentage?.message}</p>
-        </div> */}
-      {/* </div> */}
       <div className="main-section">
-        <PaymentSelector/>
+        <PaymentSelector />
       </div>
       {/* parties */}
       <div className="input !min-w-full main-section">
@@ -235,68 +157,25 @@ const AddContract = () => {
         >
           <PersonSelector />
         </DynamicList>
-        {/* <Parties /> */}
       </div>
       {/* tamheed*/}
       <div className="simple-input !min-w-full flex-1 main-section">
         <h3 className="text-lg font-semibold">التمهيد</h3>
-        {/* <div dir="ltr" className="flex-1 min-h-fit h-fit bg-white">
-          <div id={`contract-details-toolbar`}>
-            <span className="ql-formats">
-              <select className="ql-font"></select>
-              <select className="ql-size"></select>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-bold"></button>
-              <button className="ql-italic"></button>
-              <button className="ql-underline"></button>
-              <button className="ql-strike"></button>
-            </span>
-            <span className="ql-formats">
-              <select className="ql-color"></select>
-              <select className="ql-background"></select>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-script" value="sub"></button>
-              <button className="ql-script" value="super"></button>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-header" value="1"></button>
-              <button className="ql-header" value="2"></button>
-              <button className="ql-blockquote"></button>
-              <button className="ql-code-block"></button>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-list" value="ordered"></button>
-              <button className="ql-list" value="bullet"></button>
-              <button className="ql-indent" value="-1"></button>
-              <button className="ql-indent" value="+1"></button>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-direction" value="rtl"></button>
-              <select className="ql-align"></select>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-link"></button>
-              <button className="ql-image"></button>
-              <button className="ql-video"></button>
-            </span>
-            <span className="ql-formats">
-              <button className="ql-clean"></button>
-            </span>
-          </div>
-          <ReactQuill
-            modules={{ toolbar: "#contract-details-toolbar" }}
-            theme="snow"
-          />
-        </div> */}
+
         <textarea className="text-lg" name="" id=""></textarea>
         <p className="input-error">{errors.arabicName?.message}</p>
       </div>
 
       {/* clauses */}
-      <div className="input !min-w-full">
-        <Clauses />
+      <div className="simple-input !min-w-full main-section">
+        <DynamicList title={"البنود"}>
+          <PersonSelector
+            filterArr={[
+              { name: "الاسم", value: "name" },
+              { name: "الرقم", value: "id" },
+            ]}
+          />
+        </DynamicList>
       </div>
       <button className="text-white text-xl mt-4 p-4 w-full bg-textGreen rounded">
         اضافة
