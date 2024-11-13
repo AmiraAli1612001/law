@@ -19,7 +19,7 @@ const NavItem = ({ to = "#", title, children, subList }) => {
           <svg
             className={`${
               state && "rotate-180"
-            } w-6 h-6 text-iconGreen dark:text-white angle-down transition-all`}
+            } w-6 h-6 text-iconGreen angle-down transition-all`}
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="24"

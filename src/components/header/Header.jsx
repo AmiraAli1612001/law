@@ -246,7 +246,7 @@ const Header = () => {
                         <Link href={"/issues/1"}>
                           <div className="flex gap-4 items-center">
                             <svg
-                              className="text-gray-800 dark:text-white"
+                              className="text-gray-800 "
                               aria-hidden="true"
                               xmlns="http://www.w3.org/2000/svg"
                               width="16"
