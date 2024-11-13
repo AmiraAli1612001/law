@@ -55,14 +55,14 @@ const HRRow = ({
           >
             التفاصيل
           </Link>
-          <button
+          {/* <button
             className="bg-mainRed bg-opacity-90 hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
             // onClick={() => dispatch(toggleEditEmployee(id))}
             // onClick={() => dispatch(toggleAddRecordPopup(""))}
             onClick={(e)=>deleteRecord(e,".hr-row-custom-wrapper")}
           >
             حذف
-          </button>
+          </button> */}
         </div>
       </div>
       <div

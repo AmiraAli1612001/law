@@ -24,7 +24,7 @@ import ContractsTable from "@/components/pages/finance/contracts/ContractsTable"
 
 const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [activeIndex1, setActiveIndex1] = useState(0);
   const [activeIndex2, setActiveIndex2] = useState(0);
   const [activeIndex3, setActiveIndex3] = useState(0);
@@ -41,7 +41,7 @@ const Finance = ({ params: { token } }) => {
     "الايرادات",
     "الرواتب",
     "التقارير المالية",
-    "العقود"
+    "العقود",
   ];
 
   const swipeOuter = (id) => {
@@ -55,34 +55,105 @@ const Finance = ({ params: { token } }) => {
       swiperRef.current.slideTo(id);
     }
   };
-
+  function renderChartBtn() {
+    switch (active) {
+      case 0:
+        return (
+          <nav className="flex gap-4 items-center ">
+            {["التفاصيل", "رسم توضيحي"].map((item, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setActiveIndex1(index);
+                  swipeInner(index, innnerSwiper1Ref);
+                }}
+                // disabled={index === 2}
+                className={`${
+                  activeIndex1 == index ? " active " : ""
+                } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
+        );
+        break;
+      case 1:
+        return (
+          <nav className="flex gap-4 items-center ">
+            {["التفاصيل", "رسم توضيحي"].map((item, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setActiveIndex2(index);
+                  swipeInner(index, innnerSwiper2Ref);
+                }}
+                // disabled={index === 2}
+                className={`${
+                  activeIndex2 == index ? " active " : ""
+                } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
+        );
+        break;
+      case 2:
+        return (
+          <nav className="flex gap-4 items-center ">
+            {["التفاصيل", "رسم توضيحي"].map((item, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setActiveIndex3(index);
+                  swipeInner(index, innnerSwiper3Ref);
+                }}
+                // disabled={index === 2}
+                className={`${
+                  activeIndex3 == index ? " active " : ""
+                } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
+        );
+        break;
+      default:
+        break;
+    }
+  }
   return (
     <ScreenWrapper className="flex-1 p-4 flex flex-col gap-4 finance">
-      <LinkHeader to={`/finance/$`} title={`المالية`} />
+      {/* <LinkHeader to={`/finance/$`} title={`المالية`} /> */}
       <div className="flex flex-col gap-4">
         <div className="issue-details flex">
           <div className="w-full">
-            <div className="issue-details flex w-full gap-4">
-              <nav className="bg-white drop-shadow w-[160px] h-fit">
-                <ul className="w-full">
-                  {sections.map((section, index) => (
-                    <li
-                      key={index}
-                      className={`${
-                        active === index && "active"
-                      } w-full whitespace-nowrap p-4 font-medium cursor-pointer`}
-                      onClick={() => {
-                        dispatch(closeAddFormRecord())
-                        setActive(index);
-                        swipeOuter(index);
-                      }}
-                    >
-                      {section}
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-              <div className="items-sections-details w-[calc(100%-176px)]">
+            <div className="issue-details flex flex-col w-full gap-4">
+              <div className="flex justify-between">
+                <nav className="bg-white drop-shadow w-fit ccw-[160px] h-fit">
+                  <ul className="w-full flex">
+                    {sections.map((section, index) => (
+                      <li
+                        key={index}
+                        className={`${
+                          active === index && "active"
+                        } w-full whitespace-nowrap p-4 font-medium cursor-pointer`}
+                        onClick={() => {
+                          dispatch(closeAddFormRecord());
+                          setActive(index);
+                          swipeOuter(index);
+                        }}
+                      >
+                        {section}
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+                {renderChartBtn()}
+              </div>
+              <div className="items-sections-details w-full ccw-[calc(100%-176px)] relative">
                 <Swiper
                   spaceBetween={0}
                   slidesPerView={1}
@@ -93,23 +164,6 @@ const Finance = ({ params: { token } }) => {
                 >
                   {/* المصروفات */}
                   <SwiperSlide>
-                    <nav className="flex gap-4 items-center pb-2">
-                      {["التفاصيل", "رسم توضيحي"].map((item, index) => (
-                        <button
-                          key={index}
-                          onClick={() => {
-                            setActiveIndex1(index);
-                            swipeInner(index, innnerSwiper1Ref);
-                          }}
-                          // disabled={index === 2}
-                          className={`${
-                            activeIndex1 == index ? " active " : ""
-                          } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
-                        >
-                          {item}
-                        </button>
-                      ))}
-                    </nav>
                     <Swiper
                       spaceBetween={0}
                       slidesPerView={1}
@@ -158,23 +212,6 @@ const Finance = ({ params: { token } }) => {
                   </SwiperSlide>
                   {/* الالتزامات */}
                   <SwiperSlide>
-                    <nav className="flex gap-4 items-center pb-2">
-                      {["التفاصيل", "رسم توضيحي"].map((item, index) => (
-                        <button
-                          key={index}
-                          onClick={() => {
-                            setActiveIndex2(index);
-                            swipeInner(index, innnerSwiper2Ref);
-                          }}
-                          // disabled={index === 2}
-                          className={`${
-                            activeIndex2 == index ? " active " : ""
-                          } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
-                        >
-                          {item}
-                        </button>
-                      ))}
-                    </nav>
                     <Swiper
                       spaceBetween={0}
                       slidesPerView={1}
@@ -222,23 +259,6 @@ const Finance = ({ params: { token } }) => {
                   </SwiperSlide>
                   {/* الايرادات */}
                   <SwiperSlide>
-                    <nav className="flex gap-4 items-center pb-2">
-                      {["التفاصيل", "رسم توضيحي"].map((item, index) => (
-                        <button
-                          key={index}
-                          onClick={() => {
-                            setActiveIndex3(index);
-                            swipeInner(index, innnerSwiper3Ref);
-                          }}
-                          // disabled={index === 2}
-                          className={`${
-                            activeIndex3 == index ? " active " : ""
-                          } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
-                        >
-                          {item}
-                        </button>
-                      ))}
-                    </nav>
                     <Swiper
                       spaceBetween={0}
                       slidesPerView={1}

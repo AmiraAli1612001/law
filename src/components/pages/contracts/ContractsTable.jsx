@@ -44,6 +44,12 @@ const ContractsTable = ({ swipe }) => {
   return (
     <>
       <CustomTable
+      topFilter={[
+        { title: "أتعاب", value: "اتعاب" },
+        { title: "خدمات", value: "خدمات" },
+        { title: "شركات", value: "شركات" },
+        { title: "استشارة", value: "استشارة" },
+      ]}
         tableData={contractsData}
         columns={tableColumns}
         AddRecordEle={()=><AddContract/>}

@@ -35,14 +35,14 @@ const Issue = ({ params: { token } }) => {
               {date}
             </p>
           </div>
-          {/* <div className="row-data-content ms-auto">
+          <div className="row-data-content ms-auto">
             <button
-              className="bg-mainRed bg-opacity-[0.3] text-white px-4 py-2 rounded text-sm"
+              className="bg-mainRed bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm"
               onClick={() => dispatch(toggleAddRecordPopup("record"))}
             >
-              تعديل
+              حذف
             </button>
-          </div> */}
+          </div>
         </div>
         <ContractDetails id={token} contractData={contractData} />
         {/*end  */}
