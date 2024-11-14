@@ -63,6 +63,104 @@ const CustomTable = ({
     // setPageSize,
   } = tableInstance;
   const { globalFilter } = state;
+
+  function renderTable(tableType) {
+    switch (tableType) {
+      case 1:
+        return (
+          <table
+            {...getTableProps()}
+            className={`${
+              filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
+            } simple-table  `}
+          >
+            <thead className="">
+              {headerGroups.map((headerGroup, i) => (
+                <tr {...headerGroup.getHeaderGroupProps()} key={i}>
+                  {headerGroup.headers.map((column, i) => (
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      key={i}
+                    >
+                      {column.render("Header")}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()} className="">
+              {page.map((row, i) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()} className={``} key={i}>
+                    {row.cells.map((cell, i) => {
+                      return (
+                        <td {...cell.getCellProps()} key={i}>
+                          {cell.render("Cell")}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        );
+      case 2:
+        return (
+          <div
+            className={`${
+              filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
+            } flex flex-1 flex-col gap-1`}
+          >
+            {page.map((row) => {
+              prepareRow(row);
+              return (
+                <RenderElement key={row.original.id} data={row.original} />
+              );
+            })}{" "}
+          </div>
+        );
+      case 3:
+        return (
+          <table
+            {...getTableProps()}
+            className={`${
+              filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
+            } simple-table  `}
+          >
+            <thead className="">
+              {headerGroups.map((headerGroup, i) => (
+                <tr {...headerGroup.getHeaderGroupProps()} key={i}>
+                  {headerGroup.headers.map((column, i) => (
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      key={i}
+                    >
+                      {column.render("Header")}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()} className="">
+              {page.map((row, i) => {
+                prepareRow(row);
+                return (
+                  <CustomElementWrapper
+                    row={row}
+                    RenderElement={RenderElement}
+                    key={i}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
+        );
+      default:
+        break;
+    }
+  }
   return (
     <div className="flex flex-col gap-1">
       {/* custom rows */}
@@ -148,7 +246,7 @@ const CustomTable = ({
       >
         {/* data rows */}
 
-        {tableType == 1 ? (
+        {/* {tableType == 1 ? (
           <table
             {...getTableProps()}
             className={`${
@@ -199,7 +297,8 @@ const CustomTable = ({
               );
             })}{" "}
           </div>
-        )}
+        )} */}
+        {renderTable(tableType)}
         {/* filter */}
         {enableFilter && (
           <div
@@ -248,6 +347,7 @@ const CustomTable = ({
           </div>
         )}
       </div>
+      {/* add bottom */}
       {addBtn && (
         <button className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
           اضافة
@@ -295,5 +395,44 @@ const CustomTable = ({
     </div>
   );
 };
-
+const CustomElementWrapper = ({ row, RenderElement }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  return (
+    <>
+      <tr {...row.getRowProps()} className={``}>
+        {row.cells.map((cell, i) => {
+          return (
+            <td {...cell.getCellProps()} key={i}>
+              {cell.render("Cell")}
+            </td>
+          );
+        })}
+        <td
+          
+          onClick={() => setIsExpanded((prev) => !prev)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            className={`${isExpanded ? "rotate-180" : "rotate-0"} transition-all origin-center cursor-pointer`}
+          >
+            <path
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="m6 9l6 6l6-6"
+            ></path>
+          </svg>
+        </td>
+      </tr>
+      {isExpanded && (
+        <RenderElement key={row.original.id} data={row.original} />
+      )}
+    </>
+  );
+};
 export default CustomTable;

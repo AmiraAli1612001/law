@@ -21,6 +21,7 @@ import ReportsTable from "@/components/pages/finance/reports/ReportsTable";
 import { closeAddFormRecord } from "@/globalState/Features/formStateSlice";
 import { useDispatch } from "react-redux";
 import ContractsTable from "@/components/pages/finance/contracts/ContractsTable";
+import { exportTableToExcel } from "@/helperFunctions/excelExport";
 
 const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
@@ -60,7 +61,7 @@ const Finance = ({ params: { token } }) => {
       case 0:
         return (
           <nav className="flex gap-4 items-center ">
-            {["التفاصيل", "رسم توضيحي"].map((item, index) => (
+            {["التفاصيل", "التقرير"].map((item, index) => (
               <button
                 key={index}
                 onClick={() => {
@@ -81,7 +82,7 @@ const Finance = ({ params: { token } }) => {
       case 1:
         return (
           <nav className="flex gap-4 items-center ">
-            {["التفاصيل", "رسم توضيحي"].map((item, index) => (
+            {["التفاصيل", "التقرير"].map((item, index) => (
               <button
                 key={index}
                 onClick={() => {
@@ -102,7 +103,7 @@ const Finance = ({ params: { token } }) => {
       case 2:
         return (
           <nav className="flex gap-4 items-center ">
-            {["التفاصيل", "رسم توضيحي"].map((item, index) => (
+            {["التفاصيل", "التقرير"].map((item, index) => (
               <button
                 key={index}
                 onClick={() => {
@@ -131,7 +132,9 @@ const Finance = ({ params: { token } }) => {
         <div className="issue-details flex">
           <div className="w-full">
             <div className="issue-details flex flex-col w-full gap-4">
+              {/* main nav */}
               <div className="flex justify-between">
+                {/* main nav */}
                 <nav className="bg-white drop-shadow w-fit ccw-[160px] h-fit">
                   <ul className="w-full flex">
                     {sections.map((section, index) => (
@@ -151,6 +154,7 @@ const Finance = ({ params: { token } }) => {
                     ))}
                   </ul>
                 </nav>
+                {/*left nav */}
                 {renderChartBtn()}
               </div>
               <div className="items-sections-details w-full ccw-[calc(100%-176px)] relative">
@@ -177,36 +181,116 @@ const Finance = ({ params: { token } }) => {
                       </SwiperSlide>
                       {/* chart */}
                       <SwiperSlide>
-                        <ChartWrapper
-                          className={"max-w-[1024px]"}
-                          // title="الايرادات الشهرية"
-                          Chart={Bar}
-                          labels={[
-                            "January",
-                            "February",
-                            "March",
-                            "April",
-                            "May",
-                            "June",
-                            "July",
-                            "August",
-                            "September",
-                            "October",
-                            "November",
-                            "December",
-                          ]}
-                          datasets={[
-                            {
-                              label: "الايرادات الشهرية",
-                              data: monthsSalaryData.map((e) => e.salary),
-                            },
-                            {
-                              label: "المصروفات الشهرية",
-                              data: monthsSalaryData.map((e) => e.salary / 2.1),
-                            },
-                          ]}
-                          data={monthsSalaryData}
-                        />
+                        <div className="flex gap-4">
+                          <div className="w-1/3 h-fit">
+                            <div className="bg-gray-100 p-4 rounded-lg ">
+                              <h3 className="font-bold text-lg mb-4">
+                                مدة التقرير
+                              </h3>
+                              <div>
+                                <span className="ml-2 font-bold">من: </span>
+                                <input
+                                  className="p-2 rounded-lg"
+                                  type="date"
+                                  name=""
+                                  id=""
+                                />
+                              </div>
+                              <div className="mt-4">
+                                <span className="ml-2 font-bold">الى: </span>
+                                <input
+                                  className="p-2 rounded-lg"
+                                  type="date"
+                                  name=""
+                                  id=""
+                                />
+                              </div>
+                              <div className="flex items-center gap-6 my-2">
+                                <input
+                                  type="checkbox"
+                                  defaultChecked
+                                  name=""
+                                  id=""
+                                />
+                                <label htmlFor="">مصروفات جميع القضايا</label>
+                              </div>
+                              <div className="flex items-center gap-6 my-2">
+                                <input
+                                  type="checkbox"
+                                  defaultChecked
+                                  name=""
+                                  id=""
+                                />
+                                <label htmlFor="">مصروفات قضايا نوع 1</label>
+                              </div>
+                              <div className="flex items-center gap-6 my-2">
+                                <input
+                                  type="checkbox"
+                                  defaultChecked
+                                  name=""
+                                  id=""
+                                />
+                                <label htmlFor="">مصروفات قضايا نوع 2</label>
+                              </div>
+                              <div className="flex items-center gap-6 my-2">
+                                <input
+                                  type="checkbox"
+                                  defaultChecked
+                                  name=""
+                                  id=""
+                                />
+                                <label htmlFor="">مصروفات قضايا نوع 3</label>
+                              </div>
+                              <button onClick={exportTableToExcel} className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 w-full py-2 rounded font-semibold text-xl text-center mt-4">
+                                اصدار
+                              </button>
+                            </div>
+                            <div className="bg-gray-100 p-4 mt-4 rounded-lg ">
+                              <div className="flex justify-between">
+                                <span>اجمالي مصروفات المدة: </span>
+                                <span >$300</span>
+                              </div>
+                              <div className="flex justify-between mt-4">
+                                <span>اجمالي ايرادات المدة: </span>
+                                <span >$300</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="bg-gray-100 p-4 rounded-lg flex-1 h-fit">
+                            <ChartWrapper
+                              className={"max-w-[1024px]"}
+                              // title="الايرادات الشهرية"
+                              Chart={Bar}
+                              labels={[
+                                "January",
+                                "February",
+                                "March",
+                                "April",
+                                "May",
+                                "June",
+                                "July",
+                                "August",
+                                "September",
+                                "October",
+                                "November",
+                                "December",
+                              ]}
+                              datasets={[
+                                {
+                                  label: "الايرادات الشهرية",
+                                  data: monthsSalaryData.map((e) => e.salary),
+                                },
+                                {
+                                  label: "المصروفات الشهرية",
+                                  data: monthsSalaryData.map(
+                                    (e) => e.salary / 2.1
+                                  ),
+                                },
+                              ]}
+                              data={monthsSalaryData}
+                            />
+                          </div>
+                        </div>
                       </SwiperSlide>
                     </Swiper>
                   </SwiperSlide>

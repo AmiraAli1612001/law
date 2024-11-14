@@ -57,7 +57,7 @@ const PersonSelector = ({
   }
   return (
     <div className="w-full simple-input !flex-row person-selector">
-      <select name="" id="">
+      <select name="" id="" className="flex-1">
         <option value="" className="hidden">
           طريقة التحديد
         </option>
@@ -75,13 +75,13 @@ const PersonSelector = ({
         placeholder="ابحث هنا"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        className="!bg-white"
+        className="!bg-white flex-1"
       />
       {/* results list */}
       <select
         name=""
         id=""
-        className="max-h-[100px] text-textGreen"
+        className="max-h-[100px] text-textGreen flex-1"
         // {...register(`select-${recordType}-${personName}`, {
         //   required: "يجب ادخال البيانات",
         // })}
