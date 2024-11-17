@@ -50,11 +50,11 @@ const AddTask = () => {
       noValidate
       id="addIssueRecord"
     >
-      <Swiper2 />
+      <Swiper2 tempType={2} />
       <div className="main-section">
         {/* lawyer !*/}
         <div className="simple-input mt-4">
-          <label htmlFor="">المشرف المسند إليه المهمة</label>
+          <label htmlFor="">الموظف المسند إليه المهمة</label>
           <PersonSelector />
         </div>
       </div>

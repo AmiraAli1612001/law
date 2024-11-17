@@ -102,7 +102,7 @@ const Payment = () => {
     </div>
   );
 };
-const Swiper2 = ({ className = "" }) => {
+const Swiper2 = ({ className = "", tempType = 1 }) => {
   const [activeSection, setActiveSection] = useState(0);
   const [payType, setPayType] = useState(0);
   const [middlemanPayType, setMiddlemanPayType] = useState(0);
@@ -138,10 +138,14 @@ const Swiper2 = ({ className = "" }) => {
           </DynamicList>
         </section>
         {/* payments */}
-        <section className={`${payType == 1 && "active"} payments h-full `}>
+        <section
+          className={`${
+            payType == 1 && tempType == 1 && "active"
+          } payments h-full `}
+        >
           <div>
             <DynamicList title={"العقد"}>
-            <PersonSelector filterArr={[{ name: "الرقم", value: "id" }]} />
+              <PersonSelector filterArr={[{ name: "الرقم", value: "id" }]} />
             </DynamicList>
           </div>
         </section>
