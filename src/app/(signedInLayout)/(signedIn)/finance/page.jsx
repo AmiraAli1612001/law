@@ -22,6 +22,7 @@ import { closeAddFormRecord } from "@/globalState/Features/formStateSlice";
 import { useDispatch } from "react-redux";
 import ContractsTable from "@/components/pages/finance/contracts/ContractsTable";
 import { exportTableToExcel } from "@/helperFunctions/excelExport";
+import RepeatingSalaries from "@/components/pages/finance/salaries/repeating/RepeatingSalaries";
 
 const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
@@ -29,10 +30,14 @@ const Finance = ({ params: { token } }) => {
   const [activeIndex1, setActiveIndex1] = useState(0);
   const [activeIndex2, setActiveIndex2] = useState(0);
   const [activeIndex3, setActiveIndex3] = useState(0);
+  const [salariesActiveIndex, setSalariesActiveIndex] = useState(0);
+  const [salariesWrapperActiveIndex, setSalariesWrapperActiveIndex] = useState(0);
 
   const innnerSwiper1Ref = useRef(null);
   const innnerSwiper2Ref = useRef(null);
   const innnerSwiper3Ref = useRef(null);
+  const salariesSwiperRef = useRef(null);
+  const salariesWrapperSwiperRef = useRef(null);
 
   const outerSwiperRef = useRef(null);
   console.log(active);
@@ -44,7 +49,7 @@ const Finance = ({ params: { token } }) => {
     "التقارير المالية",
     "العقود",
   ];
-
+  const salariesSections = ["المدفوعة", "القادمة", "الشهرية المتكررة"];
   const swipeOuter = (id) => {
     if (outerSwiperRef.current) {
       outerSwiperRef.current.slideTo(id);
@@ -121,6 +126,27 @@ const Finance = ({ params: { token } }) => {
           </nav>
         );
         break;
+      case 3:
+        return (
+          <nav className="flex gap-4 items-center ">
+            {["التفاصيل", "التقرير"].map((item, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setSalariesWrapperActiveIndex(index);
+                  swipeInner(index, salariesWrapperSwiperRef);
+                }}
+                // disabled={index === 2}
+                className={`${
+                  salariesWrapperActiveIndex == index ? " active " : ""
+                } cursor-pointer py-2 px-4 bg-[#f1f0f8] rounded`}
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
+        );
+        break;
       default:
         break;
     }
@@ -180,6 +206,7 @@ const Finance = ({ params: { token } }) => {
                         <ExpensesTable />
                       </SwiperSlide>
                       {/* chart */}
+
                       <SwiperSlide>
                         <div className="flex gap-4">
                           <div className="w-1/3 h-fit">
@@ -241,18 +268,21 @@ const Finance = ({ params: { token } }) => {
                                 />
                                 <label htmlFor="">مصروفات قضايا نوع 3</label>
                               </div>
-                              <button onClick={exportTableToExcel} className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 w-full py-2 rounded font-semibold text-xl text-center mt-4">
+                              <button
+                                onClick={exportTableToExcel}
+                                className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 w-full py-2 rounded font-semibold text-xl text-center mt-4"
+                              >
                                 اصدار
                               </button>
                             </div>
                             <div className="bg-gray-100 p-4 mt-4 rounded-lg ">
                               <div className="flex justify-between">
                                 <span>اجمالي مصروفات المدة: </span>
-                                <span >$300</span>
+                                <span>$300</span>
                               </div>
                               <div className="flex justify-between mt-4">
                                 <span>اجمالي ايرادات المدة: </span>
-                                <span >$300</span>
+                                <span>$300</span>
                               </div>
                             </div>
                           </div>
@@ -394,7 +424,174 @@ const Finance = ({ params: { token } }) => {
                   </SwiperSlide> */}
                   {/* الرواتب*/}
                   <SwiperSlide>
-                    <PaymentsDueTable />
+                    <Swiper
+                      spaceBetween={0}
+                      slidesPerView={1}
+                      onSlideChange={() => console.log("slide change")}
+                      onSwiper={(swiper) => (salariesWrapperSwiperRef.current = swiper)}
+                      className="w-full"
+                      allowTouchMove={false}
+                    >
+                      <SwiperSlide>
+                        <div className="w-full flex gap-4">
+                          <nav className="bg-white drop-shadow w-fit flex-1 h-fit">
+                            <ul className="w-full flex flex-col">
+                              {salariesSections.map((section, index) => (
+                                <li
+                                  key={index}
+                                  className={`${
+                                    salariesActiveIndex === index && "active"
+                                  } w-full whitespace-nowrap p-4 font-medium cursor-pointer`}
+                                  onClick={() => {
+                                    dispatch(closeAddFormRecord());
+                                    setSalariesActiveIndex(index);
+                                    swipeInner(index, salariesSwiperRef);
+                                  }}
+                                >
+                                  {section}
+                                </li>
+                              ))}
+                            </ul>
+                          </nav>
+                          <Swiper
+                            spaceBetween={0}
+                            slidesPerView={1}
+                            onSlideChange={() => console.log("slide change")}
+                            onSwiper={(swiper) =>
+                              (salariesSwiperRef.current = swiper)
+                            }
+                            className="w-[calc(100%-200px)]"
+                            allowTouchMove={false}
+                          >
+                            <SwiperSlide>
+                              <PaymentsDueTable />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                              <PaymentsDueTable />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                              <RepeatingSalaries />
+                            </SwiperSlide>
+                          </Swiper>
+                        </div>
+                      </SwiperSlide>
+                      {/* chart */}
+                      <SwiperSlide>
+                        <div className="flex gap-4">
+                          <div className="w-1/3 h-fit">
+                            <div className="bg-gray-100 p-4 rounded-lg ">
+                              <h3 className="font-bold text-lg mb-4">
+                                مدة التقرير
+                              </h3>
+                              <div>
+                                <span className="ml-2 font-bold">من: </span>
+                                <input
+                                  className="p-2 rounded-lg"
+                                  type="date"
+                                  name=""
+                                  id=""
+                                />
+                              </div>
+                              <div className="mt-4">
+                                <span className="ml-2 font-bold">الى: </span>
+                                <input
+                                  className="p-2 rounded-lg"
+                                  type="date"
+                                  name=""
+                                  id=""
+                                />
+                              </div>
+                              <div className="flex items-center gap-6 my-2">
+                                <input
+                                  type="checkbox"
+                                  defaultChecked
+                                  name=""
+                                  id=""
+                                />
+                                <label htmlFor="">مصروفات جميع القضايا</label>
+                              </div>
+                              <div className="flex items-center gap-6 my-2">
+                                <input
+                                  type="checkbox"
+                                  defaultChecked
+                                  name=""
+                                  id=""
+                                />
+                                <label htmlFor="">مصروفات قضايا نوع 1</label>
+                              </div>
+                              <div className="flex items-center gap-6 my-2">
+                                <input
+                                  type="checkbox"
+                                  defaultChecked
+                                  name=""
+                                  id=""
+                                />
+                                <label htmlFor="">مصروفات قضايا نوع 2</label>
+                              </div>
+                              <div className="flex items-center gap-6 my-2">
+                                <input
+                                  type="checkbox"
+                                  defaultChecked
+                                  name=""
+                                  id=""
+                                />
+                                <label htmlFor="">مصروفات قضايا نوع 3</label>
+                              </div>
+                              <button
+                                onClick={exportTableToExcel}
+                                className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 w-full py-2 rounded font-semibold text-xl text-center mt-4"
+                              >
+                                اصدار
+                              </button>
+                            </div>
+                            <div className="bg-gray-100 p-4 mt-4 rounded-lg ">
+                              <div className="flex justify-between">
+                                <span>اجمالي مصروفات المدة: </span>
+                                <span>$300</span>
+                              </div>
+                              <div className="flex justify-between mt-4">
+                                <span>اجمالي ايرادات المدة: </span>
+                                <span>$300</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="bg-gray-100 p-4 rounded-lg flex-1 h-fit">
+                            <ChartWrapper
+                              className={"max-w-[1024px]"}
+                              // title="الايرادات الشهرية"
+                              Chart={Bar}
+                              labels={[
+                                "January",
+                                "February",
+                                "March",
+                                "April",
+                                "May",
+                                "June",
+                                "July",
+                                "August",
+                                "September",
+                                "October",
+                                "November",
+                                "December",
+                              ]}
+                              datasets={[
+                                {
+                                  label: "الايرادات الشهرية",
+                                  data: monthsSalaryData.map((e) => e.salary),
+                                },
+                                {
+                                  label: "المصروفات الشهرية",
+                                  data: monthsSalaryData.map(
+                                    (e) => e.salary / 2.1
+                                  ),
+                                },
+                              ]}
+                              data={monthsSalaryData}
+                            />
+                          </div>
+                        </div>
+                      </SwiperSlide>
+                    </Swiper>
                   </SwiperSlide>
                   {/* التقارير المالية */}
                   <SwiperSlide>

@@ -4,37 +4,38 @@ import React, { useMemo } from "react";
 import CustomTable from "../../shared/customTable/CustomTable";
 import CustomRow from "./customRow/CustomRow";
 import AddClient from "@/components/adds/clients/AddClient/AddClient";
+import Link from "next/link";
 
 const ClientsTable = ({ swipe }) => {
   const tableColumns = useMemo(
     () => [
       {
-        Header: "actions",
-        accessor: "actions",
-      },
-      {
-        Header: "رقم العقد",
+        Header: "الرقم",
         accessor: "id",
       },
       {
-        Header: "اسم العقد",
-        accessor: "title",
+        Header: "الاسم",
+        accessor: "name",
       },
       {
-        Header: "تاريخ العقد",
+        Header: "تاريخ الاضافة",
         accessor: "date",
       },
       {
-        Header: "المدعي",
-        accessor: "firstParty",
+        Header: "عدد العقود",
+        accessor: "contracts",
       },
       {
-        Header: "المدعي علية",
-        accessor: "secondParty",
-      },
-      {
-        Header: "الحالة",
-        accessor: "status",
+        Header: "",
+        accessor: "actions",
+        Cell: ({ row }) => (
+          <Link
+            className="bg-blue-500 hover:bg-blue-700 transition-all text-white px-4 text-sm py-1 rounded"
+            href={"/clients/1"}
+          >
+            عرض
+          </Link>
+        ),
       },
     ],
     []
@@ -42,9 +43,9 @@ const ClientsTable = ({ swipe }) => {
   const data = [
     {
       id: 1,
-      name: "mohammed ibrahim",
+      name: "محمد ابراهيم",
       contracts: 4,
-      issues: 2,
+      date: "2022/01/01",
     },
   ];
   return (
@@ -52,6 +53,7 @@ const ClientsTable = ({ swipe }) => {
       <CustomTable
         tableData={data}
         columns={tableColumns}
+        tableType={1}
         AddRecordEle={() => <AddClient />}
         RenderElement={(data) => <CustomRow swipe={swipe} {...data} />}
       />

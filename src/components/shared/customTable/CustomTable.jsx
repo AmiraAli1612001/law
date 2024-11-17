@@ -17,7 +17,7 @@ const CustomTable = ({
   columns,
   tableData,
   enableFilter = true,
-  tableType,
+  tableType = 2,
   addBtn = false,
   addTop = false,
   topFilter = false,
@@ -106,6 +106,7 @@ const CustomTable = ({
             </tbody>
           </table>
         );
+      //custom row ele
       case 2:
         return (
           <div
@@ -121,6 +122,7 @@ const CustomTable = ({
             })}{" "}
           </div>
         );
+      //normal row with details open below
       case 3:
         return (
           <table
@@ -189,18 +191,30 @@ const CustomTable = ({
         />
 
         {/* topFilter */}
-        {topFilter &&
-          topFilter.map((ele, i) => (
+        {topFilter && (
+          <>
             <button
-              key={i}
+              key={"top-filter-all"}
               className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
-                searchFilter === ele.value ? "bg-[#34A853] text-white" : ""
+                searchFilter === "" ? "bg-[#34A853] text-white" : ""
               }`}
-              onClick={() => setSearchFilter(ele.value)}
+              onClick={() => setSearchFilter("")}
             >
-              {ele.title}
+              الكل
             </button>
-          ))}
+            {topFilter.map((ele, i) => (
+              <button
+                key={i}
+                className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
+                  searchFilter === ele.value ? "bg-[#34A853] text-white" : ""
+                }`}
+                onClick={() => setSearchFilter(ele.value)}
+              >
+                {ele.title}
+              </button>
+            ))}
+          </>
+        )}
         {/* top add record */}
         {addTop && (
           <button
@@ -407,16 +421,15 @@ const CustomElementWrapper = ({ row, RenderElement }) => {
             </td>
           );
         })}
-        <td
-          
-          onClick={() => setIsExpanded((prev) => !prev)}
-        >
+        <td onClick={() => setIsExpanded((prev) => !prev)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            className={`${isExpanded ? "rotate-180" : "rotate-0"} transition-all origin-center cursor-pointer`}
+            className={`${
+              isExpanded ? "rotate-180" : "rotate-0"
+            } transition-all origin-center cursor-pointer`}
           >
             <path
               fill="none"

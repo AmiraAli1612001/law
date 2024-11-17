@@ -1,14 +1,9 @@
-import DynamicList from "@/components/shared/dynamicList/DynamicList";
-import PersonSelector from "@/components/shared/personSelector/PersonSelector";
-import { exportTableToExcel } from "@/helperFunctions/excelExport";
-import Link from "next/link";
-import React from "react";
+import DynamicList from '@/components/shared/dynamicList/DynamicList'
+import PersonSelector from '@/components/shared/personSelector/PersonSelector'
+import Link from 'next/link'
+import React from 'react'
 
-const RenderElement = ({ className, data }) => {
-  const tableData = [
-    { Name: "John Doe", Age: 30, Department: "Engineering" },
-    { Name: "Jane Smith", Age: 25, Department: "Marketing" },
-  ];
+const RenderElement = ({className}) => {
   return (
     <tr className={`${className} !bg-orange-200 !bg-opacity-15`}>
       <td colSpan={7} className="!p-0">
@@ -38,7 +33,7 @@ const RenderElement = ({ className, data }) => {
                 </button>
               </button>
               {/* attachment */}
-              {/* <button className="flex items-center gap-2 bg-cyan-200 bg-opacity-70 py-2 px-4 rounded shadow hover:bg-opacity-50">
+              <button className="flex items-center gap-2 bg-cyan-200 bg-opacity-70 py-2 px-4 rounded shadow hover:bg-opacity-50">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -56,7 +51,7 @@ const RenderElement = ({ className, data }) => {
                 >
                   تحميل المرفق
                 </button>
-              </button> */}
+              </button>
             </div>
             {/* details */}
             <div className="p-4 flex-1">
@@ -71,9 +66,18 @@ const RenderElement = ({ className, data }) => {
                     محمد احمد
                   </Link>
                 </div>
+                <div className="mb-4">
+                  <span className="text-lg font-semibold text-gray-900">
+                    رقم القضية
+                  </span>
+                  :{" "}
+                  <Link href={"/issues/1"} className="underline">
+                    1
+                  </Link>
+                </div>
                 {/* payment method */}
                 <div className="flex items-center gap-2">
-                  <h3>طريقة الدفع: </h3>
+                  <h3>طريقة الاستلام: </h3>
                   <select name="" id="" className="!w-max">
                     <option value="1">Bank Transfer</option>
                     <option value="2">Credit Card</option>
@@ -105,7 +109,7 @@ const RenderElement = ({ className, data }) => {
         </div>
       </td>
     </tr>
-  );
-};
+  )
+}
 
-export default RenderElement;
+export default RenderElement

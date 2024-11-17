@@ -1,3 +1,5 @@
+import DynamicList from "@/components/shared/dynamicList/DynamicList";
+import PersonSelector from "@/components/shared/personSelector/PersonSelector";
 import { closeAddFormRecord } from "@/globalState/Features/formStateSlice";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -9,11 +11,13 @@ const AddIncome = () => {
     <form className="bg-bgGreen p-4">
       <div className="small-inputs !grid-cols-3">
         <div className="simple-input">
-          <label htmlFor="">اسم الايراد</label>
+          <label htmlFor="">نوع الايراد</label>
           <select name="" id="">
-            <option value="" className="hidden">اختر الايراد</option>
-            <option value="">بند 1</option>
-            <option value="">بند 2</option>
+            <option value="" className="hidden">
+              اختر نوع الايراد
+            </option>
+            <option value="">نوع 1</option>
+            <option value="">نوع 2</option>
           </select>
         </div>
         <div className="simple-input">
@@ -25,6 +29,9 @@ const AddIncome = () => {
           <input type="date" name="" id="" />
         </div>
       </div>
+      <DynamicList title={"العميل المرتبط بالايراد"} multi={false}>
+        <PersonSelector />
+      </DynamicList>
       <div className="simple-input">
         <label htmlFor="">تفاصيل اضافية</label>
         <textarea name="" id=""></textarea>

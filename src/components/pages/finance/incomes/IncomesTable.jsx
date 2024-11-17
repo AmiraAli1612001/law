@@ -2,6 +2,7 @@ import CustomTable from "@/components/shared/customTable/CustomTable";
 import React from "react";
 import issuesData from "@/fakeData/issuesData.json";
 import AddIncome from "@/components/adds/finance/addIncome/AddIncome";
+import RenderElement from "./renderElement/RenderElement";
 const IncomesTable = () => {
   const deleteRecord = (e) => {
     e.target.closest("tr").style.opacity = 0.3;
@@ -12,7 +13,7 @@ const IncomesTable = () => {
       accessor: "id",
     },
     {
-      Header: "العنوان",
+      Header: "نوع الايراد",
       accessor: "title",
     },
     {
@@ -34,18 +35,19 @@ const IncomesTable = () => {
           >
             حذف
           </button>
-          <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
+          {/* <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
             تعديل
-          </button>
+          </button> */}
         </div>
       ),
     },
   ];
   return (
     <CustomTable
+    RenderElement={RenderElement}
       addTop={true}
       AddRecordEle={AddIncome}
-      tableType={1}
+      tableType={3}
       tableData={issuesData}
       columns={columns}
     />
