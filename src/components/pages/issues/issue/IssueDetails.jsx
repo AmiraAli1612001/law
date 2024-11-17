@@ -177,6 +177,7 @@ const IssueDetails = ({ id }) => {
                     <thead>
                       <tr>
                         <th>رقم الوكالة</th>
+                        <th>رقم الهوية</th>
                         <th>تاريخ الوكالة</th>
                         <th>تاريخ الانتهاء</th>
                         <th></th>
@@ -186,6 +187,9 @@ const IssueDetails = ({ id }) => {
                       <tr className="[&>td>input]:!w-fit">
                         <td>
                           <input type="text" defaultValue={1} />
+                        </td>
+                        <td>
+                          <input type="text" defaultValue={11234141516} />
                         </td>
                         <td>
                           <input type="date" defaultValue={"2-3-2024"} />

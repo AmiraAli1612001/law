@@ -4,7 +4,7 @@ import React, { useMemo } from "react";
 import { toast } from "react-toastify";
 import HRData from "@/fakeData/HRData.json";
 import Link from "next/link";
-const Appointments = ({ defendant, prosecutor }) => {
+const AgenciesTable = ({ defendant, prosecutor }) => {
   const sectionStyles = {
     width: "100%",
     display: "flex",
@@ -74,4 +74,4 @@ const Appointments = ({ defendant, prosecutor }) => {
   );
 };
 
-export default Appointments;
+export default AgenciesTable;
