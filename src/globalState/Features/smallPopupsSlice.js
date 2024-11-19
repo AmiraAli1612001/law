@@ -18,6 +18,7 @@ const initialState = {
   attendance: false,
   delaySession: false,
   statements: false,
+  previousClient:false,
 };
 
 export const smallPopupsSlice = createSlice({
@@ -26,6 +27,10 @@ export const smallPopupsSlice = createSlice({
   reducers: {
     toggleAttendancePopup: (state) => {
       state.attendance = !state.attendance;
+      state.isHidden = !state.isHidden;
+    },
+    togglePreviousClientPopup: (state) => {
+      state.previousClient = !state.previousClient;
       state.isHidden = !state.isHidden;
     },
     toggleStatementsPopup: (state) => {
@@ -37,7 +42,7 @@ export const smallPopupsSlice = createSlice({
       state.delaySession = !state.delaySession;
       state.isHidden = !state.isHidden;
     },
-    resetPopups: (state) => {
+    resetSmallPopups: (state) => {
       return initialState;
     },
   },
@@ -46,7 +51,9 @@ export const smallPopupsSlice = createSlice({
 export const {
   toggleAttendancePopup,
   toggleDelaySessionPopup,
-  resetPopups,
+  togglePreviousClientPopup,
+  toggleStatementsPopup,
+  resetSmallPopups,
 } = smallPopupsSlice.actions;
 
 export default smallPopupsSlice.reducer;

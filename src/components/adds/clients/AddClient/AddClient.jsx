@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { resetPopups } from "@/globalState/Features/popupsSlice";
+import { togglePreviousClientPopup } from "@/globalState/Features/smallPopupsSlice";
 // const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 // import "react-quill/dist/quill.snow.css";
 
@@ -22,8 +23,9 @@ const AddClient = () => {
   async function handleSubmitSignUp(formData, e) {
     // setGeneralError("");
     // dispatch(openLoader("جاري التسجيل"));
-    toast.success("تم اضافة العميل بنجاح");
-    dispatch(resetPopups());
+    // toast.success("تم اضافة العميل بنجاح");
+    dispatch(togglePreviousClientPopup());
+    // dispatch(resetPopups());
     console.log(formData);
     // const result = await fetchRegisterUser({
     //   ...formData,
@@ -33,7 +35,7 @@ const AddClient = () => {
   }
   function handleKick() {
     toast.error("تم انهاء خدمات العميل بنجاح");
-    dispatch(resetPopups());
+    // dispatch(resetPopups());
   }
   return (
     <form

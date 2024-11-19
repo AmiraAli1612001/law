@@ -2,10 +2,11 @@
 import "./styles/styles.css";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetPopups } from "@/globalState/Features/smallPopupsSlice";
+import { resetSmallPopups } from "@/globalState/Features/smallPopupsSlice";
 import Attendance from "./attendance/Attendance";
 import DelaySession from "./sessions/delay/DelaySession";
 import Statements from "./statements/Statements";
+import PreviousClient from "./previousClient/PreviousClient";
 
 const SmallPopups = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const SmallPopups = () => {
   const attendance = useSelector((store) => store.smallPopups?.attendance);
   const delaySession = useSelector((store) => store.smallPopups?.delaySession);
   const statements = useSelector((store) => store.smallPopups?.statements);
+  const previousClient = useSelector((store) => store.smallPopups?.previousClient);
 
   console.log("smallPopups");
   return (
@@ -31,7 +33,7 @@ const SmallPopups = () => {
       className={`${
         isHidden ? " pointer-events-none opacity-0 " : " opacity-100 "
       } p-4  fixed w-full h-full left-0 top-0 z-[9999] bg-[rgba(0,0,0,0.5)] transition-all flex items-center justify-center smallPopups `}
-      onClick={() => dispatch(resetPopups())}
+      onClick={() => dispatch(resetSmallPopups())}
     >
       <div
         className={`
@@ -46,7 +48,7 @@ const SmallPopups = () => {
           height="24"
           viewBox="0 0 24 24"
           className="absolute top-2 right-2 cursor-pointer border border-red-500  rounded"
-          onClick={() => dispatch(resetPopups())}
+          onClick={() => dispatch(resetSmallPopups())}
         >
           <path
             fill="#FF0000"
@@ -57,6 +59,7 @@ const SmallPopups = () => {
         {attendance && <Attendance />}
         {delaySession && <DelaySession />}
         {statements && <Statements />}
+        {previousClient && <PreviousClient />}
       </div>
     </div>
   );
