@@ -17,6 +17,7 @@ const initialState = {
   isHidden: true,
   attendance: false,
   delaySession: false,
+  statements: false,
 };
 
 export const smallPopupsSlice = createSlice({
@@ -25,6 +26,10 @@ export const smallPopupsSlice = createSlice({
   reducers: {
     toggleAttendancePopup: (state) => {
       state.attendance = !state.attendance;
+      state.isHidden = !state.isHidden;
+    },
+    toggleStatementsPopup: (state) => {
+      state.statements = !state.statements;
       state.isHidden = !state.isHidden;
     },
 

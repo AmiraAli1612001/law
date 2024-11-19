@@ -6,6 +6,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import DynamicList from "@/components/shared/dynamicList/DynamicList";
 import PersonSelector from "@/components/shared/personSelector/PersonSelector";
+import DynamicStatements from "@/components/shared/dynamics/dynamicStatements/DynamicStatements";
 
 const AddIssue = () => {
   const signUpForm = useForm();
@@ -69,114 +70,122 @@ const AddIssue = () => {
       id="addIssueRecord"
     >
       {/* personnel */}
-      <div className="main-section">
+      <div className="">
         {/* admin !*/}
-        <div className="simple-input">
+        <div className="simple-input main-section">
           <label htmlFor="">المشرف القائم على القضية</label>
           <PersonSelector />
         </div>
         {/* lawyer !*/}
-        <div className="simple-input mt-4">
+        <div className="simple-input main-section mt-4">
           <label htmlFor="">المحامي المسند إليه القضية</label>
           <PersonSelector />
         </div>
       </div>
-      <div className="small-inputs main-section">
-        {/* status !*/}
-        <div className="simple-input">
-          <label htmlFor="">حالة القضية</label>
-          <select
-            type="text"
-            name=""
-            id="arabicName"
-            // {...register("arabicName", {
-            //   required: "يجب كتابة الاسم الرباعي بالعربي",
-            // })}
-            placeholder=""
-          >
-            {issueStatus.map((status, index) => {
-              return (
-                <option key={index} value={status}>
-                  {status}
-                </option>
-              );
-            })}
-          </select>
-          {/* <p className="input-error">{errors.arabicName?.message}</p> */}
-        </div>
-        {/* date !*/}
-        <div className="simple-input">
-          <label htmlFor="">تاريخ القضية</label>
-          <input
-            type="date"
-            name=""
-            id="arabicName"
-            {...register("arabicName", {
-              required: "يجب كتابة الاسم الرباعي بالعربي",
-            })}
-            placeholder=""
-          />
-          <p className="input-error">{errors.arabicName?.message}</p>
-        </div>
-        {/* type !*/}
-        <div className="simple-input">
-          <label htmlFor="">نوع/تصنيف القضية</label>
-          <select
-            type="text"
-            name=""
-            id="arabicName"
-            // {...register("arabicName", {
-            //   required: "يجب كتابة الاسم الرباعي بالعربي",
-            // })}
-            placeholder=""
-          >
-            {issueTypes.map((type, index) => {
-              return (
-                <option key={index} value={type}>
-                  {type}
-                </option>
-              );
-            })}
-          </select>
-          {/* <p className="input-error">{errors.arabicName?.message}</p> */}
-        </div>
-        {/* sub type !*/}
-        <div className="simple-input">
-          <label htmlFor="">التصنيف الفرعي</label>
-          <select
-            type="text"
-            name=""
-            id="arabicName"
-            // {...register("arabicName", {
-            //   required: "يجب كتابة الاسم الرباعي بالعربي",
-            // })}
-            placeholder=""
-          >
-            {issuesSubTypes.map((subType, index) => {
-              return (
-                <option key={index} value={subType}>
-                  {subType}
-                </option>
-              );
-            })}
-          </select>
-          {/* <p className="input-error">{errors.arabicName?.message}</p> */}
-        </div>
-      </div>
-      <div className="main-section">
+      {/* issue details */}
+      {
+        // <div className="small-inputs main-section">
+        //   {/* status !*/}
+        //   <div className="simple-input">
+        //     <label htmlFor="">حالة القضية</label>
+        //     <select
+        //       type="text"
+        //       name=""
+        //       id="arabicName"
+        //       // {...register("arabicName", {
+        //       //   required: "يجب كتابة الاسم الرباعي بالعربي",
+        //       // })}
+        //       placeholder=""
+        //     >
+        //       {issueStatus.map((status, index) => {
+        //         return (
+        //           <option key={index} value={status}>
+        //             {status}
+        //           </option>
+        //         );
+        //       })}
+        //     </select>
+        //     {/* <p className="input-error">{errors.arabicName?.message}</p> */}
+        //   </div>
+        //   {/* date !*/}
+        //   <div className="simple-input">
+        //     <label htmlFor="">تاريخ القضية</label>
+        //     <input
+        //       type="date"
+        //       name=""
+        //       id="arabicName"
+        //       {...register("arabicName", {
+        //         required: "يجب كتابة الاسم الرباعي بالعربي",
+        //       })}
+        //       placeholder=""
+        //     />
+        //     <p className="input-error">{errors.arabicName?.message}</p>
+        //   </div>
+        //   {/* type !*/}
+        //   <div className="simple-input">
+        //     <label htmlFor="">نوع/تصنيف القضية</label>
+        //     <select
+        //       type="text"
+        //       name=""
+        //       id="arabicName"
+        //       // {...register("arabicName", {
+        //       //   required: "يجب كتابة الاسم الرباعي بالعربي",
+        //       // })}
+        //       placeholder=""
+        //     >
+        //       {issueTypes.map((type, index) => {
+        //         return (
+        //           <option key={index} value={type}>
+        //             {type}
+        //           </option>
+        //         );
+        //       })}
+        //     </select>
+        //     {/* <p className="input-error">{errors.arabicName?.message}</p> */}
+        //   </div>
+        //   {/* sub type !*/}
+        //   <div className="simple-input">
+        //     <label htmlFor="">التصنيف الفرعي</label>
+        //     <select
+        //       type="text"
+        //       name=""
+        //       id="arabicName"
+        //       // {...register("arabicName", {
+        //       //   required: "يجب كتابة الاسم الرباعي بالعربي",
+        //       // })}
+        //       placeholder=""
+        //     >
+        //       {issuesSubTypes.map((subType, index) => {
+        //         return (
+        //           <option key={index} value={subType}>
+        //             {subType}
+        //           </option>
+        //         );
+        //       })}
+        //     </select>
+        //     {/* <p className="input-error">{errors.arabicName?.message}</p> */}
+        //   </div>
+        // </div>
+      }
+      {/* test */}
+      <DynamicStatements />
+      {/* add statements */}
+      {/* <div className="main-section">
         <DynamicList
-          title={"المدعي"}
-          recordType={"addClient"}
-          btnTitle={"اضافة عميل"}
+          title={"البنود"}
+          // recordType={"addClient"}
+          btnTitle={"اضافة بند"}
         >
           <PersonSelector />
         </DynamicList>
-      </div>
+      </div> */}
+      {/* add contracts */}
       <div className="main-section">
         <DynamicList
-          title={"المدعي علية"}
-          recordType={"addClient"}
-          btnTitle={"اضافة عميل"}
+          title={"العقد"}
+          recordType={"addContract"}
+          btnTitle={"اضافة عقد"}
+          multi={false}
         >
           <PersonSelector />
         </DynamicList>

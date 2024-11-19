@@ -38,37 +38,35 @@ const ListItem = ({
           {children}
 
           {/* add btn */}
+          {/* add person btn */}
+          {last && btnTitle && recordType && (
+            <button
+              onClick={handleAddPerson}
+              type="button"
+              className="bg-textGreen hover:opacity-80 text-white transition-all  rounded py-2 px-4 font-medium whitespace-nowrap"
+            >
+              {btnTitle}
+            </button>
+          )}
+          {/* add item btn */}
           {multi && last && (
-            <>
-              {/* add person btn */}
-              {last && btnTitle && recordType && (
-                <button
-                  onClick={handleAddPerson}
-                  type="button"
-                  className="bg-textGreen hover:opacity-80 text-white transition-all  rounded py-2 px-4 font-medium whitespace-nowrap"
-                >
-                  {btnTitle}
-                </button>
-              )}
-              {/* add item btn */}
-              <button
-                type="button"
-                onClick={addListItem}
-                className="bg-textGreen hover:opacity-80 text-white transition-all  rounded p-2 font-medium whitespace-nowrap"
+            <button
+              type="button"
+              onClick={addListItem}
+              className="bg-textGreen hover:opacity-80 text-white transition-all  rounded p-2 font-medium whitespace-nowrap"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
-                  ></path>
-                </svg>
-              </button>
-            </>
+                <path
+                  fill="currentColor"
+                  d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
+                ></path>
+              </svg>
+            </button>
           )}
           {/* <textarea
                   value={item.value}
@@ -102,6 +100,7 @@ const ListItem = ({
 const DynamicList = ({
   children,
   multi = true,
+  add = false,
   title,
   recordType,
   btnTitle,
@@ -133,6 +132,7 @@ const DynamicList = ({
         <ListItem
           length={listItems.length}
           key={index}
+          add={add}
           recordType={recordType}
           btnTitle={btnTitle}
           multi={multi}

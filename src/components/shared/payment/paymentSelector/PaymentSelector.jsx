@@ -6,7 +6,7 @@ const Payment = () => {
   return (
     <div
       className={`${
-        paymentType == 0 ? "!grid-cols-3" : "!grid-cols-4"
+        paymentType == 0 ? "!grid-cols-3" : "!grid-cols-3"
       } small-inputs `}
     >
       {/* payment payment attachment !*/}
@@ -57,18 +57,20 @@ const Payment = () => {
         </>
       ) : (
         <>
-          <div className="simple-input">
-            <input
-              type="date"
-              defaultValue={new Date().toISOString().slice(0, 10)}
-              name=""
-              // {...register("contractValue", {
-              //   required: "يجب ادخال مبلغ العقد",
-              // })}
-              placeholder="تاريخ صدور الحكم"
-            />
-            {/* <p className="input-error">{errors.contractValue?.message}</p> */}
-          </div>
+          {
+            // <div className="simple-input">
+            //   <input
+            //     type="date"
+            //     defaultValue={new Date().toISOString().slice(0, 10)}
+            //     name=""
+            //     // {...register("contractValue", {
+            //     //   required: "يجب ادخال مبلغ العقد",
+            //     // })}
+            //     placeholder="تاريخ صدور الحكم"
+            //   />
+            //   {/* <p className="input-error">{errors.contractValue?.message}</p> */}
+            // </div>
+          }
           {/* 7okm */}
           <div className="simple-input">
             <select
@@ -131,11 +133,7 @@ const PaymentSelector = ({ className = "" }) => {
       {/* sections */}
       <div className="payment-sections">
         {/* full */}
-        <section
-          className={`${
-            payType == 0 && "active"
-          } full-payment h-full`}
-        >
+        <section className={`${payType == 0 && "active"} full-payment h-full`}>
           <div className="small-inputs !grid-cols-3">
             {/* contract value !*/}
             <div className="simple-input">
@@ -206,9 +204,7 @@ const PaymentSelector = ({ className = "" }) => {
           </div>
         </section>
         {/* payments */}
-        <section
-          className={`${payType == 1 && "active"} payments h-full `}
-        >
+        <section className={`${payType == 1 && "active"} payments h-full `}>
           <div>
             <DynamicList title={"الدفعات"}>
               <Payment />

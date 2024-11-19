@@ -125,88 +125,22 @@ const Header = () => {
                     <li >
                       <Link href={"/hr/1"} className="text-base  border-b hover:bg-[#008f5b0f] transition-all p-4 hover:scale-110 inline-block w-full">
                         <div className="flex gap-4 items-center justify-between w-full rounded-xl">
-                          {/* <svg
-                            className="text-gray-800 dark:text-white"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                            />
-                          </svg> */}
+
                           <p className="text-xs whitespace-nowrap">
                             الصفحة الشخصية
                           </p>
-                          {/* <div className="relative aspect-square w-fit hover:animate-none">
-                            <svg
-                              className="w-4 h-4 text-gray-800 dark:text-white"
-                              aria-hidden="true"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M3.933 13.909A4.357 4.357 0 0 1 3 12c0-1 4-6 9-6m7.6 3.8A5.068 5.068 0 0 1 21 12c0 1-3 6-9 6-.314 0-.62-.014-.918-.04M5 19 19 5m-4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                              />
-                            </svg>
-                            <span className="absolute -z-10 top-0 right-0 w-full h-full animate-ping bg-green-300 rounded-full"></span>
-                          </div> */}
+
                         </div>
                       </Link>
                     </li>
                     <li >
                       <button onClick={()=>dispatch(toggleAddRecordPopup("requestVacation"))} href={"/hr/1"} className="text-base border-b hover:bg-[#008f5b0f] transition-all p-4 hover:scale-110 inline-block w-full">
                         <div className="flex gap-4 justify-between w-full items-center rounded-xl">
-                          {/* <svg
-                            className="text-gray-800 dark:text-white"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                            />
-                          </svg> */}
+
                           <p className="text-xs whitespace-nowrap">
                             طلب اجازة
                           </p>
-                          {/* <div className="relative aspect-square w-fit hover:animate-none">
-                            <svg
-                              className="w-4 h-4 text-gray-800 dark:text-white"
-                              aria-hidden="true"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M3.933 13.909A4.357 4.357 0 0 1 3 12c0-1 4-6 9-6m7.6 3.8A5.068 5.068 0 0 1 21 12c0 1-3 6-9 6-.314 0-.62-.014-.918-.04M5 19 19 5m-4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                              />
-                            </svg>
-                            <span className="absolute -z-10 top-0 right-0 w-full h-full animate-ping bg-green-300 rounded-full"></span>
-                          </div> */}
+
                         </div>
                       </button>
                     </li>
@@ -385,6 +319,7 @@ const Header = () => {
                         to: "/firstDegreeIssues",
                       },
                       { title: "قضايا التنفيذ", to: "/executiveIssues" },
+                      { title: "البنود", to: "/statements" },
                     ]}
                     // to="/issues"
                     title="القضايا"

@@ -93,12 +93,18 @@ const PersonSelector = ({
         )}
         {data
           .filter((e) =>
-            e.name.toLowerCase().includes(inputValue.toLowerCase())
+          {
+            if(e.name){
+              return e.name.toLowerCase().includes(inputValue.toLowerCase())
+            }else{
+              return e.toLowerCase().includes(inputValue.toLowerCase())
+            }
+          }
           )
           // .slice(0, 6)
           .map((client, i) => (
-            <option className="text-textGreen" key={i} value={client.id}>
-              {client.name}
+            <option className="text-textGreen" key={i} value={client?.id??i}>
+              {client?.name??client}
             </option>
           ))}
       </select>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { resetPopups } from "@/globalState/Features/smallPopupsSlice";
 import Attendance from "./attendance/Attendance";
 import DelaySession from "./sessions/delay/DelaySession";
+import Statements from "./statements/Statements";
 
 const SmallPopups = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const SmallPopups = () => {
 
   const attendance = useSelector((store) => store.smallPopups?.attendance);
   const delaySession = useSelector((store) => store.smallPopups?.delaySession);
+  const statements = useSelector((store) => store.smallPopups?.statements);
 
   console.log("smallPopups");
   return (
@@ -27,7 +29,7 @@ const SmallPopups = () => {
       // } fixed w-full h-full left-0 top-0 z-[9999] transition-all flex items-center flex-col justify-center bg-white smallPopups `}
       //  original
       className={`${
-        isHidden ? " scale-0 " : " scale-100 "
+        isHidden ? " pointer-events-none opacity-0 " : " opacity-100 "
       } p-4  fixed w-full h-full left-0 top-0 z-[9999] bg-[rgba(0,0,0,0.5)] transition-all flex items-center justify-center smallPopups `}
       onClick={() => dispatch(resetPopups())}
     >
@@ -54,6 +56,7 @@ const SmallPopups = () => {
         {/* close icon end */}
         {attendance && <Attendance />}
         {delaySession && <DelaySession />}
+        {statements && <Statements />}
       </div>
     </div>
   );
