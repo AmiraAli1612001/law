@@ -25,6 +25,7 @@ const initialState = {
   attachments: false,
   editEmployee: false,
   currentEmployee: null,
+  fileLink: "",
 };
 
 export const popupsSlice = createSlice({
@@ -64,8 +65,9 @@ export const popupsSlice = createSlice({
           break;
       }
     },
-    toggleAttachmentsPopup: (state) => {
+    toggleAttachmentsPopup: (state, action) => {
       state.attachments = !state.attachments;
+      state.fileLink = action?.payload ?? "";
       state.isHidden = !state.isHidden;
     },
     togglePrintContractPopup: (state) => {

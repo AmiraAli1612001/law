@@ -1,11 +1,12 @@
 "use client"
 import React from "react";
+import { useSelector } from "react-redux";
 
 
 const AttachmentsPopup = () => {
-
+const fileLink = useSelector(store=>store.popups?.fileLink)
   return (
-    <embed src="/files/عقد عميل.pdf" className="w-full min-h-screen" />
+    <embed src={fileLink??""} className="w-full min-h-screen" />
   );
 };
 
