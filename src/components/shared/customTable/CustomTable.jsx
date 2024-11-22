@@ -159,6 +159,37 @@ const CustomTable = ({
             </tbody>
           </table>
         );
+      case 4:
+        //return custom tr
+        return (
+          <table
+            {...getTableProps()}
+            className={`${
+              filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
+            } simple-table  `}
+          >
+            <thead className="">
+              {headerGroups.map((headerGroup, i) => (
+                <tr {...headerGroup.getHeaderGroupProps()} key={i}>
+                  {headerGroup.headers.map((column, i) => (
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      key={i}
+                    >
+                      {column.render("Header")}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()} className="">
+              {page.map((row, i) => {
+                prepareRow(row);
+                return <RenderElement row={row} data={row.original} key={i} />;
+              })}
+            </tbody>
+          </table>
+        );
       default:
         break;
     }
