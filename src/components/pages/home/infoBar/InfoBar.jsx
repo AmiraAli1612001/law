@@ -112,7 +112,7 @@ const InfoBar = () => {
         <ul
           className={`${
             isOpen ? "max-h-96 h-full opacity-100" : "max-h-0 opacity-0"
-          }  w-full flex   transition-all overflow-hidden  `}
+          }  w-full grid grid-cols-2 md:grid-cols-4   transition-all overflow-hidden md:pt-4`}
         >
           <InfoItem to="/notifications" title="قائمة الاشعارات">
             <svg
