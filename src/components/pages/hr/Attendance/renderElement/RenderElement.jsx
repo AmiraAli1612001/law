@@ -15,7 +15,6 @@ const RenderElement = ({
   const [state, setState] = useState("!bg-yellow-50");
   const [message, setMessage] = useState("حاضر");
 
-
   function changeRowColor() {
     switch (attendanceId) {
       case 1:
@@ -33,6 +32,10 @@ const RenderElement = ({
       default:
         break;
     }
+  }
+
+  function renderIfAttendance(message) {
+    return attendanceId != 2 ? message : "لا يوجد";
   }
 
   useEffect(() => {
@@ -53,16 +56,16 @@ const RenderElement = ({
         <p>{message}</p>
       </td>
       <td>
-        <p>{date}</p>
+        <p>{renderIfAttendance(date)}</p>
       </td>
       <td>
-        <p>{attendanceTime}</p>
+        <p>{renderIfAttendance(attendanceTime)}</p>
       </td>
       <td>
-        <p>{leaveTime}</p>
+        <p>{renderIfAttendance(leaveTime)}</p>
       </td>
       <td>
-        <p>{attendanceDelay}</p>
+        <p>{renderIfAttendance(attendanceDelay)}</p>
       </td>
       <td>
         <button
