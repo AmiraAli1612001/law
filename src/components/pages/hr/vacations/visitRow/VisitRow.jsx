@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Chart as ChartJS } from "chart.js";
-import { Line } from "react-chartjs-2";
-import { toggleEditEmployee } from "@/globalState/Features/popupsSlice";
 import { useDispatch } from "react-redux";
-import EmployeeStatistics from "@/components/statistics/EmployeeStatistics";
-import { deleteRecord } from "@/helperFunctions/dom";
 import Link from "next/link";
 const VisitRow = ({
   data: { id, name, from, to, notes, vacationCount, status, statusId },

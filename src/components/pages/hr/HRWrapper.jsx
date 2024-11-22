@@ -17,11 +17,11 @@ import issuesData from "@/fakeData/issuesData.json";
 // import VisitsTable from "./visits/VisitsTable";
 // import CallsTable from "./calls/CallsTable";
 import { togglePrintContractPopup } from "@/globalState/Features/popupsSlice";
-import Attendance from "./employeeDetails/attendance/Attendance";
 import HRTable from "./HRTable";
 import VacationsTable from "./vacations/VacationsTable";
 import { resetFormState } from "@/globalState/Features/formStateSlice";
 import LicensesTable from "./licenses/LicensesTable";
+import Attendance from "./Attendance/Attendance";
 
 const HRWrapper = ({ id }) => {
   const [active, setActive] = useState(0);

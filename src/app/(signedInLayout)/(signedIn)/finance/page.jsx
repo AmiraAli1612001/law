@@ -48,6 +48,7 @@ const Finance = ({ params: { token } }) => {
     "الرواتب",
     "التقارير المالية",
     "العقود",
+    "الخزنة",
   ];
   const salariesSections = ["المدفوعة", "القادمة", "الشهرية المتكررة"];
   const swipeOuter = (id) => {
@@ -183,6 +184,7 @@ const Finance = ({ params: { token } }) => {
                 {/*left nav */}
                 {renderChartBtn()}
               </div>
+              {/* swiper wrapper */}
               <div className="items-sections-details w-full ccw-[calc(100%-176px)] relative">
                 <Swiper
                   spaceBetween={0}
@@ -418,10 +420,6 @@ const Finance = ({ params: { token } }) => {
                       </SwiperSlide>
                     </Swiper>
                   </SwiperSlide>
-                  {/* الايرادات */}
-                  {/* <SwiperSlide>
-                    <DebtsTable />
-                  </SwiperSlide> */}
                   {/* الرواتب*/}
                   <SwiperSlide>
                     <Swiper

@@ -1,43 +1,45 @@
 "use client";
 import CustomTable from "@/components/shared/customTable/CustomTable";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import attendanceData from "@/fakeData/attendanceData.json";
 import AddAttendance from "@/components/adds/hr/attendance/AddAttendance";
+import RenderElement from "./renderElement/RenderElement";
 const Attendance = () => {
+
   const columns = [
     {
-      Header: "رقم الحضور",
+      Header: "الرقم",
       accessor: "id",
     },
     {
-      Header: "اسم الموظف",
+      Header: "الاسم",
       accessor: "name",
     },
     {
-      Header: "حضور",
+      Header: "الحالة",
       accessor: "attendance",
-      Cell: ({ row }) => {
-        const cellRef = useRef(null);  
+      // Cell: ({ row }) => {
+      //   const cellRef = useRef(null);
 
-        useEffect(() => {
-          const rowElement = cellRef.current.closest("tr");  
+      //   useEffect(() => {
+      //     const rowElement = cellRef.current.closest("tr");
 
-           
-          rowElement.classList.remove("absent");
+      //     rowElement.classList.remove("absent");
 
-          if (row.original.attendance == 2) {
-            rowElement.classList.add("absent");
-          } 
-        }, [row.original.attendance]);
+      //     if (row.original.attendanceId == 2) {
+      //       rowElement.classList.add("absent");
+      //     }
+      //   }, [row.original.attendanceId]);
 
-        return (
-          <p ref={cellRef}>{row.original.attendance == 1 ? "حاضر" : "غائب"}</p>
-        );
-      },
+      //   return (
+      //     <p ref={cellRef}>{row.original.attendanceId == 1 ? "حاضر" : "غائب"}</p>
+      //   );
+      // },
     },
     {
       Header: "تاريخ الحضور",
       accessor: "date",
+      // Cell: ({ row }) => <p>{row.original.date}</p>,
     },
     {
       Header: "وقت الحضور",
@@ -47,18 +49,25 @@ const Attendance = () => {
       Header: "وقت الانصراف",
       accessor: "dismissingTime",
     },
+    {
+      Header: "وقت التأخير",
+      accessor: "attendanceDelay",
+    },
+    {
+      Header: "",
+      accessor: "actions",
+    },
   ];
-  /* {
-    "id": 48,
-    "name": "Vincents Wimes",
-    "attendance": true,
-    "date": "2024/08/14",
-    "attendanceTime": "14:51",
-    "dismissingTime": "11:10"
-  } */
 
   return (
-    <CustomTable tableType={1} AddRecordEle={AddAttendance} addTop={true}  columns={columns} tableData={attendanceData} />
+    <CustomTable
+      tableType={4}
+      AddRecordEle={AddAttendance}
+      addTop={true}
+      RenderElement={RenderElement}
+      columns={columns}
+      tableData={attendanceData}
+    />
   );
 };
 
