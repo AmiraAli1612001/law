@@ -10,16 +10,20 @@ const VisitRow = ({
   data: { id, name, from, to, notes, vacationCount, status, statusId },
 }) => {
   const [state, setState] = useState("!bg-yellow-50");
+  const [message, setMessage] = useState("لا اجراء");
   const dispatch = useDispatch();
   function changeRowColor() {
     switch (state) {
       case 1:
+        setMessage("لا اجراء");
         setState("!bg-yellow-50");
         break;
       case 2:
+        setMessage("موافق");
         setState("!bg-green-50");
         break;
       case 3:
+        setMessage("رفض");
         setState("!bg-red-50");
         break;
       default:
@@ -35,9 +39,9 @@ const VisitRow = ({
         <p>{id}</p>
       </td>
       <td>
-
-          <Link className="underline" href={"/hr/1"}>{name}</Link>
-
+        <Link className="underline" href={"/hr/1"}>
+          {name}
+        </Link>
       </td>
       <td>
         <p>{from}</p>
@@ -52,7 +56,7 @@ const VisitRow = ({
         <p>{notes}</p>
       </td>
       <td>
-        <p>{status}</p>
+        <p>{message}</p>
       </td>
       <td>
         <div className="flex gap-2">
