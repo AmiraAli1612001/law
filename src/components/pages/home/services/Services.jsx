@@ -13,9 +13,9 @@ const Services = () => {
   const linkStyles = `font-medium p-2 bg-white rounded block hover:bg-[#048D5A] hover:text-white transition-all `;
   return (
     <div className="bg-bgGray p-4 flex flex-col gap-6 h-full rounded-2xl border drop-shadow-sm">
-      <div className="flex justify-between">
-        <h3 className="text-lg font-semibold">أبرز الخدمات</h3>
-        <nav className="flex gap-4">
+      <div className="flex flex-col md:flex-row  gap-1  justify-between">
+        <h3 className="text-lg font-semibold">أبرز الخدمات:</h3>
+        <nav className="flex gap-4 text-sm font-bold">
           <button
             onClick={() => handleOpen(0)}
             className={`${linkStyles} ${open == 0 && openStyles}`}
@@ -36,7 +36,7 @@ const Services = () => {
           </button>
         </nav>
       </div>
-      <ul className="grid grid-cols-2 gap-4 flex-1 overflow-y-auto auto-rows-max">
+      <ul className="grid md:grid-cols-2 gap-4 flex-1 overflow-y-auto auto-rows-max">
         <Service
           link={"/issues"}
           title={"اصدار قضية"}

@@ -75,7 +75,7 @@ const Header = () => {
               <div
                 className={`${
                   attendance ? "text-[#D00000]" : "text-textGreen"
-                } flex  items-center gap-2 bg-white p-2 rounded drop-shadow-sm h-10 cursor-pointer`}
+                } items-center gap-2 bg-white p-2 rounded drop-shadow-sm h-10 cursor-pointer hidden md:flex`}
                 onClick={() => dispatch(toggleAttendancePopup())}
               >
                 <p className="text-base">

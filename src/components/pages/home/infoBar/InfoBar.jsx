@@ -11,9 +11,9 @@ const InfoBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="bg-bgGray px-4 py-2 gap-2 lg:gap-4 xl:gap-8 w-full h-fit rounded-2xl flex flex-col md:flex-row border drop-shadow-sm">
-      <div className="flex flex-col py-3 max-w-[25%]">
-        <h3 className="text-xl">الملف العدلي</h3>
-        <p className="max-w-52">كل ما يخص معلوماتك العدلية</p>
+      <div className="flex flex-col md:py-3 md:max-w-[25%]">
+        <h3 className="text-xl font-bold">الملف العدلي</h3>
+        <p className="max-w-52  font-semibold">كل ما يخص معلوماتك العدلية.</p>
         <p
           className={`${
             isOpen ? "max-h-[140px] opacity-100 mt-2" : "max-h-[0px] opacity-0"
@@ -24,35 +24,21 @@ const InfoBar = () => {
         </p>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full hover:bg-[#435363c4]  transition-all mt-auto relative gap-1 text-center items-center justify-center bg-[#435363]  py-2 rounded-2xl flex-col text-white font-medium"
+          className="w-full hover:bg-[#435363c4]  transition-all mt-2 relative gap-1 text-center items-center justify-center bg-[#435363]  py-2 rounded-2xl flex-col text-white font-medium"
         >
           <p className="whitespace-nowrap">
             {isOpen ? "مشاهدة اقل" : "مشاهدة الكل"}
           </p>
-          {/* <svg
-            width="34"
-            height="35"
-            viewBox="0 0 34 35"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="cursor-pointer"
-          >
-            <circle cx="17.3204" cy="17.3985" r="16.6505" fill="white" />
-            <path
-              d="M26.4006 16.9213C26.4006 17.2096 26.2861 17.4861 26.0822 17.69C25.8783 17.8939 25.6018 18.0084 25.3135 18.0084H11.9964L16.6637 22.6748C16.8679 22.879 16.9827 23.156 16.9827 23.4449C16.9827 23.7337 16.8679 24.0107 16.6637 24.2149C16.4595 24.4191 16.1825 24.5338 15.8937 24.5338C15.6049 24.5338 15.3279 24.4191 15.1236 24.2149L8.60099 17.6922C8.49965 17.5912 8.41923 17.4712 8.36436 17.3391C8.30949 17.2069 8.28125 17.0653 8.28125 16.9222C8.28125 16.7791 8.30949 16.6374 8.36436 16.5053C8.41923 16.3732 8.49965 16.2532 8.60099 16.1522L15.1236 9.62951C15.2248 9.52838 15.3448 9.44817 15.4769 9.39344C15.6091 9.33871 15.7507 9.31055 15.8937 9.31055C16.0367 9.31055 16.1783 9.33871 16.3104 9.39344C16.4425 9.44817 16.5626 9.52838 16.6637 9.62951C16.7648 9.73063 16.8451 9.85068 16.8998 9.9828C16.9545 10.1149 16.9827 10.2565 16.9827 10.3995C16.9827 10.5426 16.9545 10.6842 16.8998 10.8163C16.8451 10.9484 16.7648 11.0685 16.6637 11.1696L11.9964 15.8342H25.3135C25.6018 15.8342 25.8783 15.9487 26.0822 16.1526C26.2861 16.3565 26.4006 16.633 26.4006 16.9213Z"
-              fill="#435363"
-            />
-          </svg> */}
         </button>
       </div>
       <div
         className={`${
           isOpen
-            ? "gap-1 [&>*]:max-h-[140px] "
-            : "[&>*:first-child]:max-h-[140px]"
-        } flex py-3 flex-col transition-all flex-1 `}
+            ? "gap-1 md:[&>*]:max-h-[140px] "
+            : "md:[&>*:first-child]:max-h-[140px]"
+        } flex md:py-3 flex-col transition-all flex-1 `}
       >
-        <ul className="h-full w-full flex ">
+        <ul className="h-full w-full grid grid-cols-2 md:grid-cols-4">
           <InfoItem to="/issues" title="قائمة القضايا">
             <svg
               xmlns="http://www.w3.org/2000/svg"
