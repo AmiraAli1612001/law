@@ -3,10 +3,8 @@ import React from "react";
 import issuesData from "@/fakeData/issuesData.json";
 import Expense from "@/components/adds/finance/expense/Expense";
 import RenderElement from "./renderElement/RenderElement";
+import { deleteRecord } from "@/helperFunctions/dom";
 const ExpensesTable = () => {
-  const deleteRecord = (e) => {
-    e.target.closest("tr").style.opacity = 0.3;
-  };
   const columns = [
     {
       Header: "رقم المصورف",

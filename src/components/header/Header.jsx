@@ -320,6 +320,7 @@ const Header = () => {
                       },
                       { title: "قضايا التنفيذ", to: "/executiveIssues" },
                       { title: "البنود", to: "/statements" },
+                      { title: "الوكالات", to: "/agencies" },
                     ]}
                     // to="/issues"
                     title="القضايا"
