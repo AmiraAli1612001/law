@@ -78,25 +78,12 @@ const ClientDetails = ({ id, contractData }) => {
                     <div className={`small-inputs !grid-cols-3`}>
                       {/* name arabic ! */}
                       <div className="simple-input">
-                        <label htmlFor="">الاسم الرباعي باللغة العربية</label>
+                        <label htmlFor="">الاسم الرباعي</label>
                         <input
                           type="text"
                           name=""
+                          defaultValue={"محمد احمد محمد احمد"}
                           id="arabicName"
-                          placeholder=""
-                        />
-                        
-                      </div>
-                      {/* name english ! */}
-                      <div className="simple-input">
-                        <label htmlFor="">
-                          الاسم الرباعي باللغة الانجليزية
-                        </label>
-                        <input
-                          type="text"
-                          name=""
-                          id="englishName"
-                          
                           placeholder=""
                         />
                         

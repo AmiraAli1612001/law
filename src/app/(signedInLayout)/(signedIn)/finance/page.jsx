@@ -23,6 +23,7 @@ import { useDispatch } from "react-redux";
 import ContractsTable from "@/components/pages/finance/contracts/ContractsTable";
 import { exportTableToExcel } from "@/helperFunctions/excelExport";
 import RepeatingSalaries from "@/components/pages/finance/salaries/repeating/RepeatingSalaries";
+import VaultEle from "@/components/pages/finance/vault/VaultEle";
 
 const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
@@ -31,7 +32,8 @@ const Finance = ({ params: { token } }) => {
   const [activeIndex2, setActiveIndex2] = useState(0);
   const [activeIndex3, setActiveIndex3] = useState(0);
   const [salariesActiveIndex, setSalariesActiveIndex] = useState(0);
-  const [salariesWrapperActiveIndex, setSalariesWrapperActiveIndex] = useState(0);
+  const [salariesWrapperActiveIndex, setSalariesWrapperActiveIndex] =
+    useState(0);
 
   const innnerSwiper1Ref = useRef(null);
   const innnerSwiper2Ref = useRef(null);
@@ -208,7 +210,6 @@ const Finance = ({ params: { token } }) => {
                         <ExpensesTable />
                       </SwiperSlide>
                       {/* chart */}
-
                       <SwiperSlide>
                         <div className="flex gap-4">
                           <div className="w-1/3 h-fit">
@@ -426,7 +427,9 @@ const Finance = ({ params: { token } }) => {
                       spaceBetween={0}
                       slidesPerView={1}
                       onSlideChange={() => console.log("slide change")}
-                      onSwiper={(swiper) => (salariesWrapperSwiperRef.current = swiper)}
+                      onSwiper={(swiper) =>
+                        (salariesWrapperSwiperRef.current = swiper)
+                      }
                       className="w-full"
                       allowTouchMove={false}
                     >
@@ -598,6 +601,39 @@ const Finance = ({ params: { token } }) => {
                   {/* العقود */}
                   <SwiperSlide>
                     <ContractsTable />
+                  </SwiperSlide>
+                  {/* الخزنة */}
+                  <SwiperSlide>
+                    <div className="flex flex-col gap-4 ">
+                      <div className="wt-1/3  h-fit flex gap-4 font-bold">
+                        <div className="bg-gray-100 flex-1 p-4 rounded-lg text-green-600">
+                          <div className="flex justify-between ">
+                            <span>الميزانية الحالية: </span>
+                            <span>$1500</span>
+                          </div>
+                          <div className="flex justify-between mt-4">
+                            <span>الاحتياط النقدي: </span>
+                            <span>$500</span>
+                          </div>
+                        </div>
+                        <div className="bg-gray-100 flex-1 p-4 mtt-4 rounded-lg ">
+                          <div className="flex justify-between text-red-600">
+                            <span>اجمالي المصروفات المستحقة: </span>
+                            <span>$300</span>
+                          </div>
+                          <div className="flex justify-between mt-4 text-green-600">
+                            <span>اجمالي الايرادات المستحقة: </span>
+                            <span>$300</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-gray-100 p-4 rounded-lg flex-1 h-fit">
+                        <h3 className="font-bold text-lg mb-4">
+                          اخر التحديثات
+                        </h3>
+                        <VaultEle />
+                      </div>
+                    </div>
                   </SwiperSlide>
                 </Swiper>
               </div>
