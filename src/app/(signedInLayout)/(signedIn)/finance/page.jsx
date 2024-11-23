@@ -24,6 +24,7 @@ import ContractsTable from "@/components/pages/finance/contracts/ContractsTable"
 import { exportTableToExcel } from "@/helperFunctions/excelExport";
 import RepeatingSalaries from "@/components/pages/finance/salaries/repeating/RepeatingSalaries";
 import VaultEle from "@/components/pages/finance/vault/VaultEle";
+import PaymentsEle from "@/components/pages/finance/payments/PaymentsEle";
 
 const Finance = ({ params: { token } }) => {
   const [active, setActive] = useState(0);
@@ -51,6 +52,7 @@ const Finance = ({ params: { token } }) => {
     "التقارير المالية",
     "العقود",
     "الخزنة",
+    "الدفعات",
   ];
   const salariesSections = ["المدفوعة", "القادمة", "الشهرية المتكررة"];
   const swipeOuter = (id) => {
@@ -634,6 +636,10 @@ const Finance = ({ params: { token } }) => {
                         <VaultEle />
                       </div>
                     </div>
+                  </SwiperSlide>
+                  {/* العقود */}
+                  <SwiperSlide>
+                    <PaymentsEle />
                   </SwiperSlide>
                 </Swiper>
               </div>

@@ -21,24 +21,31 @@ const CustomTable = ({
   addBtn = false,
   addTop = false,
   topFilter = false,
+  idFilter = false,
 }) => {
   const tableColumns = useMemo(() => columns, []);
   const [searchFilter, setSearchFilter] = useState("");
   const [filterMenuActive, setFilterMenuActive] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("");
   const dispatch = useDispatch();
-  const data = useMemo(
-    () =>
-      tableData.filter((ele) =>
+  const data = useMemo(() => {
+    if (idFilter) {
+      if (searchFilter === "") return tableData;
+      else
+        return tableData.filter((ele) =>
+          searchFilter.includes(ele.id.toString())
+        );
+    } else {
+      return tableData.filter((ele) =>
         Object.keys(ele).some((key) => {
           return ele[key]
             .toString()
             .toLowerCase()
             .includes(searchFilter.toLowerCase());
         })
-      ),
-    [searchFilter]
-  );
+      );
+    }
+  }, [searchFilter, idFilter]);
   const tableInstance = useTable(
     { columns: tableColumns, data: data },
     useGlobalFilter,
@@ -218,7 +225,7 @@ const CustomTable = ({
           className="w-full bg-transparent text-lg text-black focus:outline-none placeholder:text-gray-600"
           type="text"
           onChange={(e) => setSearchFilter(e.target.value)}
-          placeholder="ابحث..."
+          placeholder={idFilter ? "ابحث بالرقم التعريفي" : "ابحث..."}
         />
 
         {/* topFilter */}

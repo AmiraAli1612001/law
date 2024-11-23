@@ -1,0 +1,6 @@
+.payments-custom-row{
+    input,select{
+        width: 100% !important;
+        background-color: white;
+    }
+}

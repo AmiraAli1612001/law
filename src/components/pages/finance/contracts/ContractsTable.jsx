@@ -45,6 +45,7 @@ const ContractsTable = ({ swipe }) => {
       <CustomTable
         tableData={contractsData}
         columns={tableColumns}
+        idFilter={true}
         AddRecordEle={()=><AddContractRecord/>}
         RenderElement={(data)=><ContractRow swipe={swipe} {...data} />}
       />
