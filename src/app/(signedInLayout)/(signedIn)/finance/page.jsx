@@ -46,7 +46,7 @@ const Finance = ({ params: { token } }) => {
   console.log(active);
   const sections = [
     "المصروفات",
-    "الالتزامات",
+    // "الالتزامات",
     "الايرادات",
     "الرواتب",
     "التقارير المالية",
@@ -330,7 +330,7 @@ const Finance = ({ params: { token } }) => {
                     </Swiper>
                   </SwiperSlide>
                   {/* الالتزامات */}
-                  <SwiperSlide>
+                  {/* <SwiperSlide>
                     <Swiper
                       spaceBetween={0}
                       slidesPerView={1}
@@ -375,7 +375,7 @@ const Finance = ({ params: { token } }) => {
                         />
                       </SwiperSlide>
                     </Swiper>
-                  </SwiperSlide>
+                  </SwiperSlide> */}
                   {/* الايرادات */}
                   <SwiperSlide>
                     <Swiper
