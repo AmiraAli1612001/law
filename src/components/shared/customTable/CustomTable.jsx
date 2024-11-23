@@ -202,7 +202,7 @@ const CustomTable = ({
     }
   }
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 text-gray-900">
       {/* custom rows */}
       <div className="w-full bg-gray-200 rounded p-4 flex items-center gap-2">
         <svg

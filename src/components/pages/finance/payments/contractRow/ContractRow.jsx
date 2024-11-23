@@ -5,14 +5,24 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { setContract } from "@/globalState/Features/tempDataSlice";
 import "./style.css";
+import { toast } from "react-toastify";
 const ContractRow = ({ data, swipe }) => {
-  const { id, contractId, paymentType, date, value, middleman } = data;
+  const {
+    id,
+    contractId,
+    paymentType,
+    paymentTitle,
+    date,
+    value,
+    middleman,
+    status,
+  } = data;
 
   const router = useRouter();
   const dispatch = useDispatch();
   return (
     <tr className={`bg-bgGreen  p-4  rounded-lg relative payments-custom-row`}>
-      <td colSpan={7}>
+      <td colSpan={8}>
         <div className="flex flex-col gap-2">
           <div className="small-inputs !grid-cols-3">
             <div className="simple-input">
@@ -49,7 +59,21 @@ const ContractRow = ({ data, swipe }) => {
             <label htmlFor="">تفاصيل اضافية</label>
             <textarea name="" id=""></textarea>
           </div>
-          <div>
+          <div className="ms-auto flex gap-2">
+            {status == 1 ? (
+              <>
+                <button className="bg-blue-500 bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center font-bold">
+                  اصدار سند
+                </button>
+                <button onClick={()=>toast.success("تم حفظ البيانات بنجاح")} className="bg-green-500 bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center font-bold">
+                  حفظ
+                </button>
+              </>
+            ) : (
+              <button className="bg-yellow-500 bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center font-bold">
+                تحصيل
+              </button>
+            )}
             {/* <Link
               className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center font-bold inline-block"
               onClick={(e) => {
@@ -61,9 +85,6 @@ const ContractRow = ({ data, swipe }) => {
             >
               التفاصيل
             </Link> */}
-            <button className="bg-yellow-500 bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center font-bold">
-              تحصيل
-            </button>
           </div>
         </div>
       </td>

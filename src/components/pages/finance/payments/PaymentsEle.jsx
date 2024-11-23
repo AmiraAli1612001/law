@@ -5,6 +5,16 @@ import ContractRow from "./contractRow/ContractRow";
 import contractsData from "@/fakeData/contractsData.json";
 import AddContractRecord from "@/components/popups/addContractRecord/AddContractRecord";
 const PaymentsEle = ({ swipe }) => {
+  function renderPaymentStatus(id) {
+    switch (id) {
+      case 1:
+        return <span className="text-green-400 font-bold">تم التحصيل</span>;
+      case 2:
+        return <span className="text-red-400 font-bold">لا تحصيل</span>;
+      default:
+        break;
+    }
+  }
   const tableColumns = useMemo(
     () => [
       {
@@ -16,12 +26,18 @@ const PaymentsEle = ({ swipe }) => {
         accessor: "contractId",
       },
       {
-        Header: "تاريخ العقد",
+        Header: "تاريخ الدفعة",
         accessor: "date",
+        Cell: ({ row }) =>
+          row.original.paymentType == 1 ? (
+            row.original.date
+          ) : (
+            <span className=" font-bold text-sm">لا يوجد</span>
+          ),
       },
       {
         Header: "نوع الدفعة",
-        accessor: "paymentType",
+        accessor: "paymentTitle",
       },
       {
         Header: "القيمة",
@@ -30,6 +46,11 @@ const PaymentsEle = ({ swipe }) => {
       {
         Header: "نسبة الوسيط",
         accessor: "middleman",
+      },
+      {
+        Header: "الحالة",
+        accessor: "status",
+        Cell: ({ row }) => renderPaymentStatus(row.original.status),
       },
       // {
       //   Header: "",
@@ -47,15 +68,19 @@ const PaymentsEle = ({ swipe }) => {
     {
       id: 1,
       contractId: 1,
-      paymentType: "بتاريخ محدد",
+      paymentType: 1,
+      status: 1,
+      paymentTitle: "بتاريخ محدد",
       date: new Date().toLocaleDateString("en-GB"),
       value: 2500,
       middleman: "0%",
     },
     {
       id: 2,
-      contractId: 1,
-      paymentType: "بتاريخ محدد",
+      contractId: 4,
+      paymentType: 2,
+      status: 2,
+      paymentTitle: "بصدور حكم",
       date: new Date().toLocaleDateString("en-GB"),
       value: 2500,
       middleman: "0%",
@@ -63,7 +88,9 @@ const PaymentsEle = ({ swipe }) => {
     {
       id: 3,
       contractId: 1,
-      paymentType: "بتاريخ محدد",
+      paymentType: 1,
+      status: 1,
+      paymentTitle: "بتاريخ محدد",
       date: new Date().toLocaleDateString("en-GB"),
       value: 2500,
       middleman: "0%",
