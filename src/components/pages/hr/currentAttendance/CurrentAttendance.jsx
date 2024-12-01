@@ -21,6 +21,14 @@ const CurrentAttendance = () => {
       Header: "القسم",
       accessor: "department",
     },
+    {
+      Header: "الموقع الحالي",
+      accessor: "status",
+    },
+    {
+      Header: "الاجراءات",
+      accessor: "actions",
+    },
   ];
   //   {
   //     "id": 1,
