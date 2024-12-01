@@ -26,6 +26,7 @@ const Header = () => {
       <header className="bg-bgGreen text-3xl  z-[60]">
         <ScreenWrapper className={"relative z-50"}>
           <section className="flex items-center py-4 justify-between">
+            {/* right logo wrapper */}
             <div className="flex items-center gap-4">
               <Image
                 //C:\Users\yousef\Desktop\mohamed al-swaify\law-firm\public\images\logos\صقور الشعار.png
@@ -70,7 +71,14 @@ const Header = () => {
                 </svg>
               </div>
             </div>
-            <div className="flex items-center  gap-10">
+            {/* left nav wrapper */}
+            <div className="flex items-center  gap-4">
+              {/* current attendance */}
+              <div
+                className={`items-center gap-2 bg-white p-2 rounded drop-shadow-sm h-10 cursor-pointer hidden md:flex`}
+              >
+                <button className="text-base">الحضور الحالي</button>
+              </div>
               {/* attendance */}
               <div
                 className={`${
@@ -122,25 +130,28 @@ const Header = () => {
                   onClick={(e) => e.stopPropagation()}
                 >
                   <ul className="">
-                    <li >
-                      <Link href={"/hr/1"} className="text-base  border-b hover:bg-[#008f5b0f] transition-all p-4 hover:scale-110 inline-block w-full">
+                    <li>
+                      <Link
+                        href={"/hr/1"}
+                        className="text-base  border-b hover:bg-[#008f5b0f] transition-all p-4 hover:scale-110 inline-block w-full"
+                      >
                         <div className="flex gap-4 items-center justify-between w-full rounded-xl">
-
                           <p className="text-xs whitespace-nowrap">
                             الصفحة الشخصية
                           </p>
-
                         </div>
                       </Link>
                     </li>
-                    <li >
-                      <button onClick={()=>dispatch(toggleAddRecordPopup("requestVacation"))} href={"/hr/1"} className="text-base border-b hover:bg-[#008f5b0f] transition-all p-4 hover:scale-110 inline-block w-full">
+                    <li>
+                      <button
+                        onClick={() =>
+                          dispatch(toggleAddRecordPopup("requestVacation"))
+                        }
+                        href={"/hr/1"}
+                        className="text-base border-b hover:bg-[#008f5b0f] transition-all p-4 hover:scale-110 inline-block w-full"
+                      >
                         <div className="flex gap-4 justify-between w-full items-center rounded-xl">
-
-                          <p className="text-xs whitespace-nowrap">
-                            طلب اجازة
-                          </p>
-
+                          <p className="text-xs whitespace-nowrap">طلب اجازة</p>
                         </div>
                       </button>
                     </li>

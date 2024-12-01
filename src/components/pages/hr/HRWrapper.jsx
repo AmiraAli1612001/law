@@ -22,6 +22,7 @@ import VacationsTable from "./vacations/VacationsTable";
 import { resetFormState } from "@/globalState/Features/formStateSlice";
 import LicensesTable from "./licenses/LicensesTable";
 import Attendance from "./Attendance/Attendance";
+import CurrentAttendance from "./currentAttendance/CurrentAttendance";
 
 const HRWrapper = ({ id }) => {
   const [active, setActive] = useState(0);
@@ -31,7 +32,13 @@ const HRWrapper = ({ id }) => {
   const issueDetails = issuesData.find((issue) => issue.id == id);
   console.log(active);
 
-  const sections = ["الموظفين", "الحضور والانصراف", "الاجازات","الرخص"];
+  const sections = [
+    "الموظفين",
+    "الحضور والانصراف",
+    "الاجازات",
+    "الرخص",
+    "الحضور الحالي",
+  ];
 
   const swipeOuter = (id) => {
     if (outerSwiperRef.current) {
@@ -99,6 +106,10 @@ const HRWrapper = ({ id }) => {
                 {/* الرخص */}
                 <SwiperSlide>
                   <LicensesTable />
+                </SwiperSlide>
+                {/* الحضور الحالي */}
+                <SwiperSlide>
+                  <CurrentAttendance />
                 </SwiperSlide>
               </Swiper>
             </div>

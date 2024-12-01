@@ -74,6 +74,7 @@ const CustomTable = ({
   function renderTable(tableType) {
     switch (tableType) {
       case 1:
+        //default table
         return (
           <table
             {...getTableProps()}
@@ -113,8 +114,8 @@ const CustomTable = ({
             </tbody>
           </table>
         );
-      //custom row ele
       case 2:
+        //no table, custom wrapper and custom row for each record
         return (
           <div
             className={`${
@@ -129,8 +130,8 @@ const CustomTable = ({
             })}{" "}
           </div>
         );
-      //normal row with details open below
       case 3:
+        //table with custom row with details open below
         return (
           <table
             {...getTableProps()}
@@ -167,7 +168,7 @@ const CustomTable = ({
           </table>
         );
       case 4:
-        //return custom tr
+        //return custom tr without details expansion below
         return (
           <table
             {...getTableProps()}
