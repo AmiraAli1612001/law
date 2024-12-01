@@ -22,7 +22,7 @@ const RenderElement = ({ data: { id, name, title, department, status } }) => {
       <td>
         <Link
           className="bg-blue-500 transition-all hover:bg-opacity-[0.7] text-white px-4 py-1 rounded text-sm"
-          href={`/hr/attendance/${id}`}
+          href={`/hr/${id}`}
         >
           عرض
         </Link>
