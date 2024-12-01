@@ -77,16 +77,12 @@ const Header = () => {
             {/* left nav wrapper */}
             <div className="flex items-center  gap-4">
               {/* current attendance */}
-              <div
-                className={`items-center gap-2 bg-white p-2 rounded drop-shadow-sm h-10 cursor-pointer hidden md:flex`}
+              <button
+                onClick={() => dispatch(toggleCurrentAttendance())}
+                className="text-base items-center gap-2 bg-white p-2 rounded drop-shadow-sm h-10 cursor-pointer hidden md:flex"
               >
-                <button
-                  onClick={() => dispatch(toggleCurrentAttendance())}
-                  className="text-base"
-                >
-                  الحضور الحالي
-                </button>
-              </div>
+                الحضور الحالي
+              </button>
               {/* attendance */}
               <div
                 className={`${

@@ -2,7 +2,9 @@ import CurrentAttendance from "@/components/pages/hr/currentAttendance/CurrentAt
 import React from "react";
 
 const CurrentAttendancePopup = () => {
-  return <CurrentAttendance />;
+  return <div className="h-full overflow-y-auto bg-white p-4 rounded-lg">
+    <CurrentAttendance />
+  </div>;
 };
 
-export default CurrentAttendance;
+export default CurrentAttendancePopup;

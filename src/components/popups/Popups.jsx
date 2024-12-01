@@ -17,7 +17,7 @@ import AddClient from "../adds/clients/AddClient/AddClient";
 import AddContract from "../adds/contracts/addContract/AddContract";
 import AddEmployee from "../adds/hr/addEmployee/AddEmployee";
 import RequestVacation from "../adds/hr/requestVacation/RequestVacation";
-import CurrentAttendance from "./currentAttendance/CurrentAttendance";
+import CurrentAttendancePopup from "./currentAttendance/CurrentAttendancePopup";
 const Popups = () => {
   const dispatch = useDispatch();
 
@@ -94,7 +94,7 @@ const Popups = () => {
         {attendance && <Attendance />}
         {editEmployee && <EditEmployee />}
         {printContract && <PrintContract />}
-        {currentAttendance && <CurrentAttendance />}
+        {currentAttendance && <CurrentAttendancePopup />}
       </div>
     </div>
   );
