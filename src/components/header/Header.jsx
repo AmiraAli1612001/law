@@ -10,7 +10,10 @@ import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
 import { resetAuth } from "@/globalState/Features/authSlice";
 import { usePathname } from "next/navigation";
 import { resetFormState } from "@/globalState/Features/formStateSlice";
-import { toggleAddRecordPopup } from "@/globalState/Features/popupsSlice";
+import {
+  toggleAddRecordPopup,
+  toggleCurrentAttendance,
+} from "@/globalState/Features/popupsSlice";
 
 const Header = () => {
   const [notificationsState, setNotificationsState] = useState(false);
@@ -77,7 +80,12 @@ const Header = () => {
               <div
                 className={`items-center gap-2 bg-white p-2 rounded drop-shadow-sm h-10 cursor-pointer hidden md:flex`}
               >
-                <button className="text-base">الحضور الحالي</button>
+                <button
+                  onClick={() => dispatch(toggleCurrentAttendance())}
+                  className="text-base"
+                >
+                  الحضور الحالي
+                </button>
               </div>
               {/* attendance */}
               <div

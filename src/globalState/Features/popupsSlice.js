@@ -25,6 +25,7 @@ const initialState = {
   attachments: false,
   editEmployee: false,
   currentEmployee: null,
+  currentAttendance: false,
   fileLink: "",
 };
 
@@ -79,6 +80,10 @@ export const popupsSlice = createSlice({
       state.isHidden = !state.isHidden;
       state.currentEmployee = action.payload;
     },
+    toggleCurrentAttendance: (state) => {
+      state.currentAttendance = !state.currentAttendance;
+      state.isHidden = !state.isHidden;
+    },
     resetPopups: (state) => {
       document.querySelector("body").style.overflow = "auto";
       return initialState;
@@ -92,6 +97,7 @@ export const {
   toggleEditEmployee,
   togglePrintContractPopup,
   toggleTask,
+  toggleCurrentAttendance,
   resetPopups,
 } = popupsSlice.actions;
 
