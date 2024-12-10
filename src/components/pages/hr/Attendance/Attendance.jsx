@@ -1,64 +1,71 @@
 "use client";
 import CustomTable from "@/components/shared/customTable/CustomTable";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import attendanceData from "@/fakeData/attendanceData.json";
 import AddAttendance from "@/components/adds/hr/attendance/AddAttendance";
 import RenderElement from "./renderElement/RenderElement";
+import { openLoader } from "@/globalState/Features/tempDataSlice";
+import { fetchWithCheck } from "@/helperFunctions/dataFetching";
+import { lazyCloseLoader } from "@/helperFunctions/lazy";
+import { useDispatch } from "react-redux";
 const Attendance = () => {
-
+  const dispatch = useDispatch();
+  const [data, setData] = useState([]);
+  // {
+  //   "attendanceId": 1,
+  //   "employeeId": 2,
+  //   "attendanceDate": "2024-12-07T01:31:48.713",
+  //   "checkInTime": "2024-12-07T01:32:18.3915007",
+  //   "checkOutTime": "2024-12-07T06:22:24.9429247",
+  //   "status": "Present",
+  //   "delayReason": "string"
+  // },
   const columns = [
     {
       Header: "الرقم",
-      accessor: "id",
+      accessor: "attendanceId",
     },
     {
-      Header: "الاسم",
-      accessor: "name",
-    },
-    {
-      Header: "الحالة",
-      accessor: "attendance",
-      // Cell: ({ row }) => {
-      //   const cellRef = useRef(null);
-
-      //   useEffect(() => {
-      //     const rowElement = cellRef.current.closest("tr");
-
-      //     rowElement.classList.remove("absent");
-
-      //     if (row.original.attendanceId == 2) {
-      //       rowElement.classList.add("absent");
-      //     }
-      //   }, [row.original.attendanceId]);
-
-      //   return (
-      //     <p ref={cellRef}>{row.original.attendanceId == 1 ? "حاضر" : "غائب"}</p>
-      //   );
-      // },
+      Header: "رقم الموظف",
+      accessor: "employeeId",
     },
     {
       Header: "تاريخ الحضور",
-      accessor: "date",
-      // Cell: ({ row }) => <p>{row.original.date}</p>,
+      accessor: "attendanceDate",
     },
     {
       Header: "وقت الحضور",
-      accessor: "attendanceTime",
+      accessor: "checkInTime",
     },
     {
       Header: "وقت الانصراف",
-      accessor: "dismissingTime",
+      accessor: "checkOutTime",
     },
     {
-      Header: "وقت التأخير",
-      accessor: "attendanceDelay",
+      Header: "الحالة",
+      accessor: "status",
+    },
+    {
+      Header: "سبب التأخير",
+      accessor: "delayReason",
     },
     {
       Header: "",
       accessor: "actions",
     },
   ];
-
+  useEffect(() => {
+    dispatch(openLoader());
+    fetchWithCheck("/api/AttendanceAdmin")
+      .then((e) => setData(e))
+      .catch((e) => {
+        console.log("HRTable");
+        console.log(e);
+      })
+      .finally((e) => {
+        lazyCloseLoader();
+      });
+  }, []);
   return (
     <CustomTable
       tableType={4}
@@ -66,7 +73,7 @@ const Attendance = () => {
       addTop={true}
       RenderElement={RenderElement}
       columns={columns}
-      tableData={attendanceData}
+      tableData={data}
     />
   );
 };

@@ -7,9 +7,13 @@ import HRData from "@/fakeData/HRData.json";
 import Link from "next/link";
 import AddEmployee from "@/components/adds/hr/addEmployee/AddEmployee";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
+import { useDispatch } from "react-redux";
+import { openLoader } from "@/globalState/Features/tempDataSlice";
+import { lazyCloseLoader } from "@/helperFunctions/lazy";
 
 const HRTable = () => {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
   // {
   //   "employeeId": 1,
   //   "fullNameArabic": "محمد أحمد علي",
@@ -33,13 +37,17 @@ const HRTable = () => {
   //   "residenceProfessionName": "محامي",
   //   "employeeStatusName": "على رأس العمل"
   // }
-  console.log(data)
+  console.log(data);
   useEffect(() => {
+    dispatch(openLoader());
     fetchWithCheck("/api/Employee", {})
       .then((e) => setData(e))
       .catch((e) => {
         console.log("HRTable");
         console.log(e);
+      })
+      .finally((e) => {
+        lazyCloseLoader();
       });
   }, []);
 

@@ -9,7 +9,7 @@ import "swiper/css";
 import { useDispatch } from "react-redux";
 import { resetFormState } from "@/globalState/Features/formStateSlice";
 
-const SectionSwiper = ({ sections }) => {
+const SectionSwiper = ({ sections, autoHeight = true }) => {
   const [active, setActive] = useState(0);
   const swiperRef = useRef(null);
   const dispatch = useDispatch();
@@ -46,15 +46,13 @@ const SectionSwiper = ({ sections }) => {
           slidesPerView={1}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
-          autoHeight={true}
+          autoHeight={autoHeight}
           className="w-full"
           allowTouchMove={false}
         >
           {sections.map((section, index) => (
             <SwiperSlide key={index}>
-              {
-                section.ele
-              }
+              {section.ele}
             </SwiperSlide>
           ))}
         </Swiper>
