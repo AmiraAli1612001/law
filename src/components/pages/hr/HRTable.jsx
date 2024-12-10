@@ -1,13 +1,48 @@
 "use client";
 import "./styles/hrTable.css";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import CustomTable from "../../shared/customTable/CustomTable";
 import HRRow from "./hrRow/HRRow";
 import HRData from "@/fakeData/HRData.json";
 import Link from "next/link";
 import AddEmployee from "@/components/adds/hr/addEmployee/AddEmployee";
+import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 
 const HRTable = () => {
+  const [data, setData] = useState([]);
+  // {
+  //   "employeeId": 1,
+  //   "fullNameArabic": "محمد أحمد علي",
+  //   "fullNameEnglish": "Mohamed Ahmed Ali",
+  //   "email": "mohamed.ali@example.com",
+  //   "phoneNumber": "01012345678",
+  //   "nationalId": "12345678901234",
+  //   "hiringDate": "2023-01-01T00:00:00",
+  //   "nationality": "مصري",
+  //   "jobTitle": "محامي",
+  //   "gender": "ذكر",
+  //   "departmentId": 1,
+  //   "residenceProfessionId": 1,
+  //   "employeeStatusId": 1,
+  //   "isActive": true,
+  //   "workingHours": 8,
+  //   "loanCount": 1,
+  //   "password": "hashedPassword123",
+  //   "isLock": false,
+  //   "departmentName": "القضاء",
+  //   "residenceProfessionName": "محامي",
+  //   "employeeStatusName": "على رأس العمل"
+  // }
+  console.log(data)
+  useEffect(() => {
+    fetchWithCheck("/api/Employee", {})
+      .then((e) => setData(e))
+      .catch((e) => {
+        console.log("HRTable");
+        console.log(e);
+      });
+  }, []);
+
   const tableColumns = useMemo(
     () => [
       {
@@ -16,11 +51,11 @@ const HRTable = () => {
       },
       {
         Header: "رقم الموظف",
-        accessor: "id",
+        accessor: "employeeId",
       },
       {
         Header: "اسم الموظف",
-        accessor: "name",
+        accessor: "fullNameArabic",
         Cell: ({ row, value }) => {
           return (
             <Link href={`/hr/${1}`} className="inline-block underline">
@@ -31,35 +66,34 @@ const HRTable = () => {
       },
       {
         Header: "اسم الوظيفة",
-        accessor: "title",
+        accessor: "jobTitle",
       },
       {
         Header: "القسم",
-        accessor: "department",
+        accessor: "departmentName",
       },
       {
         Header: "الحالة",
-        accessor: "status",
+        accessor: "employeeStatusId",
       },
     ],
     []
   );
   return (
-    <>
-      <CustomTable
-        addTop={true}
-        topFilter={[
-          { title: "على رأس العمل", value: "على رأس العمل" },
-          { title: "إجازة", value: "إجازة" },
-          { title: "متدرب", value: "متدرب" },
-          { title: "إنهاء خدمات", value: "إنهاء خدمات" },
-        ]}
-        AddRecordEle={AddEmployee}
-        tableData={HRData}
-        columns={tableColumns}
-        RenderElement={HRRow}
-      />
-    </>
+    <CustomTable
+      addTop={true}
+      topFilter={[
+        { title: "على رأس العمل", value: "على رأس العمل" },
+        { title: "إجازة", value: "إجازة" },
+        { title: "متدرب", value: "متدرب" },
+        { title: "إنهاء خدمات", value: "إنهاء خدمات" },
+      ]}
+      tableType={2}
+      AddRecordEle={AddEmployee}
+      tableData={data}
+      columns={tableColumns}
+      RenderElement={HRRow}
+    />
   );
 };
 

@@ -1,34 +1,88 @@
-"use client"
+"use client";
 import { toggleAttendance } from "@/globalState/Features/authSlice";
 import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
+import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const Attendance = () => {
-  const attendance = useSelector((store) => store.auth.attendance);
+  const { attendance, JWT, attendanceId } = useSelector((store) => store.auth);
+
   const dispatch = useDispatch();
 
-  const signUpForm = useForm();
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState,
-    setError,
-    reset,
-    trigger,
-  } = signUpForm;
-  let { errors, isSubmitted } = formState;
-  async function handleSubmitSignUp(formData, e) {
+  // const signUpForm = useForm();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   control,
+  //   formState,
+  //   setError,
+  //   reset,
+  //   trigger,
+  // } = signUpForm;
+  // let { errors, isSubmitted } = formState;
+  async function handleCheckIn() {
+    const res = await fetchWithCheck("/api/attendance/check-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${JWT}`,
+      },
+      body: JSON.stringify({
+        employeeId: 2,
+        attendanceDate: "2024-12-07T01:31:48.713Z",
+        checkInTime: "2024-12-07T01:31:48.713Z",
+        checkOutTime: "2024-12-07T01:31:48.713Z",
+        status: "string",
+        delayReason: "string",
+      }),
+    });
+    return res;
+  }
+  async function handleCheckOut(tasks = []) {
+    const res = await fetchWithCheck(
+      `/api/attendance/check-out/${attendanceId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: JSON.stringify(
+          tasks.map((task) => ({
+            taskId: 0,
+            taskDescription: "string",
+            dueDateStart: "2024-12-07T05:47:12.950Z",
+            dueDateEnd: "2024-12-07T05:47:12.950Z",
+          }))
+        ),
+      }
+    );
+    return res;
+  }
+  async function handleFormSubmit(e) {
+    e.preventDefault();
     // setGeneralError("");
     // dispatch(openLoader("جاري التسجيل"));
 
-    console.log(formData);
-    // const result = await fetchRegisterUser({
-    //   ...formData,
-    // });
+    console.log("formData");
+    try {
+      let res;
+      if (attendance) {
+        res = await handleCheckOut();
+        toast.success(" تم تسجيل الانصراف بنجاح");
+      } else {
+        res = await handleCheckIn();
+        toast.success(" تم تسجيل الحضور بنجاح");
+      }
+      console.log(res);
+      // dispatch(toggleAttendancePopup());
+    } catch (err) {
+      console.log(err);
+      toast.error("حدث خطأ ما");
+    }
 
     // dispatch(closeLoader());
   }
@@ -36,19 +90,14 @@ const Attendance = () => {
     return (
       <form
         method="POST"
-        onSubmit={handleSubmit(handleSubmitSignUp)}
-        action=""
-        noValidate
-        id="addIssueRecord"
+        onSubmit={handleFormSubmit}
+        id="checkOutForm"
       >
         <h3 className="mb-8 text-2xl">هل انت متأكد من تسجيل الانصراف؟</h3>
         <button
           className="text-white text-xl p-4 w-full bg-[#D00000]"
-          onClick={() => {
-            toast.error("تم تسجيل الانصراف بنجاح");
-            dispatch(toggleAttendancePopup());
-            dispatch(toggleAttendance());
-          }}
+          type="submit"
+          form="#checkOutForm"
         >
           تسجيل الانصراف
         </button>
@@ -58,39 +107,9 @@ const Attendance = () => {
   return (
     <form
       method="POST"
-      onSubmit={handleSubmit(handleSubmitSignUp)}
-      action=""
-      noValidate
-      id="addIssueRecord"
+      onSubmit={handleFormSubmit}
+      // id="checkInForm"
     >
-      {/* email !*/}
-      {/* <div className="input">
-        <label htmlFor="">البريد الالكتروني</label>
-        <input
-          type="email"
-          name=""
-          id="email"
-          {...register("email", {
-            required: "يجب كتابة الاسم الرباعي بالعربي",
-          })}
-          placeholder=""
-        />
-        <p className="input-error">{errors.email?.message}</p>
-      </div> */}
-      {/* password !*/}
-      {/* <div className="input">
-        <label htmlFor="">كلمة المرور</label>
-        <input
-          type="password"
-          name=""
-          id="password"
-          {...register("password", {
-            required: "يجب كتابة الاسم الرباعي بالعربي",
-          })}
-          placeholder=""
-        />
-        <p className="input-error">{errors.password?.message}</p>
-      </div> */}
       {/* datetime !*/}
       <div className="simple-input">
         <label htmlFor="">تاريخ الحضور</label>
@@ -123,12 +142,8 @@ const Attendance = () => {
       </div>
       <button
         className="text-white text-xl p-4 w-full bg-textGreen"
-        onClick={() => {
-          
-          toast.success("تم تسجيل الحضور بنجاح");
-          dispatch(toggleAttendancePopup());
-          dispatch(toggleAttendance());
-        }}
+        type="butotn"
+        // form="#checkInForm"
       >
         تسجيل الحضور
       </button>

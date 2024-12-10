@@ -20,8 +20,8 @@ const SectionSwiper = ({ sections }) => {
     }
   };
   return (
-    <div className="custom-swiper-wrapper flex gap-4">
-      <nav className="bg-white drop-shadow flex-1 h-fit swiper-nav">
+    <div className="custom-swiper-wrapper w-full flex gap-4">
+      <nav className="bg-white shadow flex-1 h-fit swiper-nav">
         <ul className="w-full">
           {sections.map((section, index) => (
             <li
@@ -46,6 +46,7 @@ const SectionSwiper = ({ sections }) => {
           slidesPerView={1}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
+          autoHeight={true}
           className="w-full"
           allowTouchMove={false}
         >

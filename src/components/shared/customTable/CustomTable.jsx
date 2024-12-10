@@ -13,6 +13,7 @@ import { toggleAddRecordPopup } from "@/globalState/Features/formStateSlice";
 
 const CustomTable = ({
   RenderElement,
+  topSearch =true,
   AddRecordEle,
   columns,
   tableData,
@@ -22,6 +23,7 @@ const CustomTable = ({
   addTop = false,
   topFilter = false,
   idFilter = false,
+  className = "",
 }) => {
   const tableColumns = useMemo(() => columns, []);
   const [searchFilter, setSearchFilter] = useState("");
@@ -45,13 +47,15 @@ const CustomTable = ({
         })
       );
     }
-  }, [searchFilter, idFilter]);
+  }, [searchFilter, idFilter, tableData?.length]);
+
   const tableInstance = useTable(
     { columns: tableColumns, data: data },
     useGlobalFilter,
     useSortBy,
     usePagination
   );
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -69,6 +73,7 @@ const CustomTable = ({
     state,
     // setPageSize,
   } = tableInstance;
+
   const { globalFilter } = state;
 
   function renderTable(tableType) {
@@ -131,7 +136,7 @@ const CustomTable = ({
           </div>
         );
       case 3:
-        //table with custom row with details open below
+        //table with custom tr with details open below
         return (
           <table
             {...getTableProps()}
@@ -203,95 +208,104 @@ const CustomTable = ({
     }
   }
   return (
-    <div className="flex flex-col gap-1 text-gray-900">
-      {/* custom rows */}
-      <div className="w-full bg-gray-200 rounded p-4 flex items-center gap-2">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          className=""
-        >
-          <path
-            fill="none"
-            stroke="#34A853"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="1.5"
-            d="m17 17l4 4M3 11a8 8 0 1 0 16 0a8 8 0 0 0-16 0"
-          />
-        </svg>
-        <input
-          className="w-full bg-transparent text-lg text-black focus:outline-none placeholder:text-gray-600"
-          type="text"
-          onChange={(e) => setSearchFilter(e.target.value)}
-          placeholder={idFilter ? "ابحث بالرقم التعريفي" : "ابحث..."}
-        />
-
-        {/* topFilter */}
-        {topFilter && (
-          <>
-            <button
-              key={"top-filter-all"}
-              className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
-                searchFilter === "" ? "bg-[#34A853] text-white" : ""
-              }`}
-              onClick={() => setSearchFilter("")}
-            >
-              الكل
-            </button>
-            {topFilter.map((ele, i) => (
-              <button
-                key={i}
-                className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
-                  searchFilter === ele.value ? "bg-[#34A853] text-white" : ""
-                }`}
-                onClick={() => setSearchFilter(ele.value)}
-              >
-                {ele.title}
-              </button>
-            ))}
-          </>
-        )}
-        {/* top add record */}
-        {addTop && (
-          <button
-            onClick={() => dispatch(toggleAddRecordPopup())}
-            className="flex mr-8 hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border px-2 py-1 rounded"
-          >
-            اضافة
-          </button>
-        )}
-        {enableFilter && (
-          <button
-            className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border px-2 py-1 rounded"
-            onClick={() => setFilterMenuActive(!filterMenuActive)}
-          >
+    <div className={`${className} flex flex-col gap-1 text-gray-900`}>
+      {/* top search */}
+      {topSearch && (
+        <>
+          <div className="w-full bg-gray-200 rounded p-4 flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
               viewBox="0 0 24 24"
+              className=""
             >
               <path
                 fill="none"
-                stroke="currentColor"
+                stroke="#34A853"
                 strokeLinecap="round"
-                strokeWidth="2"
-                d="M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                d="m17 17l4 4M3 11a8 8 0 1 0 16 0a8 8 0 0 0-16 0"
               />
             </svg>
-            تصفية
-          </button>
-        )}
-      </div>
-      {/* add record */}
-      {AddRecordEle && (
-        <AddWrapper>
-          <AddRecordEle />
-        </AddWrapper>
+            <input
+              className="w-full bg-transparent text-lg text-black focus:outline-none placeholder:text-gray-600"
+              type="text"
+              onChange={(e) => setSearchFilter(e.target.value)}
+              placeholder={idFilter ? "ابحث بالرقم التعريفي" : "ابحث..."}
+            />
+
+            {/* topFilter */}
+            {topFilter && (
+              <>
+                <button
+                  key={"top-filter-all"}
+                  className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
+                    searchFilter === "" ? "bg-[#34A853] text-white" : ""
+                  }`}
+                  onClick={() => setSearchFilter("")}
+                >
+                  الكل
+                </button>
+                {topFilter.map((ele, i) => (
+                  <button
+                    key={i}
+                    className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
+                      searchFilter === ele.value
+                        ? "bg-[#34A853] text-white"
+                        : ""
+                    }`}
+                    onClick={() => setSearchFilter(ele.value)}
+                  >
+                    {ele.title}
+                  </button>
+                ))}
+              </>
+            )}
+
+            {/* top add record */}
+            {addTop && (
+              <button
+                onClick={() => dispatch(toggleAddRecordPopup())}
+                className="flex mr-8 hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border px-2 py-1 rounded"
+              >
+                اضافة
+              </button>
+            )}
+
+            {enableFilter && (
+              <button
+                className="flex hover:bg-[#34A853] hover:border-transparent transition-all duration-200 hover:text-white items-center font-bold text-[#34A853] border-[#34A853] border px-2 py-1 rounded"
+                onClick={() => setFilterMenuActive(!filterMenuActive)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeWidth="2"
+                    d="M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z"
+                  />
+                </svg>
+                تصفية
+              </button>
+            )}
+          </div>
+          {/* add record */}
+          {AddRecordEle && (
+            <AddWrapper>
+              <AddRecordEle />
+            </AddWrapper>
+          )}
+        </>
       )}
+
       <div
         className={`${
           filterMenuActive && " gap-1 "

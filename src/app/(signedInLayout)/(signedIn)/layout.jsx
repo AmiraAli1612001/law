@@ -1,7 +1,7 @@
 "use client";
 import Popups from "@/components/popups/Popups";
 import SmallPopups from "@/components/smallPopups/SmallPopups";
-import { useRouter } from "next/navigation";
+import { useRouter,redirect } from "next/navigation";
 import { useSelector } from "react-redux";
 
 export default function Layout({ children }) {
@@ -10,7 +10,8 @@ export default function Layout({ children }) {
 
   console.log(isSignedIn);
   if (!isSignedIn && typeof window !== "undefined") {
-    router.replace("/auth");
+    // router.replace("/auth");
+    redirect("/auth");
   }
   if (isSignedIn) {
     return (

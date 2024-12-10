@@ -1,6 +1,5 @@
 const Layout = ({ children }) => {
   return (
-    <>
       <main
         style={{
           background:
@@ -10,7 +9,6 @@ const Layout = ({ children }) => {
       >
         {children}
       </main>
-    </>
   );
 };
 

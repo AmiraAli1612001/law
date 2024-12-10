@@ -1,11 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
-import dynamic from "next/dynamic";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css";
-import { resetPopups } from "@/globalState/Features/popupsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import DynamicList from "@/components/shared/dynamicList/DynamicList";
@@ -13,13 +9,16 @@ import {
   setCurrentErrors,
   setCurrentForm,
 } from "@/globalState/Features/formStateSlice";
-import PersonSelector from "@/components/shared/personSelector/PersonSelector";
-import HRData from "@/fakeData/HRData.json";
+
+import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 
 const AddWarning = () => {
   const signUpForm = useForm();
   const dispatch = useDispatch();
   const currentForm = useSelector((store) => store.formState.currentForm);
+  // const { currentId } = useSelector((store) => store.tempData);
+  const { employeeId } = useSelector((store) => store.tempData.employeeDetails);
+  const { JWT } = useSelector((store) => store.auth);
   const {
     register,
     handleSubmit,
@@ -33,11 +32,11 @@ const AddWarning = () => {
   async function handleSubmitSignUp(formData, e) {
     // setGeneralError("");
     // dispatch(openLoader("جاري التسجيل"));
+    handleAddWarning(formData)
+      .then((e) => toast.success("تم الحفظ بنجاح"))
+      .catch((e) => toast.error("حدث خطأ ما"));
 
     console.log(currentForm);
-    // const result = await fetchRegisterUser({
-    //   ...formData,
-    // });
 
     // dispatch(closeLoader());
   }
@@ -45,6 +44,29 @@ const AddWarning = () => {
     dispatch(setCurrentForm(register));
     dispatch(setCurrentErrors(errors));
   }, [register, errors]);
+
+  async function handleAddWarning(params) {
+    console.log("employeeId", employeeId);
+    console.log(params);
+    try {
+      const res = await fetchWithCheck(`/api/EmployeeWarning`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: JSON.stringify({
+          employeeId: employeeId,
+          warningType: params.warningType,
+          warningDate: params.warningDate,
+          additionalDetails: params.extraDetails,
+        }),
+      });
+      return res;
+    } catch (err) {
+      throw err;
+    }
+  }
   return (
     <form
       method="POST"
@@ -61,74 +83,64 @@ const AddWarning = () => {
           <select
             type="text"
             name=""
-            id="contractName"
-            {...register("contractName", {
-              required: "يجب كتابة عنوان الانذار",
+            id="warningType"
+            {...register("warningType", {
+              required: "يجب اختيار نوع الانذار",
             })}
             placeholder=""
           >
-            <option value="قرار موظف">تأخير</option>
-            <option value="">غائب</option>
+            <option value="تأخير">تأخير</option>
+            <option value="غائب">غائب</option>
           </select>
-          <p className="input-error">{errors.contractName?.message}</p>
+          <p className="input-error">{errors.warningType?.message}</p>
         </div>
 
-        {/* vacation Date ! */}
+        {/*  Date ! */}
         <div className="simple-input">
           <label htmlFor="">التاريخ</label>
           <input
             type="date"
             name=""
             defaultValue={new Date().toISOString().split("T")[0]}
-            id="vacationDate"
-            {...register("vacationDate", {
-              // required: "يجب كتابة الاسم الرباعي بالعربي",
+            id="warningDate"
+            {...register("warningDate", {
+              required: "يجب ادخال تاريخ الانذار",
             })}
             placeholder=""
           />
-          <p className="input-error">{errors.vacationDate?.message}</p>
+          <p className="input-error">{errors.warningDate?.message}</p>
         </div>
-        {/* <div className="simple-input">
-          <label htmlFor="">وقت الانذار</label>
-          <input
-            type="time"
-            name=""
-            // defaultValue={new Date().toISOString().split("T")[0]}
-            id="vacationDate"
-          />
-        </div> */}
-        {/* vacation due Date ! */}
-        {/* <div className="simple-input">
-          <label htmlFor="">وقت الانصراف</label>
-          <input
-            type="time"
-            name=""
-            // defaultValue={new Date().toISOString().split("T")[0]}
-            id="vacationDate"
-          />
-        </div> */}
       </div>
       {/* employee selector */}
-      <div className="input main-section px-0.5">
-        {/* <Parties /> */}
+      {/* <div className="input main-section px-0.5">
         <DynamicList
           title={" الموظف"}
           btnTitle={"جلسة"}
           recordType={"record"}
           multi={false}
         >
-          <PersonSelector />
+          <PersonSelector defaultValue={currentId} />
         </DynamicList>
-      </div>
+      </div> */}
       {/* name arabic ! arabicName*/}
       <div className="simple-input !min-w-full flex-1 main-section">
         <h3 className="text-lg font-semibold">تفاصيل اضافية</h3>
 
-        <textarea className="text-lg" name="" id=""></textarea>
-        <p className="input-error">{errors.arabicName?.message}</p>
+        <textarea
+          className="text-lg"
+          name=""
+          // id="extraDetails"
+          {...register("extraDetails", {
+            required: "يجب ادخال التفاصيل الاضافية",
+          })}
+        ></textarea>
+        <p className="input-error">{errors.extraDetails?.message}</p>
       </div>
 
-      <button className="text-white text-xl mt-4 p-4 w-full bg-textGreen rounded">
+      <button
+        type="submit"
+        className="text-white text-xl mt-4 p-4 w-full bg-textGreen rounded"
+      >
         اضافة
       </button>
     </form>

@@ -1,5 +1,5 @@
 "use client";
-import { resetPopups } from "@/globalState/Features/smallPopupsSlice";
+import { resetSmallPopups } from "@/globalState/Features/smallPopupsSlice";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -16,7 +16,7 @@ const DelaySession = () => {
   }
   function handleSubmit(e){
     e.preventDefault()
-    dispatch(resetPopups())
+    dispatch(resetSmallPopups())
     toast.success("تم التأجيل بنجاح")
   }
   return (

@@ -1,9 +1,13 @@
 "use client";
 import { handleSignIn } from "@/helperFunctions/auth";
 import { useRouter } from "next/navigation";
+import { useRef } from "react";
 
 const Auth = () => {
   const router = useRouter();
+  const mailRef = useRef(null);
+  const passwordRef = useRef(null);
+  
   return (
     <div className="bg-white drop-shadow flex h-full flex-1">
       <section className="flex-1  items-center justify-center bg-textGreen hidden lg:flex">
@@ -13,7 +17,11 @@ const Auth = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            handleSignIn(router);
+            handleSignIn(
+              router,
+              mailRef.current.value,
+              passwordRef.current.value
+            );
           }}
           action=""
           className="max-w-[500px] w-full flex flex-col gap-12"
@@ -29,6 +37,8 @@ const Auth = () => {
               <input
                 required
                 type="email"
+                ref={mailRef}
+                defaultValue={"mo@out.com"}
                 className="w-full p-2 border border-gray-300 rounded"
               />
             </div>
@@ -38,6 +48,8 @@ const Auth = () => {
               </label>
               <input
                 required
+                ref={passwordRef}
+                defaultValue={"password123"}
                 type="password"
                 className="w-full p-2 border border-gray-300 rounded"
               />

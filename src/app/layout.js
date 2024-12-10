@@ -6,7 +6,7 @@ import { StateProvider } from "@/globalState/StateProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Cairo } from "next/font/google";
-import 'swiper/css';
+import "swiper/css";
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
 //   variable: "--font-geist-sans",
@@ -33,6 +33,9 @@ export default function RootLayout({ children }) {
       >
         <StateProvider>
           <ToastContainer />
+          <div className="loader-wrapper">
+            <div className="loader"></div>
+          </div>
           {children}
         </StateProvider>
       </body>

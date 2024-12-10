@@ -25,3 +25,29 @@
 مرفق في الزيارات
 EZARAT
 EMPLOYEE REQUEST VACATION TOP LEFT
+
+INFO:
+    
+NEED:
+    emp id:
+        1- attendance check in
+        2- request for emp/id data
+        3- request leave
+
+    deduction/id:
+        id's deduction id and not emp id, need to get deduction for 1 employee
+
+    EmployeeReward/id:
+        id's EmployeeReward id and not emp id, need to get EmployeeReward for 1 employee
+
+    EmployeeSalary/id:
+        id's EmployeeSalary id and not emp id, need to get EmployeeSalary for 1 employee
+
+    EmployeeWarning/id:
+        id's EmployeeWarning id and not emp id, need to get EmployeeWarningsfor 1 employee
+    
+
+add/remove deduction on attendance
+
+
+        

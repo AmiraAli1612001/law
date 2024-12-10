@@ -43,7 +43,7 @@ const EmployeeContract = () => {
       action=""
       noValidate
       id="addIssueRecord"
-      className="flex flex-col gap-4 [&>.main-section]:p-4 [&>.main-section]:bg-bgGreen [&>.main-section]:rounded-lg [&>.main-section]:drop-shadow"
+      className="flex flex-col px-4 gap-4 [&>.main-section]:p-4 [&>.main-section]:bg-bgGreen [&>.main-section]:rounded-lg [&>.main-section]:drop-shadow"
     >
       {/* معلومات الموظف */}
       {/* <h3 className="small-inputs-title   !min-w-full text-2xl p-2 mb-6">

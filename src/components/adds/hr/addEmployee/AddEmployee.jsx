@@ -1,14 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { resetPopups } from "@/globalState/Features/popupsSlice";
+import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 // const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 // import "react-quill/dist/quill.snow.css";
 
 const AddEmployee = () => {
   const signUpForm = useForm();
+  const { JWT } = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
@@ -23,12 +25,50 @@ const AddEmployee = () => {
   async function handleSubmitSignUp(formData, e) {
     // setGeneralError("");
     // dispatch(openLoader("جاري التسجيل"));
-    toast.success("تم اضافة الموظف بنجاح");
-    dispatch(resetPopups());
     console.log(formData);
-    // const result = await fetchRegisterUser({
-    //   ...formData,
-    // });
+    const {
+      arabicName,
+      englishName,
+      email,
+      phone,
+      idNumber,
+      nationality,
+      jobTitle,
+      gender,
+    } = formData;
+    try {
+      const res = await fetchWithCheck("/api/Employee", {
+        method: "POST",
+        body: JSON.stringify({
+          fullNameArabic: arabicName,
+          fullNameEnglish: englishName,
+          email: email,
+          phoneNumber: phone,
+          nationalId: idNumber,
+          hiringDate: "2024-12-07T15:49:36.290Z",
+          nationality: nationality,
+          jobTitle: jobTitle,
+          gender: gender,
+          departmentId: 1,
+          residenceProfessionId: 1,
+          employeeStatusId: 1,
+          isActive: true,
+          workingHours: 0,
+          loanCount: 0,
+          password: "string",
+          isLock: true,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${JWT}`,
+        },
+      });
+      toast.success(res.message);
+      dispatch(resetPopups());
+    } catch (err) {
+      console.log(err);
+      toast.error("حدث خطأ ما");
+    }
 
     // dispatch(closeLoader());
   }
@@ -36,6 +76,25 @@ const AddEmployee = () => {
     toast.error("تم انهاء خدمات الموظف بنجاح");
     dispatch(resetPopups());
   }
+  // {
+  //   "fullNameArabic": "string",
+  //   "fullNameEnglish": "string",
+  //   "email": "string",
+  //   "phoneNumber": "string",
+  //   "nationalId": "string",
+  //   "hiringDate": "2024-12-07T15:49:36.290Z",
+  //   "nationality": "string",
+  //   "jobTitle": "string",
+  //   "gender": "string",
+  //   "departmentId": 0,
+  //   "residenceProfessionId": 0,
+  //   "employeeStatusId": 0,
+  //   "isActive": true,
+  //   "workingHours": 0,
+  //   "loanCount": 0,
+  //   "password": "string",
+  //   "isLock": true
+  // }
   return (
     <form
       method="POST"

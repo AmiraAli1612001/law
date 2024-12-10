@@ -20,4 +20,8 @@
 
 .small-inputs {
   @apply w-full grid md:grid-cols-2 lg:grid-cols-4   lg:flex-row gap-2 text-gray-800;
+}
+
+.simple-form .main-section {
+  @apply p-4 bg-bgGreen rounded-lg drop-shadow;
 }/*# sourceMappingURL=form.css.map */

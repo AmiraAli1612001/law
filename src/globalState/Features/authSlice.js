@@ -1,5 +1,6 @@
 "use client";
 
+import { isClient } from "@/helperFunctions/clientOnly";
 // import {
 //   // deleteAllUserAuthDataFromCookies,
 //   // setCookiesFromObject,
@@ -13,9 +14,18 @@ import { createSlice } from "@reduxjs/toolkit";
 //   return null;
 // };
 
-const initialState = { isHidden: false, isSignedIn: process.env.NEXT_PUBLIC_ENV=="dev", attendance: false };
-
-console.log(process.env.NEXT_PUBLIC_DEV)
+const initialState = {
+  isHidden: false,
+  // isSignedIn: process.env.NEXT_PUBLIC_ENV == "dev",
+  isSignedIn: isClient() ? localStorage.getItem("JWT") : false,
+  attendance: false,
+  JWT: isClient() ? localStorage.getItem("JWT") : null,
+  attendanceId: isClient() ? localStorage.getItem("attendanceId") : null,
+};
+if (isClient()) {
+  console.log(localStorage.getItem("JWT"));
+}
+console.log(process.env.NEXT_PUBLIC_DEV);
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -26,12 +36,23 @@ export const authSlice = createSlice({
     toggleAttendance: (state) => {
       state.attendance = !state.attendance;
     },
+    toggleAttendanceId: (state, action) => {
+      localStorage.setItem("attendanceId", action.payload);
+      state.attendanceId = action.payload;
+    },
+    toggleJWT: (state, action) => {
+      state.JWT = action.payload;
+      localStorage.setItem("JWT", action.payload);
+    },
     resetAuth: (state) => {
+      localStorage.removeItem("JWT");
+      localStorage.removeItem("attendanceId");
       return initialState;
     },
   },
 });
 
-export const { toggleSignIn, toggleAttendance, resetAuth } = authSlice.actions;
+export const { toggleSignIn, toggleAttendance,toggleAttendanceId, resetAuth, toggleJWT } =
+  authSlice.actions;
 
 export default authSlice.reducer;

@@ -85,6 +85,11 @@ const PersonSelector = ({
         // {...register(`select-${recordType}-${personName}`, {
         //   required: "يجب ادخال البيانات",
         // })}
+        defaultValue={defaultValue}
+        // onChange={(e) => {
+        //   setInputValue(e.target.value);
+        //   register(`select-${register}-${personName}`, e.target.value);
+        // }}
       >
         {inputValue.length == 0 && (
           <option value="" className="hidden text-black">
