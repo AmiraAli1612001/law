@@ -101,6 +101,7 @@ nav.swiper-nav ul li:hover, nav.swiper-nav ul li.active {
 
 /* HTML: <div class="loader"></div> */
 .loader-wrapper {
+  pointer-events: none;
   position: fixed;
   z-index: 999999;
   top: 50%;
@@ -108,14 +109,13 @@ nav.swiper-nav ul li:hover, nav.swiper-nav ul li.active {
   transform: translate(-50%, -50%);
 }
 .loader-wrapper .loader {
-  pointer-events: none;
   width: 50px;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 8px solid lightblue;
   border-right-color: orange;
   animation: l2 1s infinite linear;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.3s;
 }
 .loader-wrapper .loader.active {
