@@ -8,13 +8,14 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
 import { resetAuth } from "@/globalState/Features/authSlice";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import { resetFormState } from "@/globalState/Features/formStateSlice";
 import {
   toggleAddRecordPopup,
   toggleCurrentAttendance,
 } from "@/globalState/Features/popupsSlice";
 import CheckIn from "./checkIn/CheckIn";
+import { handleLogout } from "@/helperFunctions/auth";
 
 const Header = () => {
   const [notificationsState, setNotificationsState] = useState(false);
@@ -220,7 +221,7 @@ const Header = () => {
                 {/* log out */}
                 <li
                   className="drop-shadow-sm hidden md:flex items-center justify-center w-10 h-10 rounded cursor-pointer bg-white"
-                  onClick={() => dispatch(resetAuth())}
+                  onClick={() => handleLogout(redirect)}
                 >
                   <svg
                     width="38"

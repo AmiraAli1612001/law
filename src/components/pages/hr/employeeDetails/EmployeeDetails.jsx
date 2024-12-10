@@ -21,9 +21,14 @@ import EmployeeContract from "./employeeContract/EmployeeContract";
 import WarningsTable from "./warnings/WarningsTable";
 import SectionSwiper from "@/components/shared/sectionSwiper/SectionSwiper";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
-import { setEmployeeDetails } from "@/globalState/Features/tempDataSlice";
+import {
+  closeLoader,
+  openLoader,
+  setEmployeeDetails,
+} from "@/globalState/Features/tempDataSlice";
 import EmployeeSalaries from "./employeeSalaries/EmployeeSalaries";
 import EmployeeDeductions from "./employeeDeductions/EmployeeDeductions";
+import { lazyCloseLoader } from "@/helperFunctions/lazy";
 
 const EmployeeDetails = ({ id }) => {
   // const [data, setData] = useState({});\
@@ -48,15 +53,11 @@ const EmployeeDetails = ({ id }) => {
     },
     {
       title: "الرواتب",
-      ele: (
-        <EmployeeSalaries/>
-      ),
+      ele: <EmployeeSalaries />,
     },
     {
       title: "الخصومات",
-      ele: (
-        <EmployeeDeductions/>
-      ),
+      ele: <EmployeeDeductions />,
     },
     {
       title: "السلف",
@@ -228,11 +229,15 @@ const EmployeeDetails = ({ id }) => {
     },
   ];
   useEffect(() => {
+    dispatch(openLoader());
     fetchWithCheck(`/api/Employee/${id}`)
-      .then((res) => dispatch(setEmployeeDetails(res)))
-      .catch((err) => console.warn(err));
+      .then((res) => {
+        dispatch(setEmployeeDetails(res));
+      })
+      .catch((err) => console.warn(err))
+      .finally(() => lazyCloseLoader());
   }, []);
-  
+
   return (
     <div className="issue-details flex">
       <SectionSwiper sections={sections} />

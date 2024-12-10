@@ -2,23 +2,17 @@ import { fetchWithCheck, noCacheHeaders } from "@/helperFunctions/dataFetching";
 
 export const fetchCache = "force-no-store";
 
-export async function POST(request, {params}) {
-  const req = await request.json();
-  console.log("api/Attendance/check-out");
-  console.log(req);
-  
+export async function GET(request, { params }) {
+  console.log("GET api/Attendance/checked-in-today");
+
   try {
-    // const url = new URL(request.url);
-    // const token = url.searchParams.get("token");
     const data = await fetchWithCheck(
-      `${process.env.NEXT_PUBLIC_BASE}/api/Attendance/check-out/${params.id}`,
+      `${process.env.NEXT_PUBLIC_BASE}/api/Attendance/checked-in-today`,
       {
-        method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${request.headers.authorization}`,
+          Authorization: `Bearer ${request.headers.authorization}`,
         },
-        body: JSON.stringify(req),
       }
     );
 
@@ -29,8 +23,8 @@ export async function POST(request, {params}) {
       },
     });
   } catch (error) {
-    console.log("api/Attendance/check-in")
-    return new Response(JSON.stringify(error), {
+    console.log("GET api/Attendance/checked-in-today");
+    return new Response(error, {
       headers: { "Content-Type": "application/json" },
     });
   }

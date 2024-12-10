@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   contract: null,
   currentId: null,
+  loader: false,
   employeeDetails: {
     employeeId: 0,
     fullNameArabic: "",
@@ -45,6 +46,12 @@ const tempDataSlice = createSlice({
     setTasks: (state, action) => {
       state.tasks = action.payload;
     },
+    openLoader: (state) => {
+      state.loader = true;
+    },
+    closeLoader: (state) => {
+      state.loader = false;
+    },
     setEmployeeDetails: (state, action) => {
       state.employeeDetails = action.payload;
     },
@@ -60,7 +67,7 @@ const tempDataSlice = createSlice({
   },
 });
 
-export const { setTasks, setContract, resetTempData,setCurrentId, setEmployeeDetails } =
+export const { setTasks, setContract, resetTempData,setCurrentId,openLoader,closeLoader, setEmployeeDetails } =
   tempDataSlice.actions;
 
 export default tempDataSlice.reducer;

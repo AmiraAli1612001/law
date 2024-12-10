@@ -1,4 +1,8 @@
-import { toggleJWT, toggleSignIn } from "@/globalState/Features/authSlice";
+import {
+  resetAuth,
+  toggleJWT,
+  toggleSignIn,
+} from "@/globalState/Features/authSlice";
 import { store } from "@/globalState/store";
 import { fetchWithCheck } from "./dataFetching";
 import { toast } from "react-toastify";
@@ -22,4 +26,9 @@ export async function handleSignIn(router, email = "", password = "") {
     toast.error(error.message);
     console.log(error);
   }
+}
+
+export function handleLogout(redirect) {
+  store.dispatch(resetAuth());
+  redirect("/auth");
 }
