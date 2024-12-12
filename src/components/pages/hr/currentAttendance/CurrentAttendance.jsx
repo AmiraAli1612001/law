@@ -80,10 +80,10 @@ const CurrentAttendance = () => {
   }, []);
   return (
     <CustomTable
-      // RenderElement={RenderElement}
+      RenderElement={RenderElement}
       columns={columns}
       tableData={data}
-      tableType={1}
+      tableType={3}
     />
   );
 };

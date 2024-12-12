@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,12 +9,12 @@ const CheckIn = () => {
   return (
     <div
       className={`${
-        attendanceId > 0 ? "text-[#D00000]" : "text-textGreen"
+        attendanceId && attendanceId > 0 ? "text-[#D00000]" : "text-textGreen"
       } items-center gap-2 bg-white p-2 rounded drop-shadow-sm h-10 cursor-pointer hidden md:flex`}
       onClick={() => dispatch(toggleAttendancePopup())}
     >
       <p className="text-base">
-        {attendanceId > 0 ? "تسجيل الانصراف" : "تسجيل الحضور"}
+        {attendanceId && attendanceId > 0 ? "تسجيل الانصراف" : "تسجيل الحضور"}
       </p>
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -130,13 +130,13 @@ const CustomTable = ({
             {page.map((row) => {
               prepareRow(row);
               return (
-                <RenderElement key={row.original.id} data={row.original} />
+                <RenderElement cellCount={row.cells.length} key={row.original.id} data={row.original} />
               );
             })}{" "}
           </div>
         );
       case 3:
-        //table with custom tr with details open below
+        //table with tr with details open below
         return (
           <table
             {...getTableProps()}
@@ -422,6 +422,7 @@ const CustomTable = ({
           </div>
         )}
       </div>
+      
       {/* add bottom */}
       {addBtn && (
         <button className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
@@ -504,7 +505,7 @@ const CustomElementWrapper = ({ row, RenderElement }) => {
         </td>
       </tr>
       {isExpanded && (
-        <RenderElement key={row.original.id} data={row.original} />
+        <RenderElement cellCount={row.cells.length}  key={row.original.id} data={row.original} />
       )}
     </>
   );

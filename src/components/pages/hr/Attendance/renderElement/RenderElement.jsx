@@ -46,10 +46,10 @@ const RenderElement = ({
   };
   
   // Results
-  console.log("Difference between check-in and 9:00 AM:");
+  // console.log("Difference between check-in and 9:00 AM:");
   // console.log(formatTimeDifference(diffCheckInToNineAM));
 
-  console.log("Difference between check-out and 3:00 PM:");
+  // console.log("Difference between check-out and 3:00 PM:");
   // console.log(formatTimeDifference(diffCheckOutToThreePM));
 
   const columns = [

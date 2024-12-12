@@ -1,31 +1,58 @@
 import Link from "next/link";
 import React from "react";
 
-const RenderElement = ({ data: { id, name, title, department, status } }) => {
+const RenderElement = ({
+  cellCount,
+  data: { attendanceDate, checkInTime, checkOutTime, status, delayReason },
+}) => {
+  // {
+  //   "attendanceId": 8,
+  //   "employeeId": 2,
+  //   "attendanceDate": "2024-12-10T17:00:33.689",
+  //   "checkInTime": "2024-12-10T17:00:33.025038",
+  //   "checkOutTime": null,
+  //   "status": "Present",
+  //   "delayReason": "string"
+  // }
   return (
-    <tr className="simple-row">
-      <td>{id}</td>
-      <td>{name}</td>
-      <td>{title}</td>
-      <td>{department}</td>
-      <td>
-        {status == 1 ? (
-          <span className="px-2 bg-green-500 text-white rounded font-bold text-xs">
-            المؤسسة 1
-          </span>
-        ) : (
-            <span className="px-2 bg-red-500 text-white rounded font-bold text-xs">
-           ميداني: محكمة 1
-          </span>
-        )}
-      </td>
-      <td>
-        <Link
-          className="bg-blue-500 transition-all hover:bg-opacity-[0.7] text-white px-4 py-1 rounded text-sm"
-          href={`/hr/${id}`}
-        >
-          عرض
-        </Link>
+    <tr className="">
+      <td colSpan={cellCount + 1}>
+        <form id="editCurrentHrAttendance" className="w-full">
+          <div className="small-inputs !grid-cols-3">
+            <div className="simple-input">
+              <label htmlFor="">تاريخ الحضور</label>
+              <input required type="date" defaultValue={new Date(attendanceDate)} name="" id="" />
+            </div>
+
+            <div className="simple-input">
+              <label htmlFor="">وقت الحضور</label>
+              <input required type="time"  defaultValue={new Date(checkInTime)} name="" id="" />
+            </div>
+
+            <div className="simple-input">
+              <label htmlFor="">وقت الانصراف</label>
+              <input onChange={(e) => console.log(e.target.value)} required type="time" defaultValue={new Date(checkOutTime)} name="" id="" />
+            </div>
+          </div>
+
+          <div className="simple-input my-4">
+            <label htmlFor="">الحالة</label>
+            <select required name="" id="" defaultValue={status}>
+              <option value="Present">Present</option>
+              <option value="Absent">Absent</option>
+              <option value="Late">Late</option>
+              <option value="Early Leaving">Early Leaving</option>
+            </select>
+          </div>
+
+          <div className="simple-input">
+            <label htmlFor="">السبب</label>
+            <textarea name="" id="" required defaultValue={delayReason}>
+
+            </textarea>
+          </div>
+          <button form="editCurrentHrAttendance" type="submit" className="px-10 py-2 bg-blue-500 text-white rounded mt-4">حفظ</button>
+        </form>
       </td>
     </tr>
   );

@@ -12,7 +12,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const Attendance = () => {
-  const { attendance, JWT, attendanceId } = useSelector((store) => store.auth);
+  const {
+    attendance,
+    user: { employeeId, token },
+    attendanceId,
+  } = useSelector((store) => store.auth);
   const { employeeDetails } = useSelector((store) => store.tempData);
   const dispatch = useDispatch();
 
@@ -33,7 +37,7 @@ const Attendance = () => {
 
   async function handleCheckIn() {
     console.log({
-      employeeId: employeeDetails.employeeId,
+      employeeId,
       attendanceDate: currentDate,
       checkInTime: currentDate,
       checkOutTime: currentDate,
@@ -44,10 +48,10 @@ const Attendance = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${JWT}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        employeeId: employeeDetails.employeeId,
+        employeeId,
         attendanceDate: currentDate,
         checkInTime: currentDate,
         checkOutTime: currentDate,
@@ -55,6 +59,7 @@ const Attendance = () => {
         delayReason: "string",
       }),
     });
+    dispatch(toggleAttendanceId(res.attendanceId));
     console.log(res);
     return res;
   }
@@ -65,7 +70,7 @@ const Attendance = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${JWT}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(
           tasks.map((task) => ({

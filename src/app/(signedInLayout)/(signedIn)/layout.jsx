@@ -5,15 +5,15 @@ import { useRouter,redirect } from "next/navigation";
 import { useSelector } from "react-redux";
 
 export default function Layout({ children }) {
-  const isSignedIn = useSelector((store) => store.auth.isSignedIn);
+  const {user:{token}} = useSelector((state) => state.auth);
   const router = useRouter();
 
-  console.log(isSignedIn);
-  if (!isSignedIn && typeof window !== "undefined") {
+  if (!token && typeof window !== "undefined") {
     // router.replace("/auth");
     redirect("/auth");
   }
-  if (isSignedIn) {
+
+  if (token) {
     return (
       <>
         <Popups />

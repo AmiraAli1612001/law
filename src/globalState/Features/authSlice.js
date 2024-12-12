@@ -17,8 +17,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isHidden: false,
   // isSignedIn: process.env.NEXT_PUBLIC_ENV == "dev",
-  isSignedIn: isClient() ? localStorage.getItem("JWT") : false,
   attendance: false,
+  isSignedIn: isClient() ? localStorage.getItem("JWT") : false,
   user: isClient() ? JSON.parse(localStorage.getItem("user") || null) : null,
   attendanceId: isClient() ? localStorage.getItem("attendanceId") : null,
 };

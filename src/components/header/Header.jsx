@@ -27,6 +27,7 @@ const Header = () => {
   }, [pathname]);
   return (
     <>
+      {/* top header */}
       <header className="bg-bgGreen text-3xl  z-[60]">
         <ScreenWrapper className={"relative z-50"}>
           <section className="flex items-center py-4 justify-between">
@@ -263,6 +264,7 @@ const Header = () => {
           </section>
         </ScreenWrapper>
       </header>
+      {/* mid header and adv */}
       <div className="sticky top-0 z-50 drop-shadow">
         {/* mid header nav */}
         <div className="bg-white drop-shadow relative z-40 ">

@@ -42,7 +42,6 @@
 }
 .simple-table tbody tr td input,
 .simple-table tbody tr td select {
-  width: 80px;
   border: 1px solid #dfe3e8;
 }
 .simple-table tbody tr::after {
