@@ -7,6 +7,7 @@ import attendanceData from "@/fakeData/attendanceData.json";
 import { useSelector } from "react-redux";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import AddSalary from "@/components/adds/hr/addSalary/AddSalary";
+import RenderElement from "./RenderElement";
 
 const EmployeeSalariesTable = () => {
   const [data, setData] = useState([]);
@@ -78,7 +79,8 @@ const EmployeeSalariesTable = () => {
       AddRecordEle={AddSalary}
       className="min-h-screen"
       addTop={true}
-      tableType={1}
+      tableType={3}
+      RenderElement={RenderElement}
       columns={columns}
       tableData={Array.isArray(data) ? data : []}
     />
