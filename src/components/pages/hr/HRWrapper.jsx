@@ -39,7 +39,7 @@ const HRWrapper = ({ id }) => {
       ele: <HRTable />,
     },
     {
-      title: "الحضور الحالي",
+      title: "حضور اليوم",
       ele: <CurrentAttendance />,
     },
     {

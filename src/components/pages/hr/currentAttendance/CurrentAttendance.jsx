@@ -7,6 +7,7 @@ import { closeLoader, openLoader } from "@/globalState/Features/tempDataSlice";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { lazyCloseLoader } from "@/helperFunctions/lazy";
+import deleteRecordAPI from "@/helperFunctions/apiHelpers/delete";
 
 const CurrentAttendance = () => {
   const [data, setData] = useState([]);
@@ -59,12 +60,17 @@ const CurrentAttendance = () => {
       Header: "الاجراءات",
       accessor: "actions",
       Cell: ({ row }) => (
-        <Link
-          href="/hr/1"
-          className="bg-blue-500 px-4 py-1 rounded text-white hover:bg-blue-600 transition-all"
-        >
-          عرض
-        </Link>
+        <>
+          <Link
+            href="/hr/1"
+            className="bg-blue-500 px-4 py-1 rounded text-white hover:bg-blue-600 transition-all inline-block"
+          >
+            عرض
+          </Link>
+          <button onClick={()=>deleteRecordAPI(`/api/AttendanceAdmin/${row.original.attendanceId}`)} className="px-4 py-1 bg-red-500 text-white rounded">
+            حذف
+          </button>
+        </>
       ),
     },
   ];

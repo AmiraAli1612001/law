@@ -62,7 +62,6 @@ export async function PUT(request, { params: { id } }) {
 
 export async function DELETE(request, { params: { id } }) {
   console.log("DELETE api/AttendanceAdmin");
-  const req = await request.json();
   try {
     const data = await fetchWithCheck(
       `${process.env.NEXT_PUBLIC_BASE}/api/AttendanceAdmin/${id}`,
@@ -71,8 +70,7 @@ export async function DELETE(request, { params: { id } }) {
         headers: {
           "Content-Type": "application/json",
           Authorization: request.headers.authorization,
-        },
-        body: JSON.stringify(req),
+        }
       }
     );
 
@@ -84,7 +82,7 @@ export async function DELETE(request, { params: { id } }) {
     });
   } catch (error) {
     console.log("DELETE api/AttendanceAdmin err");
-    return new Response(JSON.stringify(error), {
+    return new Response(error, {
       headers: { "Content-Type": "application/json" },
     });
   }
