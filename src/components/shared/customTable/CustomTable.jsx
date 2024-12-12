@@ -13,7 +13,7 @@ import { toggleAddRecordPopup } from "@/globalState/Features/formStateSlice";
 
 const CustomTable = ({
   RenderElement,
-  topSearch =true,
+  topSearch = true,
   AddRecordEle,
   columns,
   tableData,
@@ -188,6 +188,7 @@ const CustomTable = ({
                     <th
                       {...column.getHeaderProps(column.getSortByToggleProps())}
                       key={i}
+                      className={`w-[calc(100%/${columns.length})]`}
                     >
                       {column.render("Header")}
                     </th>
@@ -198,7 +199,14 @@ const CustomTable = ({
             <tbody {...getTableBodyProps()} className="">
               {page.map((row, i) => {
                 prepareRow(row);
-                return <RenderElement row={row} data={row.original} key={i} />;
+                return (
+                  <RenderElement
+                    cellCount={columns.length}
+                    row={row}
+                    data={row.original}
+                    key={i}
+                  />
+                );
               })}
             </tbody>
           </table>

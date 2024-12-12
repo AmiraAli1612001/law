@@ -19,7 +19,7 @@ const initialState = {
   // isSignedIn: process.env.NEXT_PUBLIC_ENV == "dev",
   isSignedIn: isClient() ? localStorage.getItem("JWT") : false,
   attendance: false,
-  JWT: isClient() ? localStorage.getItem("JWT") : null,
+  user: isClient() ? JSON.parse(localStorage.getItem("user") || null) : null,
   attendanceId: isClient() ? localStorage.getItem("attendanceId") : null,
 };
 if (isClient()) {
@@ -40,9 +40,9 @@ export const authSlice = createSlice({
       localStorage.setItem("attendanceId", action.payload);
       state.attendanceId = action.payload;
     },
-    toggleJWT: (state, action) => {
-      state.JWT = action.payload;
-      localStorage.setItem("JWT", action.payload);
+    toggleUser: (state, action) => {
+      state.user = action.payload;
+      localStorage.setItem("user", JSON.stringify(action.payload));
     },
     resetAuth: (state) => {
       localStorage.removeItem("JWT");
@@ -52,7 +52,12 @@ export const authSlice = createSlice({
   },
 });
 
-export const { toggleSignIn, toggleAttendance,toggleAttendanceId, resetAuth, toggleJWT } =
-  authSlice.actions;
+export const {
+  toggleSignIn,
+  toggleAttendance,
+  toggleAttendanceId,
+  resetAuth,
+  toggleUser,
+} = authSlice.actions;
 
 export default authSlice.reducer;

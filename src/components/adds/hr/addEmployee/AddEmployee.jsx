@@ -10,7 +10,9 @@ import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 
 const AddEmployee = () => {
   const signUpForm = useForm();
-  const { JWT } = useSelector((state) => state.auth);
+  const {
+    user: { token },
+  } = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
@@ -60,7 +62,7 @@ const AddEmployee = () => {
         }),
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${JWT}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       toast.success(res.message);

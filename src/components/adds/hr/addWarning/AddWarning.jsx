@@ -18,7 +18,7 @@ const AddWarning = () => {
   const currentForm = useSelector((store) => store.formState.currentForm);
   // const { currentId } = useSelector((store) => store.tempData);
   const { employeeId } = useSelector((store) => store.tempData.employeeDetails);
-  const { JWT } = useSelector((store) => store.auth);
+  const { user: { token } } = useSelector((store) => store.auth);
   const {
     register,
     handleSubmit,
@@ -53,7 +53,7 @@ const AddWarning = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${JWT}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           employeeId: employeeId,

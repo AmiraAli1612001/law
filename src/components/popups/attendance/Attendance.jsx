@@ -32,9 +32,9 @@ const Attendance = () => {
       },
       body: JSON.stringify({
         employeeId: 2,
-        attendanceDate: "2024-12-07T01:31:48.713Z",
-        checkInTime: "2024-12-07T01:31:48.713Z",
-        checkOutTime: "2024-12-07T01:31:48.713Z",
+        attendanceDate: new Date().toISOString(),
+        checkInTime: new Date().toISOString(),
+        checkOutTime: new Date().toISOString(),
         status: "string",
         delayReason: "string",
       }),

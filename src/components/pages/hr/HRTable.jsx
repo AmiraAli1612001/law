@@ -41,7 +41,7 @@ const HRTable = () => {
   useEffect(() => {
     dispatch(openLoader());
     fetchWithCheck("/api/Employee", {})
-      .then((e) => setData(e))
+      .then((e) => setData(Array.isArray(e) ? e : []))
       .catch((e) => {
         console.log("HRTable");
         console.log(e);

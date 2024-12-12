@@ -20,6 +20,7 @@ const Attendance = () => {
   //   "status": "Present",
   //   "delayReason": "string"
   // },
+  
   const columns = [
     {
       Header: "الرقم",
@@ -54,10 +55,11 @@ const Attendance = () => {
       accessor: "actions",
     },
   ];
+
   useEffect(() => {
     dispatch(openLoader());
     fetchWithCheck("/api/AttendanceAdmin")
-      .then((e) => setData(e))
+      .then((e) => setData(Array.isArray(e) ? e : []))
       .catch((e) => {
         console.log("HRTable");
         console.log(e);
@@ -66,6 +68,7 @@ const Attendance = () => {
         lazyCloseLoader();
       });
   }, []);
+
   return (
     <CustomTable
       tableType={4}

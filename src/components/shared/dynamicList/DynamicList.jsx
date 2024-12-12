@@ -28,17 +28,12 @@ const ListItem = ({
   return (
     <div className="flex justify-between items-center ">
       <div className="flex-1 simple-input">
-        {/* <h4>
-          الطرف <span>{index + 1}</span>
-        </h4> */}
         <div className="flex  overflow-hidden gap-2">
           <div className="bg-contract rounded p-2 text-lg font-bold flex justify-center items-center">
             <span>{index + 1}</span>
           </div>
           {children}
-
           {/* add btn */}
-          {/* add person btn */}
           {last && btnTitle && recordType && (
             <button
               onClick={handleAddPerson}
@@ -68,14 +63,6 @@ const ListItem = ({
               </svg>
             </button>
           )}
-          {/* <textarea
-                  value={item.value}
-                  onChange={(e) => setListItemData(item.id, e.target.value)}
-                  className="w-full  min-h-[100px]"
-                  name=""
-                  id=""
-                ></textarea> */}
-          {/* {index == listItems.length - 1 && listItems.length > 1 && ( */}
           {(index > 0 || length > 1) && (
             <button
               type="button"

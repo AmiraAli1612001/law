@@ -1,7 +1,7 @@
 import {
   resetAuth,
-  toggleJWT,
   toggleSignIn,
+  toggleUser,
 } from "@/globalState/Features/authSlice";
 import { store } from "@/globalState/store";
 import { fetchWithCheck } from "./dataFetching";
@@ -19,7 +19,7 @@ export async function handleSignIn(router, email = "", password = "") {
     console.log("res");
     console.log(res);
     store.dispatch(toggleSignIn());
-    store.dispatch(toggleJWT(res.token ?? ""));
+    store.dispatch(toggleUser(res.token ? res : null));
     router.replace("/");
   } catch (error) {
     console.log("handleSignIn");

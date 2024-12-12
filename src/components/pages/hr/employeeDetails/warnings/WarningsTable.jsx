@@ -7,6 +7,7 @@ import attendanceData from "@/fakeData/attendanceData.json";
 import AddWarning from "@/components/adds/hr/addWarning/AddWarning";
 import { useSelector } from "react-redux";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
+import RenderElement from "./RenderElement";
 
 const WarningsTable = () => {
   const [data, setData] = useState([]);
@@ -59,8 +60,9 @@ const WarningsTable = () => {
     <CustomTable
       AddRecordEle={AddWarning}
       className="min-h-screen"
+      RenderElement={RenderElement}
       addTop={true}
-      tableType={1}
+      tableType={4}
       columns={columns}
       tableData={Array.isArray(data) ? data : []}
     />

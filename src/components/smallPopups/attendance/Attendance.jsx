@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 
 const Attendance = () => {
   const { attendance, JWT, attendanceId } = useSelector((store) => store.auth);
-
+  const { employeeDetails } = useSelector((store) => store.tempData);
   const dispatch = useDispatch();
 
   const signUpForm = useForm();
@@ -27,7 +27,19 @@ const Attendance = () => {
     trigger,
   } = signUpForm;
   let { errors, isSubmitted } = formState;
+  const currentDate = new Date(
+    new Date().getTime() - new Date().getTimezoneOffset() * 60000
+  ).toISOString();
+
   async function handleCheckIn() {
+    console.log({
+      employeeId: employeeDetails.employeeId,
+      attendanceDate: currentDate,
+      checkInTime: currentDate,
+      checkOutTime: currentDate,
+      status: "string",
+      delayReason: "string",
+    });
     const res = await fetchWithCheck("/api/attendance/check-in", {
       method: "POST",
       headers: {
@@ -35,10 +47,10 @@ const Attendance = () => {
         Authorization: `Bearer ${JWT}`,
       },
       body: JSON.stringify({
-        employeeId: 2,
-        attendanceDate: new Date().toISOString(),
-        checkInTime: new Date().toISOString(),
-        checkOutTime: new Date().toISOString(),
+        employeeId: employeeDetails.employeeId,
+        attendanceDate: currentDate,
+        checkInTime: currentDate,
+        checkOutTime: currentDate,
         status: "string",
         delayReason: "string",
       }),
@@ -58,8 +70,8 @@ const Attendance = () => {
         body: JSON.stringify(
           tasks.map((task) => ({
             taskDescription: "string",
-            dueDateStart: "2024-12-07T05:47:12.950Z",
-            dueDateEnd: "2024-12-07T05:47:12.950Z",
+            dueDateStart: currentDate,
+            dueDateEnd: currentDate,
           }))
         ),
       }
@@ -130,6 +142,7 @@ const Attendance = () => {
       </form>
     );
   }
+  console.log(new Date().toISOString());
   return (
     <form
       method="POST"
@@ -149,7 +162,7 @@ const Attendance = () => {
           //   required: "يجب كتابة الاسم الرباعي بالعربي",
           // })}
           disabled
-          value={new Date().toISOString().slice(0, 16)}
+          value={currentDate.slice(0, 16)}
           placeholder=""
         />
         <p className="input-error">{errors.arabicName?.message}</p>
