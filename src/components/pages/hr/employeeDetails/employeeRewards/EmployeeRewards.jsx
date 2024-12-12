@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import RenderElement from "./RenderElement";
 import AddReward from "@/components/adds/hr/addReward/AddReward";
+import deleteRecordAPI from "@/helperFunctions/apiHelpers/delete";
 
 const EmployeeRewards = () => {
   const [data, setData] = useState([]);
@@ -54,7 +55,7 @@ const EmployeeRewards = () => {
       Cell: ({ row }) => (
         <div className="flex gap-1 items-center justify-center">
           <button
-            onClick={(e) => deleteRecord(e)}
+            onClick={(e) => deleteRecordAPI(`/api/EmployeeReward/${row.original.employeeRewardId}`)}
             className="bg-mainRed bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center"
           >
             حذف

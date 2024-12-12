@@ -2,6 +2,7 @@ import { openLoader } from "@/globalState/Features/tempDataSlice";
 import { store } from "@/globalState/store";
 import { fetchWithCheck } from "../dataFetching";
 import { lazyCloseLoader } from "../lazy";
+import { toast } from "react-toastify";
 
 export default async function deleteRecordAPI(link) {
   const {
@@ -17,9 +18,11 @@ export default async function deleteRecordAPI(link) {
         Authorization: "Bearer" + token,
       },
     });
+    toast.success("success")
   } catch (err) {
     console.log(link)
-    console.log(error)
+    console.log(err)
+    toast.error("fail")
   }finally{
     lazyCloseLoader()
   }

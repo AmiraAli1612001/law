@@ -7,8 +7,24 @@ import { useRouter } from "next/navigation";
 import { setContract } from "@/globalState/Features/tempDataSlice";
 import { toggleAddRecordPopup, toggleEditEmployee } from "@/globalState/Features/popupsSlice";
 const CustomRow = ({ data, swipe }) => {
-  const { id, name, contracts,issues } = data;
-
+  const { id, fullNameArabic,phoneNumber, email,addDate } = data;
+ /**
+   *  {
+      "id": 1,
+      "fullNameArabic": "string 1",
+      "email": "string",
+      "phoneNumber": "string",
+      "nationalId": "string",
+      "nationalIdExpiryDate": "2024-12-07T06:39:28.504",
+      "nationality": "string",
+      "gender": "string",
+      "maritalStatus": "string",
+      "workLocation": "string",
+      "residence": "string",
+      "additionalInfo": "string",
+      "addDate": "2024-12-07T06:39:31.8742059"
+    }
+   */
   const router = useRouter()
   const dispatch = useDispatch()
   return (
@@ -22,19 +38,19 @@ const CustomRow = ({ data, swipe }) => {
         </div>
         <div>
           <p>الاسم</p>
-          <p className="row-data-content">{name}</p>
+          <p className="row-data-content">{fullNameArabic}</p>
         </div>
         <div>
           <p>رقم الهاتف</p>
-          <p className="row-data-content">121212636</p>
+          <p className="row-data-content">{phoneNumber}</p>
         </div>
         <div>
-          <p>عدد العقود</p>
-          <p className="row-data-content">{contracts}</p>
+          <p>البريد الالكتروني</p>
+          <p className="row-data-content">{email}</p>
         </div>
         <div>
-          <p>عدد القضايا</p>
-          <p className="row-data-content">{issues}</p>
+          <p>تاريخ الاضافة</p>
+          <p className="row-data-content">{new Date(addDate.slice(0,10))}</p>
         </div>
         <div className="flex gap-2 items-center">
           <Link
