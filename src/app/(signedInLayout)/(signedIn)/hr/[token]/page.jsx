@@ -6,6 +6,7 @@ import ScreenWrapper from "@/components/shared/screenWrapper/Wrapper";
 // import issuesData from "@/fakeData/issuesData.json";
 import EmployeeDetails from "@/components/pages/hr/employeeDetails/EmployeeDetails";
 import { toast } from "react-toastify";
+import deleteRecordAPI from "@/helperFunctions/apiHelpers/delete";
 
 const Employee = ({ params: { token } }) => {
   // const issueData = issuesData.find((issue) => issue.id == token);
@@ -33,16 +34,22 @@ const Employee = ({ params: { token } }) => {
           -
           <div className="row-data-content flex gap-2 items-center">
             <span className="text-mainRed font-bold">7</span>
-            <span >من</span>
+            <span>من</span>
             <span className="text-textGreen font-bold">21 يوم أجازة</span>
           </div>
           <div className="row-data-content ms-auto">
             <button
-              className="bg-textGreen bg-opacity-90  hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
+              className="bg-red-500 bg-opacity-90  hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
               // onClick={() => dispatch(toggleAddRecordPopup("record"))}
-              onClick={() => toast.success("تم الحفظ بنجاح")}
+              onClick={() => {
+                if (token == 1) {
+                  toast.error("cannot delete admin");
+                  return;
+                }
+                deleteRecordAPI(`/api/Employee/${token}`)
+              }}
             >
-              حفظ
+              حذف
             </button>
           </div>
         </div>
