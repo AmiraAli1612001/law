@@ -43,7 +43,7 @@ const Employee = ({ params: { token } }) => {
               // onClick={() => dispatch(toggleAddRecordPopup("record"))}
               onClick={() => {
                 if (token == 1) {
-                  toast.error("cannot delete admin");
+                  toast.error("cannot delete admin (id = 1)");
                   return;
                 }
                 deleteRecordAPI(`/api/Employee/${token}`)

@@ -25,7 +25,7 @@ const RenderElement = ({
   const {
     user: { token },
   } = useSelector((state) => state.auth);
-  const disptach = useDispatch();
+  const dispatch = useDispatch();
   // {
   //   "attendanceId": 8,
   //   "employeeId": 2,
@@ -38,7 +38,7 @@ const RenderElement = ({
   console.log(new Date(checkOutTime).toLocaleTimeString());
   async function handleSubmit(e) {
     e.preventDefault();
-    disptach(openLoader());
+    dispatch(openLoader());
     console.log({
       attendanceDate: new Date(attendanceDateRef.current.value).toISOString(),
       checkInTime:

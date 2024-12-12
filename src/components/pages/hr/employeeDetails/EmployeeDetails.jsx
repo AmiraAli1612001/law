@@ -29,6 +29,7 @@ import {
 import EmployeeSalaries from "./employeeSalaries/EmployeeSalaries";
 import EmployeeDeductions from "./employeeDeductions/EmployeeDeductions";
 import { lazyCloseLoader } from "@/helperFunctions/lazy";
+import EmployeeRewards from "./employeeRewards/EmployeeRewards";
 
 const EmployeeDetails = ({ id }) => {
   // const [data, setData] = useState({});\
@@ -136,75 +137,7 @@ const EmployeeDetails = ({ id }) => {
     {
       title: "المكافآت",
       ele: (
-        <table className="simple-table">
-          <thead>
-            <tr>
-              <th>رقم الدفعة</th>
-              <th>تاريخ الدفعة</th>
-              <th>المبلغ</th>
-              <th>الخصومات</th>
-              <th>المدفوع</th>
-              <th>المستحق</th>
-              <th>الحالة</th>
-              <th>التفاصيل</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>{new Date("2022-01-01").toLocaleDateString()}</td>
-
-              <td>2000 ريال</td>
-              <td>0 ريال</td>
-
-              <td>2000 ريال</td>
-              <td>0 ريال</td>
-
-              <td>تم الدفع</td>
-              <td>لا يوجد</td>
-              <td>
-                <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
-                  تعديل
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="text" />
-              </td>
-              <td>
-                <input type="text" />
-              </td>
-
-              <td>
-                <input type="text" />
-              </td>
-              <td>
-                <input type="text" />
-              </td>
-
-              <td>
-                <input type="text" />
-              </td>
-              <td>
-                <input type="text" />
-              </td>
-
-              <td>
-                <input type="text" />
-              </td>
-              <td>
-                <input type="text" />
-              </td>
-
-              <td>
-                <button className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
-                  اضافة
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <EmployeeRewards/>
       ),
     },
     {
@@ -228,6 +161,7 @@ const EmployeeDetails = ({ id }) => {
       ele: <ContractsWrapper />,
     },
   ];
+
   useEffect(() => {
     dispatch(openLoader());
     fetchWithCheck(`/api/Employee/${id}`)
@@ -236,7 +170,7 @@ const EmployeeDetails = ({ id }) => {
       })
       .catch((err) => console.warn(err))
       .finally(() => lazyCloseLoader());
-  }, []);
+  }, [id]);
 
   return (
     <div className="issue-details flex">
