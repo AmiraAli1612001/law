@@ -25,6 +25,8 @@ const initialState = {
   attachments: false,
   editEmployee: false,
   currentEmployee: null,
+  checkIn: false,
+  checkOut: false,
   currentAttendance: false,
   fileLink: "",
 };
@@ -34,37 +36,37 @@ export const popupsSlice = createSlice({
   initialState,
   reducers: {
     toggleAddRecordPopup: (state, action) => {
+      state.isHidden = !state.isHidden;
       switch (action.payload) {
-        // record popup
         case "addIssue":
           state.addIssue = !state.addIssue;
-          state.isHidden = !state.isHidden;
-          // state.isHidden = true;
           break;
         case "addContract":
-          // contract popup
           state.addContract = !state.addContract;
-          state.isHidden = !state.isHidden;
           break;
         case "addEmployee":
           state.addEmployee = !state.addEmployee;
-          state.isHidden = !state.isHidden;
           break;
         case "addTask":
           state.addTask = !state.addTask;
-          state.isHidden = !state.isHidden;
           break;
         case "requestVacation":
           state.requestVacation = !state.requestVacation;
-          state.isHidden = !state.isHidden;
           break;
         case "addClient":
           state.addClient = !state.addClient;
-          state.isHidden = !state.isHidden;
           break;
         default:
           break;
       }
+    },
+    toggleCheckInPopup: (state) => {
+      state.isHidden = !state.isHidden;
+      state.checkIn = !state.checkIn;
+    },
+    toggleCheckOutPopup: (state) => {
+      state.isHidden = !state.isHidden;
+      state.checkOut = !state.checkOut;
     },
     toggleAttachmentsPopup: (state, action) => {
       state.attachments = !state.attachments;
@@ -98,6 +100,8 @@ export const {
   togglePrintContractPopup,
   toggleTask,
   toggleCurrentAttendance,
+  toggleCheckOutPopup,
+  toggleCheckInPopup,
   resetPopups,
 } = popupsSlice.actions;
 

@@ -1,5 +1,6 @@
 "use client";
 import { toggleAttendance } from "@/globalState/Features/authSlice";
+import { toggleCheckOutPopup } from "@/globalState/Features/popupsSlice";
 import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import React from "react";
@@ -7,8 +8,8 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-const Attendance = () => {
-  const { attendance, JWT, attendanceId } = useSelector((store) => store.auth);
+const CheckOut = () => {
+  const { user, attendanceId } = useSelector((store) => store.auth);
 
   const dispatch = useDispatch();
 
@@ -23,24 +24,7 @@ const Attendance = () => {
   //   trigger,
   // } = signUpForm;
   // let { errors, isSubmitted } = formState;
-  async function handleCheckIn() {
-    const res = await fetchWithCheck("/api/attendance/check-in", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${JWT}`,
-      },
-      body: JSON.stringify({
-        employeeId: 2,
-        attendanceDate: new Date().toISOString(),
-        checkInTime: new Date().toISOString(),
-        checkOutTime: new Date().toISOString(),
-        status: "string",
-        delayReason: "string",
-      }),
-    });
-    return res;
-  }
+
   async function handleCheckOut(tasks = []) {
     const res = await fetchWithCheck(
       `/api/attendance/check-out/${attendanceId}`,
@@ -69,16 +53,10 @@ const Attendance = () => {
 
     console.log("formData");
     try {
-      let res;
-      if (attendance) {
-        res = await handleCheckOut();
-        toast.success(" تم تسجيل الانصراف بنجاح");
-      } else {
-        res = await handleCheckIn();
-        toast.success(" تم تسجيل الحضور بنجاح");
-      }
+      let res = await handleCheckOut();
+      toast.success(" تم تسجيل الانصراف بنجاح");
       console.log(res);
-      // dispatch(toggleAttendancePopup());
+      dispatch(toggleCheckOutPopup());
     } catch (err) {
       console.log(err);
       toast.error("حدث خطأ ما");
@@ -86,13 +64,9 @@ const Attendance = () => {
 
     // dispatch(closeLoader());
   }
-  if (attendance) {
+  if (user) {
     return (
-      <form
-        method="POST"
-        onSubmit={handleFormSubmit}
-        id="checkOutForm"
-      >
+      <form method="POST" onSubmit={handleFormSubmit} id="checkOutForm">
         <h3 className="mb-8 text-2xl">هل انت متأكد من تسجيل الانصراف؟</h3>
         <button
           className="text-white text-xl p-4 w-full bg-[#D00000]"
@@ -151,4 +125,4 @@ const Attendance = () => {
   );
 };
 
-export default Attendance;
+export default CheckOut;

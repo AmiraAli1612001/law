@@ -1,4 +1,3 @@
-import https from "https";
 import { fetchWithCheck, noCacheHeaders } from "@/helperFunctions/dataFetching";
 
 export const fetchCache = "force-no-store";
@@ -14,7 +13,6 @@ export async function POST(request) {
       `${process.env.NEXT_PUBLIC_BASE}/api/EmployeeAuth/Login`,
       {
         method: "POST",
-        agent: new https.Agent({ rejectUnauthorized: false }), // Disable SSL verification
         headers: {
           "Content-Type": "application/json",
         },
@@ -32,9 +30,10 @@ export async function POST(request) {
       },
     });
   } catch (error) {
-    console.log("api/EmployeeAuth/Login");
-    return new Response(JSON.stringify(error), {
-      status: 403,
+    console.log("api/EmployeeAuth/Login error");
+    console.log(error);
+    return new Response(error, {
+      status: error?.status || 500,
       headers: { "Content-Type": "application/json" },
     });
   }

@@ -1,19 +1,14 @@
 "use client";
-import DynamicList from "@/components/shared/dynamicList/DynamicList";
-import {
-  toggleAttendance,
-  toggleAttendanceId,
-} from "@/globalState/Features/authSlice";
-import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
+import { toggleAttendanceId } from "@/globalState/Features/authSlice";
+import { toggleCheckInPopup } from "@/globalState/Features/popupsSlice";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-const Attendance = () => {
+const CheckIn = () => {
   const {
-    attendance,
     user: { employeeId, token },
     attendanceId,
   } = useSelector((store) => store.auth);
@@ -31,6 +26,7 @@ const Attendance = () => {
     trigger,
   } = signUpForm;
   let { errors, isSubmitted } = formState;
+
   const currentDate = new Date(
     new Date().getTime() - new Date().getTimezoneOffset() * 60000
   ).toISOString();
@@ -63,89 +59,25 @@ const Attendance = () => {
     console.log(res);
     return res;
   }
-  async function handleCheckOut(tasks = []) {
-    const res = await fetchWithCheck(
-      `/api/attendance/check-out/${attendanceId}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(
-          tasks.map((task) => ({
-            taskDescription: "string",
-            dueDateStart: currentDate,
-            dueDateEnd: currentDate,
-          }))
-        ),
-      }
-    );
-    return res;
-  }
+
   async function handleSubmitSignUp(formData, e) {
     // setGeneralError("");
-    // dispatch(openLoader("جاري التسجيل"));
-
     console.log(formData);
     try {
-      let res;
-      if (attendanceId > 0) {
-        res = await handleCheckOut([1]);
-        toast.success(" تم تسجيل الانصراف بنجاح");
-        dispatch(toggleAttendanceId(0));
-      } else {
-        res = await handleCheckIn();
-        console.log(res);
-        dispatch(toggleAttendanceId(res.attendanceId));
-        toast.success(" تم تسجيل الحضور بنجاح");
-      }
+      let res = await handleCheckIn();
+
+      dispatch(toggleAttendanceId(res.attendanceId));
+      toast.success(" تم تسجيل الحضور بنجاح");
+
       console.log(res);
-      dispatch(toggleAttendancePopup());
+
+      dispatch(toggleCheckInPopup());
+
     } catch (err) {
       console.log(err);
       toast.error("حدث خطأ ما");
     }
 
-    // dispatch(closeLoader());
-  }
-  if (attendanceId > 0) {
-    return (
-      <form
-        method="POST"
-        onSubmit={handleSubmit(handleSubmitSignUp)}
-        action=""
-        noValidate
-        id="checkOutForm"
-        className="flex flex-col gap-4"
-      >
-        <h3 className="text-2xl ">هل انت متأكد من تسجيل الانصراف؟</h3>
-        <div className="max-h-[50vh] overflow-auto">
-          <DynamicList className={"!gap-4"} title={"مهام اليوم"}>
-            <div className="flex flex-1 flex-col gap-2">
-              <div className="flex gap-2">
-                <div className="simple-input flex-1">
-                  <label htmlFor="">من</label>
-                  <input type="time" name="" id="" />
-                </div>
-                <div className="simple-input flex-1">
-                  <label htmlFor="">الي</label>
-                  <input type="time" name="" id="" />
-                </div>
-              </div>
-              <textarea name="" placeholder="حدد مهامك" id=""></textarea>
-            </div>
-          </DynamicList>
-        </div>
-        <button
-          className="text-white text-xl p-4 w-full bg-[#D00000]"
-          type="submit"
-          form="checkOutForm"
-        >
-          تسجيل الانصراف
-        </button>
-      </form>
-    );
   }
   return (
     <form
@@ -196,4 +128,4 @@ const Attendance = () => {
   );
 };
 
-export default Attendance;
+export default CheckIn;

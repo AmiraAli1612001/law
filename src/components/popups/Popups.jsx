@@ -7,7 +7,6 @@ import AddIssuePopup from "./addIssue/AddIssuePopup";
 // import AddContractRecord from "./addContractRecord/AddContractRecord";
 
 import { resetPopups } from "@/globalState/Features/popupsSlice";
-import Attendance from "./attendance/Attendance";
 import AttachmentsPopup from "./attachments/AttachmentsPopup";
 import EditEmployee from "./editEmployee/EditEmployee";
 import Task from "./task/Task";
@@ -18,10 +17,13 @@ import AddContract from "../adds/contracts/addContract/AddContract";
 import AddEmployee from "../adds/hr/addEmployee/AddEmployee";
 import RequestVacation from "../adds/hr/requestVacation/RequestVacation";
 import CurrentAttendancePopup from "./currentAttendance/CurrentAttendancePopup";
+import CheckOut from "./checkOut/CheckOut";
+import CheckIn from "./checkIn/CheckIn";
 const Popups = () => {
   const dispatch = useDispatch();
 
   const isHidden = useSelector((store) => store.popups?.isHidden);
+
   if (!isHidden && typeof document != "undefined") {
     document.querySelector("body").style.overflow = "hidden";
   } else if (isHidden && typeof document != "undefined") {
@@ -35,7 +37,8 @@ const Popups = () => {
   const addEmployee = useSelector((store) => store.popups?.addEmployee);
   const addContract = useSelector((store) => store.popups?.addContract);
   const attachmentsPopup = useSelector((store) => store.popups?.attachments);
-  const attendance = useSelector((store) => store.popups?.attendance);
+  const checkIn = useSelector((store) => store.popups?.checkIn);
+  const checkOut = useSelector((store) => store.popups?.checkOut);
   const editEmployee = useSelector((store) => store.popups?.editEmployee);
   const printContract = useSelector((store) => store.popups?.printContract);
   const currentAttendance = useSelector((store) => store.popups?.currentAttendance);
@@ -64,9 +67,7 @@ const Popups = () => {
         } absolute  -left-1/4 -top-1/4  bg-black bg-opacity-30 z-10`}
       ></div>
       <div
-        className={`${
-          attendance ? "w-full !max-w-[500px] " : "  w-full h-full "
-        }  p-4 rounded relative flex flex-col max-w-screen-lg z-20`}
+        className={`p-4 rounded relative flex flex-col max-w-screen-lg z-20`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* close icon start */}
@@ -91,7 +92,8 @@ const Popups = () => {
         {attachmentsPopup && <AttachmentsPopup />}
         {addEmployee && <AddEmployee />}
         {addContract && <AddContract />}
-        {attendance && <Attendance />}
+        {checkIn && <CheckIn />}
+        {checkOut && <CheckOut />}
         {editEmployee && <EditEmployee />}
         {printContract && <PrintContract />}
         {currentAttendance && <CurrentAttendancePopup />}

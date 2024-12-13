@@ -1,3 +1,6 @@
+import { openLoader } from "@/globalState/Features/tempDataSlice";
+import { store } from "@/globalState/store";
+import { lazyCloseLoader } from "./lazy";
 
 export const noCacheHeaders = {
   // 'Content-Type': 'application/json',
@@ -6,9 +9,6 @@ export const noCacheHeaders = {
   Expires: "0",
   "Surrogate-Control": "no-store",
 };
-
-
-
 
 /**
  * Fetches a URL with optional caching and error handling.
@@ -20,7 +20,15 @@ export const noCacheHeaders = {
  * @return {Promise<any>} - A promise that resolves to the parsed JSON response or the response text.
  * @throws {Error} - If the fetch fails and no fallback value is provided.
  */
-export async function fetchWithCheck(url, options = {}, fallBack, cashe=false) {
+export async function fetchWithCheck(
+  url,
+  options = {},
+  fallBack,
+  cashe = false
+) {
+  if (typeof window !== "undefined") {
+    store.dispatch(openLoader());
+  }
   try {
     const headers = cashe ? { "": "" } : noCacheHeaders;
     const casheOption = cashe ? { "": "" } : { cache: "no-cache" };
@@ -34,7 +42,7 @@ export async function fetchWithCheck(url, options = {}, fallBack, cashe=false) {
       },
     });
     console.log("fetWCheck success");
-    
+
     let data = await response.text();
     console.log(data);
     if (!response.ok) {
@@ -59,10 +67,12 @@ export async function fetchWithCheck(url, options = {}, fallBack, cashe=false) {
     console.error(error);
     if (fallBack) return fallBack;
     throw error;
+  } finally {
+    if (typeof window !== "undefined") {
+      lazyCloseLoader();
+    }
   }
 }
-
-
 
 // home
 

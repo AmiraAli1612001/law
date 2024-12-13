@@ -28,7 +28,7 @@ export async function handleSignIn(router, email = "", password = "") {
   }
 }
 
-export function handleLogout(redirect) {
+export function handleLogout(router) {
+  router.push("/auth");
   store.dispatch(resetAuth());
-  redirect("/auth");
 }
