@@ -67,16 +67,15 @@ const CheckOut = () => {
     // dispatch(closeLoader());
   }
   return (
-    <div
-      className="wrapper bg-white w-full h-full relative p-10"
-      style={{
-        backgroundImage: "url('/images/logos/background.jpg')",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-    >
-
-      <div className="bg-black opacity-70 left-0 top-0 w-full h-full absolute "></div>
+    <div className="wrapper bg-white w-full h-full relative p-10">
+      <div className="left-[-10%] top-0 w-[120%] h-full absolute ">
+        <div className="bg-black opacity-70 left-0 top-0 w-full h-full absolute z-10"></div>
+        <img
+          src="/images/logos/background.jpg"
+          alt=""
+          className="w-full absolute left-0 top-0 h-full object-cover blur-md"
+        />
+      </div>
 
       <div className="relative z-10">
         <div className="logo mx-auto w-fit mb-10">
@@ -96,9 +95,14 @@ const CheckOut = () => {
           id="checkOutForm"
           className="flex flex-col gap-4  p-4 rounded-lg  drop-shadow"
         >
-          <h3 className="text-2xl text-white font-bold">اضف مهامك قبل الانصراف</h3>
+          <h3 className="text-2xl text-white font-bold">
+            اضف مهامك قبل الانصراف
+          </h3>
           <div className="max-h-[50vh] overflow-auto ">
-            <DynamicList className={"!gap-4 bg-[#172749]  text-white p-2 rounded-lg"} styleType={2}>
+            <DynamicList
+              className={"!gap-4 bg-[#172749]  text-white p-2 rounded-lg"}
+              styleType={2}
+            >
               <div className="flex flex-1 flex-col gap-2">
                 <div className="flex gap-2">
                   <div className="simple-input flex-1">
