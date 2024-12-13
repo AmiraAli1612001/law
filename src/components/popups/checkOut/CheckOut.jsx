@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const CheckOut = () => {
-  const { user, attendanceId } = useSelector((store) => store.auth);
+  const { user:{token}, attendanceId } = useSelector((store) => store.auth);
 
   const dispatch = useDispatch();
 
@@ -34,15 +34,23 @@ const CheckOut = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${JWT}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(
-          tasks.map((task) => ({
-            taskId: 0,
-            taskDescription: "string",
-            dueDateStart: "2024-12-07T05:47:12.950Z",
-            dueDateEnd: "2024-12-07T05:47:12.950Z",
-          }))
+          //   tasks.map((task) => ({
+          //     taskId: 0,
+          //     taskDescription: "string",
+          //     dueDateStart: "2024-12-07T05:47:12.950Z",
+          //     dueDateEnd: "2024-12-07T05:47:12.950Z",
+          //   }))
+          [
+            {
+              taskId: 0,
+              taskDescription: "string",
+              dueDateStart: new Date().toISOString(),
+              dueDateEnd: new Date().toISOString(),
+            },
+          ]
         ),
       }
     );
@@ -56,9 +64,9 @@ const CheckOut = () => {
     console.log("formData");
     try {
       let res = await handleCheckOut();
-      toast.success(" تم تسجيل الانصراف بنجاح");
       console.log(res);
       dispatch(toggleCheckOutPopup());
+      toast.success(" تم تسجيل الانصراف بنجاح");
     } catch (err) {
       console.log(err);
       toast.error("حدث خطأ ما");
