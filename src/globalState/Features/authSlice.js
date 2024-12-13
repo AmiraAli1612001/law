@@ -18,12 +18,12 @@ const initialState = {
   isHidden: false,
   // isSignedIn: process.env.NEXT_PUBLIC_ENV == "dev",
   attendance: false,
-  isSignedIn: isClient() ? localStorage.getItem("JWT") : false,
+  isSignedIn: isClient() ? localStorage.getItem("user") : false,
   user: isClient() ? JSON.parse(localStorage.getItem("user") || null) : null,
   attendanceId: isClient() ? localStorage.getItem("attendanceId") : null,
 };
 if (isClient()) {
-  console.log(localStorage.getItem("JWT"));
+  console.log(localStorage.getItem("user"));
 }
 console.log(process.env.NEXT_PUBLIC_DEV);
 export const authSlice = createSlice({
@@ -45,7 +45,7 @@ export const authSlice = createSlice({
       localStorage.setItem("user", JSON.stringify(action.payload));
     },
     resetAuth: (state) => {
-      localStorage.removeItem("JWT");
+      localStorage.removeItem("user");
       localStorage.removeItem("attendanceId");
       return initialState;
     },

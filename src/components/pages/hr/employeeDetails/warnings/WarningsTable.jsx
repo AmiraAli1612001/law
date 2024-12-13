@@ -8,6 +8,7 @@ import AddWarning from "@/components/adds/hr/addWarning/AddWarning";
 import { useSelector } from "react-redux";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import RenderElement from "./RenderElement";
+import deleteRecordAPI from "@/helperFunctions/apiHelpers/delete";
 
 const WarningsTable = () => {
   const [data, setData] = useState([]);
@@ -40,14 +41,16 @@ const WarningsTable = () => {
       Header: "",
       accessor: "actions",
       Cell: ({ row }) => (
-        <div className="flex gap-1 items-center justify-center">
-          <button
-            onClick={(e) => deleteRecord(e)}
-            className="bg-mainRed bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center"
-          >
-            حذف
-          </button>
-        </div>
+        <button
+          onClick={(e) =>
+            deleteRecordAPI(
+              `/api/EmployeeWarning/${row.original.employeeWarningId}`
+            )
+          }
+          className="bg-mainRed bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center"
+        >
+          حذف
+        </button>
       ),
     },
   ];
@@ -62,7 +65,7 @@ const WarningsTable = () => {
       className="min-h-screen"
       RenderElement={RenderElement}
       addTop={true}
-      tableType={4}
+      tableType={3}
       columns={columns}
       tableData={Array.isArray(data) ? data : []}
     />
