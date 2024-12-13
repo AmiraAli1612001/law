@@ -72,59 +72,59 @@ const CheckIn = () => {
       console.log(res);
 
       dispatch(toggleCheckInPopup());
-
     } catch (err) {
       console.log(err);
       toast.error("حدث خطأ ما");
     }
-
   }
   return (
-    <form
-      method="POST"
-      onSubmit={handleSubmit(handleSubmitSignUp)}
-      action=""
-      noValidate
-      id="checkInForm"
-    >
-      {/* datetime !*/}
-      <div className="simple-input">
-        <label htmlFor="">تاريخ الحضور</label>
-        <input
-          type="datetime-local"
-          name=""
-          // id="arabicName"
-          // {...register("arabicName", {
-          //   required: "يجب كتابة الاسم الرباعي بالعربي",
-          // })}
-          disabled
-          value={currentDate.slice(0, 16)}
-          placeholder=""
-        />
-        <p className="input-error">{errors.arabicName?.message}</p>
-      </div>
-      {/* delayReason ! */}
-      <div className="simple-input">
-        <label htmlFor="">سبب التأخير ان وجد</label>
-        <textarea
-          type="text"
-          name=""
-          id="delayReason"
-          {...register("delayReason", {
-            // required: "يجب كتابة الاسم الرباعي بالعربي",
-          })}
-          placeholder=""
-        ></textarea>
-        <p className="input-error">{errors.delayReason?.message}</p>
-      </div>
-      <button
-        className="text-white text-xl p-4 w-full bg-textGreen"
-        type="submit"
-        form="checkInForm"
+    <div className="wrapper bg-white p-4 pt-10 rounded w-[500px]">
+      <form
+        method="POST"
+        onSubmit={handleSubmit(handleSubmitSignUp)}
+        action=""
+        noValidate
+        id="checkInForm"
       >
-        تسجيل الحضور
-      </button>
-    </form>
+        {/* datetime !*/}
+        <div className="simple-input">
+          <label htmlFor="">تاريخ الحضور</label>
+          <input
+            type="datetime-local"
+            name=""
+            // id="arabicName"
+            // {...register("arabicName", {
+            //   required: "يجب كتابة الاسم الرباعي بالعربي",
+            // })}
+            disabled
+            value={currentDate.slice(0, 16)}
+            placeholder=""
+          />
+          <p className="input-error">{errors.arabicName?.message}</p>
+        </div>
+        {/* delayReason ! */}
+        <div className="simple-input">
+          <label htmlFor="">سبب التأخير ان وجد</label>
+          <textarea
+            type="text"
+            name=""
+            id="delayReason"
+            {...register("delayReason", {
+              // required: "يجب كتابة الاسم الرباعي بالعربي",
+            })}
+            placeholder=""
+          ></textarea>
+          <p className="input-error">{errors.delayReason?.message}</p>
+        </div>
+        <button
+          className="text-white text-xl p-4 w-full bg-textGreen"
+          type="submit"
+          form="checkInForm"
+        >
+          تسجيل الحضور
+        </button>
+      </form>
+    </div>
   );
 };
 

@@ -53,7 +53,7 @@ const Popups = () => {
       className={`${
         isHidden
           ? " -translate-x-full !pt-32 opacity-0"
-          : "  translate-x-0 py-10 opacity-100"
+          : "  translate-x-0 opacity-100"
       } fixed w-full h-full left-0 top-0 z-[9999] transition-transform flex items-center flex-col justify-center   popups `}
       //  original
       // className={`${
@@ -67,7 +67,7 @@ const Popups = () => {
         } absolute  -left-1/4 -top-1/4  bg-black bg-opacity-30 z-10`}
       ></div>
       <div
-        className={`p-4 rounded relative flex flex-col max-w-screen-lg z-20`}
+        className={`rounded w-full h-full relative flex flex-col z-20`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* close icon start */}

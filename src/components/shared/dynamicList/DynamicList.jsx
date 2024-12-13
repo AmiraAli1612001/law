@@ -16,6 +16,7 @@ const DynamicList = ({
   recordType,
   btnTitle,
   className,
+  styleType,
 }) => {
   const currentNumber = useRef(0);
   const [nameInput, setNameInput] = useState("");
@@ -38,12 +39,13 @@ const DynamicList = ({
   }
   return (
     <div className={`${className ?? " "} flex flex-col gap-2`}>
-      <h3 className="text-lg font-semibold">{title || ""}</h3>
+      {title && <h3 className="text-lg font-semibold">{title}</h3>}
       {listItems.map((item, index) => (
         <ListItem
           length={listItems.length}
           key={index}
           add={add}
+          styleType={styleType}
           recordType={recordType}
           btnTitle={btnTitle}
           multi={multi}
