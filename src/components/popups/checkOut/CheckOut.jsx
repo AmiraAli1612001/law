@@ -1,7 +1,13 @@
 "use client";
 import DynamicList from "@/components/shared/dynamicList/DynamicList";
-import { toggleAttendance } from "@/globalState/Features/authSlice";
-import { toggleCheckOutPopup } from "@/globalState/Features/popupsSlice";
+import {
+  toggleAttendance,
+  toggleAttendanceId,
+} from "@/globalState/Features/authSlice";
+import {
+  resetPopups,
+  toggleCheckOutPopup,
+} from "@/globalState/Features/popupsSlice";
 import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import Image from "next/image";
@@ -11,7 +17,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const CheckOut = () => {
-  const { user:{token}, attendanceId } = useSelector((store) => store.auth);
+  const {
+    user: { token },
+    attendanceId,
+  } = useSelector((store) => store.auth);
 
   const dispatch = useDispatch();
 
@@ -66,6 +75,7 @@ const CheckOut = () => {
       let res = await handleCheckOut();
       console.log(res);
       dispatch(toggleCheckOutPopup());
+      dispatch(toggleAttendanceId(0));
       toast.success(" تم تسجيل الانصراف بنجاح");
     } catch (err) {
       console.log(err);
@@ -75,7 +85,22 @@ const CheckOut = () => {
     // dispatch(closeLoader());
   }
   return (
-    <div className="wrapper bg-white w-full h-full relative p-10">
+    <div className="wrapper relative bg-white w-full h-full p-10">
+        {/* close popups btn */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        className="absolute top-6 right-6 cursor-pointer border border-red-500  rounded z-50"
+        onClick={() => dispatch(resetPopups())}
+      >
+        <path
+          fill="#FF0000"
+          d="M18.36 19.78L12 13.41l-6.36 6.37l-1.42-1.42L10.59 12L4.22 5.64l1.42-1.42L12 10.59l6.36-6.36l1.41 1.41L13.41 12l6.36 6.36z"
+        />
+      </svg>
+
       <div className="left-[-10%] top-0 w-[120%] h-full absolute ">
         <div className="bg-black opacity-70 left-0 top-0 w-full h-full absolute z-10"></div>
         <img

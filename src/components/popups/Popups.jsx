@@ -67,23 +67,11 @@ const Popups = () => {
         } absolute  -left-1/4 -top-1/4  bg-black bg-opacity-30 z-10`}
       ></div>
       <div
-        className={`rounded w-full h-full relative flex flex-col z-20`}
+        className={`rounded w-full h-full relative flex flex-col items-center justify-center z-20`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* close icon start */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          className="absolute top-6 right-6 cursor-pointer border border-red-500  rounded z-50"
-          onClick={() => dispatch(resetPopups())}
-        >
-          <path
-            fill="#FF0000"
-            d="M18.36 19.78L12 13.41l-6.36 6.37l-1.42-1.42L10.59 12L4.22 5.64l1.42-1.42L12 10.59l6.36-6.36l1.41 1.41L13.41 12l6.36 6.36z"
-          />
-        </svg>
+        
         {/* close icon end */}
         {addIssue && <AddIssuePopup />}
         {requestVacation && <RequestVacation />}
