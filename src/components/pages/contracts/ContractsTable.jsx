@@ -6,56 +6,64 @@ import ContractRow from "./contractRow/ContractRow";
 import contractsData from "@/fakeData/contractsData.json";
 // import AddContractRecord from "@/components/popups/addContractRecord/AddContractRecord";
 import AddContract from "@/components/adds/contracts/addContract/AddContract";
+import useFetchWithLoader from "@/customHooks/useFetchWithLoader";
 
 const ContractsTable = ({ swipe }) => {
+  const { data } = useFetchWithLoader("/api/CaseContract");
+  const { data: contractTypes } = useFetchWithLoader("/api/ContractType");
   const tableColumns = useMemo(
     () => [
       {
-        Header: "actions",
-        accessor: "actions",
-      },
-      {
-        Header: "رقم العقد",
-        accessor: "id",
-      },
-      {
-        Header: "اسم العقد",
-        accessor: "title",
+        Header: "الرقم",
+        accessor: "contractNumber",
       },
       {
         Header: "تاريخ العقد",
-        accessor: "date",
+        accessor: "contractDate",
+        Cell: ({ row }) =>
+          new Date(row.original.contractDate).toLocaleDateString(),
       },
       {
-        Header: "المدعي",
-        accessor: "firstParty",
+        Header: "القيمة",
+        accessor: "totalAmount",
       },
       {
-        Header: "المدعي علية",
-        accessor: "secondParty",
+        Header: "دفع كامل",
+        accessor: "isFullPayment",
+        Cell: ({ row }) => (row.original.isFullPayment ? "نعم" : "لا"),
       },
+      {
+        Header: "النوع",
+        accessor: "contractTypeId",
+      },
+      // {
+      //   Header: "المدعي علية",
+      //   accessor: "secondParty",
+      // },
       {
         Header: "الحالة",
-        accessor: "status",
+        accessor: "contractStatusId",
+      },
+      {
+        Header: "التصنيف",
+        accessor: "contractCategoryId",
+      },
+      {
+        Header: "",
+        accessor: "actions",
       },
     ],
     []
   );
   return (
-    <>
-      <CustomTable
-      topFilter={[
-        { title: "أتعاب", value: "اتعاب" },
-        { title: "خدمات", value: "خدمات" },
-        { title: "شركات", value: "شركات" },
-        { title: "استشارة", value: "استشارة" },
-      ]}
-        tableData={contractsData}
-        columns={tableColumns}
-        AddRecordEle={()=><AddContract/>}
-        RenderElement={(data)=><ContractRow swipe={swipe} {...data} />}
-      />
-    </>
+    <CustomTable
+      topFilter={Array.isArray(contractTypes) ? contractTypes : []}
+      tableData={Array.isArray(data) ? data : []}
+      columns={tableColumns}
+      AddRecordEle={() => <AddContract />}
+      tableType={1}
+      // RenderElement={(data)=><ContractRow swipe={swipe} {...data} />}
+    />
   );
 };
 

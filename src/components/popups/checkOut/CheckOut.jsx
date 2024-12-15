@@ -1,4 +1,5 @@
 "use client";
+import "./style.css";
 import DynamicList from "@/components/shared/dynamicList/DynamicList";
 import {
   toggleAttendance,
@@ -85,7 +86,7 @@ const CheckOut = () => {
     // dispatch(closeLoader());
   }
   return (
-    <div className="wrapper relative bg-white w-full h-full p-10">
+    <div className="wrapper relative bg-white w-full h-full p-10 checkout">
         {/* close popups btn */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +134,7 @@ const CheckOut = () => {
           </h3>
           <div className="max-h-[50vh] overflow-auto ">
             <DynamicList
-              className={"!gap-4 bg-[#172749]  text-white p-2 rounded-lg"}
+              className={"!gap-4 cbg-[#172749]  text-white p-2 rounded-lg"}
               styleType={2}
             >
               <div className="flex flex-1 flex-col gap-2">

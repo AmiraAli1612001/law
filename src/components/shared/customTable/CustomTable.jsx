@@ -21,16 +21,18 @@ const CustomTable = ({
   tableType = 2,
   addBtn = false,
   addTop = false,
-  topFilter = false,
+  topFilter = [],
   idFilter = false,
   className = "",
 }) => {
   const tableColumns = useMemo(() => columns, []);
   const [searchFilter, setSearchFilter] = useState("");
+  const [topFilterActive, setTopFilterActive] = useState(0);
   const [filterMenuActive, setFilterMenuActive] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("");
   const dispatch = useDispatch();
-  const data = useMemo(() => {
+
+  const dataPre = useMemo(() => {
     if (idFilter) {
       if (searchFilter === "") return tableData;
       else
@@ -38,16 +40,27 @@ const CustomTable = ({
           searchFilter.includes(ele.id.toString())
         );
     } else {
-      return tableData.filter((ele) =>
-        Object.keys(ele).some((key) => {
-          return ele[key]
-            .toString()
-            .toLowerCase()
-            .includes(searchFilter.toLowerCase());
-        })
+      return tableData.filter(
+        (ele) => topFilterActive == 0 || ele.contractTypeId == topFilterActive
       );
     }
-  }, [searchFilter, idFilter, tableData?.length]);
+  }, [
+    idFilter,
+    tableData?.length,
+    topFilter.length,
+    topFilterActive,
+  ]);
+
+  const data = useMemo(() => {
+    return dataPre.filter((ele) =>
+      Object.keys(ele).some((key) => {
+        return ele[key]
+          .toString()
+          .toLowerCase()
+          .includes(searchFilter.toLowerCase());
+      })
+    );
+  }, [searchFilter, dataPre?.length]);
 
   const tableInstance = useTable(
     { columns: tableColumns, data: data },
@@ -130,7 +143,11 @@ const CustomTable = ({
             {page.map((row) => {
               prepareRow(row);
               return (
-                <RenderElement cellCount={row.cells.length} key={row.original.id} data={row.original} />
+                <RenderElement
+                  cellCount={row.cells.length}
+                  key={row.original.id}
+                  data={row.original}
+                />
               );
             })}{" "}
           </div>
@@ -245,14 +262,14 @@ const CustomTable = ({
             />
 
             {/* topFilter */}
-            {topFilter && (
+            {topFilter.length > 1 && (
               <>
                 <button
                   key={"top-filter-all"}
                   className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
-                    searchFilter === "" ? "bg-[#34A853] text-white" : ""
+                    topFilterActive == 0 ? "bg-[#34A853] text-white" : ""
                   }`}
-                  onClick={() => setSearchFilter("")}
+                  onClick={() => setTopFilterActive(0)}
                 >
                   الكل
                 </button>
@@ -260,13 +277,11 @@ const CustomTable = ({
                   <button
                     key={i}
                     className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
-                      searchFilter === ele.value
-                        ? "bg-[#34A853] text-white"
-                        : ""
+                      topFilterActive == ele.id ? "bg-[#34A853] text-white" : ""
                     }`}
-                    onClick={() => setSearchFilter(ele.value)}
+                    onClick={() => setTopFilterActive(ele.id)}
                   >
-                    {ele.title}
+                    {ele.name}
                   </button>
                 ))}
               </>
@@ -422,7 +437,7 @@ const CustomTable = ({
           </div>
         )}
       </div>
-      
+
       {/* add bottom */}
       {addBtn && (
         <button className="bg-textGreen block w-full bg-opacity-90 hover:bg-opacity-55 transition-all  text-white px-4 py-2 rounded text-sm text-center">
@@ -505,7 +520,11 @@ const CustomElementWrapper = ({ row, RenderElement }) => {
         </td>
       </tr>
       {isExpanded && (
-        <RenderElement cellCount={row.cells.length}  key={row.original.id} data={row.original} />
+        <RenderElement
+          cellCount={row.cells.length}
+          key={row.original.id}
+          data={row.original}
+        />
       )}
     </>
   );

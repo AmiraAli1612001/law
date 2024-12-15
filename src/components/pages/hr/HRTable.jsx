@@ -10,10 +10,11 @@ import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import { useDispatch } from "react-redux";
 import { openLoader } from "@/globalState/Features/tempDataSlice";
 import { lazyCloseLoader } from "@/helperFunctions/lazy";
+import useFetchWithLoader from "@/customHooks/useFetchWithLoader";
 
 const HRTable = () => {
-  const [data, setData] = useState([]);
-  const dispatch = useDispatch();
+  const { data } = useFetchWithLoader("/api/Employee");
+  
   // {
   //   "employeeId": 1,
   //   "fullNameArabic": "محمد أحمد علي",
@@ -38,18 +39,7 @@ const HRTable = () => {
   //   "employeeStatusName": "على رأس العمل"
   // }
   console.log(data);
-  useEffect(() => {
-    dispatch(openLoader());
-    fetchWithCheck("/api/Employee", {})
-      .then((e) => setData(Array.isArray(e) ? e : []))
-      .catch((e) => {
-        console.log("HRTable");
-        console.log(e);
-      })
-      .finally((e) => {
-        lazyCloseLoader();
-      });
-  }, []);
+
 
   const tableColumns = useMemo(
     () => [
@@ -98,7 +88,7 @@ const HRTable = () => {
       ]}
       tableType={2}
       AddRecordEle={AddEmployee}
-      tableData={data}
+      tableData={Array.isArray(data) ? data : []}
       columns={tableColumns}
       RenderElement={HRRow}
     />
