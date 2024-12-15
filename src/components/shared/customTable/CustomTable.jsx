@@ -10,6 +10,7 @@ import {
 import AddWrapper from "../wrappers/adds/AddWrapper";
 import { useDispatch } from "react-redux";
 import { toggleAddRecordPopup } from "@/globalState/Features/formStateSlice";
+import CustomElementWrapper from "./shared/CustomElementWrapper";
 
 const CustomTable = ({
   RenderElement,
@@ -30,8 +31,10 @@ const CustomTable = ({
   const [topFilterActive, setTopFilterActive] = useState(0);
   const [filterMenuActive, setFilterMenuActive] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("");
+
   const dispatch = useDispatch();
 
+  //initial filter on id or contract type
   const dataPre = useMemo(() => {
     if (idFilter) {
       if (searchFilter === "") return tableData;
@@ -51,6 +54,7 @@ const CustomTable = ({
     topFilterActive,
   ]);
 
+  //2nd filter on search
   const data = useMemo(() => {
     return dataPre.filter((ele) =>
       Object.keys(ele).some((key) => {
@@ -89,6 +93,7 @@ const CustomTable = ({
 
   const { globalFilter } = state;
 
+  //4 different table types of structure based on need
   function renderTable(tableType) {
     switch (tableType) {
       case 1:
@@ -232,6 +237,7 @@ const CustomTable = ({
         break;
     }
   }
+
   return (
     <div className={`${className} flex flex-col gap-1 text-gray-900`}>
       {/* top search */}
@@ -486,47 +492,5 @@ const CustomTable = ({
     </div>
   );
 };
-const CustomElementWrapper = ({ row, RenderElement }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  return (
-    <>
-      <tr {...row.getRowProps()} className={``}>
-        {row.cells.map((cell, i) => {
-          return (
-            <td {...cell.getCellProps()} key={i}>
-              {cell.render("Cell")}
-            </td>
-          );
-        })}
-        <td onClick={() => setIsExpanded((prev) => !prev)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            className={`${
-              isExpanded ? "rotate-180" : "rotate-0"
-            } transition-all origin-center cursor-pointer`}
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="m6 9l6 6l6-6"
-            ></path>
-          </svg>
-        </td>
-      </tr>
-      {isExpanded && (
-        <RenderElement
-          cellCount={row.cells.length}
-          key={row.original.id}
-          data={row.original}
-        />
-      )}
-    </>
-  );
-};
+
 export default CustomTable;

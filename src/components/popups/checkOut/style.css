@@ -1,7 +1,13 @@
+.checkout label {
+  color: white !important;
+}
 .checkout input,
 .checkout textarea {
-  background-color: rgba(255, 255, 255, 0.61) !important;
-}
-.checkout * {
+  background-color: rgba(255, 255, 255, 0.082) !important;
   color: white !important;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.checkout input:focus,
+.checkout textarea:focus {
+  outline: none;
 }/*# sourceMappingURL=style.css.map */

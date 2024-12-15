@@ -153,7 +153,7 @@ const CheckOut = () => {
             </DynamicList>
           </div>
           <button
-            className="text-white rounded text-xl p-4 w-full bg-[#D00000]"
+            className="text-white rounded text-xl p-4 w-fit bg-[#D00000]"
             type="submit"
             form="checkOutForm"
           >

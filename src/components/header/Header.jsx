@@ -23,12 +23,14 @@ const Header = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const pathname = usePathname();
+  
   useEffect(() => {
     dispatch(resetFormState());
   }, [pathname]);
+
   function handleLogout(router) {
     router.push("/auth");
-    store.dispatch(resetAuth());
+    dispatch(resetAuth());
   }
   return (
     <>
@@ -316,11 +318,11 @@ const Header = () => {
                   <NavItem
                     subList={[
                       { title: "جميع القضايا", to: "/issues" },
-                      {
-                        title: "قضايا الدرجة الأولى",
-                        to: "/firstDegreeIssues",
-                      },
-                      { title: "قضايا التنفيذ", to: "/executiveIssues" },
+                      // {
+                      //   title: "قضايا الدرجة الأولى",
+                      //   to: "/firstDegreeIssues",
+                      // },
+                      // { title: "قضايا التنفيذ", to: "/executiveIssues" },
                       { title: "البنود", to: "/statements" },
                       { title: "الوكالات", to: "/agencies" },
                     ]}
