@@ -2,8 +2,8 @@ import { fetchWithCheck, noCacheHeaders } from "@/helperFunctions/dataFetching";
 
 export const fetchCache = "force-no-store";
 
-export async function GET(request, { params: { id } }) {
-  console.log("get /api/CaseContract/{id}/installments");
+export async function GET(request) {
+  console.log("get /api/CaseContract/installments/paid");
 
   try {
     // const url = new URL(request.url);
@@ -11,7 +11,7 @@ export async function GET(request, { params: { id } }) {
     // const pageSize = url.searchParams.get("pageSize");
 
     const data = await fetchWithCheck(
-      `${process.env.NEXT_PUBLIC_BASE}/api/CaseContract/${id}/installments);`,
+      `${process.env.NEXT_PUBLIC_BASE}/api/CaseContract/installments);`,
       {
         headers: {
           "Content-Type": "application/json",
