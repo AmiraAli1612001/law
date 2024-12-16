@@ -7,7 +7,7 @@ import {
 } from "@/globalState/Features/popupsSlice";
 import PersonSelector from "@/components/shared/personSelector/PersonSelector";
 import ListItem from "./ListItem";
-
+//todo: unfinished
 const DynamicList = ({
   children,
   multi = true,
@@ -19,7 +19,6 @@ const DynamicList = ({
   styleType,
 }) => {
   const currentNumber = useRef(0);
-  const [nameInput, setNameInput] = useState("");
   const [listItems, setListItems] = useState([
     { id: 0, value: "mohammed ahmed mahmoud" },
   ]);

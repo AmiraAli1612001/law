@@ -2,12 +2,12 @@
 import "./styles/contractTable.css";
 import React, { useMemo } from "react";
 import CustomTable from "../../shared/customTable/CustomTable";
-import ContractRow from "./contractRow/ContractRow";
-import contractsData from "@/fakeData/contractsData.json";
-// import AddContractRecord from "@/components/popups/addContractRecord/AddContractRecord";
+
 import AddContract from "@/components/adds/contracts/addContract/AddContract";
 import useFetchWithLoader from "@/customHooks/useFetchWithLoader";
 
+
+//todo: unfinished
 const ContractsTable = ({ swipe }) => {
   const { data } = useFetchWithLoader("/api/CaseContract");
   const { data: contractTypes } = useFetchWithLoader("/api/ContractType");

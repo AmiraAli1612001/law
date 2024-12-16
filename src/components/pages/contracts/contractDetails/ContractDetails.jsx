@@ -12,6 +12,7 @@ import Finance from "./finance/Finance";
 import { toggleAttachmentsPopup, togglePrintContractPopup } from "@/globalState/Features/popupsSlice";
 import { useDispatch } from "react-redux";
 
+//todo: api
 const ContractDetails = ({ id, contractData }) => {
   const [active, setActive] = useState(0);
   const outerSwiperRef = useRef(null);
