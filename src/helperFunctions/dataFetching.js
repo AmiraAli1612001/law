@@ -20,12 +20,15 @@ export const noCacheHeaders = {
  * @return {Promise<any>} - A promise that resolves to the parsed JSON response or the response text.
  * @throws {Error} - If the fetch fails and no fallback value is provided.
  */
+let apiKey = process.env.NEXT_PUBLIC_DEV
+
 export async function fetchWithCheck(
   url,
   options = {},
   fallBack,
   cashe = false
 ) {
+
   if (typeof window !== "undefined") {
     store.dispatch(openLoader());
   }
@@ -41,7 +44,6 @@ export async function fetchWithCheck(
         ...options?.headers,
       },
     });
-    console.log("fetWCheck success");
 
     let data = await response.text();
     console.log(data);
@@ -63,7 +65,6 @@ export async function fetchWithCheck(
       return data;
     }
   } catch (error) {
-    console.error("fetch with check catch");
     console.error(error);
     if (fallBack) return fallBack;
     throw error;
@@ -77,7 +78,7 @@ export async function fetchWithCheck(
 // home
 
 export async function fetchHomeData() {
-  const data = await fetchWithCheck(`/api/home/homeData`, null, null);
+  const data = await fetchWithCheck(`${apiKey}home/homeData`, null, null);
   return data;
 }
 
@@ -86,7 +87,7 @@ export async function fetchHomeData() {
 export async function fetchAddToBasket(data) {
   try {
     const addResult = await fetchWithCheck(
-      `/api/reservations/addToBasket?tokenCourse=${data.tokenCourse}&tokenStudent=${data.tokenStudent}`,
+      `${apiKey}reservations/addToBasket?tokenCourse=${data.tokenCourse}&tokenStudent=${data.tokenStudent}`,
       {
         method: "POST",
         headers: {
@@ -105,7 +106,7 @@ export async function fetchAddToBasket(data) {
 export async function fetchRegisterAttendanceCourse(data) {
   try {
     const courseDetails = await fetchWithCheck(
-      `/api/reservations/addOfflineCourse`,
+      `${apiKey}reservations/addOfflineCourse`,
       {
         method: "POST",
         headers: {

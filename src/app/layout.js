@@ -1,3 +1,4 @@
+"use-client"
 import localFont from "next/font/local";
 import "./styles/globals.css";
 import "./styles/form/form.css";
@@ -8,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Cairo } from "next/font/google";
 import "swiper/css";
 import Loader from "@/components/shared/loader/Loader";
+import { AuthProvider } from "@/context/Auth";
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
 //   variable: "--font-geist-sans",
@@ -32,11 +34,13 @@ export default function RootLayout({ children }) {
         className={`${cairo.className}   antialiased min-h-screen h-fit flex flex-col justify-between`}
         dir="rtl"
       >
-        <StateProvider>
-          <ToastContainer />
-          <Loader/>
-          {children}
-        </StateProvider>
+        <AuthProvider>
+          <StateProvider>
+            <ToastContainer />
+            <Loader />
+            {children}
+          </StateProvider>
+        </AuthProvider>
       </body>
     </html>
   );

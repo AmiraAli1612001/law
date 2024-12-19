@@ -4,9 +4,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const CheckIn = () => {
-  const { attendanceId } = useSelector((state) => state.auth);
+  // const { attendanceId } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  if (attendanceId && attendanceId > 0) {
+  // if (attendanceId && attendanceId > 0) {
     return (
       <div
         className={` text-[#D00000] items-center gap-2 bg-white p-2 rounded drop-shadow-sm h-10 cursor-pointer hidden md:flex`}
@@ -27,7 +27,9 @@ const CheckIn = () => {
         </svg>
       </div>
     );
-  } else {
+  // }
+  
+  // else {
     return (
       <div
         className={`text-textGreen items-center gap-2 bg-white p-2 rounded drop-shadow-sm h-10 cursor-pointer hidden md:flex`}
@@ -49,6 +51,6 @@ const CheckIn = () => {
       </div>
     );
   }
-};
+// };
 
 export default CheckIn;
