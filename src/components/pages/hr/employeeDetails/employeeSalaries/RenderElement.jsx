@@ -1,6 +1,8 @@
+import AuthContext from "@/context/Auth";
 import { openLoader } from "@/globalState/Features/tempDataSlice";
-import React, { useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useRef, useState, useContext } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const RenderElement = ({
   cellCount,
@@ -17,10 +19,7 @@ const RenderElement = ({
   },
 }) => {
   const dispatch = useDispatch();
-  const {
-    user: { token },
-  } = useSelector((state) => state.auth);
-
+  
   const dateRef = useRef();
   const amountRef = useRef();
   const deductionsRef = useRef();
@@ -29,48 +28,68 @@ const RenderElement = ({
   const statusRef = useRef();
   const detailsRef = useRef();
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(openLoader());
+  let [myDate, setDate] = useState("");
+  let [myAmount, setAmount] = useState("");
+  let [myDeductions, setDeductions] = useState("");
+  let [myPaid, setPaid] = useState("");
+  let [myDetails, setDetails] = useState("");
+  const apiKey = process.env.NEXT_PUBLIC_DEV;
 
+  let { getAllSalaries } = useContext(AuthContext);
+  const editEmployeeSalary = async () => {
+    console.log("Employee ID:", employeeId);
+    console.log("Date:", myDate);
+    console.log("Amount:", myAmount);
+    console.log("Deductions:", myDeductions);
+    console.log("Paid:", myPaid);
+    console.log("Details:", myDetails);
+  
     try {
-      const res = await fetchWithCheck(
-        `/api/EmployeeRewards/employee/${employeeSalaryId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            employeeSalaryId,
-            employeeId,
-            attendanceDate: new Date(dateRef.current.value).toISOString(),
-            deductions: deductionsRef.current.value,
-            paid: paidRef.current.value,
-            outstanding: outstandingRef.current.value,
-            amount: amountRef.current.value,
-            status: statusRef.current.value,
-            details: detailsRef.current.value,
-          }),
-        }
-      );
-
-      console.log(res);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      lazyCloseLoader();
+      const response = await fetch(`${apiKey}/EmployeeSalary/${employeeId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,  // Ensure the token is valid
+        },
+        cache: "no-store",  // Avoid caching for API requests
+        body: JSON.stringify({
+          employeeSalaryId: employeeSalaryId,  // Make sure the correct ID is passed
+          employeeId: employeeId,
+          date: myDate,
+          amount: myAmount,
+          deductions: myDeductions,
+          paid: myPaid,
+          outstanding: 0,  // Set it based on your logic
+          status: statusRef.current.value,
+          details: myDetails,
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error response:", errorData);
+        toast.error("حدث خطأ ما");
+      } else {
+        toast.success("تم الحفظ الراتب بنجاح");
+        getAllSalaries();  // Refresh the salaries list
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("حدث خطأ ما");
     }
-  }
+  };
+  
+
   return (
     <tr className="">
       <td colSpan={cellCount + 1}>
         <form
-          onSubmit={handleSubmit}
           id="editCurrentEmployeeReward"
           className="w-full"
-          method="POST"
+          onSubmit={(e) => {
+            e.preventDefault(); // Prevent default form submit
+            editEmployeeSalary(); // Call the function to update the employee salary
+          }}
         >
           <div className="small-inputs !grid-cols-3">
             {/* date */}
@@ -80,9 +99,10 @@ const RenderElement = ({
                 ref={dateRef}
                 required
                 type="date"
+                onChangeCapture={(e) => {
+                  setDate(e.target.value);
+                }}
                 defaultValue={new Date(date).toISOString().split("T")[0]}
-                name=""
-                id=""
               />
             </div>
             {/* amount */}
@@ -93,8 +113,9 @@ const RenderElement = ({
                 required
                 type="text"
                 defaultValue={amount}
-                name=""
-                id=""
+                onChange={(e) => {
+                  setAmount(e.target.value);
+                }}
               />
             </div>
             {/* status */}
@@ -102,12 +123,12 @@ const RenderElement = ({
               <label htmlFor="">السبب</label>
               <input
                 ref={statusRef}
-                onChange={(e) => console.log(e.target.value)}
                 required
                 type="text"
                 defaultValue={status}
-                name=""
-                id=""
+                onChange={(e) => {
+                  console.log(e.target.value);
+                }}
               />
             </div>
           </div>
@@ -120,8 +141,9 @@ const RenderElement = ({
                 required
                 type="text"
                 defaultValue={deductions}
-                name=""
-                id=""
+                onChange={(e) => {
+                  setDeductions(e.target.value);
+                }}
               />
             </div>
             {/* paid */}
@@ -129,12 +151,12 @@ const RenderElement = ({
               <label htmlFor="">المدفوع</label>
               <input
                 ref={paidRef}
-                onChange={(e) => console.log(e.target.value)}
                 required
                 type="text"
                 defaultValue={paid}
-                name=""
-                id=""
+                onChange={(e) => {
+                  setPaid(e.target.value);
+                }}
               />
             </div>
             {/* المتبقي */}
@@ -145,8 +167,6 @@ const RenderElement = ({
                 required
                 type="text"
                 defaultValue={outstanding}
-                name=""
-                id=""
               />
             </div>
           </div>
@@ -156,14 +176,14 @@ const RenderElement = ({
             <label htmlFor="">التفاصيل</label>
             <textarea
               ref={detailsRef}
-              name=""
-              id=""
               required
               defaultValue={details}
+              onChange={(e) => {
+                setDetails(e.target.value);
+              }}
             ></textarea>
           </div>
           <button
-            form="#editCurrentEmployeeReward"
             type="submit"
             className="px-10 py-2 bg-blue-500 text-white rounded mt-4"
           >

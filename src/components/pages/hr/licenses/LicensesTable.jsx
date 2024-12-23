@@ -2,7 +2,7 @@ import AddLicense from "@/components/adds/hr/license/AddLicense";
 import CustomTable from "@/components/shared/customTable/CustomTable";
 import React from "react";
 
-const CustomRow = ({data: {id, name, title, expiry}}) => {
+const CustomRow = ({ data: { id, name, title, expiry } }) => {
   return <div className="custom-table-row simple-row">
     <div>{id}</div>
     <div>{name}</div>
@@ -43,7 +43,9 @@ const LicensesTable = () => {
     },
   ]
   return (
-    <CustomTable addTop={true} AddRecordEle={AddLicense} columns={tableColumns} tableData={data} RenderElement={CustomRow} />
+    <CustomTable addTop={true} AddRecordEle={AddLicense} columns={tableColumns} tableData={data}
+    RenderElement={CustomRow} 
+    />
   );
 };
 

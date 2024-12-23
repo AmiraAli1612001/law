@@ -7,10 +7,36 @@ import attendanceData from "@/fakeData/attendanceData.json";
 import { useSelector } from "react-redux";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import AddDeduction from "@/components/adds/hr/addDeduction/AddDeduction";
+import ContractRow from "@/components/pages/contracts/contractRow/ContractRow";
 
 const EmployeeDeductionsTable = () => {
   const [data, setData] = useState([]);
   const { employeeId } = useSelector((store) => store.tempData.employeeDetails);
+  const getAllSDeduction = async () => {
+    try {
+      const response = await fetch(`${apiKey}/Deduction`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        cache: "no-store",
+      });
+      const res = await response.json();
+      if (response.ok) {
+        setData(res)
+      }
+    } catch (error) {
+      toast.error("حدث خطأ اثناء جلب البيانات")
+    }
+  };
+  useEffect(() => {
+    getAllSDeduction()
+  }, [])
+
+  console.log("de", data)
+
+
+
 
   const columns = [
     {
@@ -50,13 +76,15 @@ const EmployeeDeductionsTable = () => {
       ),
     },
   ];
-  useEffect(() => {
-    if (employeeId > 0) {
-      fetchWithCheck(`/api/Deduction/employee/${employeeId}`)
-        .then((res) => setData(res))
-        .catch((err) => console.warn(err));
-    }
-  }, [employeeId]);
+  // useEffect(() => {
+  //   if (employeeId > 0) {
+  //     fetchWithCheck(`/api/Deduction/employee/${employeeId}`)
+  //       .then((res) => setData(res))
+  //       .catch((err) => console.warn(err));
+  //   }
+  // }, [employeeId]);
+  console.log("😍😍😍😍", data)
+
   return (
     <CustomTable
       AddRecordEle={AddDeduction}
@@ -64,7 +92,8 @@ const EmployeeDeductionsTable = () => {
       addTop={true}
       tableType={1}
       columns={columns}
-      tableData={Array.isArray(data) ? data : []}
+      tableData={data}
+
     />
   );
 };

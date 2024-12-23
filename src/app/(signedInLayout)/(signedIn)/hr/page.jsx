@@ -12,7 +12,7 @@ const HR = () => {
         {/* <AddRecord recordType={"addEmployee"} title={"اضافة موظف"} /> */}
       </div>
       <div>
-        <HRWrapper/>
+        <HRWrapper />
       </div>
     </ScreenWrapper>
   );

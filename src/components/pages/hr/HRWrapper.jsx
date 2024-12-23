@@ -27,10 +27,6 @@ import SectionSwiper from "@/components/shared/sectionSwiper/SectionSwiper";
 
 const HRWrapper = ({ id }) => {
   const [active, setActive] = useState(0);
-  const outerSwiperRef = useRef(null);
-  const innnerSwiperRef = useRef(null);
-  const dispatch = useDispatch();
-  const issueDetails = issuesData.find((issue) => issue.id == id);
   console.log(active);
 
   const sections = [

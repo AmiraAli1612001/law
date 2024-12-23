@@ -7,24 +7,24 @@ import { useRouter } from "next/navigation";
 import { setContract } from "@/globalState/Features/tempDataSlice";
 import { toggleAddRecordPopup, toggleEditEmployee } from "@/globalState/Features/popupsSlice";
 const CustomRow = ({ data, swipe }) => {
-  const { id, fullNameArabic,phoneNumber, email,addDate } = data;
- /**
-   *  {
-      "id": 1,
-      "fullNameArabic": "string 1",
-      "email": "string",
-      "phoneNumber": "string",
-      "nationalId": "string",
-      "nationalIdExpiryDate": "2024-12-07T06:39:28.504",
-      "nationality": "string",
-      "gender": "string",
-      "maritalStatus": "string",
-      "workLocation": "string",
-      "residence": "string",
-      "additionalInfo": "string",
-      "addDate": "2024-12-07T06:39:31.8742059"
-    }
-   */
+  const { id, fullNameArabic, phoneNumber, email, addDate } = data;
+  /**
+    *  {
+       "id": 1,
+       "fullNameArabic": "string 1",
+       "email": "string",
+       "phoneNumber": "string",
+       "nationalId": "string",
+       "nationalIdExpiryDate": "2024-12-07T06:39:28.504",
+       "nationality": "string",
+       "gender": "string",
+       "maritalStatus": "string",
+       "workLocation": "string",
+       "residence": "string",
+       "additionalInfo": "string",
+       "addDate": "2024-12-07T06:39:31.8742059"
+     }
+    */
   const router = useRouter()
   const dispatch = useDispatch()
   return (
@@ -50,18 +50,18 @@ const CustomRow = ({ data, swipe }) => {
         </div>
         <div>
           <p>تاريخ الاضافة</p>
-          <p className="row-data-content">{new Date(addDate.slice(0,10))}</p>
+          <p className="row-data-content">{new Date(addDate.slice(0, 10))}</p>
         </div>
         <div className="flex gap-2 items-center">
           <Link
             className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
-            onClick={(e)=>{
+            onClick={(e) => {
               e.preventDefault()
               dispatch(setContract(data))
               router.push(`/clients/${id}`)
             }}
             href={`/clients/${id}`}
-            // onClick={() => swipe(1)}
+          // onClick={() => swipe(1)}
           >
             التفاصيل
           </Link>

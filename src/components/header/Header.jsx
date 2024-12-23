@@ -29,8 +29,8 @@ const Header = () => {
   }, [pathname]);
 
   function handleLogout(router) {
+    localStorage.removeItem("token")
     router.push("/auth");
-    dispatch(resetAuth());
   }
   return (
     <>
@@ -86,12 +86,12 @@ const Header = () => {
             {/* left nav wrapper */}
             <div className="flex items-center  gap-4">
               {/* current attendance */}
-              <button
+              {/* <button
                 onClick={() => dispatch(toggleCurrentAttendance())}
                 className="text-base items-center gap-2 bg-white p-2 rounded drop-shadow-sm h-10 cursor-pointer hidden md:flex"
               >
                 الحضور الحالي
-              </button>
+              </button> */}
               {/* attendance */}
               <CheckIn />
               {/* user */}

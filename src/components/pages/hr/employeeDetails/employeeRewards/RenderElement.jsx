@@ -16,39 +16,39 @@ const RenderElement = ({
   const amountRef = useRef();
   const reasonRef = useRef();
   const detailsRef = useRef();
-  
+
 
   async function handleSubmit(e) {
-      e.preventDefault();
-      dispatch(openLoader());
+    e.preventDefault();
+    dispatch(openLoader());
 
-  
-      try {
-        const res = await fetchWithCheck(`/api/EmployeeRewards/employee/${employeeRewardId}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            employeeId,
-            attendanceId,
-            attendanceDate: new Date(
-              dateRef.current.value
-            ).toISOString(),
-            amount: amountRef.current.value,
-            reason: reasonRef.current.value,
-            details: detailsRef.current.value,
-          }),
-        });
-  
-        console.log(res);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        lazyCloseLoader();
-      }
+
+    try {
+      // const res = await fetchWithCheck(`/api/EmployeeRewards/employee/${employeeRewardId}`, {
+      //   method: "PUT",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      //   body: JSON.stringify({
+      //     employeeId,
+      //     attendanceId,
+      //     attendanceDate: new Date(
+      //       dateRef.current.value
+      //     ).toISOString(),
+      //     amount: amountRef.current.value,
+      //     reason: reasonRef.current.value,
+      //     details: detailsRef.current.value,
+      //   }),
+      // });
+
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      lazyCloseLoader();
     }
+  }
   return (
     <tr className="">
       <td colSpan={cellCount + 1}>

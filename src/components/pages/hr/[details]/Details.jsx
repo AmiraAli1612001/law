@@ -8,16 +8,18 @@ import { useContext } from "react";
 import AuthContext from "@/context/Auth";
 import { closeLoader, openLoader } from "@/globalState/Features/tempDataSlice";
 import { useRouter } from "next/router";
+import { closeAddFormRecord } from "@/globalState/Features/formStateSlice";
 // const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 // import "react-quill/dist/quill.snow.css";
 
 const AddClient = () => {
   const { addRecord } = useSelector((store) => store.formState?.addRecord);
   const disptach = useDispatch();
-  let [id, setID] = useState(window.localStorage.getItem("clientID") ? window.localStorage.getItem("clientID") : null)
+  let [id, setID] = useState(window.localStorage.getItem("employeeDetailsID") ? window.localStorage.getItem("employeeDetailsID") : null)
   useEffect(() => {
-    setID(window.localStorage.getItem("clientID"))
+    setID(window.localStorage.getItem("employeeDetailsID"))
   }, [])
+  console.log("😢😢😢😢", id)
   const signUpForm = useForm();
   const {
     register,
@@ -30,24 +32,37 @@ const AddClient = () => {
   } = signUpForm;
   let { errors, isSubmitted } = formState;
   const dispatch = useDispatch();
-  const [fullNameArabic, setFullNameArabic] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [nationalId, setNationalId] = useState("");
-  const [nationalIdExpiryDate, setNationalIdExpiryDate] = useState("");
-  const [nationality, setNationality] = useState("");
-  const [gender, setGender] = useState("");
-  const [maritalStatus, setMaritalStatus] = useState("");
-  const [workLocation, setWorkLocation] = useState("");
-  const [residence, setResidence] = useState("");
-  const [additionalInfo, setAdditionalInfo] = useState("");
-  const [data, setData] = useState({});
-  const apiKey = process.env.NEXT_PUBLIC_DEV;
-  const { getAllCustomers } = useContext(AuthContext);
 
-  const getClient = async () => {
+  function handleKick() {
+    toast.error("تم انهاء خدمات العميل بنجاح");
+    // dispatch(resetPopups());
+  }
+  // ***************************************************************************************************************************
+  let [fullNameArabic, setFullNameArabic] = useState("")
+  let [fullNameEnglish, setFullNameEnglish] = useState("")
+  let [jobTitle, setJobTitle] = useState("")
+
+  let [hiringDate, setHiringDate] = useState("")
+  let [email, setEmail] = useState("")
+  let [phoneNumber, setPhoneNumber] = useState("")
+  let [nationalId, setNationalId] = useState("")
+  let [nationalIdExpiryDate, setNationalIdExpiryDate] = useState("")
+  let [nationality, setNationality] = useState("")
+  let [gender, setGender] = useState("")
+  let [maritalStatus, setMaritalStatus] = useState("")
+  let [workLocation, setWorkLocation] = useState("")
+  let [residence, setResidence] = useState("")
+  let [additionalInfo, setAdditionalInfo] = useState("")
+  let [data, setData] = useState({})
+
+
+
+  const apiKey = process.env.NEXT_PUBLIC_DEV;
+  let { getAllEmployees } = useContext(AuthContext)
+
+  const getEmployee = async () => {
     try {
-      const response = await fetch(`${apiKey}/Customer/${id}`, {
+      const response = await fetch(`${apiKey}/Employee/${id}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -56,74 +71,97 @@ const AddClient = () => {
       });
 
       if (response.ok) {
-        const customer = await response.json();
-        setData(customer);  // Update state with fetched customer data
-        setFullNameArabic(customer?.fullNameArabic);
-        setEmail(customer?.email);
-        setPhoneNumber(customer?.phoneNumber);
-        setNationalId(customer?.nationalId);
-        setNationalIdExpiryDate(customer?.nationalIdExpiryDate);
-        setGender(customer?.gender);
-        setMaritalStatus(customer?.maritalStatus);
-        setWorkLocation(customer?.workLocation);
-        setResidence(customer?.residence);
-        setAdditionalInfo(customer?.additionalInfo);
+        const employee = await response.json();
+        setData(employee)
+        setFullNameArabic(data?.fullNameArabic)
+        setFullNameEnglish(data?.fullNameEnglish)
+        setEmail(data?.email)
+        setPhoneNumber(data?.phoneNumber)
+        setNationalId(data?.nationalId)
+        setHiringDate(data?.hiringDate)
+        setNationality(data?.nationality)
+        setJobTitle(data?.jobTitle)
+        setGender(data?.gender)
       } else {
-        toast.error("حدث خطأ في جلب بيانات العميل");
+        toast.error("حدث خطأ ما");
       }
     } catch (error) {
-      console.error("Error fetching client:", error);
-      toast.error("حدث خطأ أثناء جلب البيانات");
+      console.error("Error adding client:", error);
+      toast.error("حدث خطأ أثناء الإضافة");
     }
   };
-  const EditCustomer = async () => {
+
+
+
+  const EditEmployee = async () => {
     try {
-      const response = await fetch(`${apiKey}/Customer/${id}`, {
+      const response = await fetch(`${apiKey}/Employee/${data.employeeId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
-          fullNameArabic,
-          email,
-          phoneNumber,
-          nationalId,
-          nationalIdExpiryDate,
-          nationality,
-          gender,
-          maritalStatus,
-          workLocation,
-          residence,
-          additionalInfo,
+          fullNameEnglish: fullNameEnglish,
+          fullNameArabic: fullNameArabic,
+          email: email,
+          phoneNumber: phoneNumber,
+          nationalId: nationalId,
+          hiringDate: hiringDate,
+          nationality: nationality,
+          gender: gender,
+          jobTitle: jobTitle,
+          departmentId: 0,         // Static or dynamic as needed
+          residenceProfessionId: 0, // Static or dynamic as needed
+          employeeStatusId: 0,     // Static or dynamic as needed
+          isActive: true,          // Static or dynamic as needed
+          workingHours: 40,        // Static or dynamic as needed
+          loanCount: 0,            // Static or dynamic as needed
+          password: "123456",      // Static or dynamic as needed (consider hashing)
+          isLock: true,
         }),
       });
 
+      if (!response.ok) {
+        toast.error("حدث خطأ عند التحديث")
+      } else {
+        toast.success("تم تعديل العميل بنجاح");
+        getAllEmployees()
+      }
 
+      // dispatch(togglePreviousClientPopup("تعد"));
     } catch (error) {
-      console.error("Error updating customer:", error);
-      toast.error("حدث خطأ أثناء التعديل");
+      console.log(`حدث خطأ: ${error.message}`);
     }
   };
 
-  useEffect(() => {
-    getClient();  // Fetch client data on component mount
-  }, []);
 
-  const handleSubmitSignUp = async (formData, e) => {
+  useEffect(() => {
+    getEmployee()
+  }, [])
+  async function handleSubmitSignUp(formData, e) {
+    e.preventDefault()
+    // setGeneralError("");
     dispatch(openLoader("جاري التسجيل"));
-    await EditCustomer();
+    // toast.success("تم اضافة العميل بنجاح");
+    await EditEmployee()
+    disptach(closeAddFormRecord())
     dispatch(closeLoader());
-    getAllCustomers();
-    toast.success("تم تعديل العميل بنجاح");
+
+    // dispatch(resetPopups());
+    console.log(formData);
+    // const result = await fetchRegisterUser({
+    //   ...formData,
+    // });
 
   }
-
-
   return (
     <form
       method="POST"
-      onSubmit={handleSubmit(handleSubmitSignUp)}
+      onSubmit={async (e) => {
+        e.preventDefault()
+        await EditEmployee()
+      }}
       action=""
       noValidate
       id="addIssueRecord"
@@ -132,7 +170,7 @@ const AddClient = () => {
 
       <div className="  main-section">
         <h3 className="!min-w-full text-2xl py-2 mb-4 font-bold text-gray-800">
-          معلومات العميل
+          معلومات الموظف
         </h3>
         <div className="small-inputs !grid-cols-3">
           {/* name arabic ! */}
@@ -142,22 +180,26 @@ const AddClient = () => {
               type="text"
               name=""
               id="arabicName"
-              // {...register("arabicName", {
-              //   required: "يجب إدخال الاسم الرباعي",
-              //   validate: (value) => {
-              //     console.log(value.split(" ").length);
-              //     return (
-              //       value.trim().split(" ").length > 3 ||
-              //       "يجب إدخال الاسم الرباعي"
-              //     );
 
-              //   },
-              // })}
               defaultValue={data?.fullNameArabic}
               onChange={(e) => {
                 setFullNameArabic(e.target.value)
-
               }}
+              placeholder=""
+            />
+            <p className="input-error">{errors.arabicName?.message}</p>
+          </div>
+          <div className="simple-input">
+            <label htmlFor="">الاسم الرباعي باللغة الانجليزية</label>
+            <input
+              type="text"
+              name=""
+              id="arabicName"
+              onChange={(e) => {
+                setFullNameEnglish(e.target.value)
+              }}
+              defaultValue={data?.fullNameEnglish}
+
               placeholder=""
             />
             <p className="input-error">{errors.arabicName?.message}</p>
@@ -171,16 +213,7 @@ const AddClient = () => {
               name=""
               id="email"
               defaultValue={data?.email}
-              // {...register("email", {
-              //   required: "يجب إدخال البريد الالكتروني",
-              //   // validate: (value) => {
-              //   //   console.log(value.split(" ").length);
-              //   //   return (
-              //   //     value.trim().split(" ").length > 3 ||
-              //   //     "يجب إدخال البريد الالكتروني"
-              //   //   );
-              //   // },
-              // })}
+
               placeholder=""
               onChange={(e) => {
                 setEmail(e.target.value)
@@ -193,16 +226,15 @@ const AddClient = () => {
             <label htmlFor="">رقم الهاتف</label>
             <input
               defaultValue={data?.phoneNumber}
+
               type="text"
               name=""
               id="phone"
-            // {...register("phone", {
-            //   required: "يجب إدخال رقم الهاتف",
-            // })}
-            // placeholder=""
-            // onChange={(e) => {
-            //   setPhoneNumber(e.target.value)
-            // }}
+
+              placeholder=""
+              onChange={(e) => {
+                setPhoneNumber(e.target.value)
+              }}
             />
             <p className="input-error">{errors.phone?.message}</p>
           </div>
@@ -213,9 +245,7 @@ const AddClient = () => {
               type="text"
               name=""
               id="idNumber"
-              // {...register("idNumber", {
-              //   required: "يجب إدخال رقم الهوية",
-              // })}
+
               defaultValue={data?.nationalId}
 
               placeholder=""
@@ -234,13 +264,11 @@ const AddClient = () => {
               defaultValue={data?.nationalIdExpiryDate}
 
               id="idNumberEndDate"
-              // {...register("idNumberEndDate", {
-              //   required: "يجب ادخال تاريخ انتهاء الهوية",
-              // })}
+
 
               placeholder=""
-              onChange={(e) => {
-                setNationalIdExpiryDate(e.target.value)
+              onChangeCapture={(e) => {
+                setHiringDate(e.target.value)
               }}
             />
             <p className="input-error">{errors.idNumberEndDate?.message}</p>
@@ -252,10 +280,9 @@ const AddClient = () => {
               type="text"
               name=""
               defaultValue={data?.nationality}
+
               id="nationality"
-              // {...register("nationality", {
-              //   required: "يجب إدخال الجنسية",
-              // })}
+
               placeholder=""
               onChange={(e) => {
                 setNationality(e.target.value)
@@ -272,9 +299,7 @@ const AddClient = () => {
               type="text"
               name=""
               id="gender"
-              // {...register("gender", {
-              //   required: "يجب اختيار الجنس",
-              // })}
+
               placeholder=""
               onChange={(e) => {
                 setGender(e.target.value)
@@ -294,9 +319,7 @@ const AddClient = () => {
               defaultValue={data?.maritalStatus}
 
               id="socialStatus"
-              // {...register("socialStatus", {
-              //   required: "يجب اختيار الحالة الاجتماعية",
-              // })}
+
               placeholder=""
               onChange={(e) => {
                 setMaritalStatus(e.target.value)
@@ -308,70 +331,42 @@ const AddClient = () => {
             </select>
             <p className="input-error">{errors.socialStatus?.message}</p>
           </div>
-          {/* workPlace !*/}
-          <div className="simple-input">
-            <label htmlFor="">موقع العمل</label>
-            <input
-              type="text"
-              name=""
-              id="workPlace"
-              // {...register("workPlace", {
-              //   required: "يجب إدخال موقع العمل",
-              // })}
-              defaultValue={data?.workLocation}
 
-              placeholder=""
-              onChange={(e) => {
-                setWorkLocation(e.target.value)
-              }}
-            />
-            <p className="input-error">{errors.workPlace?.message}</p>
-          </div>
-          {/* residenceJob !*/}
-          <div className="simple-input">
-            <label htmlFor="">محل الإقامة</label>
-            <input
-              type="text"
-              name=""
-              id="residenceJob"
-              // {...register("residenceJob", {
-              //   required: "يجب محل الإقامة",
-              // })}
-              defaultValue={data?.residence}
-
-              placeholder=""
-              onChange={(e) => {
-                setResidence(e.target.value)
-              }}
-            />
-            <p className="input-error">{errors.residenceJob?.message}</p>
-          </div>
         </div>
       </div>
-      {/* extraInfo !*/}
-      <div className="main-section simple-input !min-w-full flex-1 flex flex-col">
-        <label htmlFor="">معلومات اضافية</label>
-        <textarea
+      <div className="simple-input">
+        <label htmlFor="">الحالة</label>
+        <input
           type="text"
           name=""
-          defaultValue={data?.additionalInfo}
+          defaultValue={data?.employeeStatusName}
 
-          id="extraInfo"
-          // {...register("extraInfo", {
-          //   // required: "يجب إدخال الاسم الرباعي بالعربي",
-          // })}
+
           placeholder=""
           onChange={(e) => {
-            setAdditionalInfo(e.target.value)
+            setNationality(e.target.value)
           }}
-          className="flex-1"
-        ></textarea>
+        />
+        <p className="input-error">{errors.nationality?.message}</p>
+      </div>
+      <div className="simple-input">
+        <label htmlFor="">قسم</label>
+        <input
+          type="text"
+          name=""
+          defaultValue={data?.departmentName}
+
+          id="nationality"
+
+          placeholder=""
+        // onChange={(e) => {
+        //   setNationality(e.target.value)
+        // }}
+        />
+        <p className="input-error">{errors.nationality?.message}</p>
       </div>
       <button
         type="submit"
-        onClick={() => {
-          EditCustomer()
-        }}
         className="text-white text-xl p-4 w-full bg-textGreen rounded-lg mt-4 hover:bg-opacity-80 transition-all"
       >
         تعديل

@@ -21,6 +21,30 @@ const CurrentAttendance = () => {
   //   "status": "Present",
   //   "delayReason": "string"
   // }
+
+  let [today, setToday] = useState([])
+  const apiKey = process.env.NEXT_PUBLIC_DEV;
+
+  const getAllTodayAttendance = async () => {
+    try {
+      const response = await fetch(`${apiKey}/Attendance/checked-in-today`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        cache: "no-store",
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setToday(data)
+      }
+    } catch (error) {
+      console.error("Error fetching today attendance :", error);
+    }
+  };
+  useEffect(() => {
+    getAllTodayAttendance()
+  }, [today])
   const columns = [
     {
       Header: "الرقم",
@@ -67,28 +91,28 @@ const CurrentAttendance = () => {
           >
             عرض
           </Link>
-          <button onClick={()=>deleteRecordAPI(`/api/AttendanceAdmin/${row.original.attendanceId}`)} className="px-4 py-1 bg-red-500 text-white rounded">
+          <button onClick={() => deleteRecordAPI(`/api/AttendanceAdmin/${row.original.attendanceId}`)} className="px-4 py-1 bg-red-500 text-white rounded">
             حذف
           </button>
         </>
       ),
     },
   ];
-  useEffect(() => {
-    dispatch(openLoader());
-    fetchWithCheck("/api/attendance/checked-in-today")
-      .then((res) => {
-        // dispatch(setEmployeeDetails(res));
-        setData(Array.isArray(res) ? res : []);
-      })
-      .catch((err) => console.warn(err))
-      .finally(() => lazyCloseLoader());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(openLoader());
+  //   fetchWithCheck("/api/attendance/checked-in-today")
+  //     .then((res) => {
+  //       // dispatch(setEmployeeDetails(res));
+  //       setData(Array.isArray(res) ? res : []);
+  //     })
+  //     .catch((err) => console.warn(err))
+  //     .finally(() => lazyCloseLoader());
+  // }, []);
   return (
     <CustomTable
       RenderElement={RenderElement}
       columns={columns}
-      tableData={data}
+      tableData={today}
       tableType={3}
     />
   );

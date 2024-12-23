@@ -67,6 +67,7 @@ export const popupsSlice = createSlice({
     toggleCheckOutPopup: (state) => {
       state.isHidden = !state.isHidden;
       state.checkOut = !state.checkOut;
+      
     },
     toggleAttachmentsPopup: (state, action) => {
       state.attachments = !state.attachments;

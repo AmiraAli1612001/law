@@ -5,102 +5,105 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { resetPopups } from "@/globalState/Features/popupsSlice";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
+import { useState } from "react";
+import { useContext } from "react";
+import AuthContext from "@/context/Auth";
 // const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 // import "react-quill/dist/quill.snow.css";
 
 const AddEmployee = () => {
   const signUpForm = useForm();
-  const {
-    user: { token },
-  } = useSelector((state) => state.auth);
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState,
-    setError,
-    reset,
-    trigger,
-  } = signUpForm;
-  let { errors, isSubmitted } = formState;
+  // const {
+  //   user: { token },
+  // } = useSelector((state) => state.auth);
+
+
   const dispatch = useDispatch();
   async function handleSubmitSignUp(formData, e) {
-    // setGeneralError("");
-    // dispatch(openLoader("جاري التسجيل"));
-    console.log(formData);
-    const {
-      arabicName,
-      englishName,
-      email,
-      phone,
-      idNumber,
-      nationality,
-      jobTitle,
-      gender,
-    } = formData;
+    e.preventDefault();  // Prevent default form submission
+    await addEmployee();  // Await the API call to ensure it's completed
+  }
+
+  function handleKick() {
+    toast.error("تم انهاء خدمات الموظف بنجاح");
+    dispatch(resetPopups());
+  }
+
+  // ***************************************************************************************************************************
+  let [fullNameArabic, setFullNameArabic] = useState("")
+  let [fullNameEnglish, setFullNameEnglish] = useState("")
+  let [email, setEmail] = useState("")
+  let [phoneNumber, setPhoneNumber] = useState("")
+  let [nationalId, setNationalId] = useState("")
+  let [hiringDate, setHiringDate] = useState("")
+  let [jobTitle, setJobTitle] = useState("")
+  let [nationality, setNationality] = useState("")
+  let [gender, setGender] = useState("")
+  let [departmentId, setDepartmentId] = useState("")
+  let [residenceProfessionId, setResidenceProfessionId] = useState("")
+  let [employeeStatusId, setEmployeeStatusId] = useState("")
+  let [isActive, setIsActive] = useState("")
+  let [workingHours, setWorkingHours] = useState("")
+  let [loanCount, setloanCount] = useState("")
+  let [password, setPassword] = useState("")
+  let [isLock, setIsLock] = useState("")
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const apiKey = process.env.NEXT_PUBLIC_DEV;
+  let { getAllEmployees } = useContext(AuthContext)
+
+  const addEmployee = async () => {
     try {
-      const res = await fetchWithCheck("/api/Employee", {
+      const response = await fetch(`${apiKey}/Employee`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        cache: "no-store",
         body: JSON.stringify({
-          fullNameArabic: arabicName,
-          fullNameEnglish: englishName,
-          email: email,
-          phoneNumber: phone,
-          nationalId: idNumber,
-          hiringDate: "2024-12-07T15:49:36.290Z",
-          nationality: nationality,
-          jobTitle: jobTitle,
-          gender: gender,
+
+          fullNameArabic,
+          fullNameEnglish,
+          email,
+          phoneNumber,
+          nationalId,
+          hiringDate,
+          nationality,
+          jobTitle,
+          gender,
           departmentId: 1,
           residenceProfessionId: 1,
           employeeStatusId: 1,
           isActive: true,
           workingHours: 0,
           loanCount: 0,
-          password: "string",
-          isLock: true,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      toast.success(res.message);
-      dispatch(resetPopups());
-    } catch (err) {
-      console.log(err);
-      toast.error("حدث خطأ ما");
-    }
+          password: "123456"
 
-    // dispatch(closeLoader());
-  }
-  function handleKick() {
-    toast.error("تم انهاء خدمات الموظف بنجاح");
-    dispatch(resetPopups());
-  }
-  // {
-  //   "fullNameArabic": "string",
-  //   "fullNameEnglish": "string",
-  //   "email": "string",
-  //   "phoneNumber": "string",
-  //   "nationalId": "string",
-  //   "hiringDate": "2024-12-07T15:49:36.290Z",
-  //   "nationality": "string",
-  //   "jobTitle": "string",
-  //   "gender": "string",
-  //   "departmentId": 0,
-  //   "residenceProfessionId": 0,
-  //   "employeeStatusId": 0,
-  //   "isActive": true,
-  //   "workingHours": 0,
-  //   "loanCount": 0,
-  //   "password": "string",
-  //   "isLock": true
-  // }
+
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("تم اضافة العميل بنجاح")
+        getAllEmployees()
+        //  dispatch(togglePreviousemployee());
+      }
+
+    }
+    catch (error) {
+      toast.error("حدث خطأ ما");
+
+    }
+  };
   return (
     <form
       method="POST"
-      onSubmit={handleSubmit(handleSubmitSignUp)}
+      onSubmit={async (e) => {
+        e.preventDefault()
+        await addEmployee()
+      }}
       action=""
       noValidate
       id="addIssueRecord"
@@ -131,6 +134,9 @@ const AddEmployee = () => {
                 },
               })}
               placeholder=""
+              onChange={(e) => {
+                setFullNameArabic(e.target.value)
+              }}
             />
             <p className="input-error">{errors.arabicName?.message}</p>
           </div>
@@ -152,6 +158,9 @@ const AddEmployee = () => {
                   );
                 },
               })}
+              onChange={(e) => {
+                setFullNameEnglish(e.target.value)
+              }}
               placeholder=""
             />
             <p className="input-error">{errors.englishName?.message}</p>
@@ -163,6 +172,9 @@ const AddEmployee = () => {
               type="email"
               name=""
               id="email"
+              onChange={(e) => {
+                setEmail(e.target.value)
+              }}
               {...register("email", {
                 required: "يجب إدخال البريد الالكتروني",
                 // validate: (value) => {
@@ -184,6 +196,9 @@ const AddEmployee = () => {
               type="text"
               name=""
               id="phone"
+              onChange={(e) => {
+                setPhoneNumber(e.target.value)
+              }}
               {...register("phone", {
                 required: "يجب إدخال رقم الهاتف",
               })}
@@ -198,6 +213,9 @@ const AddEmployee = () => {
               type="text"
               name=""
               id="idNumber"
+              onChange={(e) => {
+                setNationalId(e.target.value)
+              }}
               {...register("idNumber", {
                 required: "يجب إدخال رقم الهوية",
               })}
@@ -209,6 +227,9 @@ const AddEmployee = () => {
           <div className="simple-input">
             <label htmlFor="">تاريخ التعيين</label>
             <input
+              onChangeCapture={(e) => {
+                setHiringDate(e.target.value)
+              }}
               type="date"
               name=""
               id="hiringDate"
@@ -226,6 +247,9 @@ const AddEmployee = () => {
               type="text"
               name=""
               id="nationality"
+              onChange={(e) => {
+                setNationality(e.target.value)
+              }}
               {...register("nationality", {
                 required: "يجب إدخال الجنسية",
               })}
@@ -240,6 +264,9 @@ const AddEmployee = () => {
               type="text"
               name=""
               id="jobTitle"
+              onChange={(e) => {
+                setJobTitle(e.target.value)
+              }}
               {...register("jobTitle", {
                 required: "يجب إدخال نوع الوظيفة",
               })}
@@ -264,6 +291,9 @@ const AddEmployee = () => {
                 required: "يجب اختيار الجنس",
               })}
               placeholder=""
+              onChange={(e) => {
+                setNationality(e.target.value)
+              }}
             >
               <option value="male">ذكر</option>
               <option value="female">انثى</option>

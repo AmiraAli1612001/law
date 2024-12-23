@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,8 @@ import {
 } from "@/globalState/Features/formStateSlice";
 
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
+import { useContext } from "react";
+import AuthContext from "@/context/Auth";
 
 const AddSalary = () => {
   const signUpForm = useForm();
@@ -18,7 +20,7 @@ const AddSalary = () => {
   const currentForm = useSelector((store) => store.formState.currentForm);
   // const { currentId } = useSelector((store) => store.tempData);
   const { employeeId } = useSelector((store) => store.tempData.employeeDetails);
-  const { user: { token } } = useSelector((store) => store.auth);
+  // const { user: { token } } = useSelector((store) => store.auth);
   const {
     register,
     handleSubmit,
@@ -49,32 +51,89 @@ const AddSalary = () => {
     console.log("employeeId", employeeId);
     console.log(params);
     try {
-      const res = await fetchWithCheck(`/api/EmployeeSalary`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          employeeId: employeeId,
-          date: params.salaryDate,
-          amount: params.salaryAmount,
-          deductions: params.salaryDeductions,
-          paid: params.salaryAmount,
-          outstanding: 0,
-          status: "string",
-          details: params.salaryDetails,
-        }),
-      });
+      // const res = await fetchWithCheck(`/api/EmployeeSalary`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      //   body: JSON.stringify({
+      //     employeeId: employeeId,
+      //     date: params.salaryDate,
+      //     amount: params.salaryAmount,
+      //     deductions: params.salaryDeductions,
+      //     paid: params.salaryAmount,
+      //     outstanding: 0,
+      //     status: "string",
+      //     details: params.salaryDetails,
+      //   }),
+      // });
       return res;
     } catch (err) {
       throw err;
     }
+
   }
+ let {getAllSalaries} = useContext(AuthContext)
+
+  let [date, setDate] = useState("")
+  let [amount, setAmount] = useState("")
+  let [deductions, setDeductions] = useState("")
+  let [paid, setPaid] = useState("")
+  let [details, setDetails] = useState("")
+  let [id, setID] = useState(window.localStorage.getItem("employeeId") ? window.localStorage.getItem("employeeId") : null)
+  useEffect(() => {
+    setID(window.localStorage.getItem("employeeId"))
+  }, [])
+
+  const apiKey = process.env.NEXT_PUBLIC_DEV;
+  let { getAllEmployees } = useContext(AuthContext)
+
+  const addEmployeeSalary = async () => {
+    console.log(id)
+    try {
+      const response = await fetch(`${apiKey}/EmployeeSalary`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        cache: "no-store",
+        body: JSON.stringify({
+          employeeSalaryId: 0,
+          employeeId: id,
+          date: date,
+          amount: amount,
+          deductions: deductions,
+          paid: paid,
+          outstanding: 0,
+          status: "string",
+          details: details
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error response:", errorData);
+      } else {
+        toast.success("تم اضافة الراتب بنجاح");
+        getAllSalaries()
+      }
+
+    }
+    catch (error) {
+      toast.error("حدث خطأ ما");
+
+    }
+  };
+
   return (
     <form
       method="POST"
-      onSubmit={handleSubmit(handleSubmitSignUp)}
+      onSubmit={(e) => {
+        e.preventDefault()
+        addEmployeeSalary()
+      }}
       action=""
       noValidate
       id="addIssueRecord"
@@ -92,6 +151,9 @@ const AddSalary = () => {
               required: "يجب اختيار المبلغ",
             })}
             placeholder=""
+            onChange={(e) => {
+              setAmount(e.target.value)
+            }}
           />
 
           <p className="input-error">{errors.salaryAmount?.message}</p>
@@ -108,6 +170,9 @@ const AddSalary = () => {
             })}
             defaultValue={0}
             placeholder=""
+            onChange={(e) => {
+              setDeductions(e.target.value)
+            }}
           />
 
           <p className="input-error">{errors.salaryDeductions?.message}</p>
@@ -119,6 +184,9 @@ const AddSalary = () => {
             type="text"
             name=""
             id="salary"
+            onChange={(e) => {
+              setPaid(e.target.value)
+            }}
             // {...register("salary", {
             //   required: "يجب اختيار المبلغ",
             // })}
@@ -141,6 +209,9 @@ const AddSalary = () => {
               required: "يجب ادخال تاريخ الدفعة",
             })}
             placeholder=""
+            onChangeCapture={(e) => {
+              setDate(e.target.value)
+            }}
           />
           <p className="input-error">{errors.salaryDate?.message}</p>
         </div>
@@ -163,6 +234,9 @@ const AddSalary = () => {
         <textarea
           className="text-lg"
           name=""
+          onChange={(e) => {
+            setDetails(e.target.value)
+          }}
           // id="salaryDetails"
           {...register("salaryDetails", {
             required: "يجب ادخال التفاصيل الاضافية",

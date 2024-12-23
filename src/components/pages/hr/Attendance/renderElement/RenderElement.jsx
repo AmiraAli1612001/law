@@ -44,13 +44,42 @@ const RenderElement = ({
       </span>
     );
   };
-  
+
   // Results
   // console.log("Difference between check-in and 9:00 AM:");
   // console.log(formatTimeDifference(diffCheckInToNineAM));
 
   // console.log("Difference between check-out and 3:00 PM:");
   // console.log(formatTimeDifference(diffCheckOutToThreePM));
+
+
+  const apiKey = process.env.NEXT_PUBLIC_DEV;
+
+  const deleteAttendance = async () => {
+    const id = localStorage.getItem("attendanceId");
+    try {
+      const response = await fetch(`${apiKey}/AttendanceAdmin/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        cache: "no-store",
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error(
+          `Failed to delete attendance. Status: ${response.status}, Message: ${errorData.message || "Unknown error"}`
+        );
+        return;
+      }
+      console.log(`Attendance with ID ${id} deleted successfully.`);
+    } catch (error) {
+      console.error("Error deleting attendance:", error);
+    }
+  };
+
 
   const columns = [
     {
@@ -113,6 +142,8 @@ const RenderElement = ({
   //   changeRowColor();
   // }, [state]);
 
+
+
   return (
     <tr className={`${state}`}>
       <td>
@@ -133,7 +164,7 @@ const RenderElement = ({
         </p>
       </td>
       <td>
-      <span>{checkOutDate.toLocaleTimeString()}</span>
+        <span>{checkOutDate.toLocaleTimeString()}</span>
         <p>{formatTimeDifference(-diffCheckOutToThreePM)}</p>
       </td>
       <td>
@@ -144,7 +175,7 @@ const RenderElement = ({
       </td>
       <td>
         <button
-          onClick={deleteRecord}
+          onClick={deleteAttendance}
           className="bg-mainRed transition-all hover:bg-opacity-[0.7] text-white px-4 py-2 rounded text-sm"
         >
           حذف

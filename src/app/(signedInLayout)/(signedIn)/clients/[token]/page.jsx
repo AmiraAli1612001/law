@@ -6,11 +6,42 @@ import contractsData from "@/fakeData/contractsData.json";
 import { toggleAddRecordPopup, toggleEditEmployee } from "@/globalState/Features/popupsSlice";
 import { useDispatch } from "react-redux";
 import ClientDetails from "@/components/pages/clients/client/ClientDetails";
+import { useState } from "react";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const Issue = ({ params: { token } }) => {
+  const [data, setData] = useState({});
+  const apiKey = process.env.NEXT_PUBLIC_DEV;
+
   const dispatch = useDispatch()
   const contractData = contractsData.find((issue) => issue.id == token);
   const { id, title, date, status } = contractData;
+
+  const getClient = async () => {
+    let id = window.localStorage.getItem("clientID")
+    try {
+      const response = await fetch(`${apiKey}/Customer/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        cache: "no-store",
+      });
+
+      if (response.ok) {
+        const customer = await response.json();
+        setData(customer)
+      } 
+    } catch (error) {
+      console.error("Error fetching client:", error);
+      toast.error("حدث خطأ أثناء جلب البيانات");
+    }
+  };
+
+  useEffect(()=>{
+    getClient()
+  } , [])
   return (
     <ScreenWrapper className="flex-1 p-4 flex flex-col gap-4">
       <LinkHeader
@@ -25,7 +56,7 @@ const Issue = ({ params: { token } }) => {
           className={`bg-bgGreen font-medium flex gap-6 p-4 items-center issue-details-header rounded-lg relative`}
         >
           <div className="row-data-content">
-            <p className="">mohammed ibrahim</p>
+            <p className="">{data?.fullNameArabic}</p>
           </div>
           {/* <div className="row-data-content">
             <p className="" dir="ltr">

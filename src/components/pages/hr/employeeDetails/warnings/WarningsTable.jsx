@@ -9,11 +9,23 @@ import { useSelector } from "react-redux";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import RenderElement from "./RenderElement";
 import deleteRecordAPI from "@/helperFunctions/apiHelpers/delete";
+import { toast } from "react-toastify";
+import { useContext } from "react";
+import AuthContext from "@/context/Auth";
 
 const WarningsTable = () => {
-  const [data, setData] = useState([]);
   const { employeeId } = useSelector((store) => store.tempData.employeeDetails);
-  console.log(data);
+
+
+
+
+ let {warnings} = useContext(AuthContext)
+
+
+
+
+
+
   const columns = [
     {
       Header: "رقم الانذار",
@@ -54,11 +66,11 @@ const WarningsTable = () => {
       ),
     },
   ];
-  useEffect(() => {
-    fetchWithCheck(`/api/EmployeeWarning/employee/${employeeId}`)
-      .then((res) => setData(res))
-      .catch((err) => console.warn(err));
-  }, [employeeId]);
+  // useEffect(() => {
+  //   fetchWithCheck(`/api/EmployeeWarning/employee/${employeeId}`)
+  //     .then((res) => setData(res))
+  //     .catch((err) => console.warn(err));
+  // }, [employeeId]);
   return (
     <CustomTable
       AddRecordEle={AddWarning}
@@ -67,7 +79,7 @@ const WarningsTable = () => {
       addTop={true}
       tableType={3}
       columns={columns}
-      tableData={Array.isArray(data) ? data : []}
+      tableData={Array.isArray(warnings) ? warnings : []}
     />
   );
 };

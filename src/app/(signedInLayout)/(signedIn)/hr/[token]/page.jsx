@@ -53,6 +53,7 @@ const Employee = ({ params: { token } }) => {
             </button>
           </div>
         </div>
+        
         <EmployeeDetails id={token} issueData={[]} />
         {/*end  */}
       </div>

@@ -11,6 +11,9 @@ import {
 } from "@/globalState/Features/formStateSlice";
 
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
+import { useState } from "react";
+import { useContext } from "react";
+import AuthContext from "@/context/Auth";
 
 const AddWarning = () => {
   const signUpForm = useForm();
@@ -18,7 +21,7 @@ const AddWarning = () => {
   const currentForm = useSelector((store) => store.formState.currentForm);
   // const { currentId } = useSelector((store) => store.tempData);
   const { employeeId } = useSelector((store) => store.tempData.employeeDetails);
-  const { user: { token } } = useSelector((store) => store.auth);
+  // const { user: { token } } = useSelector((store) => store.auth);
   const {
     register,
     handleSubmit,
@@ -29,17 +32,7 @@ const AddWarning = () => {
     trigger,
   } = signUpForm;
   let { errors, isSubmitted } = formState;
-  async function handleSubmitSignUp(formData, e) {
-    // setGeneralError("");
-    // dispatch(openLoader("جاري التسجيل"));
-    handleAddWarning(formData)
-      .then((e) => toast.success("تم الحفظ بنجاح"))
-      .catch((e) => toast.error("حدث خطأ ما"));
 
-    console.log(currentForm);
-
-    // dispatch(closeLoader());
-  }
   useEffect(() => {
     dispatch(setCurrentForm(register));
     dispatch(setCurrentErrors(errors));
@@ -49,29 +42,98 @@ const AddWarning = () => {
     console.log("employeeId", employeeId);
     console.log(params);
     try {
-      const res = await fetchWithCheck(`/api/EmployeeWarning`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          employeeId: employeeId,
-          warningType: params.warningType,
-          warningDate: params.warningDate,
-          additionalDetails: params.extraDetails,
-        }),
-      });
+      // const res = await fetchWithCheck(`/api/EmployeeWarning`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      //   body: JSON.stringify({
+      //     employeeId: employeeId,
+      //     warningType: params.warningType,
+      //     warningDate: params.warningDate,
+      //     additionalDetails: params.extraDetails,
+      //   }),
+      // });
       return res;
     } catch (err) {
       throw err;
     }
-    
+
+  }
+
+  let { getAllWarning } = useContext(AuthContext)
+  let [id, setID] = useState(window.localStorage.getItem("employeeId")
+  )
+  let [warningType, setWarningType] = useState("")
+  let [warningDate, setWarningDate] = useState("")
+  let [additionalDetails, setAdditionalDetails] = useState("")
+  const apiKey = process.env.NEXT_PUBLIC_DEV;
+
+  useEffect(() => {
+
+    setID(
+      window.localStorage.getItem("employeeId")
+
+    )
+  }, [])
+
+  const addWarning = async () => {
+    // Ensure that all fields are filled
+    if (!warningType || !warningDate || !additionalDetails) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+  
+    try {
+      const response = await fetch(`${apiKey}/EmployeeWarning`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        cache: "no-store",
+        body: JSON.stringify({
+          employeeWarningId: 0,  // Assuming this is set to 0
+          employeeId: id,  // Ensure id is valid
+          warningType: warningType,
+          warningDate: warningDate,
+          additionalDetails: additionalDetails,
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error response:", errorData);
+        toast.error(`Error: ${errorData.message || "Something went wrong"}`);
+      } else {
+        toast.success("تم اضافة التحذير بنجاح");
+        getAllWarning();  // Refresh the warning list
+      }
+  
+    } catch (error) {
+      console.log("Request failed:", error);
+      toast.error("حدث خطأ ما");
+    }
+  };
+  
+  async function handleSubmitSignUp(formData, e) {
+    // setGeneralError("");
+    // dispatch(openLoader("جاري التسجيل"));
+
+
+    console.log(currentForm);
+
+    // dispatch(closeLoader());
   }
   return (
     <form
       method="POST"
-      onSubmit={handleSubmit(handleSubmitSignUp)}
+      onSubmit={(e) => {
+        e.preventDefault()
+        addWarning()
+      }
+      }
       action=""
       noValidate
       id="addIssueRecord"
@@ -88,6 +150,9 @@ const AddWarning = () => {
             {...register("warningType", {
               required: "يجب اختيار نوع الانذار",
             })}
+            onChange={(e) => {
+              setWarningType(e.target.value)
+            }}
             placeholder=""
           >
             <option value="تأخير">تأخير</option>
@@ -107,6 +172,9 @@ const AddWarning = () => {
             {...register("warningDate", {
               required: "يجب ادخال تاريخ الانذار",
             })}
+            onChangeCapture={(e) => {
+              setWarningDate(e.target.value)
+            }}
             placeholder=""
           />
           <p className="input-error">{errors.warningDate?.message}</p>
@@ -134,6 +202,9 @@ const AddWarning = () => {
           {...register("extraDetails", {
             required: "يجب ادخال التفاصيل الاضافية",
           })}
+          onChange={(e) => {
+            setAdditionalDetails(e.target.value)
+          }}
         ></textarea>
         <p className="input-error">{errors.extraDetails?.message}</p>
       </div>

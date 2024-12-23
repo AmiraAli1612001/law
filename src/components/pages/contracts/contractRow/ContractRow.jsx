@@ -7,8 +7,19 @@ import { useRouter } from "next/navigation";
 import { setContract } from "@/globalState/Features/tempDataSlice";
 import { toggleAddRecordPopup, toggleEditEmployee } from "@/globalState/Features/popupsSlice";
 const ContractRow = ({ data, swipe }) => {
-  const { id, date, title, firstParty, secondParty, status } = data;
-
+  console.log("data", data)
+  // const { id, date, title, firstParty, secondParty, status } = data;
+  const {
+    id,
+    contractNumber,
+    contractDate,
+    totalAmount,
+    isFullPayment,
+    dueDate,
+    contractPreamble,
+    contractTypeId,
+    contractStatusId,
+    contractCategoryId, parties } = data;
   const router = useRouter()
   const dispatch = useDispatch()
 
@@ -19,38 +30,30 @@ const ContractRow = ({ data, swipe }) => {
       >
         <div className={`w-[10%]`}>
           <p>رقم العقد</p>
-          <p className="text-2xl row-data-content">{id}</p>
+          <p className="text-2xl row-data-content">{contractNumber}</p>
         </div>
         <div>
           <p>تاريخ العقد</p>
-          <p className="row-data-content">{date}</p>
+          <p className="row-data-content">{contractDate.toISOString().split('T')[0]}</p>
         </div>
         <div>
           <p>نوع العقد</p>
-          <p className="row-data-content">{title}</p>
-        </div>
-        <div>
-          <p>الطرف الاول</p>
-          <p className="row-data-content">{firstParty}</p>
-        </div>
-        <div>
-          <p>الطرف الثاني</p>
-          <p className="row-data-content">{secondParty}</p>
+          <p className="row-data-content">{contractTypeId}</p>
         </div>
         <div>
           <p>الحالة</p>
-          <p className="row-data-content">{status}</p>
+          <p className="row-data-content">{contractStatusId}</p>
         </div>
         <div className="flex gap-2 items-center justify-center">
           <Link
             className="bg-textGreen bg-opacity-90 hover:bg-opacity-55 transition-all text-white px-4 py-2 rounded text-sm"
-            onClick={(e)=>{
+            onClick={(e) => {
               e.preventDefault()
               dispatch(setContract(data))
               router.push(`/contracts/${id}`)
             }}
             href={`/contracts/${id}`}
-            // onClick={() => swipe(1)}
+          // onClick={() => swipe(1)}
           >
             التفاصيل
           </Link>

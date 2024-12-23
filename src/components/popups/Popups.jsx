@@ -41,7 +41,7 @@ const Popups = () => {
   const checkOut = useSelector((store) => store.popups?.checkOut);
   const editEmployee = useSelector((store) => store.popups?.editEmployee);
   const printContract = useSelector((store) => store.popups?.printContract);
-  const currentAttendance = useSelector((store) => store.popups?.currentAttendance);
+  // const currentAttendance = useSelector((store) => store.popups?.currentAttendance);
 
   console.log("popups");
   return (
@@ -84,7 +84,7 @@ const Popups = () => {
         {checkOut && <CheckOut />}
         {editEmployee && <EditEmployee />}
         {printContract && <PrintContract />}
-        {currentAttendance && <CurrentAttendancePopup />}
+        {/* {currentAttendance && <CurrentAttendancePopup />} */}
       </div>
     </div>
   );

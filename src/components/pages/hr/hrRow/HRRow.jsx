@@ -13,6 +13,7 @@ import { deleteRecord } from "@/helperFunctions/dom";
 const HRRow = ({
   data: {
     departmentId,
+    employeeId,
     fullNameArabic,
     jobTitle,
     departmentName,
@@ -37,7 +38,7 @@ const HRRow = ({
           <p className="text-base ">{departmentId}</p>
         </div>
         <div className="row-data-content">
-          <Link href={`/hr/${1}`} className="underline">
+          <Link href={`/hr/${employeeId}`} className="underline" >
             {fullNameArabic}
           </Link>
         </div>
@@ -52,9 +53,12 @@ const HRRow = ({
         </div>
         <div className="flex gap-2 items-center">
           <Link
-            href={`/hr/${1}`}
+            href={`/hr/${employeeId}`}
+
             className="bg-textGreen bg-opacity-90 hover:bg-opacity-65 transition-all text-white px-4 py-2 rounded text-sm"
-            // onClick={() => setState(!state)}
+            onClick={() => {
+              window.localStorage.setItem("employeeDetailsID", employeeId)
+            }}
           >
             التفاصيل
           </Link>

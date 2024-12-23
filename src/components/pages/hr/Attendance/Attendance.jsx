@@ -11,16 +11,30 @@ import { useDispatch } from "react-redux";
 const Attendance = () => {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
-  // {
-  //   "attendanceId": 1,
-  //   "employeeId": 2,
-  //   "attendanceDate": "2024-12-07T01:31:48.713",
-  //   "checkInTime": "2024-12-07T01:32:18.3915007",
-  //   "checkOutTime": "2024-12-07T06:22:24.9429247",
-  //   "status": "Present",
-  //   "delayReason": "string"
-  // },
-  
+
+  let [attendance, setAttendance] = useState([])
+  const apiKey = process.env.NEXT_PUBLIC_DEV;
+
+  const getAllAttendance = async () => {
+    try {
+      const response = await fetch(`${apiKey}/AttendanceAdmin`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        cache: "no-store",
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setAttendance(data)
+      }
+    } catch (error) {
+      console.error("Error fetching attendance:", error);
+    }
+  };
+  useEffect(() => {
+    getAllAttendance()
+  }, [])
   const columns = [
     {
       Header: "الرقم",
@@ -56,18 +70,18 @@ const Attendance = () => {
     },
   ];
 
-  useEffect(() => {
-    dispatch(openLoader());
-    fetchWithCheck("/api/AttendanceAdmin")
-      .then((e) => setData(Array.isArray(e) ? e : []))
-      .catch((e) => {
-        console.log("HRTable");
-        console.log(e);
-      })
-      .finally((e) => {
-        lazyCloseLoader();
-      });
-  }, []);
+  // useEffect(() => {
+  //   dispatch(openLoader());
+  //   fetchWithCheck("/api/AttendanceAdmin")
+  //     .then((e) => setData(Array.isArray(e) ? e : []))
+  //     .catch((e) => {
+  //       console.log("HRTable");
+  //       console.log(e);
+  //     })
+  //     .finally((e) => {
+  //       lazyCloseLoader();
+  //     });
+  // }, []);
 
   return (
     <CustomTable
@@ -76,7 +90,7 @@ const Attendance = () => {
       addTop={true}
       RenderElement={RenderElement}
       columns={columns}
-      tableData={data}
+      tableData={attendance}
     />
   );
 };

@@ -9,10 +9,24 @@ import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import AddSalary from "@/components/adds/hr/addSalary/AddSalary";
 import RenderElement from "./RenderElement";
 import deleteRecordAPI from "@/helperFunctions/apiHelpers/delete";
+import { useContext } from "react";
+import AuthContext from "@/context/Auth";
 
 const EmployeeSalariesTable = () => {
-  const [data, setData] = useState([]);
   const { employeeId } = useSelector((store) => store.tempData.employeeDetails);
+  const apiKey = process.env.NEXT_PUBLIC_DEV;
+ 
+ let {salary} = useContext(AuthContext)
+
+
+
+
+
+
+
+
+
+
 
   const columns = [
     {
@@ -68,13 +82,13 @@ const EmployeeSalariesTable = () => {
       ),
     },
   ];
-  useEffect(() => {
-    if (employeeId > 0) {
-      fetchWithCheck(`/api/EmployeeSalary/employee/${employeeId}`)
-        .then((res) => setData(res))
-        .catch((err) => console.warn(err));
-    }
-  }, [employeeId]);
+  // useEffect(() => {
+  //   if (employeeId > 0) {
+  //     fetchWithCheck(`/api/EmployeeSalary/employee/${employeeId}`)
+  //       .then((res) => setData(res))
+  //       .catch((err) => console.warn(err));
+  //   }
+  // }, [employeeId]);
   return (
     <CustomTable
       AddRecordEle={AddSalary}
@@ -83,7 +97,7 @@ const EmployeeSalariesTable = () => {
       tableType={3}
       RenderElement={RenderElement}
       columns={columns}
-      tableData={Array.isArray(data) ? data : []}
+      tableData={Array.isArray(salary) ? salary : []}
     />
   );
 };

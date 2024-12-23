@@ -4,26 +4,25 @@ import { toggleAddRecordPopup } from "@/globalState/Features/popupsSlice";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const AddRecord = ({ title, recordType,innerForm }) => {
+const AddRecord = ({ title, recordType, innerForm }) => {
   const disptach = useDispatch();
   const addRecord = useSelector((store) => store.formState?.addRecord);
   function handleClick() {
     // disptach(toggleAddRecordPopup(recordType));]
-    if(innerForm){
-      if(addRecord){
+    if (innerForm) {
+      if (addRecord) {
         disptach(closeAddFormRecord())
-      }else{
+      } else {
         disptach(openAddFormRecord())
       }
-    }else{
+    } else {
       disptach(toggleAddRecordPopup(recordType));
     }
-    
+
   }
   return (
     <button
-      className={`flex items-center gap-4 p-4   hover:bg-opacity-70 hover:drop-shadow transition-all rounded ${
-        addRecord ? "bg-mainRed" : "bg-textGreen"}`}
+      className={`flex items-center gap-4 p-4   hover:bg-opacity-70 hover:drop-shadow transition-all rounded ${addRecord ? "bg-mainRed" : "bg-textGreen"}`}
       onClick={handleClick}
     >
       <svg

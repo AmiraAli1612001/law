@@ -18,9 +18,9 @@ const AddReward = () => {
   const currentForm = useSelector((store) => store.formState.currentForm);
   // const { currentId } = useSelector((store) => store.tempData);
   const { employeeId } = useSelector((store) => store.tempData.employeeDetails);
-  const {
-    user: { token },
-  } = useSelector((store) => store.auth);
+  // const {
+  //   user: { token },
+  // } = useSelector((store) => store.auth);
   const {
     register,
     handleSubmit,
@@ -51,23 +51,23 @@ const AddReward = () => {
     console.log("employeeId", employeeId);
     console.log(params);
     try {
-      const res = await fetchWithCheck(`/api/EmployeeReward`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          employeeId: employeeId,
-          date: params.rewardDate,
-          amount: params.rewardAmount,
-          deductions: params.rewardDeductions,
-          paid: params.rewardAmount,
-          outstanding: 0,
-          status: "string",
-          details: params.rewardDetails,
-        }),
-      });
+      // const res = await fetchWithCheck(`/api/EmployeeReward`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      //   body: JSON.stringify({
+      //     employeeId: employeeId,
+      //     date: params.rewardDate,
+      //     amount: params.rewardAmount,
+      //     deductions: params.rewardDeductions,
+      //     paid: params.rewardAmount,
+      //     outstanding: 0,
+      //     status: "string",
+      //     details: params.rewardDetails,
+      //   }),
+      // });
       return res;
     } catch (err) {
       throw err;

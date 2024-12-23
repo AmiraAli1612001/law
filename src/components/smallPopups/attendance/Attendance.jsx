@@ -12,11 +12,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const Attendance = () => {
-  const {
-    attendance,
-    user: { employeeId, token },
-    attendanceId,
-  } = useSelector((store) => store.auth);
+  // const {
+  //   attendance,
+  //   user: { employeeId, token },
+  //   attendanceId,
+  // } = useSelector((store) => store.auth);
   const { employeeDetails } = useSelector((store) => store.tempData);
   const dispatch = useDispatch();
 
@@ -44,44 +44,44 @@ const Attendance = () => {
       status: "string",
       delayReason: "string",
     });
-    const res = await fetchWithCheck("/api/attendance/check-in", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        employeeId,
-        attendanceDate: currentDate,
-        checkInTime: currentDate,
-        checkOutTime: currentDate,
-        status: "string",
-        delayReason: "string",
-      }),
-    });
+    // const res = await fetchWithCheck("/api/attendance/check-in", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    //   body: JSON.stringify({
+    //     employeeId,
+    //     attendanceDate: currentDate,
+    //     checkInTime: currentDate,
+    //     checkOutTime: currentDate,
+    //     status: "string",
+    //     delayReason: "string",
+    //   }),
+    // });
     dispatch(toggleAttendanceId(res.attendanceId));
     console.log(res);
     return res;
   }
   async function handleCheckOut(tasks = []) {
-    const res = await fetchWithCheck(
-      `/api/attendance/check-out/${attendanceId}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(
-          tasks.map((task) => ({
-            taskDescription: "string",
-            dueDateStart: currentDate,
-            dueDateEnd: currentDate,
-          }))
-        ),
-      }
-    );
-    return res;
+    // const res = await fetchWithCheck(
+    //   `/api/attendance/check-out/${attendanceId}`,
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //     body: JSON.stringify(
+    //       tasks.map((task) => ({
+    //         taskDescription: "string",
+    //         dueDateStart: currentDate,
+    //         dueDateEnd: currentDate,
+    //       }))
+    //     ),
+    //   }
+    // );
+    // return res;
   }
   async function handleSubmitSignUp(formData, e) {
     // setGeneralError("");

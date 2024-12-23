@@ -9,27 +9,29 @@ import { openLoader } from "@/globalState/Features/tempDataSlice";
 import { lazyCloseLoader } from "@/helperFunctions/lazy";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import { useDispatch } from "react-redux";
+import { useContext } from "react";
+import AuthContext from "@/context/Auth";
 
 const ClientsTable = ({ swipe }) => {
   const [data, setData] = useState({});
   const dispatch = useDispatch();
-  /**
-   *  {
-      "id": 1,
-      "fullNameArabic": "string 1",
-      "email": "string",
-      "phoneNumber": "string",
-      "nationalId": "string",
-      "nationalIdExpiryDate": "2024-12-07T06:39:28.504",
-      "nationality": "string",
-      "gender": "string",
-      "maritalStatus": "string",
-      "workLocation": "string",
-      "residence": "string",
-      "additionalInfo": "string",
-      "addDate": "2024-12-07T06:39:31.8742059"
-    }
-   */
+
+  // {
+  //   "id": 1,
+  //   "fullNameArabic": "string 1",
+  //   "email": "string",
+  //   "phoneNumber": "string",
+  //   "nationalId": "string",
+  //   "nationalIdExpiryDate": "2024-12-07T06:39:28.504",
+  //   "nationality": "string",
+  //   "gender": "string",
+  //   "maritalStatus": "string",
+  //   "workLocation": "string",
+  //   "residence": "string",
+  //   "additionalInfo": "string",
+  //   "addDate": "2024-12-07T06:39:31.8742059"
+  // }
+  let { customers } = useContext(AuthContext)
   const tableColumns = useMemo(
     () => [
       {
@@ -66,7 +68,10 @@ const ClientsTable = ({ swipe }) => {
         Cell: ({ row }) => (
           <Link
             className="bg-blue-500 hover:bg-blue-700 transition-all text-white px-4 text-sm py-1 rounded"
-            href={"/clients/1"}
+            href={`/clients/${row.original.id}`}
+            onClick={() => {
+              window.localStorage.setItem("clientID", row.original.id)
+            }}
           >
             عرض
           </Link>
@@ -76,21 +81,22 @@ const ClientsTable = ({ swipe }) => {
     []
   );
 
-  useEffect(() => {
-    dispatch(openLoader());
-    fetchWithCheck(`/api/Customer?pageNumber=${1}`)
-      .then((e) => setData(e))
-      .catch((e) => {
-        console.log("HRTable");
-        console.log(e);
-      })
-      .finally((e) => {
-        lazyCloseLoader();
-      });
-  }, []);
+  // useEffect(() => {
+  //   dispatch(openLoader());
+  //   fetchWithCheck(`/api/Customer?pageNumber=${1}`)
+  //     .then((e) => setData(e))
+  //     .catch((e) => {
+  //       console.log("HRTable");
+  //       console.log(e);
+  //     })
+  //     .finally((e) => {
+  //       lazyCloseLoader();
+  //     });
+  // }, []);
+
   return (
     <CustomTable
-      tableData={data?.customers || []}
+      tableData={customers}
       columns={tableColumns}
       tableType={1}
       AddRecordEle={() => <AddClient />}

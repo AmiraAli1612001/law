@@ -11,7 +11,33 @@ import deleteRecordAPI from "@/helperFunctions/apiHelpers/delete";
 const EmployeeRewards = () => {
   const [data, setData] = useState([]);
   const { employeeId } = useSelector((store) => store.tempData.employeeDetails);
-  console.log(data);
+  const getAllRewards = async () => {
+    try {
+      const response = await fetch(`${apiKey}/EmployeeReward`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        cache: "no-store",
+      });
+      const res = await response.json();
+      if (response.ok) {
+        setData(res)
+      }
+    } catch (error) {
+      toast.error("حدث خطأ اثناء جلب البيانات")
+    }
+  };
+  useEffect(() => {
+    getAllRewards()
+
+    
+  }, [])
+
+  console.log(data)
+
+
+
   /**
    * {
     "employeeRewardId": 1,
@@ -64,11 +90,12 @@ const EmployeeRewards = () => {
       ),
     },
   ];
-  useEffect(() => {
-    fetchWithCheck(`/api/EmployeeReward/employee/${employeeId}`)
-      .then((res) => setData(res))
-      .catch((err) => console.warn(err));
-  }, [employeeId]);
+  // useEffect(() => {
+  //   fetchWithCheck(`/api/EmployeeReward/employee/${employeeId}`)
+  //     .then((res) => setData(res))
+  //     .catch((err) => console.warn(err));
+  // }, [employeeId]);
+  console.log("rewards😊😊😊" , data)
   return (
     <CustomTable
       AddRecordEle={AddReward}

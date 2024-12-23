@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const LinkHeader = ({to, to2, title, title2 }) => {
+const LinkHeader = ({ to, to2, title, title2 }) => {
   return (
     <div className="text-base flex items-center gap-4 font-bold">
       <Link href={"/"} className="text-[#063d31]">

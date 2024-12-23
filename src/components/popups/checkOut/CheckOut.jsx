@@ -13,15 +13,19 @@ import { toggleAttendancePopup } from "@/globalState/Features/smallPopupsSlice";
 import { fetchWithCheck } from "@/helperFunctions/dataFetching";
 import Image from "next/image";
 import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import AuthContext from "@/context/Auth";
+import { useContext } from "react";
+
 
 const CheckOut = () => {
-  const {
-    user: { token },
-    attendanceId,
-  } = useSelector((store) => store.auth);
+  // const {
+  //   user: { token },
+  //   attendanceId,
+  // } = useSelector((store) => store.auth);
 
   const dispatch = useDispatch();
 
@@ -38,56 +42,94 @@ const CheckOut = () => {
   // let { errors, isSubmitted } = formState;
 
   async function handleCheckOut(tasks = []) {
-    const res = await fetchWithCheck(
-      `/api/attendance/check-out/${attendanceId}`,
-      {
+    // const res = await fetchWithCheck(
+    //   `/api/attendance/check-out/${attendanceId}`,
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //     body: JSON.stringify(
+    //       //   tasks.map((task) => ({
+    //       //     taskId: 0,
+    //       //     taskDescription: "string",
+    //       //     dueDateStart: "2024-12-07T05:47:12.950Z",
+    //       //     dueDateEnd: "2024-12-07T05:47:12.950Z",
+    //       //   }))
+    //       [
+    //         {
+    //           taskId: 0,
+    //           taskDescription: "string",
+    //           dueDateStart: new Date().toISOString(),
+    //           dueDateEnd: new Date().toISOString(),
+    //         },
+    //       ]
+    //     ),
+    //   }
+    // );
+    // return res;
+  }
+
+
+  // ********************************************************************************************************************************
+  let { isCheckOutTimeNull, setIsCheckOutTimeNull, setCheck } = useContext(AuthContext);
+
+  let [fromTime, setFormTime] = useState("")
+  let [toTime, setToTime] = useState("")
+  let [taskDescription, setTaskDescription] = useState("")
+
+
+  const apiKey = process.env.NEXT_PUBLIC_DEV;
+  const checkOutApi = async () => {
+    const id = JSON.parse(localStorage.getItem("attendanceId"));
+    try {
+      console.log("id", id);
+      const response = await fetch(`${apiKey}/Attendance/check-out/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        body: JSON.stringify(
-          //   tasks.map((task) => ({
-          //     taskId: 0,
-          //     taskDescription: "string",
-          //     dueDateStart: "2024-12-07T05:47:12.950Z",
-          //     dueDateEnd: "2024-12-07T05:47:12.950Z",
-          //   }))
-          [
-            {
-              taskId: 0,
-              taskDescription: "string",
-              dueDateStart: new Date().toISOString(),
-              dueDateEnd: new Date().toISOString(),
-            },
-          ]
-        ),
-      }
-    );
-    return res;
-  }
-  async function handleFormSubmit(e) {
-    e.preventDefault();
-    // setGeneralError("");
-    // dispatch(openLoader("جاري التسجيل"));
+        cache: "no-store",
+        body: JSON.stringify([
+          {
+            "taskId": 0,
+            "taskDescription": taskDescription,
+            "dueDateStart": fromTime,
+            "dueDateEnd": toTime
+          }
+        ]),
+      });
 
-    console.log("formData");
-    try {
-      let res = await handleCheckOut();
-      console.log(res);
-      dispatch(toggleCheckOutPopup());
-      dispatch(toggleAttendanceId(0));
-      toast.success(" تم تسجيل الانصراف بنجاح");
-    } catch (err) {
-      console.log(err);
-      toast.error("حدث خطأ ما");
+      if (response.ok) {
+        toast.success("تم تسجيل الانصراف بنجاح");
+        setIsCheckOutTimeNull(false);
+        localStorage.setItem("isCheckOutTimeNull", false);
+        setCheck(JSON.parse(localStorage.getItem("isCheckOutTimeNull")))
+        console.log(taskDescription)
+        dispatch(toggleCheckOutPopup());
+      }
     }
 
-    // dispatch(closeLoader());
-  }
+    catch (error) {
+      toast.error(error.message || "حدث خطأ ما");
+      console.error("Error:", error);
+      console.log("response.status", response.status)
+
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await checkOutApi();
+
+  };
+
+
   return (
     <div className="wrapper relative bg-white w-full h-full p-10 checkout">
-        {/* close popups btn */}
+      {/* close popups btn */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -123,7 +165,8 @@ const CheckOut = () => {
         </div>
         <form
           method="POST"
-          onSubmit={handleFormSubmit}
+          onSubmit={(e) => { handleSubmit(e) }
+          }
           action=""
           noValidate
           id="checkOutForm"
@@ -141,21 +184,30 @@ const CheckOut = () => {
                 <div className="flex gap-2">
                   <div className="simple-input flex-1">
                     <label htmlFor="">من</label>
-                    <input type="time" name="" id="" />
+                    <input type="time" name="" id="" onChangeCapture={(e) => {
+                      setFormTime(e.target.value)
+                    }} />
                   </div>
                   <div className="simple-input flex-1">
                     <label htmlFor="">الي</label>
-                    <input type="time" name="" id="" />
+                    <input type="time" name="" id="" onChangeCapture={(e) => {
+                      setToTime(e.target.value)
+                    }} />
                   </div>
                 </div>
-                <textarea name="" placeholder="حدد مهامك" id=""></textarea>
+                <textarea name="" placeholder="حدد مهامك" id="" onChange={(e) => {
+                  setTaskDescription(e.target.value)
+                }}></textarea>
               </div>
             </DynamicList>
           </div>
           <button
+
             className="text-white rounded text-xl p-4 w-fit bg-[#D00000]"
             type="submit"
             form="checkOutForm"
+
+
           >
             تسجيل الانصراف
           </button>

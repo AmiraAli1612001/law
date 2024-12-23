@@ -31,7 +31,6 @@ const CustomTable = ({
   const [topFilterActive, setTopFilterActive] = useState(0);
   const [filterMenuActive, setFilterMenuActive] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("");
-
   const dispatch = useDispatch();
 
   //initial filter on id or contract type
@@ -101,9 +100,8 @@ const CustomTable = ({
         return (
           <table
             {...getTableProps()}
-            className={`${
-              filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
-            } simple-table  `}
+            className={`${filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
+              } simple-table  `}
           >
             <thead className="">
               {headerGroups.map((headerGroup, i) => (
@@ -141,9 +139,8 @@ const CustomTable = ({
         //no table, custom wrapper and custom row for each record
         return (
           <div
-            className={`${
-              filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
-            } flex flex-1 flex-col gap-1`}
+            className={`${filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
+              } flex flex-1 flex-col gap-1`}
           >
             {page.map((row) => {
               prepareRow(row);
@@ -162,9 +159,8 @@ const CustomTable = ({
         return (
           <table
             {...getTableProps()}
-            className={`${
-              filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
-            } simple-table  `}
+            className={`${filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
+              } simple-table  `}
           >
             <thead className="">
               {headerGroups.map((headerGroup, i) => (
@@ -199,9 +195,8 @@ const CustomTable = ({
         return (
           <table
             {...getTableProps()}
-            className={`${
-              filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
-            } simple-table  `}
+            className={`${filterMenuActive ? " w-[calc(100%-304px)] " : " w-full "
+              } simple-table  `}
           >
             <thead className="">
               {headerGroups.map((headerGroup, i) => (
@@ -272,9 +267,8 @@ const CustomTable = ({
               <>
                 <button
                   key={"top-filter-all"}
-                  className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
-                    topFilterActive == 0 ? "bg-[#34A853] text-white" : ""
-                  }`}
+                  className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${topFilterActive == 0 ? "bg-[#34A853] text-white" : ""
+                    }`}
                   onClick={() => setTopFilterActive(0)}
                 >
                   الكل
@@ -282,9 +276,8 @@ const CustomTable = ({
                 {topFilter.map((ele, i) => (
                   <button
                     key={i}
-                    className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${
-                      topFilterActive == ele.id ? "bg-[#34A853] text-white" : ""
-                    }`}
+                    className={`text-[#34A853] hover:bg-[#34A853] hover:text-white transition-all whitespace-nowrap font-bold px-2 py-1 border-[#34A853] border ${topFilterActive == ele.id ? "bg-[#34A853] text-white" : ""
+                      }`}
                     onClick={() => setTopFilterActive(ele.id)}
                   >
                     {ele.name}
@@ -336,9 +329,8 @@ const CustomTable = ({
       )}
 
       <div
-        className={`${
-          filterMenuActive && " gap-1 "
-        } transition-all flex w-full relative`}
+        className={`${filterMenuActive && " gap-1 "
+          } transition-all flex w-full relative`}
       >
         {/* data rows */}
 
@@ -398,9 +390,8 @@ const CustomTable = ({
         {/* filter */}
         {enableFilter && (
           <div
-            className={`${
-              filterMenuActive ? " min-w-max max-w-[300px] p-4 " : " max-w-0 "
-            } transition-all absolute my-1 left-0 top-0 overflow-hidden bg-gray-200 h-fit flex flex-col gap-4`}
+            className={`${filterMenuActive ? " min-w-max max-w-[300px] p-4 " : " max-w-0 "
+              } transition-all absolute my-1 left-0 top-0 overflow-hidden bg-gray-200 h-fit flex flex-col gap-4`}
           >
             <h2 className="text-3xl">تصفية</h2>
             <div>
@@ -416,21 +407,19 @@ const CustomTable = ({
                       onClick={() => {
                         setCurrentFilter(column.id);
                       }}
-                      className={`${
-                        (column.id === "actions" || column.id === "actions2") &&
+                      className={`${(column.id === "actions" || column.id === "actions2") &&
                         " hidden "
-                      }`}
+                        }`}
                       key={i}
                     >
                       <span
                         {...column.getHeaderProps(
                           column.getSortByToggleProps()
                         )}
-                        className={`${
-                          currentFilter === column.id
-                            ? "bg-[#34A853] text-white "
-                            : "bg-white "
-                        }  rounded p-2 whitespace-nowrap text-center inline-block w-full`}
+                        className={`${currentFilter === column.id
+                          ? "bg-[#34A853] text-white "
+                          : "bg-white "
+                          }  rounded p-2 whitespace-nowrap text-center inline-block w-full`}
                         key={i}
                       >
                         {column.render("Header")}

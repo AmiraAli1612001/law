@@ -18,7 +18,7 @@ const AddDeduction = () => {
   const currentForm = useSelector((store) => store.formState.currentForm);
   // const { currentId } = useSelector((store) => store.tempData);
   const { employeeId } = useSelector((store) => store.tempData.employeeDetails);
-  const { user: { token } } = useSelector((store) => store.auth);
+  // const { user: { token } } = useSelector((store) => store.auth);
   const {
     register,
     handleSubmit,
@@ -49,19 +49,19 @@ const AddDeduction = () => {
     console.log("employeeId", employeeId);
     console.log(params);
     try {
-      const res = await fetchWithCheck(`/api/Deduction`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          employeeId: employeeId,
-          date: params.deductionDate,
-          amount: params.deductionAmount,
-          reason: params.deductionReason,
-        }),
-      });
+      // const res = await fetchWithCheck(`/api/Deduction`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      //   body: JSON.stringify({
+      //     employeeId: employeeId,
+      //     date: params.deductionDate,
+      //     amount: params.deductionAmount,
+      //     reason: params.deductionReason,
+      //   }),
+      // });
       return res;
     } catch (err) {
       throw err;

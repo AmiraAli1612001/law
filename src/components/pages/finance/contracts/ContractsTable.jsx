@@ -46,8 +46,8 @@ const ContractsTable = ({ swipe }) => {
         tableData={contractsData}
         columns={tableColumns}
         idFilter={true}
-        AddRecordEle={()=><AddContractRecord/>}
-        RenderElement={(data)=><ContractRow swipe={swipe} {...data} />}
+        AddRecordEle={() => <AddContractRecord />}
+        RenderElement={(data) => <ContractRow swipe={swipe} {...data} />}
       />
     </>
   );

@@ -13,7 +13,6 @@ const Agencies = () => {
       </div>
       <div>
         <AgenciesEle/>
-        {/* <IssuesTable /> */}
       </div>
     </ScreenWrapper>
   );

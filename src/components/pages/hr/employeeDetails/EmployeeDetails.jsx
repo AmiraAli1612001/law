@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import { useDispatch } from "react-redux";
-import Details from "./details/Details";
+// import Details from "./details/Details";
 import Attendance from "./attendance/Attendance";
 import EmployeeStatistics from "@/components/statistics/EmployeeStatistics";
 import IssuesTable from "../../issues/IssuesTable";
@@ -30,7 +30,7 @@ import EmployeeSalaries from "./employeeSalaries/EmployeeSalaries";
 import EmployeeDeductions from "./employeeDeductions/EmployeeDeductions";
 import { lazyCloseLoader } from "@/helperFunctions/lazy";
 import EmployeeRewards from "./employeeRewards/EmployeeRewards";
-
+import Details from "../[details]/Details"
 const EmployeeDetails = ({ id }) => {
   // const [data, setData] = useState({});\
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const EmployeeDetails = ({ id }) => {
   const sections = [
     {
       title: "التفاصيل",
-      ele: <Details />,
+      ele: <Details/>,
     },
     {
       title: "العقد",
@@ -162,15 +162,15 @@ const EmployeeDetails = ({ id }) => {
     },
   ];
 
-  useEffect(() => {
-    dispatch(openLoader());
-    fetchWithCheck(`/api/Employee/${id}`)
-      .then((res) => {
-        dispatch(setEmployeeDetails(res));
-      })
-      .catch((err) => console.warn(err))
-      .finally(() => lazyCloseLoader());
-  }, [id]);
+  // useEffect(() => {
+  //   dispatch(openLoader());
+  //   fetchWithCheck(`/api/Employee/${id}`)
+  //     .then((res) => {
+  //       dispatch(setEmployeeDetails(res));
+  //     })
+  //     .catch((err) => console.warn(err))
+  //     .finally(() => lazyCloseLoader());
+  // }, [id]);
 
   return (
     <div className="issue-details flex">

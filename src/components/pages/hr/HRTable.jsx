@@ -11,36 +11,13 @@ import { useDispatch } from "react-redux";
 import { openLoader } from "@/globalState/Features/tempDataSlice";
 import { lazyCloseLoader } from "@/helperFunctions/lazy";
 import useFetchWithLoader from "@/customHooks/useFetchWithLoader";
+import { useContext } from "react";
+import AuthContext from "@/context/Auth";
 
 const HRTable = () => {
-  const { data } = useFetchWithLoader("/api/Employee");
-  
-  // {
-  //   "employeeId": 1,
-  //   "fullNameArabic": "محمد أحمد علي",
-  //   "fullNameEnglish": "Mohamed Ahmed Ali",
-  //   "email": "mohamed.ali@example.com",
-  //   "phoneNumber": "01012345678",
-  //   "nationalId": "12345678901234",
-  //   "hiringDate": "2023-01-01T00:00:00",
-  //   "nationality": "مصري",
-  //   "jobTitle": "محامي",
-  //   "gender": "ذكر",
-  //   "departmentId": 1,
-  //   "residenceProfessionId": 1,
-  //   "employeeStatusId": 1,
-  //   "isActive": true,
-  //   "workingHours": 8,
-  //   "loanCount": 1,
-  //   "password": "hashedPassword123",
-  //   "isLock": false,
-  //   "departmentName": "القضاء",
-  //   "residenceProfessionName": "محامي",
-  //   "employeeStatusName": "على رأس العمل"
-  // }
-  console.log(data);
 
 
+ let {employees} = useContext(AuthContext)
   const tableColumns = useMemo(
     () => [
       {
@@ -56,7 +33,7 @@ const HRTable = () => {
         accessor: "fullNameArabic",
         Cell: ({ row, value }) => {
           return (
-            <Link href={`/hr/${1}`} className="inline-block underline">
+            <Link href={`/hr/${row.original.employeeId}`} className="inline-block underline">
               {value}
             </Link>
           );
@@ -88,7 +65,7 @@ const HRTable = () => {
       ]}
       tableType={2}
       AddRecordEle={AddEmployee}
-      tableData={Array.isArray(data) ? data : []}
+      tableData={employees}
       columns={tableColumns}
       RenderElement={HRRow}
     />

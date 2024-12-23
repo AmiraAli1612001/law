@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import DynamicList from "@/components/shared/dynamicList/DynamicList";
 import PersonSelector from "@/components/shared/personSelector/PersonSelector";
 import PaymentSelector from "@/components/shared/payment/paymentSelector/PaymentSelector";
+import { toast } from "react-toastify";
 
 const AddContract = () => {
   const signUpForm = useForm();
@@ -50,6 +51,65 @@ const AddContract = () => {
     "دفعات: تقسم وفقًا لتواريخ استحقاق",
     "مجاني تتحمله الشركة",
   ];
+
+
+
+
+  const AddContract = async () => {
+    try {
+      const response = await fetch(`${apiKey}/CaseContract`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        cache: "no-store",
+        body: JSON.stringify(
+          {
+            id: 0,
+            contractNumber: "string",
+            contractDate: "2024-12-21T09:10:36.975Z",
+            totalAmount: 0,
+            isFullPayment: true,
+            dueDate: "2024-12-21T09:10:36.975Z",
+            contractPreamble: "string",
+            contractTypeId: 0,
+            contractStatusId: 0,
+            contractCategoryId: 0,
+            parties: [
+              {
+                id: 0,
+                customerId: 0,
+                customerName: "string"
+              }
+            ],
+            installments: [
+              {
+                id: 0,
+                amount: 0,
+                dueDate: "2024-12-21T09:10:36.975Z",
+                isPaid: true,
+                judgmentId: 0
+              }
+            ],
+            contractItems: [
+              {
+                id: 0,
+                contractItemId: 0,
+                isMandatory: true
+              }
+            ]
+          }
+        )
+      });
+      if (response.ok) {
+        toast.success("تم اضافة العقد بنجاح")
+      }
+
+    } catch (error) {
+      toast.success("حدث خطأ عند اضافة العقد")
+    }
+  };
   return (
     <form
       method="POST"
@@ -57,7 +117,7 @@ const AddContract = () => {
       action=""
       noValidate
       id="addIssueRecord"
-      // className="py-4"
+    // className="py-4"
     >
       {/* basic info */}
       <div className="small-inputs flex flex-col lg:flex-row w-full [&>div]:flex-1 gap-4 pe-0.5 main-section">

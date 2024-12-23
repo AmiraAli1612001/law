@@ -75,49 +75,4 @@ export async function fetchWithCheck(
   }
 }
 
-// home
 
-export async function fetchHomeData() {
-  const data = await fetchWithCheck(`${apiKey}home/homeData`, null, null);
-  return data;
-}
-
-// registeration - payment - basket
-
-export async function fetchAddToBasket(data) {
-  try {
-    const addResult = await fetchWithCheck(
-      `${apiKey}reservations/addToBasket?tokenCourse=${data.tokenCourse}&tokenStudent=${data.tokenStudent}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    console.log(addResult);
-    return addResult;
-  } catch (error) {
-    console.log(error);
-    return error;
-  }
-}
-
-export async function fetchRegisterAttendanceCourse(data) {
-  try {
-    const courseDetails = await fetchWithCheck(
-      `${apiKey}reservations/addOfflineCourse`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
-    return courseDetails;
-  } catch (error) {
-    console.log(error);
-    return error;
-  }
-}

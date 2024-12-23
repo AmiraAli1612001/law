@@ -14,9 +14,9 @@ const RenderElement = ({
   },
 }) => {
   const dispatch = useDispatch();
-  const {
-    user: { token },
-  } = useSelector((state) => state.auth);
+  // const {
+  //   user: { token },
+  // } = useSelector((state) => state.auth);
 
   const dateRef = useRef();
   const warningTypeRef = useRef();
